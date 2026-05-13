@@ -1,3 +1,7 @@
 {
-  "/page": "app/page.js"
+  "/aides-financieres/page": "app/aides-financieres/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/notre-histoire/page": "app/notre-histoire/page.js",
+  "/page": "app/page.js",
+  "/pour-les-familles/page": "app/pour-les-familles/page.js"
 }

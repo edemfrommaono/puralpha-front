@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import "@/styles/globals.css";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
-  title: "Puralpha Front",
-  description: "Puralpha front-end application",
+  title: "PUR Alpha",
+  description: "Garde et accompagnement à domicile d'enfants en situation de handicap",
 };
 
 export default function RootLayout({
@@ -12,8 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
-      <body>{children}</body>
+    <html lang="fr" className={`${poppins.variable}`}>
+      <body className="font-poppins bg-background text-foreground antialiased flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow pt-20">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }

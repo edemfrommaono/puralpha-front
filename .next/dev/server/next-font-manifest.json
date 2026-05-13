@@ -1,6 +1,47 @@
 {
-  "app": {},
-  "appUsingSizeAdjust": false,
+  "app": {
+    "[project]/app/aides-financieres/page": [
+      "static/media/a218039a3287bcfd-s.p.17-1enzs_j91b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.0uvzar8hswo3p.woff2",
+      "static/media/e2334d715941921e-s.p.12skym0rqknxy.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.0~mcdl10zdfb3.woff2",
+      "static/media/829ba4228c966254-s.p.0ub.k0om~_-xi.woff2",
+      "static/media/4b766aa38fdaaae3-s.p.0cbnlo4n.czwi.woff2"
+    ],
+    "[project]/app/contact/page": [
+      "static/media/a218039a3287bcfd-s.p.17-1enzs_j91b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.0uvzar8hswo3p.woff2",
+      "static/media/e2334d715941921e-s.p.12skym0rqknxy.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.0~mcdl10zdfb3.woff2",
+      "static/media/829ba4228c966254-s.p.0ub.k0om~_-xi.woff2",
+      "static/media/4b766aa38fdaaae3-s.p.0cbnlo4n.czwi.woff2"
+    ],
+    "[project]/app/notre-histoire/page": [
+      "static/media/a218039a3287bcfd-s.p.17-1enzs_j91b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.0uvzar8hswo3p.woff2",
+      "static/media/e2334d715941921e-s.p.12skym0rqknxy.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.0~mcdl10zdfb3.woff2",
+      "static/media/829ba4228c966254-s.p.0ub.k0om~_-xi.woff2",
+      "static/media/4b766aa38fdaaae3-s.p.0cbnlo4n.czwi.woff2"
+    ],
+    "[project]/app/page": [
+      "static/media/a218039a3287bcfd-s.p.17-1enzs_j91b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.0uvzar8hswo3p.woff2",
+      "static/media/e2334d715941921e-s.p.12skym0rqknxy.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.0~mcdl10zdfb3.woff2",
+      "static/media/829ba4228c966254-s.p.0ub.k0om~_-xi.woff2",
+      "static/media/4b766aa38fdaaae3-s.p.0cbnlo4n.czwi.woff2"
+    ],
+    "[project]/app/pour-les-familles/page": [
+      "static/media/a218039a3287bcfd-s.p.17-1enzs_j91b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.0uvzar8hswo3p.woff2",
+      "static/media/e2334d715941921e-s.p.12skym0rqknxy.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.0~mcdl10zdfb3.woff2",
+      "static/media/829ba4228c966254-s.p.0ub.k0om~_-xi.woff2",
+      "static/media/4b766aa38fdaaae3-s.p.0cbnlo4n.czwi.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
   "pages": {},
   "pagesUsingSizeAdjust": false
 }
