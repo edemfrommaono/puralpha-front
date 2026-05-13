@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/edem-local-repo/PureAlpha/puralpha-front/app/not-found.tsx"],"sourcesContent":["import Link from 'next/link'\n \nexport default function NotFound() {\n  return (\n    <div className=\"flex flex-col items-center justify-center min-h-screen\">\n      <h2 className=\"text-3xl font-bold\">Non trouvé</h2>\n      <p className=\"mt-4\">Impossible de trouver la ressource demandée</p>\n      <Link href=\"/\" className=\"mt-6 text-blue-500 hover:underline\">\n        Retour à l'accueil\n      </Link>\n    </div>\n  )\n}\n"],"names":["NotFound","className","href"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAIC,WAAU;;0BACb,8OAAC;gBAAGA,WAAU;0BAAqB;;;;;;0BACnC,8OAAC;gBAAEA,WAAU;0BAAO;;;;;;0BACpB,8OAAC,0LAAI;gBAACC,MAAK;gBAAID,WAAU;0BAAqC;;;;;;;;;;;;AAKpE"}}]
-}

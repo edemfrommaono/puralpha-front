@@ -231,6 +231,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Notre histoire */}
+      <section className="py-20 lg:py-32 w-full bg-white">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Text */}
+            <div className="flex flex-col gap-6 max-w-xl">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-4 h-3 bg-teal-400 rounded-sm" />
+                  <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">Notre histoire</span>
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
+                  Pourquoi PUR Alpha <span className="text-teal-400">existe.</span>
+                </h2>
+              </div>
+              <p className="text-base text-gray-700 leading-relaxed">
+                PUR Alpha est né d’une expérience personnelle : celle d’une mère confrontée à la difficulté de trouver un accompagnement fiable pour son enfant en situation de handicap.
+              </p>
+              <p className="text-base text-gray-700 leading-relaxed mb-4">
+                De ce vécu est née une conviction : les familles ont besoin d’un relais à domicile rassurant et respectueux du quotidien de leur enfant.
+              </p>
+              <div>
+                <Button variant="teal" href="/notre-histoire">
+                  Lire notre manifeste
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Image Placeholder */}
+            <div className="relative h-[400px] lg:h-[500px] w-full rounded-3xl overflow-hidden shadow-xl bg-gray-100 flex justify-center items-center">
+               <span className="text-gray-400 font-bold">Photo de la fondatrice</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Implantation territoriale */}
+      <section className="py-20 lg:py-32 w-full bg-[#ecf4f6]">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Image (Map) Placeholder */}
+            <div className="order-2 lg:order-1 relative h-[400px] lg:h-[500px] w-full bg-teal-400/10 rounded-3xl overflow-hidden flex flex-col justify-center items-center">
+               <span className="text-teal-600/50 font-black text-6xl lg:text-8xl">95</span>
+               <span className="mt-4 font-bold text-teal-700">Val-d'Oise</span>
+            </div>
+
+            {/* Right Text */}
+            <div className="order-1 lg:order-2 flex flex-col gap-6 max-w-xl">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-4 h-3 bg-teal-400 rounded-sm" />
+                  <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">Implantation territoriale</span>
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
+                  Ancré dans <span className="text-teal-400">le Val-d’Oise</span>, pensé pour les familles
+                </h2>
+              </div>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Le Val-d’Oise fait face à des besoins importants d’accompagnement à domicile pour les enfants et jeunes en situation de handicap. PUR Alpha répond à cette réalité en proposant un relais complémentaire aux solutions existantes.
+              </p>
+              <p className="text-base text-gray-700 leading-relaxed mb-4">
+                Accompagné par Initiative Val d'Oise, le projet s’inscrit dans une dynamique territoriale reconnue. Il a reçu le 1er Prix Jeune Entreprise aux Entrepreneuriades 2025, une reconnaissance de son ancrage local et de son utilité pour les familles valdoisiennes.
+              </p>
+              <div>
+                <Button variant="gold" href="#">
+                  <span className="mr-2">▶</span> Retour en images sur l’événement
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Pathways / Parcours */}
       <section className="py-20 lg:py-32 w-full bg-white">
         <div className="container mx-auto px-4 lg:px-8">

@@ -27,7 +27,7 @@ export function Header() {
           <Link href="/aides-financieres" className="text-sm font-medium text-gray-600 hover:text-teal-500 transition-colors">
             Les aides financières
           </Link>
-          <Link href="/contact" className="text-sm font-medium text-gray-600 hover:text-teal-500 transition-colors">
+          <Link href="/nous-rejoindre" className="text-sm font-medium text-gray-600 hover:text-teal-500 transition-colors">
             Nous rejoindre
           </Link>
           
@@ -60,7 +60,7 @@ export function Header() {
           <Link href="/aides-financieres" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-gray-600 p-2">
             Les aides financières
           </Link>
-          <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-gray-600 p-2">
+          <Link href="/nous-rejoindre" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-gray-600 p-2">
             Nous rejoindre
           </Link>
           <Button variant="navy" className="rounded-full w-full justify-center mt-2" onClick={() => setIsMenuOpen(false)} href="/contact">
