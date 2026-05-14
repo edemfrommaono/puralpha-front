@@ -1,0 +1,115 @@
+[
+  {
+    "key": "group_pour_les_familles",
+    "title": "Page Pour les Familles",
+    "active": true,
+    "show_in_rest": true,
+    "fields": [
+      { "key": "field_plf_tab_hero", "label": "Hero", "type": "tab" },
+      {
+        "key": "field_plf_hero", "label": "Hero", "name": "hero", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_plf_hero_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Votre enfant mérite une" },
+          { "key": "field_plf_hero_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "présence stable et bienveillante" },
+          { "key": "field_plf_hero_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_plf_hero_cta1_text", "label": "CTA 1 texte", "name": "cta_primary_text", "type": "text", "default_value": "Parlons de votre situation →" },
+          { "key": "field_plf_hero_cta1_url", "label": "CTA 1 URL", "name": "cta_primary_url", "type": "url", "default_value": "/contact" },
+          { "key": "field_plf_hero_cta2_text", "label": "CTA 2 texte", "name": "cta_secondary_text", "type": "text", "default_value": "Voir les aides financières" },
+          { "key": "field_plf_hero_cta2_url", "label": "CTA 2 URL", "name": "cta_secondary_url", "type": "url", "default_value": "/aides-financieres" },
+          {
+            "key": "field_plf_hero_stats", "label": "Stats", "name": "stats", "type": "repeater", "layout": "table",
+            "sub_fields": [
+              { "key": "field_plf_stat_val", "label": "Valeur", "name": "value", "type": "text" },
+              { "key": "field_plf_stat_lbl", "label": "Label", "name": "label", "type": "text" }
+            ]
+          }
+        ]
+      },
+      { "key": "field_plf_tab_handicaps", "label": "Handicaps", "type": "tab" },
+      {
+        "key": "field_plf_handicaps", "label": "Handicaps", "name": "handicaps", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_plf_h_title", "label": "Titre", "name": "title", "type": "text" },
+          { "key": "field_plf_h_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_plf_h_desc", "label": "Description", "name": "description", "type": "textarea" },
+          {
+            "key": "field_plf_h_types", "label": "Types", "name": "types", "type": "repeater", "layout": "table",
+            "sub_fields": [
+              { "key": "field_plf_h_t_icon", "label": "Icône", "name": "icon", "type": "text" },
+              { "key": "field_plf_h_t_label", "label": "Label", "name": "label", "type": "text" }
+            ]
+          },
+          { "key": "field_plf_h_quote", "label": "Citation", "name": "highlight_quote", "type": "text" },
+          { "key": "field_plf_h_qdesc", "label": "Détail citation", "name": "highlight_description", "type": "textarea" }
+        ]
+      },
+      { "key": "field_plf_tab_services", "label": "Services", "type": "tab" },
+      {
+        "key": "field_plf_services", "label": "Services", "name": "services", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_plf_s_title", "label": "Titre", "name": "title", "type": "text" },
+          { "key": "field_plf_s_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_plf_s_desc", "label": "Description", "name": "description", "type": "textarea" },
+          {
+            "key": "field_plf_s_cards", "label": "Cartes", "name": "cards", "type": "repeater", "layout": "block",
+            "sub_fields": [
+              { "key": "field_plf_s_c_tag", "label": "Tag", "name": "tag", "type": "text" },
+              { "key": "field_plf_s_c_img", "label": "Image", "name": "image", "type": "image", "return_format": "id" },
+              { "key": "field_plf_s_c_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_plf_s_c_desc", "label": "Description", "name": "description", "type": "textarea" },
+              {
+                "key": "field_plf_s_c_tags", "label": "Tags", "name": "tags", "type": "repeater", "layout": "table",
+                "sub_fields": [{ "key": "field_plf_s_c_t_text", "label": "Texte", "name": "text", "type": "text" }]
+              }
+            ]
+          }
+        ]
+      },
+      { "key": "field_plf_tab_garanties", "label": "Garanties", "type": "tab" },
+      {
+        "key": "field_plf_garanties", "label": "Garanties", "name": "garanties", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_plf_g_title", "label": "Titre", "name": "title", "type": "text" },
+          { "key": "field_plf_g_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_plf_g_desc", "label": "Description", "name": "description", "type": "textarea" },
+          {
+            "key": "field_plf_g_items", "label": "Garanties", "name": "items", "type": "repeater", "layout": "block",
+            "sub_fields": [
+              { "key": "field_plf_g_i_icon", "label": "Icône", "name": "icon", "type": "text" },
+              { "key": "field_plf_g_i_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_plf_g_i_desc", "label": "Description", "name": "description", "type": "textarea" }
+            ]
+          }
+        ]
+      },
+      { "key": "field_plf_tab_faq", "label": "FAQ", "type": "tab" },
+      {
+        "key": "field_plf_faq", "label": "FAQ", "name": "faq", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_plf_faq_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Questions fréquentes" },
+          { "key": "field_plf_faq_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Vos questions," },
+          { "key": "field_plf_faq_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "nos réponses" },
+          {
+            "key": "field_plf_faq_items", "label": "Questions", "name": "items", "type": "repeater", "layout": "block",
+            "sub_fields": [
+              { "key": "field_plf_faq_q", "label": "Question", "name": "question", "type": "text" },
+              { "key": "field_plf_faq_a", "label": "Réponse", "name": "answer", "type": "textarea" }
+            ]
+          }
+        ]
+      },
+      { "key": "field_plf_tab_cta", "label": "CTA Final", "type": "tab" },
+      {
+        "key": "field_plf_cta", "label": "CTA Final", "name": "cta_final", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_plf_cta_title", "label": "Titre", "name": "title", "type": "text" },
+          { "key": "field_plf_cta_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_plf_cta_sub", "label": "Sous-titre", "name": "subtitle", "type": "text" },
+          { "key": "field_plf_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Prendre contact" },
+          { "key": "field_plf_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url", "default_value": "/contact" }
+        ]
+      }
+    ],
+    "location": [[{ "param": "page_slug", "operator": "==", "value": "pour-les-familles" }]]
+  }
+]

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 
 export function Header() {
@@ -12,8 +13,15 @@ export function Header() {
       <div className="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Logo */}
-        <Link href="/" className="text-2xl font-black text-navy-800">
-          PUR <span className="text-teal-400">Alpha</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo_pur_alpha.png"
+            alt="PUR Alpha"
+            width={180}
+            height={52}
+            className="h-14 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}

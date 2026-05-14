@@ -1,0 +1,227 @@
+[
+  {
+    "key": "group_home_page",
+    "title": "Page Accueil",
+    "active": true,
+    "show_in_rest": true,
+    "fields": [
+      {
+        "key": "field_home_tab_hero",
+        "label": "Hero",
+        "type": "tab"
+      },
+      {
+        "key": "field_home_hero",
+        "label": "Section Hero",
+        "name": "hero",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_home_hero_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Garde et accompagnement à domicile d'enfants en" },
+          { "key": "field_home_hero_title_highlight", "label": "Titre (partie colorée)", "name": "title_highlight", "type": "text", "default_value": "situation de handicap" },
+          { "key": "field_home_hero_subtitle", "label": "Sous-titre", "name": "subtitle", "type": "text", "default_value": "Leur bien-être à domicile, votre sérénité au quotidien" },
+          { "key": "field_home_hero_description", "label": "Description", "name": "description", "type": "textarea", "default_value": "PUR Alpha propose une solution de services à la personne exclusivement dédiée aux enfants et jeunes en situation de handicap, de 0 à 25 ans, dans le Val-d'Oise." },
+          { "key": "field_home_hero_cta_primary_text", "label": "CTA primaire — texte", "name": "cta_primary_text", "type": "text", "default_value": "Demander un premier échange" },
+          { "key": "field_home_hero_cta_primary_url", "label": "CTA primaire — URL", "name": "cta_primary_url", "type": "url", "default_value": "/contact" },
+          { "key": "field_home_hero_cta_secondary_text", "label": "CTA secondaire — texte", "name": "cta_secondary_text", "type": "text", "default_value": "Découvrir PUR Alpha en vidéo" },
+          { "key": "field_home_hero_image_left", "label": "Image gauche", "name": "hero_image_left", "type": "image", "return_format": "id" },
+          { "key": "field_home_hero_image_right", "label": "Image droite", "name": "hero_image_right", "type": "image", "return_format": "id" },
+          { "key": "field_home_hero_overlay_text", "label": "Texte overlay", "name": "hero_overlay_text", "type": "textarea", "default_value": "Des interventions personnalisées, assurées par des professionnels formés aux spécificités du handicap." }
+        ]
+      },
+      {
+        "key": "field_home_tab_values",
+        "label": "Barre de valeurs",
+        "type": "tab"
+      },
+      {
+        "key": "field_home_values_bar",
+        "label": "Valeurs",
+        "name": "values_bar",
+        "type": "repeater",
+        "show_in_rest": true,
+        "layout": "table",
+        "sub_fields": [
+          { "key": "field_home_values_icon", "label": "Icône (emoji)", "name": "icon", "type": "text" },
+          { "key": "field_home_values_label", "label": "Label", "name": "label", "type": "text" }
+        ]
+      },
+      {
+        "key": "field_home_tab_accompagnement",
+        "label": "Accompagnement",
+        "type": "tab"
+      },
+      {
+        "key": "field_home_accompagnement",
+        "label": "Section Accompagnement",
+        "name": "accompagnement",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_home_acc_tag", "label": "Tag section", "name": "section_tag", "type": "text", "default_value": "Notre accompagnement" },
+          { "key": "field_home_acc_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Un service à domicile, pensé pour" },
+          { "key": "field_home_acc_title_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "votre enfant." },
+          {
+            "key": "field_home_acc_services",
+            "label": "Services",
+            "name": "services",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+              { "key": "field_home_acc_srv_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_home_acc_srv_desc", "label": "Description", "name": "description", "type": "textarea" }
+            ]
+          },
+          {
+            "key": "field_home_acc_info_boxes",
+            "label": "Encarts info",
+            "name": "info_boxes",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+              { "key": "field_home_acc_info_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_home_acc_info_desc", "label": "Description", "name": "description", "type": "textarea" }
+            ]
+          },
+          { "key": "field_home_acc_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Découvrir notre offre en détail" },
+          { "key": "field_home_acc_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url", "default_value": "/pour-les-familles" }
+        ]
+      },
+      {
+        "key": "field_home_tab_etapes",
+        "label": "Étapes",
+        "type": "tab"
+      },
+      {
+        "key": "field_home_etapes",
+        "label": "Section Étapes",
+        "name": "etapes",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_home_et_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Comment ça marche ?" },
+          { "key": "field_home_et_desc", "label": "Description", "name": "description", "type": "textarea", "default_value": "De la première prise de contact à la mise en place de l'intervention, PUR Alpha vous accompagne à chaque étape." },
+          {
+            "key": "field_home_et_steps",
+            "label": "Étapes",
+            "name": "steps",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+              { "key": "field_home_et_step_icon", "label": "Icône (emoji)", "name": "icon", "type": "text" },
+              { "key": "field_home_et_step_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_home_et_step_desc", "label": "Description", "name": "description", "type": "textarea" }
+            ]
+          },
+          { "key": "field_home_et_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Demander un premier échange" },
+          { "key": "field_home_et_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url", "default_value": "/contact" }
+        ]
+      },
+      {
+        "key": "field_home_tab_histoire",
+        "label": "Histoire",
+        "type": "tab"
+      },
+      {
+        "key": "field_home_histoire",
+        "label": "Section Histoire",
+        "name": "histoire",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_home_hist_tag", "label": "Tag section", "name": "section_tag", "type": "text", "default_value": "Notre histoire" },
+          { "key": "field_home_hist_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Pourquoi PUR Alpha" },
+          { "key": "field_home_hist_title_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "existe." },
+          { "key": "field_home_hist_p1", "label": "Paragraphe 1", "name": "paragraph_1", "type": "textarea", "default_value": "PUR Alpha est né d'une expérience personnelle : celle d'une mère confrontée à la difficulté de trouver un accompagnement fiable pour son enfant en situation de handicap." },
+          { "key": "field_home_hist_p2", "label": "Paragraphe 2", "name": "paragraph_2", "type": "textarea", "default_value": "De ce vécu est née une conviction : les familles ont besoin d'un relais à domicile rassurant et respectueux du quotidien de leur enfant." },
+          { "key": "field_home_hist_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Lire notre manifeste" },
+          { "key": "field_home_hist_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url", "default_value": "/notre-histoire" },
+          { "key": "field_home_hist_image", "label": "Image", "name": "image", "type": "image", "return_format": "id" }
+        ]
+      },
+      {
+        "key": "field_home_tab_territoire",
+        "label": "Territoire",
+        "type": "tab"
+      },
+      {
+        "key": "field_home_territoire",
+        "label": "Section Territoire",
+        "name": "territoire",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_home_terr_tag", "label": "Tag section", "name": "section_tag", "type": "text", "default_value": "Implantation territoriale" },
+          { "key": "field_home_terr_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Ancré dans" },
+          { "key": "field_home_terr_title_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "le Val-d'Oise" },
+          { "key": "field_home_terr_desc1", "label": "Description 1", "name": "description_1", "type": "textarea", "default_value": "Le Val-d'Oise fait face à des besoins importants d'accompagnement à domicile pour les enfants et jeunes en situation de handicap. PUR Alpha répond à cette réalité en proposant un relais complémentaire aux solutions existantes." },
+          { "key": "field_home_terr_desc2", "label": "Description 2", "name": "description_2", "type": "textarea", "default_value": "Accompagné par Initiative Val d'Oise, le projet s'inscrit dans une dynamique territoriale reconnue. Il a reçu le 1er Prix Jeune Entreprise aux Entrepreneuriades 2025, une reconnaissance de son ancrage local et de son utilité pour les familles valdoisiennes." },
+          { "key": "field_home_terr_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Retour en images sur l'événement" },
+          { "key": "field_home_terr_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url" }
+        ]
+      },
+      {
+        "key": "field_home_tab_parcours",
+        "label": "Parcours",
+        "type": "tab"
+      },
+      {
+        "key": "field_home_parcours",
+        "label": "Section Parcours",
+        "name": "parcours",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_home_parc_tag", "label": "Tag section", "name": "section_tag", "type": "text", "default_value": "Vous êtes concerné ?" },
+          { "key": "field_home_parc_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Choisissez votre parcours" },
+          {
+            "key": "field_home_parc_cards",
+            "label": "Cartes parcours",
+            "name": "cards",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+              { "key": "field_home_parc_card_tag", "label": "Tag", "name": "tag", "type": "text" },
+              { "key": "field_home_parc_card_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_home_parc_card_desc", "label": "Description", "name": "description", "type": "textarea" },
+              { "key": "field_home_parc_card_cta", "label": "CTA texte", "name": "cta_text", "type": "text" },
+              { "key": "field_home_parc_card_url", "label": "CTA URL", "name": "cta_url", "type": "url" }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "field_home_tab_cta",
+        "label": "CTA Final",
+        "type": "tab"
+      },
+      {
+        "key": "field_home_cta_final",
+        "label": "Section CTA Final",
+        "name": "cta_final",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_home_cta_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Parce que votre enfant mérite un accompagnement" },
+          { "key": "field_home_cta_title_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "à la hauteur de ses besoins." },
+          { "key": "field_home_cta_subtitle", "label": "Sous-titre", "name": "subtitle", "type": "text", "default_value": "Prendre soin de son enfant, c'est aussi préserver l'équilibre de toute la famille" },
+          {
+            "key": "field_home_cta_badges",
+            "label": "Badges",
+            "name": "badges",
+            "type": "repeater",
+            "layout": "table",
+            "sub_fields": [
+              { "key": "field_home_cta_badge_text", "label": "Texte", "name": "text", "type": "text" }
+            ]
+          },
+          { "key": "field_home_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Demander un premier échange" },
+          { "key": "field_home_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url", "default_value": "/contact" }
+        ]
+      }
+    ],
+    "location": [
+      [{ "param": "page_slug", "operator": "==", "value": "home-page" }]
+    ]
+  }
+]

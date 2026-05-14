@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Footer() {
   return (
@@ -8,8 +9,14 @@ export function Footer() {
           
           {/* Logo & Description */}
           <div className="flex flex-col gap-6">
-            <div className="text-3xl font-black">
-              PUR <span className="text-teal-400">Alpha</span>
+            <div>
+              <Image
+                src="/images/logo_pur_alpha.png"
+                alt="PUR Alpha"
+                width={180}
+                height={52}
+                className="h-14 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
               Garde et accompagnement à domicile d'enfants et jeunes en situation de handicap dans le Val-d'Oise.²

@@ -1,0 +1,91 @@
+[
+  {
+    "key": "group_aides_financieres",
+    "title": "Page Aides Financières",
+    "active": true,
+    "show_in_rest": true,
+    "fields": [
+      { "key": "field_af_tab_hero", "label": "Hero", "type": "tab" },
+      {
+        "key": "field_af_hero", "label": "Hero", "name": "hero", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_af_hero_l1", "label": "Titre ligne 1", "name": "title_line_1", "type": "text", "default_value": "L'accompagnement" },
+          { "key": "field_af_hero_l2", "label": "Titre ligne 2", "name": "title_line_2", "type": "text", "default_value": "que vous méritez," },
+          { "key": "field_af_hero_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "au juste prix." },
+          { "key": "field_af_hero_desc", "label": "Description", "name": "description", "type": "textarea" },
+          {
+            "key": "field_af_hero_badges", "label": "Badges", "name": "badges", "type": "repeater", "layout": "table",
+            "sub_fields": [
+              { "key": "field_af_hb_val", "label": "Valeur", "name": "value", "type": "text" },
+              { "key": "field_af_hb_lbl", "label": "Label", "name": "label", "type": "text" }
+            ]
+          }
+        ]
+      },
+      { "key": "field_af_tab_aides", "label": "Aides", "type": "tab" },
+      {
+        "key": "field_af_aides", "label": "Aides", "name": "aides", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_af_a_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Dispositifs mobilisables" },
+          { "key": "field_af_a_title", "label": "Titre", "name": "title", "type": "text" },
+          { "key": "field_af_a_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_af_a_desc", "label": "Description", "name": "description", "type": "textarea" },
+          {
+            "key": "field_af_a_cards", "label": "Cartes aides", "name": "cards", "type": "repeater", "layout": "block",
+            "sub_fields": [
+              { "key": "field_af_ac_color", "label": "Couleur accent", "name": "accent_color", "type": "text" },
+              { "key": "field_af_ac_icon", "label": "Icône", "name": "icon", "type": "text" },
+              { "key": "field_af_ac_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_af_ac_sub", "label": "Sous-titre", "name": "subtitle", "type": "text" },
+              { "key": "field_af_ac_desc", "label": "Description", "name": "description", "type": "textarea" },
+              { "key": "field_af_ac_hval", "label": "Valeur mise en avant", "name": "highlight_value", "type": "text" },
+              { "key": "field_af_ac_hlbl", "label": "Label valeur", "name": "highlight_label", "type": "text" },
+              {
+                "key": "field_af_ac_tags", "label": "Tags", "name": "tags", "type": "repeater", "layout": "table",
+                "sub_fields": [{ "key": "field_af_act_text", "label": "Texte", "name": "text", "type": "text" }]
+              }
+            ]
+          }
+        ]
+      },
+      { "key": "field_af_tab_tarif", "label": "Tarification", "type": "tab" },
+      {
+        "key": "field_af_tarif", "label": "Tarification", "name": "tarification", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_af_t_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Notre tarification" },
+          { "key": "field_af_t_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Un tarif unique." },
+          { "key": "field_af_t_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "Aucune surprise." },
+          { "key": "field_af_t_price", "label": "Prix", "name": "price", "type": "text", "default_value": "38" },
+          { "key": "field_af_t_details", "label": "Détails prix", "name": "price_details", "type": "text", "default_value": "TTC / heure · TVA 5,5% · Tarif tout compris" },
+          {
+            "key": "field_af_t_inclus", "label": "Inclus", "name": "inclus_badges", "type": "repeater", "layout": "table",
+            "sub_fields": [{ "key": "field_af_ti_text", "label": "Texte", "name": "text", "type": "text" }]
+          },
+          {
+            "key": "field_af_t_rows", "label": "Lignes tableau", "name": "rows", "type": "repeater", "layout": "table",
+            "sub_fields": [
+              { "key": "field_af_tr_creneau", "label": "Créneau", "name": "creneau", "type": "text" },
+              { "key": "field_af_tr_ttc", "label": "Tarif TTC", "name": "tarif_ttc", "type": "text" },
+              { "key": "field_af_tr_pch", "label": "Aide PCH", "name": "aide_pch", "type": "text" },
+              { "key": "field_af_tr_ci", "label": "Crédit impôt", "name": "credit_impot", "type": "text" },
+              { "key": "field_af_tr_rac", "label": "Reste à charge", "name": "reste_a_charge", "type": "text" }
+            ]
+          },
+          { "key": "field_af_t_footnote", "label": "Note de bas", "name": "footnote", "type": "textarea" }
+        ]
+      },
+      { "key": "field_af_tab_cta", "label": "CTA Final", "type": "tab" },
+      {
+        "key": "field_af_cta", "label": "CTA Final", "name": "cta_final", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_af_cta_title", "label": "Titre", "name": "title", "type": "text" },
+          { "key": "field_af_cta_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_af_cta_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_af_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Prendre contact" },
+          { "key": "field_af_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url", "default_value": "/contact" }
+        ]
+      }
+    ],
+    "location": [[{ "param": "page_slug", "operator": "==", "value": "aides-financieres" }]]
+  }
+]
