@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 interface HistoireCtaProps {
@@ -38,13 +39,14 @@ export function HistoireCta({
         <p className="text-white/50 font-bold text-[10px] uppercase tracking-[3px] mb-6">— {auteur}</p>
         <p className="text-white/80 font-semibold text-lg lg:text-xl mb-10">{sousTitre}</p>
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Button variant="gold" href={cta1Url}>{cta1Texte}</Button>
+          <Button variant="gold" href={cta1Url} iconRight={<ArrowRight className="w-4 h-4" />}>{cta1Texte}</Button>
           {cta2Texte && cta2Url && (
             <a
               href={cta2Url}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500 text-gold-500/90 text-sm font-semibold hover:bg-white/10 transition-colors"
             >
               {cta2Texte}
+              <ArrowRight className="w-4 h-4" />
             </a>
           )}
         </div>
