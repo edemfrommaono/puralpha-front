@@ -112,6 +112,63 @@ export const AIDES_FALLBACK = {
     footnote: "Tarifs TTC TVA 5,5%. Référence PCH indicative : ≈ 24,58 €/h (2024). Crédit d'impôt calculé sur le reste après PCH.",
   },
 
+  simulateur: {
+    tag: "Simulateur",
+    titre: "Estimez votre",
+    title_highlight: "reste à charge",
+    description:
+      "Ces estimations sont indicatives. Une simulation personnalisée est réalisée avant toute signature de contrat.",
+  },
+
+  accompagnement_admin: {
+    tag: "Accompagnement administratif",
+    titre_1: "Vous n'êtes pas",
+    titre_2: "dans les démarches",
+    title_highlight: "seuls",
+    description:
+      "PUR Alpha vous accompagne dans l'identification et le montage des dossiers d'aides. Parce que la complexité administrative ne doit pas être un frein.",
+    accompagnements: [
+      {
+        ordre: 1,
+        titre: "Identification des aides",
+        description:
+          "Nous analysons votre situation pour identifier toutes les aides auxquelles vous avez droit : PCH, AEEH, crédit d'impôt, aides locales.",
+      },
+      {
+        ordre: 2,
+        titre: "Simulation personnalisée",
+        description:
+          "Avant toute signature, une simulation précise de votre reste à charge est réalisée en tenant compte de votre plan MDPH et de votre situation fiscale.",
+      },
+      {
+        ordre: 3,
+        titre: "Soutien aux dossiers",
+        description:
+          "Nous vous fournissons tous les documents nécessaires (devis, attestations, factures) et vous orientons vers les bons interlocuteurs pour vos demandes.",
+      },
+    ],
+    processus: [
+      {
+        tag: "Facturation",
+        titre: "Mensuelle & détaillée",
+        description:
+          "Émission en fin de mois, détail clair des heures et prestations réalisées. Par email ou courrier.",
+      },
+      {
+        tag: "Paiement",
+        titre: "Plusieurs options",
+        description:
+          "Virement bancaire, prélèvement SEPA sécurisé, CESU préfinancé accepté. Pas d'espèces.",
+      },
+      {
+        tag: "Annulation",
+        titre: "Préavis 48h",
+        description:
+          "Annulation ≥ 48h : heures non facturées. Annulation < 48h : heures dues sauf urgence avérée.",
+      },
+    ],
+  },
+
   cta_final: {
     title: "Parce que votre enfant mérite un accompagnement",
     title_highlight: "à la hauteur de ses besoins.",
@@ -119,5 +176,10 @@ export const AIDES_FALLBACK = {
       "Et parce que prendre soin de son enfant, c'est aussi prendre soin de vous.",
     cta_text: "Prendre contact",
     cta_url: "/contact",
+    badges: [
+      { titre: "Devis gratuit" },
+      { titre: "Sans engagement" },
+      { titre: "Réponse sous 48h" },
+    ],
   },
 } as const;
