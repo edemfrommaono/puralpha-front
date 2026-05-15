@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 export function Header() {
@@ -39,7 +40,13 @@ export function Header() {
             Nous rejoindre
           </Link>
           
-          <Button variant="navy" className="rounded-full px-6 py-2.5" href="/contact">
+          <Button
+            variant="navy"
+            className="rounded-full px-6 py-2.5"
+            style={{ borderRadius: '50px', background: '#1E3A5F', boxShadow: '0 4px 15px 0 rgba(30, 58, 95, 0.30)' }}
+            iconRight={<ArrowRight className="w-4 h-4" />}
+            href="/contact"
+          >
             Prendre contact
           </Button>
         </nav>
@@ -71,7 +78,14 @@ export function Header() {
           <Link href="/nous-rejoindre" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-gray-600 p-2">
             Nous rejoindre
           </Link>
-          <Button variant="navy" className="rounded-full w-full justify-center mt-2" onClick={() => setIsMenuOpen(false)} href="/contact">
+          <Button
+            variant="navy"
+            className="rounded-full w-full justify-center mt-2"
+            style={{ borderRadius: '50px', background: '#1E3A5F', boxShadow: '0 4px 15px 0 rgba(30, 58, 95, 0.30)' }}
+            iconRight={<ArrowRight className="w-4 h-4" />}
+            onClick={() => setIsMenuOpen(false)}
+            href="/contact"
+          >
             Prendre contact
           </Button>
         </div>

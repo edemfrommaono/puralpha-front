@@ -13,6 +13,10 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "PUR Alpha",
   description: "Garde et accompagnement à domicile d'enfants en situation de handicap",
+  icons: {
+    icon: "/images/logo_pur_alpha.png",
+    apple: "/images/logo_pur_alpha.png",
+  },
 };
 
 export default function RootLayout({

@@ -89,10 +89,12 @@ export interface HomePageACF {
     label: string;
   }>;
   accompagnement?: {
+    image_mise_en_avant: ACFImage;
     section_tag: string;
     title: string;
     title_highlight: string;
     services: Array<{
+      image: ACFImage;
       title: string;
       description: string;
     }>;
