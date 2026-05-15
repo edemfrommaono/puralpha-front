@@ -271,6 +271,7 @@ export interface PourLesFamillesACF {
     title: string;
     description: string;
     steps: Array<{
+      image: ACFImage;
       number: string;
       title: string;
       description: string;
@@ -305,6 +306,7 @@ export interface PourLesFamillesACF {
     }>;
   };
   cta_final?: {
+    image_de_fond: ACFImage;
     title: string;
     title_highlight: string;
     subtitle: string;
