@@ -126,16 +126,56 @@ export const NOTRE_HISTOIRE_FALLBACK = {
     ],
   },
 
-  cta_final: {
-    title: "Prêt à retrouver un",
-    title_highlight: "équilibre",
-    description:
-      "Notre équipe est à votre écoute pour comprendre vos besoins et vous proposer un accompagnement sur-mesure pour votre enfant.",
-    cta_text: "Prendre contact",
-    cta_url: "/contact",
-    badges: [
-      { text: "Devis gratuit" },
-      { text: "Sans engagement" },
+  galerie: {
+    images: [
+      { libelle: "Présence & stimulation" },
+      { libelle: "Épanouissement" },
+      { libelle: "Douceur & confiance" },
+      { libelle: "Aide au quotidien" },
+      { libelle: "Sérénité retrouvée" },
     ],
+  },
+
+  pourquoi: {
+    tag: "Pourquoi PUR Alpha existe",
+    titre_ligne_1: "Un modèle pensé",
+    title_highlight: "pour vous libérer",
+    descrition_1:
+      "Nous avons choisi le mode de la mise à disposition : PUR Alpha emploie directement les intervenants. Vous n'avez aucune démarche administrative à gérer.",
+    description_2:
+      "Pas de contrat, pas de paie, pas de déclarations — tout en gardant la liberté d'organiser le quotidien selon vos besoins.",
+    notre_promesse_valeur:
+      "Vous organisez le quotidien de votre enfant selon vos besoins. PUR Alpha sécurise tout le reste.",
+    notre_promesse_libelle: "Notre promesse",
+    legende: "La sérénité retrouvée, au quotidien",
+    qualites: [
+      { la_qualite: "Zéro démarche admin" },
+      { la_qualite: "Référent famille dédié" },
+      { la_qualite: "Intervenants formés 70h" },
+      { la_qualite: "Continuité garantie" },
+    ],
+  },
+
+  impact_local: {
+    tag: "Impact local · Val-d'Oise",
+    titre_1: "Ancrés dans",
+    title_highlight: "notre territoire",
+    description:
+      "PUR Alpha est implanté au cœur du Val-d'Oise — un département que nous connaissons bien, où nous vivons, et où nous avons tissé nos premiers liens avec les familles et les acteurs locaux. Notre objectif : un service de proximité, ancré localement et toujours à taille humaine.",
+    impacts: [
+      { chiffre: 95, titre: "Val-d'Oise", description: "Siège social à Piscop\nAccueil familles à Montmagny", statut: "Actif" },
+      { chiffre: 93, titre: "Seine-Saint-Denis", description: "Territoire à forts besoins\nExtension à moyen terme", statut: "À venir" },
+    ],
+  },
+
+  cta_final: {
+    citation:
+      "Je crois profondément que chaque enfant mérite un accompagnement qui le fasse grandir, et que chaque famille a droit à un soutien sincère et sur-mesure.",
+    auteur: "Arame Bougha — Fondatrice",
+    "sous-titre": "PUR Alpha",
+    cta_1_texte: "Prendre contact",
+    cta_1_url: "/contact",
+    cta_2_texte: "Découvrir nos services",
+    cta_2_url: "/pour-les-familles",
   },
 } as const;
