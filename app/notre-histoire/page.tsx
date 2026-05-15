@@ -30,23 +30,28 @@ export default async function NotreHistoirePage() {
   const acf = page?.acf;
   const fb = NOTRE_HISTOIRE_FALLBACK;
 
-  // Sections dynamiques
+  // ── Sections dynamiques ──
   const hero = acf?.hero;
   const fondatrice = acf?.fondatrice;
   const realite = acf?.realite_familles;
   const problems = realite?.problems?.length ? realite.problems : null;
   const pura = acf?.syndrome_pura;
+  const galerie = acf?.galerie;
+  const pourquoi = acf?.section_pourquoi_pur_apha_existe;
   const mission = acf?.mission;
   const valeurs = acf?.valeurs;
   const valeursItems = valeurs?.items?.length ? valeurs.items : null;
+  const impactLocal = acf?.section_impact_local;
   const ambitions = acf?.ambitions;
   const ambitionsItems = ambitions?.items?.length ? ambitions.items : null;
   const cta = acf?.cta_final;
 
-  // Résolution image fondatrice
+  // ── Résolution images côté serveur ──
+
+  // Fondatrice
   const fondatriceImageUrl = await resolveImageUrl(fondatrice?.image ?? null);
 
-  // Résolution images problèmes
+  // Problèmes
   const resolvedProblems = problems
     ? await Promise.all(
         problems.map(async (p, idx) => ({
@@ -65,7 +70,23 @@ export default async function NotreHistoirePage() {
         fallback_icon: p.fallback_icon,
       }));
 
-  // Résolution images valeurs
+  // Galerie
+  const galerieImages = galerie?.images?.length ? galerie.images : null;
+  const resolvedGalerie = galerieImages
+    ? await Promise.all(
+        galerieImages.map(async (img) => ({
+          libelle: img.libelle,
+          imageUrl: typeof img.image_mis_en_avant === "number"
+            ? await resolveImageUrl(img.image_mis_en_avant)
+            : getImageUrl(img.image_mis_en_avant),
+        }))
+      )
+    : fb.galerie.images.map((img) => ({ libelle: img.libelle, imageUrl: "" }));
+
+  // Pourquoi PUR Alpha existe
+  const pourquoiImageUrl = await resolveImageUrl(pourquoi?.image_mise_en_avant ?? null);
+
+  // Valeurs
   const resolvedValeurs = valeursItems
     ? await Promise.all(
         valeursItems.map(async (v, idx) => ({
@@ -83,6 +104,16 @@ export default async function NotreHistoirePage() {
         imageUrl: "",
         fallback_icon: v.fallback_icon,
       }));
+
+  // Impact local
+  const impactBgUrl = await resolveImageUrl(impactLocal?.image_de_fond ?? null);
+  const impactMapUrl = await resolveImageUrl(impactLocal?.image_mis_en_avant ?? null);
+  const impactItems = impactLocal?.impacts?.length
+    ? impactLocal.impacts
+    : fb.impact_local.impacts;
+
+  // CTA Final
+  const ctaBgUrl = await resolveImageUrl(cta?.image_de_fond ?? null);
 
   return (
     <div className="flex flex-col w-full bg-white">
@@ -117,7 +148,20 @@ export default async function NotreHistoirePage() {
         puraBadgeText={pura?.badge_text || fb.syndrome_pura.badge_text}
       />
 
-      <HistoireGalerie />
+      <HistoireGalerie images={resolvedGalerie} />
+
+      <HistoireModele
+        tag={pourquoi?.tag || fb.pourquoi.tag}
+        titreLigne1={pourquoi?.titre_ligne_1 || fb.pourquoi.titre_ligne_1}
+        titleHighlight={pourquoi?.title_highlight || fb.pourquoi.title_highlight}
+        descrition1={pourquoi?.descrition_1 || fb.pourquoi.descrition_1}
+        description2={pourquoi?.description_2 || fb.pourquoi.description_2}
+        notrePromesseValeur={pourquoi?.notre_promesse_valeur || fb.pourquoi.notre_promesse_valeur}
+        notrePromesseLibelle={pourquoi?.notre_promesse_libelle || fb.pourquoi.notre_promesse_libelle}
+        legende={pourquoi?.legende || fb.pourquoi.legende}
+        imageUrl={pourquoiImageUrl}
+        qualites={[...(pourquoi?.qualites || fb.pourquoi.qualites)]}
+      />
 
       <HistoireMission
         sectionTag={mission?.section_tag || fb.mission.section_tag}
@@ -131,9 +175,15 @@ export default async function NotreHistoirePage() {
         items={resolvedValeurs}
       />
 
-      <HistoireModele />
-
-      <HistoireTerritoire />
+      <HistoireTerritoire
+        tag={impactLocal?.tag || fb.impact_local.tag}
+        titre1={impactLocal?.titre_1 || fb.impact_local.titre_1}
+        titleHighlight={impactLocal?.title_highlight || fb.impact_local.title_highlight}
+        description={impactLocal?.description || fb.impact_local.description}
+        impacts={[...impactItems]}
+        backgroundImageUrl={impactBgUrl}
+        mapImageUrl={impactMapUrl}
+      />
 
       <HistoireAmbitions
         sectionTag={ambitions?.section_tag || fb.ambitions.section_tag}
@@ -144,12 +194,14 @@ export default async function NotreHistoirePage() {
       />
 
       <HistoireCta
-        title={cta?.title || fb.cta_final.title}
-        titleHighlight={cta?.title_highlight || fb.cta_final.title_highlight}
-        description={cta?.description || fb.cta_final.description}
-        ctaText={cta?.cta_text || fb.cta_final.cta_text}
-        ctaUrl={cta?.cta_url || fb.cta_final.cta_url}
-        badges={[...(cta?.badges || fb.cta_final.badges)]}
+        citation={cta?.citation || fb.cta_final.citation}
+        auteur={cta?.auteur || fb.cta_final.auteur}
+        sousTitre={cta?.['sous-titre'] || fb.cta_final['sous-titre']}
+        cta1Texte={cta?.cta_1_texte || fb.cta_final.cta_1_texte}
+        cta1Url={cta?.cta_1_url || fb.cta_final.cta_1_url}
+        cta2Texte={cta?.cta_2_texte || fb.cta_final.cta_2_texte}
+        cta2Url={cta?.cta_2_url || fb.cta_final.cta_2_url}
+        backgroundImageUrl={ctaBgUrl}
       />
     </div>
   );

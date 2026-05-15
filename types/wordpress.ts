@@ -182,7 +182,7 @@ export interface NotreHistoireACF {
     title: string;
     title_highlight: string;
     problems: Array<{
-      image: ACFImageArray | false;
+      image: ACFImage;
       title: string;
       description: string;
     }>;
@@ -194,6 +194,24 @@ export interface NotreHistoireACF {
     description_2: string;
     badge_text: string;
   };
+  galerie?: {
+    images: Array<{
+      image_mis_en_avant: ACFImage;
+      libelle: string;
+    }>;
+  };
+  section_pourquoi_pur_apha_existe?: {
+    image_mise_en_avant: ACFImage;
+    legende: string;
+    tag: string;
+    titre_ligne_1: string;
+    title_highlight: string;
+    descrition_1: string;
+    description_2: string;
+    notre_promesse_valeur: string;
+    notre_promesse_libelle: string;
+    qualites: Array<{ la_qualite: string }>;
+  };
   mission?: {
     section_tag: string;
     description: string;
@@ -203,9 +221,23 @@ export interface NotreHistoireACF {
     title: string;
     title_highlight: string;
     items: Array<{
-      image: ACFImageArray | false;
+      image: ACFImage;
       title: string;
       description: string;
+    }>;
+  };
+  section_impact_local?: {
+    image_de_fond: ACFImage;
+    image_mis_en_avant: ACFImage;
+    tag: string;
+    titre_1: string;
+    title_highlight: string;
+    description: string;
+    impacts: Array<{
+      chiffre: number;
+      titre: string;
+      description: string;
+      statut: string;
     }>;
   };
   ambitions?: {
@@ -219,12 +251,14 @@ export interface NotreHistoireACF {
     }>;
   };
   cta_final?: {
-    title: string;
-    title_highlight: string;
-    description: string;
-    cta_text: string;
-    cta_url: string;
-    badges: Array<{ text: string }>;
+    image_de_fond: ACFImage;
+    citation: string;
+    auteur: string;
+    'sous-titre': string;
+    cta_1_texte: string;
+    cta_1_url: string;
+    cta_2_texte: string;
+    cta_2_url: string;
   };
 }
 
