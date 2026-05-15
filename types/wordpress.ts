@@ -363,12 +363,37 @@ export interface AidesFinancieresACF {
     }>;
     footnote: string;
   };
+  simulateur?: {
+    tag: string;
+    titre: string;
+    title_highlight: string;
+    description: string;
+  };
+  accompagnement_administratif?: {
+    tag: string;
+    titre_1: string;
+    titre_2: string;
+    title_highlight: string;
+    description: string;
+    accompagnements: Array<{
+      ordre: number;
+      titre: string;
+      description: string;
+    }>;
+    processus: Array<{
+      tag: string;
+      titre: string;
+      description: string;
+    }>;
+  };
   cta_final?: {
+    image_de_fond: ACFImageArray | number | false;
     title: string;
     title_highlight: string;
     description: string;
     cta_text: string;
     cta_url: string;
+    badges: Array<{ titre: string }>;
   };
 }
 
