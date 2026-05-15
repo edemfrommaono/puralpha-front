@@ -17,7 +17,7 @@ export function RejoindreProcess() {
           ].map((step, i) => (
             <div key={i} className="flex flex-col items-center text-center px-4">
               <div className={`w-[60px] h-[60px] rounded-[30px] ${i === 0 ? "border border-teal-400" : "bg-white border-2 border-teal-400 shadow-sm"} flex items-center justify-center mb-4`}>
-                {i === 3 ? <span className="text-[24px]">🚀</span> : <span className="text-[22px] font-extrabold text-teal-400">{step.num}</span>}
+                {i === 3 ? <span className="text-[24px]"><img src="/icons/fusée.png" alt="fusée" /></span> : <span className="text-[22px] font-extrabold text-teal-400">{step.num}</span>}
               </div>
               <h3 className="text-sm font-bold text-navy-800 mb-2">{step.title}</h3>
               <p className="text-[13px] text-gray-600">{step.desc}</p>
