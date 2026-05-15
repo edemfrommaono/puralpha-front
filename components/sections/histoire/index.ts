@@ -1,0 +1,10 @@
+export { HistoireHero } from "./HistoireHero";
+export { HistoireFondatrice } from "./HistoireFondatrice";
+export { HistoireRealite } from "./HistoireRealite";
+export { HistoireGalerie } from "./HistoireGalerie";
+export { HistoireMission } from "./HistoireMission";
+export { HistoireValeurs } from "./HistoireValeurs";
+export { HistoireModele } from "./HistoireModele";
+export { HistoireTerritoire } from "./HistoireTerritoire";
+export { HistoireAmbitions } from "./HistoireAmbitions";
+export { HistoireCta } from "./HistoireCta";
