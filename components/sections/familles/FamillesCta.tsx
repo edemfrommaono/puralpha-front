@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 interface FamillesCtaProps {
   title: string;
@@ -45,7 +45,7 @@ export function FamillesCta({
             ))}
           </div>
 
-          <Button variant="gold" className="px-10 py-4 text-lg mt-4 font-bold" href={ctaUrl}>
+          <Button variant="gold" className="px-10 py-4 text-lg mt-4 font-bold" href={ctaUrl} iconRight={<ArrowRight className="w-4 h-4" />}>
             {ctaText}
           </Button>
         </div>

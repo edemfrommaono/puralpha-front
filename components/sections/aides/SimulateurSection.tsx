@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 interface SimulateurSectionProps {
@@ -62,7 +63,7 @@ export function SimulateurSection({ simulateur, fallback: fb }: SimulateurSectio
             </div>
           </div>
           <div className="mt-4 flex justify-center">
-            <Button variant="gold" className="w-full sm:w-auto px-8 pointer-events-none opacity-80">
+            <Button variant="gold" className="w-full sm:w-auto px-8 pointer-events-none opacity-80" iconRight={<ArrowRight className="w-4 h-4" />}>
               Calculer mon reste à charge
             </Button>
           </div>
