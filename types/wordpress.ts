@@ -127,11 +127,13 @@ export interface HomePageACF {
     section_tag: string;
     title: string;
     title_highlight: string;
+    titre_2?: string;
     description_1: string;
     description_2: string;
     cta_text: string;
     cta_url: string;
     image_de_carte: ACFImage;
+    logos?: Array<{ image_logo: number | string }>;
   };
   parcours?: {
     section_tag: string;
@@ -313,6 +315,7 @@ export interface PourLesFamillesACF {
     cta_text: string;
     cta_url: string;
   };
+  steps?: Array<{ title: string; items: Array<{ text: string }> }>;
   limites?: {
     title: string;
     title_highlight: string;

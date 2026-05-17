@@ -7,7 +7,7 @@ interface TerritoireSectionProps {
     section_tag: string;
     title: string;
     title_highlight: string;
-    titre_2: string;
+    titre_2?: string;
     description_1: string;
     description_2: string;
     cta_text: string;

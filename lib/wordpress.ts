@@ -56,7 +56,7 @@ async function fetchAPI<T>(
  * Gère les cas : number (ID), objet {source_url}, objet {url}, null.
  */
 export async function resolveImageUrl(
-  image: { source_url?: string; url?: string } | number | null | undefined,
+  image: { source_url?: string; url?: string } | number | null | undefined | false | Record<string, any>,
   options: { revalidate?: number } = {}
 ): Promise<string> {
   if (!image) return '';
