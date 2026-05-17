@@ -1,0 +1,73 @@
+[
+  {
+    "key": "group_familles_etapes",
+    "title": "Familles — Étapes",
+    "fields": [
+      {
+        "key": "field_familles_etapes_title",
+        "label": "Titre",
+        "name": "title",
+        "type": "text",
+        "default_value": "Comment ça marche ?"
+      },
+      {
+        "key": "field_familles_etapes_description",
+        "label": "Description",
+        "name": "description",
+        "type": "textarea",
+        "default_value": "De la première prise de contact à l'intervention, nous vous accompagnons à chaque étape."
+      },
+      {
+        "key": "field_familles_etapes_steps",
+        "label": "Étapes",
+        "name": "steps",
+        "type": "repeater",
+        "sub_fields": [
+          {
+            "key": "field_familles_etapes_step_title",
+            "label": "Titre de l'étape",
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "key": "field_familles_etapes_step_items",
+            "label": "Points clés",
+            "name": "items",
+            "type": "repeater",
+            "sub_fields": [
+              {
+                "key": "field_familles_etapes_step_item_text",
+                "label": "Texte",
+                "name": "text",
+                "type": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "field_familles_etapes_cta_text",
+        "label": "Texte du bouton CTA",
+        "name": "cta_text",
+        "type": "text",
+        "default_value": "Prendre contact"
+      },
+      {
+        "key": "field_familles_etapes_cta_url",
+        "label": "URL du bouton CTA",
+        "name": "cta_url",
+        "type": "text",
+        "default_value": "/contact"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "page",
+          "operator": "==",
+          "value": "pour-les-familles"
+        }
+      ]
+    ]
+  }
+]

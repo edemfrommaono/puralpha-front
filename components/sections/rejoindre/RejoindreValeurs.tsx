@@ -1,3 +1,5 @@
+import { FadeInView } from "@/components/ui/FadeInView";
+
 interface Quality {
   text: string;
 }
@@ -18,14 +20,14 @@ export function RejoindreValeurs({
   return (
     <section className="w-full bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 container mx-auto px-4 md:px-6 max-w-6xl">
-        <div className="relative min-h-[300px] lg:min-h-[300px] order-2 lg:order-1">
+        <FadeInView direction="left" className="relative min-h-[300px] lg:min-h-[300px] order-2 lg:order-1">
           {imageUrl ? (
             <img src={imageUrl} alt="Nos valeurs humaines" className="absolute inset-0 w-full h-[60vh] object-cover" />
           ) : (
             <div className="absolute inset-0 bg-gray-200" />
           )}
-        </div>
-        <div className="px-6 py-16 lg:px-20 xl:px-24 flex flex-col justify-center order-1 lg:order-2">
+        </FadeInView>
+        <FadeInView direction="right" delay={0.15} className="px-6 py-16 lg:px-20 xl:px-24 flex flex-col justify-center order-1 lg:order-2">
           <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
           <h2 className="text-3xl md:text-[38px] font-extrabold text-navy-800 mb-6 leading-tight">
             {title} <br className="hidden md:block"/>
@@ -41,7 +43,7 @@ export function RejoindreValeurs({
               </div>
             ))}
           </div>
-        </div>
+        </FadeInView>
       </div>
     </section>
   );

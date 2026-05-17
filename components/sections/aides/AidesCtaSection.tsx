@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface AidesCtaSectionProps {
   cta?: {
@@ -36,7 +37,7 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
       )}
       <div className="absolute inset-0 bg-gradient-to-r from-navy-800/80 to-navy-800/80 z-10" />
 
-      <div className="container mx-auto px-4 relative z-20 flex flex-col items-center">
+      <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center">
         <h2 className="text-3xl lg:text-[42px] font-black text-white mb-6 leading-tight max-w-4xl">
           {cta?.title || fb.title} <br className="hidden md:block" />
           <span className="text-gold-500">{cta?.title_highlight || fb.title_highlight}</span>
@@ -56,16 +57,26 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
           ))}
         </div>
 
-        <Button
-          variant="gold"
-          href={cta?.cta_url || fb.cta_url}
-          className="px-10"
-          style={{ borderRadius: '50px', background: '#F2C94C', boxShadow: '0 4px 15px 0 rgba(242, 201, 76, 0.30)' }}
-          iconRight={<ArrowRight className="w-4 h-4" />}
-        >
-          {cta?.cta_text || fb.cta_text}
-        </Button>
-      </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button
+            variant="gold"
+            href={cta?.cta_url || fb.cta_url}
+            className="px-10"
+            style={{ borderRadius: '50px', background: '#F2C94C', boxShadow: '0 4px 15px 0 rgba(242, 201, 76, 0.30)' }}
+            iconRight={<ArrowRight className="w-4 h-4" />}
+          >
+            {cta?.cta_text || fb.cta_text}
+          </Button>
+          <Button
+            variant="outline-navy"
+            href="/contact"
+            className="px-10"
+            style={{ borderRadius: '50px', borderColor: '#F2C94C', color: '#F2C94C' }}
+          >
+            {(cta as Record<string, unknown>)?.cta_texte_2 as string || "Nous contacter"}
+          </Button>
+        </div>
+      </FadeInView>
     </section>
   );
 }

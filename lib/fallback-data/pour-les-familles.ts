@@ -51,10 +51,46 @@ export const POUR_LES_FAMILLES_FALLBACK = {
     title: "Comment ça marche ?",
     description: "De la première prise de contact à l'intervention, nous vous accompagnons à chaque étape.",
     steps: [
-      { number: "1", fallback_icon: "PhoneCall", title: "Premier contact", description: "Écoute de votre situation et de vos besoins." },
-      { number: "2", fallback_icon: "Home", title: "Évaluation à domicile", description: "Visite pour comprendre les besoins de votre enfant." },
-      { number: "3", fallback_icon: "ClipboardList", title: "Plan personnalisé", description: "Fiche mission sur-mesure avec vos consignes." },
-      { number: "4", fallback_icon: "Heart", title: "Mise en place", description: "Intervenant formé et suivi par votre référent." },
+      {
+        title: "Premier échange",
+        items: [
+          { text: "Écoute de votre demande" },
+          { text: "Compréhension de la situation familiale" },
+          { text: "Identification des premières attentes" },
+        ],
+      },
+      {
+        title: "Évaluation des besoins",
+        items: [
+          { text: "Analyse du quotidien de l'enfant" },
+          { text: "Vérification de ce qui peut être mis en place" },
+          { text: "Prise en compte des points de vigilance" },
+        ],
+      },
+      {
+        title: "Fiche mission",
+        items: [
+          { text: "Définition des jours et horaires" },
+          { text: "Description claire des interventions prévues" },
+          { text: "Repères utiles pour l'intervenant" },
+        ],
+      },
+      {
+        title: "Mise à disposition",
+        items: [
+          { text: "Recherche d'un intervenant adapté et formé" },
+          { text: "Présentation à la famille" },
+          { text: "Mise en place dans un cadre défini" },
+        ],
+      },
+      {
+        title: "Suivi et ajustements",
+        items: [
+          { text: "Échanges réguliers avec la famille" },
+          { text: "Suivi de l'intervention par PUR Alpha" },
+          { text: "Ajustements si la situation évolue" },
+        ],
+      },
     ],
     cta_text: "Prendre contact",
     cta_url: "/contact",

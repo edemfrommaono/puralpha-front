@@ -100,7 +100,14 @@ export default async function NousRejoindre() {
         imageUrl={vhImageUrl}
       />
 
-      <RejoindreFormation />
+      <RejoindreFormation
+        tag={(acf as Record<string, unknown>)?.formation_tag as string}
+        title={(acf as Record<string, unknown>)?.formation_title as string}
+        titleHighlight={(acf as Record<string, unknown>)?.formation_title_highlight as string}
+        titleEnd={(acf as Record<string, unknown>)?.formation_title_end as string}
+        description={(acf as Record<string, unknown>)?.formation_description as string}
+        etapes={(acf as Record<string, unknown>)?.formation_etapes as { valeur: string; sous_titre: string; titre: string; description: string }[]}
+      />
 
       <RejoindreTemoignage
         quote={temoignage?.quote || fb.temoignage.quote}

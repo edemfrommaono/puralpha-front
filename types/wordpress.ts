@@ -163,7 +163,9 @@ export interface NotreHistoireACF {
   hero?: {
     title_line_1: string;
     title_highlight: string;
+    subtitle?: string;
     description: string;
+    quote?: string;
     founder_name: string;
     founder_subtitle: string;
   };
@@ -305,10 +307,8 @@ export interface PourLesFamillesACF {
     title: string;
     description: string;
     steps: Array<{
-      image: ACFImage;
-      number: string;
       title: string;
-      description: string;
+      items: Array<{ text: string }>;
     }>;
     cta_text: string;
     cta_url: string;
@@ -329,6 +329,16 @@ export interface PourLesFamillesACF {
       title: string;
       description: string;
     }>;
+    garanties_ligne_2: Array<{
+      image: ACFImageArray | false;
+      titre: string;
+      description: string;
+    }> | null;
+    garantie_ligne_3: Array<{
+      titre: string;
+      description: string;
+    }> | null;
+    garantie_ligne_4: string | null;
   };
   faq?: {
     section_tag: string;
@@ -419,6 +429,11 @@ export interface AidesFinancieresACF {
       titre: string;
       description: string;
     }>;
+    modalites_tag?: string;
+    modalites_title?: string;
+    modalites_title_highlight?: string;
+    modalites_title_2?: string;
+    modalites_description?: string;
   };
   cta_final?: {
     image_de_fond: ACFImageArray | number | false;

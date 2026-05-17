@@ -1,21 +1,25 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface TerritoireSectionProps {
   territoire?: {
     section_tag: string;
     title: string;
     title_highlight: string;
+    titre_2: string;
     description_1: string;
     description_2: string;
     cta_text: string;
     cta_url: string;
   };
   territoireImageUrl: string;
+  logoUrls: string[];
   fallback: {
     section_tag: string;
     title: string;
     title_highlight: string;
+    titre_2: string;
     description_1: string;
     description_2: string;
     cta_text: string;
@@ -23,12 +27,12 @@ interface TerritoireSectionProps {
   };
 }
 
-export function TerritoireSection({ territoire, territoireImageUrl, fallback: fb }: TerritoireSectionProps) {
+export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fallback: fb }: TerritoireSectionProps) {
   return (
     <section className="py-20 lg:py-32 w-full bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative h-[400px] lg:h-[500px] w-full">
+          <FadeInView direction="left" className="order-2 lg:order-1 relative h-[400px] lg:h-[500px] w-full">
             {territoireImageUrl ? (
               <Image
                 src={territoireImageUrl}
@@ -46,8 +50,8 @@ export function TerritoireSection({ territoire, territoireImageUrl, fallback: fb
                 </span>
               </div>
             )}
-          </div>
-          <div className="order-1 lg:order-2 flex flex-col gap-6 max-w-xl">
+          </FadeInView>
+          <FadeInView direction="right" delay={0.15} className="order-1 lg:order-2 flex flex-col gap-6 max-w-xl">
             <div>
               <div className="flex items-center gap-3 mb-4">
 
@@ -60,12 +64,26 @@ export function TerritoireSection({ territoire, territoireImageUrl, fallback: fb
                 <span className="text-teal-400">
                   {territoire?.title_highlight || fb.title_highlight}
                 </span>
-                , pensé pour les familles
+                {territoire?.titre_2 || fb.titre_2}
               </h2>
             </div>
             <p className="text-base text-gray-700 leading-relaxed">
               {territoire?.description_1 || fb.description_1}
             </p>
+            {logoUrls.length > 0 && (
+              <div className="flex flex-row flex-wrap items-center gap-6">
+                {logoUrls.map((url, i) => (
+                  <div key={i} className="relative h-16 flex-1 min-w-0">
+                    <Image
+                      src={url}
+                      alt={`Logo partenaire ${i + 1}`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
             <p className="text-base text-gray-700 leading-relaxed mb-4">
               {territoire?.description_2 || fb.description_2}
             </p>
@@ -79,7 +97,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, fallback: fb
                 {territoire?.cta_text || fb.cta_text}
               </Button>
             </div>
-          </div>
+          </FadeInView>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
 
 interface ParcoursCard {
   tag: string;
@@ -46,7 +47,7 @@ export function ParcoursSection({
   return (
     <section className="py-20 lg:py-32 w-full bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col items-center text-center mb-16">
+        <FadeInView className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-3 mb-4">
 
             <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">
@@ -56,14 +57,14 @@ export function ParcoursSection({
           <h2 className="text-3xl lg:text-4xl font-black text-navy-700">
             {parcours?.title || fb.title}
           </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        </FadeInView>
+        <StaggerContainer stagger={0.15} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {cards.map((card, i) => {
             const isFamille = i === 0;
             const coverUrl = "coverUrl" in card ? (card as ResolvedParcoursCard).coverUrl : null;
 
             return (
-              <div
+              <StaggerItem
                 key={i}
                 className={`${isFamille
                     ? "bg-teal-50/50 border-teal-100"
@@ -110,10 +111,10 @@ export function ParcoursSection({
                     </Button>
                   </div>
                 </div>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

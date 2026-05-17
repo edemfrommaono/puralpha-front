@@ -1,21 +1,14 @@
 import { Button } from "@/components/ui/Button";
-import Image from "next/image";
-import {
-  PhoneCall, Home, ClipboardList, Heart,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
 
-/** Map des noms d'icônes Lucide → composants pour les étapes */
-const ICON_MAP: Record<string, LucideIcon> = {
-  PhoneCall, Home, ClipboardList, Heart,
-};
+interface StepItem {
+  text: string;
+}
 
 interface Step {
-  number: string;
   title: string;
-  description: string;
-  imageUrl?: string;
-  fallback_icon?: string;
+  items: readonly StepItem[];
 }
 
 interface FamillesEtapesProps {
@@ -34,53 +27,68 @@ export function FamillesEtapes({
   ctaUrl,
 }: FamillesEtapesProps) {
   return (
-    <section className="py-20 lg:py-32 bg-gray-50">
+    <section className="py-20 lg:py-32 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8 text-center">
-        <h2 className="text-3xl lg:text-4xl font-black text-navy-800 mb-4">
-          {title}
-        </h2>
-        <p className="text-gray-500 text-base max-w-2xl mx-auto mb-16">
-          {description}
-        </p>
+        <FadeInView>
+          <h2 className="text-3xl lg:text-4xl font-black text-navy-800 mb-4">
+            {title}
+          </h2>
+          <p className="text-gray-500 text-base max-w-2xl mx-auto mb-16">
+            {description}
+          </p>
+        </FadeInView>
 
+        {/* Timeline */}
         <div className="relative">
-          <div className="hidden lg:block absolute top-[27px] left-[15%] right-[15%] h-px bg-teal-400/40" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Ligne de connexion desktop */}
+          <div className="hidden lg:block absolute top-[28px] left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-teal-300 via-teal-400 to-gold-400" />
+
+          <StaggerContainer stagger={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6">
             {steps.map((step, i) => {
-              const IconComp = step.fallback_icon ? ICON_MAP[step.fallback_icon] : null;
+              const isGold = i >= steps.length - 2;
+              const accentBorder = isGold ? "border-[#F2C94C]" : "border-teal-400";
+              const accentText = isGold ? "text-[#F2C94C]" : "text-teal-500";
+              const bulletColor = isGold ? "text-[#F2C94C]" : "text-teal-400";
+
               return (
-                <div key={i} className="relative flex flex-col items-center gap-6 z-10">
-                  <div className="w-14 h-14 bg-white border border-teal-400 rounded-full shadow-md flex items-center justify-center relative">
-                    {step.imageUrl ? (
-                      <Image
-                        src={step.imageUrl}
-                        alt={step.title}
-                        width={24}
-                        height={24}
-                        className="object-contain"
-                      />
-                    ) : IconComp ? (
-                      <IconComp className="w-6 h-6 text-teal-400" strokeWidth={1.8} />
-                    ) : (
-                      <span className="text-teal-400 font-black text-xl">{step.number}</span>
-                    )}
-                    {/* Badge numéro */}
-                    <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-teal-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold shadow-sm">
-                      {step.number}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-navy-800 font-black text-base mb-2">{step.title}</h3>
-                    <p className="text-gray-500 text-sm">{step.description}</p>
-                  </div>
+              <StaggerItem key={i} className="relative flex flex-col items-center z-10">
+                {/* Cercle numéroté */}
+                <div className={`w-14 h-14 bg-white border-2 ${accentBorder} rounded-full shadow-md flex items-center justify-center mb-5`}>
+                  <span className={`${accentText} font-black text-xl`}>
+                    {i + 1}
+                  </span>
                 </div>
+
+                {/* Titre */}
+                <h3 className="text-navy-800 font-black text-sm mb-3">
+                  {step.title}
+                </h3>
+
+                {/* Liste à puces */}
+                <ul className="text-left space-y-1.5">
+                  {step.items.map((item, j) => (
+                    <li
+                      key={j}
+                      className="text-gray-600 text-xs leading-relaxed flex items-start gap-2"
+                    >
+                      <span className={`${bulletColor} mt-0.5 shrink-0`}>•</span>
+                      {item.text}
+                    </li>
+                  ))}
+                </ul>
+              </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
 
         <div className="mt-16">
-          <Button variant="navy" href={ctaUrl}>
+          <Button
+            variant="navy"
+            href={ctaUrl}
+            style={{ borderRadius: "8px", background: "#1C3553" }}
+            iconRight={<ArrowRight className="w-4 h-4" />}
+          >
             {ctaText}
           </Button>
         </div>

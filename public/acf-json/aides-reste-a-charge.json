@@ -1,0 +1,82 @@
+[
+  {
+    "key": "group_aides_reste_a_charge",
+    "title": "Aides Financières — Reste à charge",
+    "fields": [
+      {
+        "key": "field_aides_rac_image",
+        "label": "Image",
+        "name": "reste_a_charge_image",
+        "type": "image",
+        "return_format": "id",
+        "preview_size": "medium",
+        "library": "all"
+      },
+      {
+        "key": "field_aides_rac_image_caption",
+        "label": "Légende image",
+        "name": "reste_a_charge_image_caption",
+        "type": "text",
+        "default_value": "Chaque famille mérite une information claire et unique"
+      },
+      {
+        "key": "field_aides_rac_title",
+        "label": "Titre",
+        "name": "reste_a_charge_title",
+        "type": "text",
+        "default_value": "Comprendre votre reste à charge"
+      },
+      {
+        "key": "field_aides_rac_title_highlight",
+        "label": "Titre coloré (italique)",
+        "name": "reste_a_charge_title_highlight",
+        "type": "text",
+        "default_value": "avant de vous engager"
+      },
+      {
+        "key": "field_aides_rac_description",
+        "label": "Description",
+        "name": "reste_a_charge_description",
+        "type": "textarea",
+        "default_value": "Le montant facturé n'est pas toujours le montant réellement supporté par la famille. Le reste à charge dépend du nombre d'heures prévues, du créneau d'intervention, des aides accordées et de votre situation fiscale. Avant toute signature, PUR Alpha réalise une estimation personnalisée pour vous permettre de visualiser clairement ce qui reste à payer, avec une information claire avant tout engagement."
+      },
+      {
+        "key": "field_aides_rac_cta_primary_text",
+        "label": "CTA primaire — Texte",
+        "name": "reste_a_charge_cta_primary_text",
+        "type": "text",
+        "default_value": "Demander une simulation personnalisée"
+      },
+      {
+        "key": "field_aides_rac_cta_primary_url",
+        "label": "CTA primaire — URL",
+        "name": "reste_a_charge_cta_primary_url",
+        "type": "text",
+        "default_value": "/contact"
+      },
+      {
+        "key": "field_aides_rac_cta_secondary_text",
+        "label": "CTA secondaire — Texte",
+        "name": "reste_a_charge_cta_secondary_text",
+        "type": "text",
+        "default_value": "Voir les aides mobilisables"
+      },
+      {
+        "key": "field_aides_rac_cta_secondary_url",
+        "label": "CTA secondaire — URL",
+        "name": "reste_a_charge_cta_secondary_url",
+        "type": "text",
+        "default_value": "#dispositifs"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "page",
+          "operator": "==",
+          "value": "aides-financieres"
+        }
+      ]
+    ]
+  }
+]

@@ -114,6 +114,7 @@ export const HOME_FALLBACK = {
     section_tag: "Implantation territoriale",
     title: "Ancré dans",
     title_highlight: "le Val-d'Oise",
+    titre_2: ", pensé pour les familles",
     description_1:
       "Le Val-d'Oise fait face à des besoins importants d'accompagnement à domicile pour les enfants et jeunes en situation de handicap. PUR Alpha répond à cette réalité en proposant un relais complémentaire aux solutions existantes.",
     description_2:

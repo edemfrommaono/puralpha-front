@@ -1,4 +1,6 @@
 import { Accordion } from "@/components/ui/Accordion";
+import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "lucide-react";
 
 interface FaqItem {
   question: string;
@@ -30,6 +32,16 @@ export function FamillesFaq({
           </h2>
         </div>
         <Accordion items={items} />
+        <div className="mt-16 text-center">
+          <Button
+            variant="navy"
+            href="/aides-financieres"
+            style={{ borderRadius: "8px", background: "#1C3553" }}
+            iconRight={<ArrowRight className="w-4 h-4" />}
+          >
+            Voir les aides financières
+          </Button>
+        </div>
       </div>
     </section>
   );
