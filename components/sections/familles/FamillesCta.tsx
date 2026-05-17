@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, Check } from "lucide-react";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface FamillesCtaProps {
   title: string;
@@ -30,7 +31,7 @@ export function FamillesCta({
       <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-transparent pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-8">
+        <FadeInView className="max-w-3xl mx-auto flex flex-col items-center text-center gap-8">
           <h2 className="text-4xl lg:text-5xl font-black text-white leading-tight">
             {title} <br className="hidden md:block" /><span className="text-gold-500">{titleHighlight}</span>
           </h2>
@@ -48,7 +49,7 @@ export function FamillesCta({
           <Button variant="gold" className="px-10 py-4 text-lg mt-4 font-bold" href={ctaUrl} iconRight={<ArrowRight className="w-4 h-4" />}>
             {ctaText}
           </Button>
-        </div>
+        </FadeInView>
       </div>
     </section>
   );

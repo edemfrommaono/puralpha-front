@@ -36,6 +36,13 @@ export default async function Home() {
   const heroImageRightUrl = await resolveImageUrl(hero?.hero_image_right);
   const histoireImageUrl = await resolveImageUrl(histoire?.image);
   const territoireImageUrl = await resolveImageUrl(territoire?.image_de_carte);
+  const territoireLogoUrls = territoire?.logos?.length
+    ? await Promise.all(
+        territoire.logos.map(async (logo: { image_logo: number | string }) => ({
+          url: await resolveImageUrl(logo.image_logo),
+        }))
+      )
+    : [];
   const ctaFondUrl = await resolveImageUrl(ctaFinal?.image_de_fond);
   const imageMiseEnAvantUrl = await resolveImageUrl(acc?.image_mise_en_avant);
 
@@ -113,6 +120,7 @@ export default async function Home() {
       <TerritoireSection
         territoire={territoire}
         territoireImageUrl={territoireImageUrl}
+        logoUrls={territoireLogoUrls.map(l => l.url).filter(Boolean)}
         fallback={fb.territoire}
       />
 

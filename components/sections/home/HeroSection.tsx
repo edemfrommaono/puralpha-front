@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface HeroSectionProps {
   hero?: {
@@ -32,35 +34,45 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           <div className="flex flex-col gap-6 max-w-xl">
-            <h1 className="text-4xl lg:text-5xl font-black text-navy-800 leading-[45px]">
-              {hero?.title || fb.title}{" "}
-              <span className="text-teal-500">
-                {hero?.title_highlight || fb.title_highlight}
-              </span>
-            </h1>
-            <p className="text-lg lg:text-xl font-semibold text-gray-700">
-              {hero?.subtitle || fb.subtitle}
-            </p>
-            <p className="text-base text-gray-700 leading-relaxed">
-              {hero?.description || fb.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <Button
-                variant="navy"
-                className="w-full sm:w-auto"
-                href={hero?.cta_url || fb.cta_url}
-              >
-                {hero?.cta_primary_text || fb.cta_primary_text}
-              </Button>
-              <Button variant="outline-navy" className="w-full sm:w-auto">
-                <span className="mr-2">▶</span>
-                {hero?.cta_secondary_text || fb.cta_secondary_text}
-              </Button>
-            </div>
+            <FadeInView direction="left" delay={0}>
+              <h1 className="text-4xl lg:text-5xl font-black text-navy-800 leading-[45px]">
+                {hero?.title || fb.title}{" "}
+                <span className="text-teal-500">
+                  {hero?.title_highlight || fb.title_highlight}
+                </span>
+              </h1>
+            </FadeInView>
+            <FadeInView direction="left" delay={0.1}>
+              <p className="text-lg lg:text-xl font-semibold text-gray-700">
+                {hero?.subtitle || fb.subtitle}
+              </p>
+            </FadeInView>
+            <FadeInView direction="left" delay={0.2}>
+              <p className="text-base text-gray-700 leading-relaxed">
+                {hero?.description || fb.description}
+              </p>
+            </FadeInView>
+            <FadeInView direction="up" delay={0.35}>
+              <div className="flex flex-col gap-4 mt-4">
+                <Button
+                  variant="navy"
+                  className="w-fit rounded-lg"
+                  style={{ background: "#1C3553" }}
+                  href={hero?.cta_url || fb.cta_url}
+                  iconRight={<ArrowRight className="w-4 h-4" />}
+                >
+                  {hero?.cta_primary_text || fb.cta_primary_text}
+                </Button>
+                <Button variant="outline-navy" className="w-fit">
+                  <span className="mr-2">▶</span>
+                  {hero?.cta_secondary_text || fb.cta_secondary_text}
+                </Button>
+              </div>
+            </FadeInView>
           </div>
 
           {/* Hero images — URLs résolues côté serveur */}
-          <div className="relative h-[400px] lg:h-[600px] w-full flex gap-4 lg:gap-6 justify-end">
+          <FadeInView direction="right" delay={0.2} className="relative h-[400px] lg:h-[600px] w-full flex gap-4 lg:gap-6 justify-end">
             {/* Colonne gauche — image unique, pleine hauteur */}
             <div className="relative w-[45%] rounded-3xl overflow-hidden shadow-lg">
               {heroImageLeftUrl ? (
@@ -94,7 +106,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
                 </p>
               </div>
             </div>
-          </div>
+          </FadeInView>
         </div>
       </div>
     </section>

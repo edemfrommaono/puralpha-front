@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface HistoireSectionProps {
   histoire?: {
@@ -28,7 +29,7 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
     <section className="py-20 lg:py-32 w-full bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="flex flex-col gap-6 max-w-xl">
+          <FadeInView direction="left" className="flex flex-col gap-6 max-w-xl">
             <div>
               <div className="flex items-center gap-3 mb-4">
 
@@ -59,9 +60,9 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
                 {histoire?.cta_text || fb.cta_text}
               </Button>
             </div>
-          </div>
+          </FadeInView>
           {/* Image fondatrice — résolution serveur */}
-          <div className="relative h-[400px] lg:h-[500px] w-full rounded-3xl overflow-hidden shadow-xl bg-gray-100">
+          <FadeInView direction="right" delay={0.2} className="relative h-[400px] lg:h-[500px] w-full rounded-3xl overflow-hidden shadow-xl bg-gray-100">
             {histoireImageUrl ? (
               <Image
                 src={histoireImageUrl}
@@ -76,7 +77,7 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
                 </span>
               </div>
             )}
-          </div>
+          </FadeInView>
         </div>
       </div>
     </section>

@@ -5,10 +5,12 @@
 
 export const NOTRE_HISTOIRE_FALLBACK = {
   hero: {
-    title_line_1: "Née d'un vécu.",
-    title_highlight: "Construite pour vous.",
+    title_line_1: "Pourquoi PUR Alpha",
+    title_highlight: "existe ?",
+    subtitle: "Une histoire personnelle devenue un engagement professionnel",
     description:
-      "PUR Alpha n'est pas né d'une étude de marché. C'est l'histoire d'une maman qui a cherché — et qui n'a pas trouvé ce dont son fils avait besoin.",
+      "PUR Alpha est né d'un besoin simple et pourtant difficile à couvrir : trouver une solution de garde à domicile stable, sécurisante et adaptée pour un enfant en situation de handicap.",
+    quote: "Ce que je n'ai pas trouvé pour mon fils, j'ai décidé de le construire pour d'autres familles.",
     founder_name: "Arame Bougha",
     founder_subtitle: "fondatrice, maman d'un enfant porteur du syndrome PURA",
   },

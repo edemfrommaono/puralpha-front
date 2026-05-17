@@ -1,3 +1,5 @@
+import { FadeInView } from "@/components/ui/FadeInView";
+
 interface HistoireModeleProps {
   tag: string;
   titreLigne1: string;
@@ -27,7 +29,7 @@ export function HistoireModele({
     <section className="py-20 lg:py-32">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div className="flex flex-col gap-8">
+          <FadeInView direction="left" className="flex flex-col gap-8">
             <div>
               <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">{tag}</span>
               <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
@@ -51,8 +53,8 @@ export function HistoireModele({
                 </div>
               ))}
             </div>
-          </div>
-          <div className="relative h-[400px] lg:h-[620px] overflow-hidden shadow-xl">
+          </FadeInView>
+          <FadeInView direction="right" delay={0.15} className="relative h-[400px] lg:h-[620px] overflow-hidden shadow-xl">
             {imageUrl ? (
               <img src={imageUrl} alt={legende} className="absolute inset-0 w-full h-full object-cover" />
             ) : (
@@ -60,7 +62,7 @@ export function HistoireModele({
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white/90 italic text-sm">{legende}</div>
-          </div>
+          </FadeInView>
         </div>
       </div>
     </section>

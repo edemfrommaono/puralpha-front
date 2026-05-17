@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface HeroBadge {
   value: string;
@@ -26,7 +27,7 @@ export function AidesHeroSection({ hero, heroBadges, fallback: fb }: AidesHeroSe
     <section className="bg-[#ecf4f6] pt-32 pb-32 lg:pt-40 lg:pb-48 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 lg:px-8 relative z-10 flex flex-col items-center text-center">
-        <div className="max-w-4xl mx-auto flex flex-col gap-6 items-center">
+        <FadeInView className="max-w-4xl mx-auto flex flex-col gap-6 items-center">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-navy-800 leading-tight">
             {hero?.title_line_1 || fb.title_line_1}<br />
             {hero?.title_line_2 || fb.title_line_2}<br />
@@ -35,10 +36,10 @@ export function AidesHeroSection({ hero, heroBadges, fallback: fb }: AidesHeroSe
           <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mt-2">
             {hero?.description || fb.description}
           </p>
-        </div>
+        </FadeInView>
 
         {/* Hero Badges */}
-        <div className="mt-16 flex flex-col items-center gap-4 relative z-20">
+        <FadeInView delay={0.2} className="mt-16 flex flex-col items-center gap-4 relative z-20">
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             {heroBadges.slice(0, 2).map((badge, i) => (
               <div key={i} className="bg-white border border-gray-100 shadow-sm px-8 py-4 rounded-full flex items-center gap-3">
@@ -57,7 +58,7 @@ export function AidesHeroSection({ hero, heroBadges, fallback: fb }: AidesHeroSe
               ))}
             </div>
           )}
-        </div>
+        </FadeInView>
       </div>
 
       {/* Background Typography */}

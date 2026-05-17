@@ -1,3 +1,5 @@
+import { FadeInView } from "@/components/ui/FadeInView";
+
 interface Problem {
   title: string;
   description: string;
@@ -36,7 +38,7 @@ export function HistoireRealite({
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Colonne gauche : Carte PURA */}
-          <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.06)] border border-navy-800/10 flex flex-col justify-center relative overflow-hidden">
+          <FadeInView direction="left" className="bg-white rounded-3xl p-8 lg:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.06)] border border-navy-800/10 flex flex-col justify-center relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-teal-400/10 blur-2xl rounded-full" />
             <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px] mb-4">
               {puraSectionTag}
@@ -54,9 +56,9 @@ export function HistoireRealite({
               <div className="w-4 h-4 bg-teal-400 rounded-full" />
               <span className="font-bold text-navy-800 text-sm">{puraBadgeText}</span>
             </div>
-          </div>
+          </FadeInView>
           {/* Colonne droite : Les problèmes */}
-          <div className="flex flex-col gap-8 justify-center">
+          <FadeInView direction="right" delay={0.15} className="flex flex-col gap-8 justify-center">
             <div>
               <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-tight">
                 {title}<br />
@@ -80,7 +82,7 @@ export function HistoireRealite({
                 </div>
               ))}
             </div>
-          </div>
+          </FadeInView>
         </div>
       </div>
     </section>

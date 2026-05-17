@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface CtaFinalSectionProps {
   ctaFinal?: {
@@ -34,7 +35,7 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-teal-400/10 via-transparent to-transparent pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-8">
+        <FadeInView className="max-w-3xl mx-auto flex flex-col items-center text-center gap-8">
           <h2 className="text-4xl lg:text-5xl font-black text-white leading-[50.4px]">
             {ctaFinal?.title || fb.title}{" "}
             <span className="text-gold-500">
@@ -63,7 +64,7 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
           >
             {ctaFinal?.cta_text || fb.cta_text}
           </Button>
-        </div>
+        </FadeInView>
       </div>
     </section>
   );
