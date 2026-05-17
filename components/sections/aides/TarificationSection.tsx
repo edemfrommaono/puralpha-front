@@ -1,3 +1,7 @@
+import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "lucide-react";
+import { FadeInView } from "@/components/ui/FadeInView";
+
 interface TarifRow {
   creneau: string;
   tarif_ttc: string;
@@ -18,6 +22,10 @@ interface TarificationSectionProps {
     price: string;
     price_details: string;
     footnote: string;
+    estimation_title?: string;
+    estimation_description?: string;
+    estimation_cta_text?: string;
+    estimation_cta_url?: string;
   };
   tarifRows: readonly TarifRow[];
   tarifInclus: readonly InclusBadge[];
@@ -31,6 +39,14 @@ interface TarificationSectionProps {
   };
 }
 
+const ESTIMATION_DEFAULTS = {
+  title: "Votre reste à charge est estimé avant toute signature",
+  description:
+    "Selon votre situation, certaines aides peuvent réduire le coût final : PCH, AEEH, crédit d'impôt SAP ou aides complémentaires. PUR Alpha vous aide à identifier les dispositifs mobilisables et à estimer votre reste à charge avant tout engagement.",
+  cta_text: "Demander une simulation personnalisée",
+  cta_url: "/contact",
+};
+
 export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: fb }: TarificationSectionProps) {
   return (
     <section className="py-20 lg:py-32 relative bg-navy-800 text-white overflow-hidden">
@@ -41,7 +57,7 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
-        <div className="text-center mb-16">
+        <FadeInView className="text-center mb-16">
           <span className="text-teal-400/80 font-bold text-xs uppercase tracking-[3px]">
             {tarif?.section_tag || fb.section_tag}
           </span>
@@ -49,7 +65,7 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
             {tarif?.title || fb.title}<br />
             <span className="text-gold-500">{tarif?.title_highlight || fb.title_highlight}</span>
           </h2>
-        </div>
+        </FadeInView>
 
         <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-12 text-center mb-16">
           <div className="flex items-center justify-center gap-1">
@@ -68,34 +84,24 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
           </div>
         </div>
 
-        {/* Tableau */}
-        <div className="bg-white/5 border border-white/10 rounded-2xl overflow-x-auto">
-          <table className="w-full text-left min-w-[800px]">
-            <thead>
-              <tr className="bg-white/5">
-                <th className="py-4 px-6 text-xs font-bold text-white/50 uppercase tracking-[2px]">Créneau</th>
-                <th className="py-4 px-6 text-xs font-bold text-white/50 uppercase tracking-[2px]">Tarif TTC</th>
-                <th className="py-4 px-6 text-xs font-bold text-white/50 uppercase tracking-[2px]">Aide PCH</th>
-                <th className="py-4 px-6 text-xs font-bold text-white/50 uppercase tracking-[2px]">Crédit d&apos;impôt 50%</th>
-                <th className="py-4 px-6 text-xs font-bold text-white/50 uppercase tracking-[2px]">Reste à charge</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/10">
-              {tarifRows.map((row, i) => (
-                <tr key={i} className={i === 0 ? "bg-teal-400/5" : ""}>
-                  <td className={`py-4 px-6 text-sm font-semibold ${i === 0 ? "text-white" : "text-white/80"}`}>{row.creneau}</td>
-                  <td className="py-4 px-6 text-sm text-white/60">{row.tarif_ttc}</td>
-                  <td className="py-4 px-6 text-sm text-white/60">{row.aide_pch}</td>
-                  <td className="py-4 px-6 text-sm text-white/60">{row.credit_impot}</td>
-                  <td className="py-4 px-6 text-sm font-extrabold text-gold-500">{row.reste_a_charge}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* Bloc estimation reste à charge */}
+        <div className="text-center max-w-3xl mx-auto">
+          <h3 className="text-xl lg:text-2xl font-extrabold text-white mb-4">
+            {tarif?.estimation_title || ESTIMATION_DEFAULTS.title}
+          </h3>
+          <p className="text-sm text-white/60 leading-relaxed mb-8">
+            {tarif?.estimation_description || ESTIMATION_DEFAULTS.description}
+          </p>
+          <Button
+            variant="navy"
+            className="w-fit mx-auto"
+            style={{ background: "#F2C94C", color: "#1C3553", borderRadius: "50px", boxShadow: "0 4px 15px 0 rgba(30, 58, 95, 0.30)" }}
+            href={tarif?.estimation_cta_url || ESTIMATION_DEFAULTS.cta_url}
+            iconRight={<ArrowRight className="w-4 h-4" />}
+          >
+            {tarif?.estimation_cta_text || ESTIMATION_DEFAULTS.cta_text}
+          </Button>
         </div>
-        <p className="text-center text-xs text-white/30 mt-6">
-          {tarif?.footnote || fb.footnote}
-        </p>
       </div>
     </section>
   );

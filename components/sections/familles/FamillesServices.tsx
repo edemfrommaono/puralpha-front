@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
 
 interface ServiceCard {
   tag: string;
@@ -24,16 +25,16 @@ export function FamillesServices({
   return (
     <section className="py-20 lg:py-32 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <FadeInView className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-black text-navy-800 mb-6">
             {title} <span className="text-teal-400">{titleHighlight}</span>
           </h2>
           <p className="text-gray-600 text-lg">{description}</p>
-        </div>
+        </FadeInView>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {cards.map((card, i) => (
-            <div key={i} className="bg-white border border-[#f3f4f6] rounded-[20px] overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+            <StaggerItem key={i} className="bg-white border border-[#f3f4f6] rounded-[20px] overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
               <div className="h-48 bg-teal-800/10 relative">
                 {card.imageUrl ? (
                   <Image
@@ -50,15 +51,15 @@ export function FamillesServices({
               <div className="p-8 flex-grow flex flex-col">
                 <h3 className="text-xl font-bold text-navy-800 mb-4">{card.title}</h3>
                 <p className="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">{card.description}</p>
-                <div className="flex flex-wrap gap-2">
+                {/* <div className="flex flex-wrap gap-2">
                   {card.tags.map((tag, j) => (
                     <span key={j} className="bg-teal-400/10 text-teal-600 font-semibold text-xs px-3 py-1.5 rounded-full">{tag.text}</span>
                   ))}
-                </div>
+                </div> */}
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

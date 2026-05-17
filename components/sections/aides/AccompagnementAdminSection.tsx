@@ -4,12 +4,6 @@ interface Accompagnement {
   description: string;
 }
 
-interface Processus {
-  tag: string;
-  titre: string;
-  description: string;
-}
-
 interface AccompagnementAdminSectionProps {
   accAdmin?: {
     tag: string;
@@ -18,7 +12,6 @@ interface AccompagnementAdminSectionProps {
     title_highlight: string;
     description: string;
     accompagnements: Accompagnement[];
-    processus: Processus[];
   };
   fallback: {
     tag: string;
@@ -31,17 +24,11 @@ interface AccompagnementAdminSectionProps {
       titre: string;
       description: string;
     }[];
-    processus: readonly {
-      tag: string;
-      titre: string;
-      description: string;
-    }[];
   };
 }
 
 export function AccompagnementAdminSection({ accAdmin, fallback: fb }: AccompagnementAdminSectionProps) {
   const accompagnements = accAdmin?.accompagnements?.length ? accAdmin.accompagnements : fb.accompagnements;
-  const processus = accAdmin?.processus?.length ? accAdmin.processus : fb.processus;
 
   return (
     <section className="py-20 lg:py-32 bg-white">
@@ -70,19 +57,6 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
               <h3 className="font-bold text-navy-800 text-lg relative z-10 mt-8">{item.titre}</h3>
               <p className="text-gray-600 text-sm leading-relaxed relative z-10">
                 {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Modalités / Processus */}
-        <div className="mt-16 bg-[#ecf4f6] rounded-3xl p-8 lg:p-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {processus.map((proc, i) => (
-            <div key={i} className="flex flex-col gap-2">
-              <span className="text-teal-400 font-bold text-[11px] uppercase tracking-[2px]">{proc.tag}</span>
-              <h4 className="text-navy-800 font-bold text-[15px]">{proc.titre}</h4>
-              <p className="text-gray-500 text-[13px] leading-relaxed mt-1">
-                {proc.description}
               </p>
             </div>
           ))}

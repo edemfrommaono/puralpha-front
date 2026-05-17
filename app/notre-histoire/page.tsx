@@ -12,6 +12,8 @@ import {
   HistoireAmbitions,
   HistoireCta,
 } from "@/components/sections/histoire";
+import { OriginNomSection } from "@/components/sections/histoire/OriginNomSection";
+import { VecuMethodeSection } from "@/components/sections/histoire/VecuMethodeSection";
 
 export const revalidate = 0;
 
@@ -54,33 +56,33 @@ export default async function NotreHistoirePage() {
   // Problèmes
   const resolvedProblems = problems
     ? await Promise.all(
-        problems.map(async (p, idx) => ({
-          title: p.title,
-          description: p.description,
-          imageUrl: typeof p.image === "number"
-            ? await resolveImageUrl(p.image)
-            : getImageUrl(p.image),
-          fallback_icon: fb.realite_familles.problems[idx]?.fallback_icon,
-        }))
-      )
-    : fb.realite_familles.problems.map((p) => ({
+      problems.map(async (p, idx) => ({
         title: p.title,
         description: p.description,
-        imageUrl: "",
-        fallback_icon: p.fallback_icon,
-      }));
+        imageUrl: typeof p.image === "number"
+          ? await resolveImageUrl(p.image)
+          : getImageUrl(p.image),
+        fallback_icon: fb.realite_familles.problems[idx]?.fallback_icon,
+      }))
+    )
+    : fb.realite_familles.problems.map((p) => ({
+      title: p.title,
+      description: p.description,
+      imageUrl: "",
+      fallback_icon: p.fallback_icon,
+    }));
 
   // Galerie
   const galerieImages = galerie?.images?.length ? galerie.images : null;
   const resolvedGalerie = galerieImages
     ? await Promise.all(
-        galerieImages.map(async (img) => ({
-          libelle: img.libelle,
-          imageUrl: typeof img.image_mis_en_avant === "number"
-            ? await resolveImageUrl(img.image_mis_en_avant)
-            : getImageUrl(img.image_mis_en_avant),
-        }))
-      )
+      galerieImages.map(async (img) => ({
+        libelle: img.libelle,
+        imageUrl: typeof img.image_mis_en_avant === "number"
+          ? await resolveImageUrl(img.image_mis_en_avant)
+          : getImageUrl(img.image_mis_en_avant),
+      }))
+    )
     : fb.galerie.images.map((img) => ({ libelle: img.libelle, imageUrl: "" }));
 
   // Pourquoi PUR Alpha existe
@@ -89,21 +91,21 @@ export default async function NotreHistoirePage() {
   // Valeurs
   const resolvedValeurs = valeursItems
     ? await Promise.all(
-        valeursItems.map(async (v, idx) => ({
-          title: v.title,
-          description: v.description,
-          imageUrl: typeof v.image === "number"
-            ? await resolveImageUrl(v.image)
-            : getImageUrl(v.image),
-          fallback_icon: fb.valeurs.items[idx]?.fallback_icon,
-        }))
-      )
-    : fb.valeurs.items.map((v) => ({
+      valeursItems.map(async (v, idx) => ({
         title: v.title,
         description: v.description,
-        imageUrl: "",
-        fallback_icon: v.fallback_icon,
-      }));
+        imageUrl: typeof v.image === "number"
+          ? await resolveImageUrl(v.image)
+          : getImageUrl(v.image),
+        fallback_icon: fb.valeurs.items[idx]?.fallback_icon,
+      }))
+    )
+    : fb.valeurs.items.map((v) => ({
+      title: v.title,
+      description: v.description,
+      imageUrl: "",
+      fallback_icon: v.fallback_icon,
+    }));
 
   // Impact local
   const impactBgUrl = await resolveImageUrl(impactLocal?.image_de_fond ?? null);
@@ -120,7 +122,9 @@ export default async function NotreHistoirePage() {
       <HistoireHero
         titleLine1={hero?.title_line_1 || fb.hero.title_line_1}
         titleHighlight={hero?.title_highlight || fb.hero.title_highlight}
+        subtitle={hero?.subtitle || fb.hero.subtitle}
         description={hero?.description || fb.hero.description}
+        quote={hero?.quote || fb.hero.quote}
         founderName={hero?.founder_name || fb.hero.founder_name}
         founderSubtitle={hero?.founder_subtitle || fb.hero.founder_subtitle}
       />
@@ -137,7 +141,21 @@ export default async function NotreHistoirePage() {
         imageUrl={fondatriceImageUrl}
       />
 
-      <HistoireRealite
+      <OriginNomSection
+        title={(acf as Record<string, unknown>)?.origin_nom_title as string}
+        titleHighlight={(acf as Record<string, unknown>)?.origin_nom_title_highlight as string}
+        description={(acf as Record<string, unknown>)?.origin_nom_description as string}
+        imageUrl={await resolveImageUrl((acf as Record<string, unknown>)?.origin_nom_image as number | null)}
+      />
+
+      <VecuMethodeSection
+        title={(acf as Record<string, unknown>)?.vecu_methode_title as string}
+        titleHighlight={(acf as Record<string, unknown>)?.vecu_methode_title_highlight as string}
+        description={(acf as Record<string, unknown>)?.vecu_methode_description as string}
+        items={(acf as Record<string, unknown>)?.vecu_methode_items as { ordre: number; titre: string; description: string }[]}
+      />
+
+      {/* <HistoireRealite
         title={realite?.title || fb.realite_familles.title}
         titleHighlight={realite?.title_highlight || fb.realite_familles.title_highlight}
         problems={resolvedProblems}
@@ -146,11 +164,11 @@ export default async function NotreHistoirePage() {
         puraDescription1={pura?.description_1 || fb.syndrome_pura.description_1}
         puraDescription2={pura?.description_2 || fb.syndrome_pura.description_2}
         puraBadgeText={pura?.badge_text || fb.syndrome_pura.badge_text}
-      />
+      /> */}
 
-      <HistoireGalerie images={resolvedGalerie} />
+      {/* <HistoireGalerie images={resolvedGalerie} /> */}
 
-      <HistoireModele
+      {/* <HistoireModele
         tag={pourquoi?.tag || fb.pourquoi.tag}
         titreLigne1={pourquoi?.titre_ligne_1 || fb.pourquoi.titre_ligne_1}
         titleHighlight={pourquoi?.title_highlight || fb.pourquoi.title_highlight}
@@ -161,12 +179,12 @@ export default async function NotreHistoirePage() {
         legende={pourquoi?.legende || fb.pourquoi.legende}
         imageUrl={pourquoiImageUrl}
         qualites={[...(pourquoi?.qualites || fb.pourquoi.qualites)]}
-      />
+      /> */}
 
-      <HistoireMission
+      {/* <HistoireMission
         sectionTag={mission?.section_tag || fb.mission.section_tag}
         description={mission?.description || fb.mission.description}
-      />
+      /> */}
 
       <HistoireValeurs
         sectionTag={valeurs?.section_tag || fb.valeurs.section_tag}
@@ -175,7 +193,7 @@ export default async function NotreHistoirePage() {
         items={resolvedValeurs}
       />
 
-      <HistoireTerritoire
+      {/* <HistoireTerritoire
         tag={impactLocal?.tag || fb.impact_local.tag}
         titre1={impactLocal?.titre_1 || fb.impact_local.titre_1}
         titleHighlight={impactLocal?.title_highlight || fb.impact_local.title_highlight}
@@ -183,15 +201,15 @@ export default async function NotreHistoirePage() {
         impacts={[...impactItems]}
         backgroundImageUrl={impactBgUrl}
         mapImageUrl={impactMapUrl}
-      />
+      /> */}
 
-      <HistoireAmbitions
+      {/* <HistoireAmbitions
         sectionTag={ambitions?.section_tag || fb.ambitions.section_tag}
         title={ambitions?.title || fb.ambitions.title}
         titleHighlight={ambitions?.title_highlight || fb.ambitions.title_highlight}
         description={ambitions?.description || fb.ambitions.description}
         items={[...(ambitionsItems || fb.ambitions.items)]}
-      />
+      /> */}
 
       <HistoireCta
         citation={cta?.citation || fb.cta_final.citation}

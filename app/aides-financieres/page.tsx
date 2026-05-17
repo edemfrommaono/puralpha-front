@@ -1,10 +1,12 @@
 import { getAidesFinancieresPage, resolveImageUrl } from "@/lib/wordpress";
 import { AIDES_FALLBACK } from "@/lib/fallback-data/aides-financieres";
 import { AidesHeroSection } from "@/components/sections/aides/AidesHeroSection";
+import { ResteAChargeSection } from "@/components/sections/aides/ResteAChargeSection";
 import { DispositifsSection } from "@/components/sections/aides/DispositifsSection";
 import { TarificationSection } from "@/components/sections/aides/TarificationSection";
 import { SimulateurSection } from "@/components/sections/aides/SimulateurSection";
 import { AccompagnementAdminSection } from "@/components/sections/aides/AccompagnementAdminSection";
+import { ModalitesPaiementSection } from "@/components/sections/aides/ModalitesPaiementSection";
 import { AidesCtaSection } from "@/components/sections/aides/AidesCtaSection";
 
 export const revalidate = 0;
@@ -48,12 +50,27 @@ export default async function AidesFinancieresPage() {
   const ctaBadges = cta?.badges?.length ? cta.badges : fb.cta_final.badges;
   const ctaFondUrl = await resolveImageUrl(cta?.image_de_fond);
 
+  // Reste à charge
+  const racImageUrl = await resolveImageUrl((acf as Record<string, unknown>)?.reste_a_charge_image as number | null);
+
   return (
     <div className="flex flex-col w-full bg-white">
       <AidesHeroSection
         hero={hero}
         heroBadges={heroBadges}
         fallback={fb.hero}
+      />
+
+      <ResteAChargeSection
+        title={(acf as Record<string, unknown>)?.reste_a_charge_title as string}
+        titleHighlight={(acf as Record<string, unknown>)?.reste_a_charge_title_highlight as string}
+        description={(acf as Record<string, unknown>)?.reste_a_charge_description as string}
+        imageUrl={racImageUrl || undefined}
+        imageCaption={(acf as Record<string, unknown>)?.reste_a_charge_image_caption as string}
+        ctaPrimaryText={(acf as Record<string, unknown>)?.reste_a_charge_cta_primary_text as string}
+        ctaPrimaryUrl={(acf as Record<string, unknown>)?.reste_a_charge_cta_primary_url as string}
+        ctaSecondaryText={(acf as Record<string, unknown>)?.reste_a_charge_cta_secondary_text as string}
+        ctaSecondaryUrl={(acf as Record<string, unknown>)?.reste_a_charge_cta_secondary_url as string}
       />
 
       <DispositifsSection
@@ -78,6 +95,16 @@ export default async function AidesFinancieresPage() {
       <AccompagnementAdminSection
         accAdmin={accAdmin}
         fallback={fb.accompagnement_admin}
+      />
+
+      <ModalitesPaiementSection
+        tag={accAdmin?.modalites_tag}
+        title={accAdmin?.modalites_title}
+        titleHighlight={accAdmin?.modalites_title_highlight}
+        title2={accAdmin?.modalites_title_2}
+        description={accAdmin?.modalites_description}
+        processus={accAdmin?.processus}
+        fallbackProcessus={fb.accompagnement_admin.processus}
       />
 
       <AidesCtaSection

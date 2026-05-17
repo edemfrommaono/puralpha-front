@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface ResolvedValue {
   label: string;
@@ -17,7 +18,7 @@ interface ValuesBarSectionProps {
 export function ValuesBarSection({ resolvedValuesBar, fallbackValues }: ValuesBarSectionProps) {
   return (
     <section className="bg-navy-700 text-white py-8 w-full overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8">
+      <FadeInView direction="none" className="container mx-auto px-4 lg:px-8">
         <div className="flex flex-wrap lg:flex-nowrap justify-between items-center gap-6 lg:gap-4 overflow-x-auto pb-2 lg:pb-0 hide-scrollbar">
           {resolvedValuesBar
             ? resolvedValuesBar.map((v, i) => (
@@ -43,7 +44,7 @@ export function ValuesBarSection({ resolvedValuesBar, fallbackValues }: ValuesBa
               </div>
             ))}
         </div>
-      </div>
+      </FadeInView>
     </section>
   );
 }

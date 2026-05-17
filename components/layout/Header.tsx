@@ -2,12 +2,21 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: '/pour-les-familles', label: 'Familles' },
+    { href: '/aides-financieres', label: 'Aides financières' },
+    { href: '/notre-histoire', label: 'Notre histoire' },
+    { href: '/nous-rejoindre', label: 'Nous rejoindre' },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
@@ -27,18 +36,16 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
-          <Link href="/notre-histoire" className="text-sm font-medium text-gray-600 hover:text-teal-500 transition-colors">
-            Notre histoire
-          </Link>
-          <Link href="/pour-les-familles" className="text-sm font-medium text-gray-600 hover:text-teal-500 transition-colors">
-            Pour les familles
-          </Link>
-          <Link href="/aides-financieres" className="text-sm font-medium text-gray-600 hover:text-teal-500 transition-colors">
-            Les aides financières
-          </Link>
-          <Link href="/nous-rejoindre" className="text-sm font-medium text-gray-600 hover:text-teal-500 transition-colors">
-            Nous rejoindre
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium transition-colors hover:text-[#4ECDC4]"
+              style={{ color: pathname === link.href ? '#4ECDC4' : undefined }}
+            >
+              {link.label}
+            </Link>
+          ))}
           
           <Button
             variant="navy"
@@ -66,18 +73,17 @@ export function Header() {
       {/* Mobile Nav Overlay */}
       {isMenuOpen && (
         <div className="lg:hidden absolute top-20 left-0 right-0 bg-white border-t border-gray-100 shadow-lg p-4 flex flex-col gap-4">
-          <Link href="/notre-histoire" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-gray-600 p-2">
-            Notre histoire
-          </Link>
-          <Link href="/pour-les-familles" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-gray-600 p-2">
-            Pour les familles
-          </Link>
-          <Link href="/aides-financieres" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-gray-600 p-2">
-            Les aides financières
-          </Link>
-          <Link href="/nous-rejoindre" onClick={() => setIsMenuOpen(false)} className="text-sm font-medium text-gray-600 p-2">
-            Nous rejoindre
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-sm font-medium p-2 transition-colors"
+              style={{ color: pathname === link.href ? '#4ECDC4' : undefined }}
+            >
+              {link.label}
+            </Link>
+          ))}
           <Button
             variant="navy"
             className="rounded-full w-full justify-center mt-2"

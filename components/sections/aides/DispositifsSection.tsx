@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
 
 interface AideCard {
   accent_color: string;
@@ -53,7 +54,7 @@ export function DispositifsSection({
   return (
     <section className="py-20 lg:py-32 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div className="text-center mb-16">
+        <FadeInView className="text-center mb-16">
           <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
             {aides?.section_tag || fb.section_tag}
           </span>
@@ -64,16 +65,16 @@ export function DispositifsSection({
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
             {aides?.description || fb.description}
           </p>
-        </div>
+        </FadeInView>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <StaggerContainer stagger={0.12} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {cards.map((card, i) => {
             const c = palettes[card.accent_color] || palettes["#52bdc7"];
             const fbCard = fallbackCards[i];
             const imageUrl = "imageUrl" in card ? card.imageUrl : null;
 
             return (
-              <div key={i} className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex flex-col gap-6 relative overflow-hidden pt-10">
+              <StaggerItem key={i} className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex flex-col gap-6 relative overflow-hidden pt-10">
                 <div className={`absolute top-0 left-0 right-0 h-1 ${c.bar}`} />
                 <div className="flex gap-4 items-start">
                   <div className={`w-14 h-14 ${c.iconBg} rounded-2xl flex items-center justify-center text-2xl shrink-0`}>
@@ -102,10 +103,10 @@ export function DispositifsSection({
                     </span>
                   ))}
                 </div>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FadeInView } from "@/components/ui/FadeInView";
 
 interface HistoireCtaProps {
   citation: string;
@@ -32,8 +33,8 @@ export function HistoireCta({
       )}
       <div className="absolute inset-0 bg-gradient-to-r from-navy-800/90 to-navy-800/90 z-[1]" />
 
-      <div className="container mx-auto px-4 relative z-20 flex flex-col items-center max-w-4xl">
-        <blockquote className="text-xl lg:text-2xl text-white leading-snug italic mb-8">
+      <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center max-w-4xl">
+        <blockquote className="text-white leading-snug italic mb-8" style={{ fontSize: "42px" }}>
           {citation}
         </blockquote>
         <p className="text-white/50 font-bold text-[10px] uppercase tracking-[3px] mb-6">— {auteur}</p>
@@ -50,7 +51,7 @@ export function HistoireCta({
             </a>
           )}
         </div>
-      </div>
+      </FadeInView>
     </section>
   );
 }

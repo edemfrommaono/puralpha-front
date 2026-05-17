@@ -1,3 +1,5 @@
+import { FadeInView } from "@/components/ui/FadeInView";
+
 interface HistoireMissionProps {
   sectionTag: string;
   description: string;
@@ -7,14 +9,14 @@ export function HistoireMission({ sectionTag, description }: HistoireMissionProp
   return (
     <section className="py-20 bg-navy-800 text-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-teal-400/10 to-gold-500/10" />
-      <div className="container mx-auto px-4 relative z-10">
+      <FadeInView className="container mx-auto px-4 relative z-10">
         <span className="text-white/50 font-bold text-xs uppercase tracking-[3px] mb-4 block">
           {sectionTag}
         </span>
         <h2 className="text-2xl lg:text-4xl font-extrabold text-white/90 leading-tight max-w-4xl mx-auto">
           {description}
         </h2>
-      </div>
+      </FadeInView>
     </section>
   );
 }

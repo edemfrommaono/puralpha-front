@@ -61,7 +61,7 @@ export function FamillesHandicaps({
           })}
         </div>
 
-        <div className="bg-gradient-to-br from-teal-400/10 to-gold-500/10 border border-teal-400/20 rounded-2xl py-4 px-12 text-center max-w-6xl mx-auto">
+        <div className="bg-gradient-to-br from-teal-400/10 to-gold-500/10 border border-teal-400/20 rounded-2xl py-8 px-16 text-center max-w-6xl mx-auto">
           <p className="font-bold text-navy-800 text-base leading-relaxed">
             <span className="text-teal-500">{highlightQuote}</span>
             <span className="font-normal">{highlightDescription}</span>
