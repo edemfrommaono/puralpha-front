@@ -53,23 +53,30 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
           </FadeInView>
           <FadeInView direction="right" delay={0.15} className="order-1 lg:order-2 flex flex-col gap-6 max-w-xl">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-
-                <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">
-                  {territoire?.section_tag || fb.section_tag}
-                </span>
-              </div>
-              <h2 className="text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
-                {territoire?.title || fb.title}{" "}
-                <span className="text-teal-400">
-                  {territoire?.title_highlight || fb.title_highlight}
-                </span>
-                {territoire?.titre_2 || fb.titre_2}
-              </h2>
+              {(territoire?.section_tag || fb.section_tag) && (
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">
+                    {territoire?.section_tag || fb.section_tag}
+                  </span>
+                </div>
+              )}
+              {(territoire?.title || fb.title || territoire?.title_highlight || fb.title_highlight || territoire?.titre_2 || fb.titre_2) && (
+                <h2 className="text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
+                  {territoire?.title || fb.title}{" "}
+                  {(territoire?.title_highlight || fb.title_highlight) && (
+                    <span className="text-teal-400">
+                      {territoire?.title_highlight || fb.title_highlight}
+                    </span>
+                  )}{" "}
+                  {territoire?.titre_2 || fb.titre_2}
+                </h2>
+              )}
             </div>
-            <p className="text-base text-gray-700 leading-relaxed">
-              {territoire?.description_1 || fb.description_1}
-            </p>
+            {(territoire?.description_1 || fb.description_1) && (
+              <p className="text-base text-gray-700 leading-relaxed">
+                {territoire?.description_1 || fb.description_1}
+              </p>
+            )}
             {logoUrls.length > 0 && (
               <div className="flex flex-row flex-wrap items-center gap-6">
                 {logoUrls.map((url, i) => (
@@ -84,19 +91,23 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
                 ))}
               </div>
             )}
-            <p className="text-base text-gray-700 leading-relaxed mb-4">
-              {territoire?.description_2 || fb.description_2}
-            </p>
-            <div>
-              <Button
-                variant="gold"
-                href={territoire?.cta_url || fb.cta_url}
-                style={{ borderRadius: '8px', background: '#F2C94C' }}
-              >
-                <span className="mr-2">▶</span>
-                {territoire?.cta_text || fb.cta_text}
-              </Button>
-            </div>
+            {(territoire?.description_2 || fb.description_2) && (
+              <p className="text-base text-gray-700 leading-relaxed mb-4">
+                {territoire?.description_2 || fb.description_2}
+              </p>
+            )}
+            {territoire?.cta_url && territoire.cta_url !== "#" && (territoire?.cta_text || fb.cta_text) && (
+              <div>
+                <Button
+                  variant="gold"
+                  href={territoire.cta_url}
+                  style={{ borderRadius: '8px', background: '#F2C94C' }}
+                >
+                  <span className="mr-2">▶</span>
+                  {territoire?.cta_text || fb.cta_text}
+                </Button>
+              </div>
+            )}
           </FadeInView>
         </div>
       </div>

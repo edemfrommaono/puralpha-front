@@ -3,7 +3,6 @@ interface FamillesLimitesProps {
   titleHighlight: string;
   ceQueNousFaisons: readonly { text: string }[];
   ceQueNousNeFaisonsPas: readonly { text: string }[];
-  badges: readonly { text: string }[];
 }
 
 export function FamillesLimites({
@@ -11,8 +10,11 @@ export function FamillesLimites({
   titleHighlight,
   ceQueNousFaisons,
   ceQueNousNeFaisonsPas,
-  badges,
 }: FamillesLimitesProps) {
+  if (!title && !titleHighlight && (!ceQueNousFaisons || ceQueNousFaisons.length === 0) && (!ceQueNousNeFaisonsPas || ceQueNousNeFaisonsPas.length === 0)) {
+    return null;
+  }
+
   return (
     <section className="py-20 lg:py-32 bg-white">
       <div className="container mx-auto px-4 lg:px-8">

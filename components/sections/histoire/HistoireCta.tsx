@@ -33,7 +33,7 @@ export function HistoireCta({
       )}
       <div className="absolute inset-0 bg-gradient-to-r from-navy-800/90 to-navy-800/90 z-[1]" />
 
-      <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center max-w-4xl">
+      <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center max-w-6xl">
         <blockquote className="text-white leading-snug italic mb-8" style={{ fontSize: "42px" }}>
           {citation}
         </blockquote>

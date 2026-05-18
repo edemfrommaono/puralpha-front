@@ -1,0 +1,42 @@
+[
+  {
+    "key": "group_limites_intervention",
+    "title": "Limites d'intervention",
+    "active": true,
+    "show_in_rest": true,
+    "fields": [
+      {
+        "key": "field_plf_limites",
+        "label": "Limites d'intervention",
+        "name": "limites",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_plf_limites_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Nos limites d'intervention" },
+          { "key": "field_plf_limites_title_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "en toute transparence" },
+          {
+            "key": "field_plf_limites_ce_que_nous_faisons",
+            "label": "Ce que nous faisons",
+            "name": "ce_que_nous_faisons",
+            "type": "repeater",
+            "layout": "table",
+            "sub_fields": [
+              { "key": "field_plf_limites_faisons_text", "label": "Texte", "name": "text", "type": "text" }
+            ]
+          },
+          {
+            "key": "field_plf_limites_ce_que_nous_ne_faisons_pas",
+            "label": "Ce que nous ne faisons pas",
+            "name": "ce_que_nous_ne_faisons_pas",
+            "type": "repeater",
+            "layout": "table",
+            "sub_fields": [
+              { "key": "field_plf_limites_ne_faisons_pas_text", "label": "Texte", "name": "text", "type": "text" }
+            ]
+          }
+        ]
+      }
+    ],
+    "location": [[{ "param": "page_slug", "operator": "==", "value": "pour-les-familles" }]]
+  }
+]

@@ -50,11 +50,11 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {accompagnements.map((item, i) => (
-            <div key={i} className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm flex flex-col gap-4 relative overflow-hidden">
-              <span className="text-[60px] font-black text-teal-400/10 leading-none absolute top-4 right-4">
+            <div key={i} className="bg-[#ECF4F6] border border-[#F3F4F6] rounded-[18px] p-8 shadow-sm flex flex-col gap-4 relative overflow-hidden">
+              <span className="text-[60px] font-black text-teal-400/10 leading-none">
                 {String(item.ordre).padStart(2, "0")}
               </span>
-              <h3 className="font-bold text-navy-800 text-lg relative z-10 mt-8">{item.titre}</h3>
+              <h3 className="font-bold text-navy-800 text-lg relative z-10">{item.titre}</h3>
               <p className="text-gray-600 text-sm leading-relaxed relative z-10">
                 {item.description}
               </p>

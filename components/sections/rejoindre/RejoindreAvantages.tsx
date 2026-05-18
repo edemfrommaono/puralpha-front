@@ -23,13 +23,19 @@ export function RejoindreAvantages({
   return (
     <section className="w-full pt-24 pb-32 lg:pb-40 bg-white">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        <FadeInView className="text-center mb-16">
-          <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
-          <h2 className="text-3xl md:text-[38px] font-extrabold text-navy-800 mb-6">
-            {title} <span className="text-teal-400 italic">{titleHighlight}</span>
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">{description}</p>
-        </FadeInView>
+        <div className="max-w-3xl mx-auto">
+          <FadeInView className="text-center mb-16">
+            <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
+            <h2 className="text-3xl md:text-[38px] font-extrabold text-navy-800 mb-6 md:leading-[45.6px]">
+              {title}{" "}
+              <span className="text-[#4ECDC4] font-poppins not-italic font-extrabold text-3xl md:text-[38px]">
+                {titleHighlight}
+              </span>
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">{description}</p>
+          </FadeInView>
+        </div>
+
         {/* Première ligne — 3 colonnes */}
         <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cards.slice(0, 3).map((card, i) => (

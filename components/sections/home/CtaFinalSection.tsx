@@ -9,6 +9,7 @@ interface CtaFinalSectionProps {
     title_highlight: string;
     subtitle: string;
     cta_text: string;
+    cta_url?: string;
   };
   ctaBadges: readonly { text: string }[];
   ctaFondUrl: string;
@@ -22,6 +23,8 @@ interface CtaFinalSectionProps {
 }
 
 export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb }: CtaFinalSectionProps) {
+  const ctaUrl = ctaFinal?.cta_url || fb.cta_url;
+
   return (
     <section className="bg-navy-800 py-[100px] relative overflow-hidden">
       {ctaFondUrl && (
@@ -55,15 +58,17 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
               </span>
             ))}
           </div>
-          <Button
-            variant="gold"
-            className="px-10 py-4 text-lg mt-4"
-            href={fb.cta_url}
-            style={{ borderRadius: '50px', background: '#F2C94C', boxShadow: '0 4px 15px 0 rgba(242, 201, 76, 0.30)' }}
-            iconRight={<ArrowRight className="w-4 h-4" />}
-          >
-            {ctaFinal?.cta_text || fb.cta_text}
-          </Button>
+          {ctaUrl && ctaUrl !== "#" && (
+            <Button
+              variant="gold"
+              className="px-10 py-4 text-lg mt-4"
+              href={ctaUrl}
+              style={{ borderRadius: '50px', background: '#F2C94C', boxShadow: '0 4px 15px 0 rgba(242, 201, 76, 0.30)' }}
+              iconRight={<ArrowRight className="w-4 h-4" />}
+            >
+              {ctaFinal?.cta_text || fb.cta_text}
+            </Button>
+          )}
         </FadeInView>
       </div>
     </section>

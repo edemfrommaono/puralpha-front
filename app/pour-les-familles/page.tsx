@@ -50,7 +50,6 @@ export default async function FamillesPage() {
   const limites = acf?.limites;
   const limitesFaisons = limites?.ce_que_nous_faisons?.length ? limites.ce_que_nous_faisons : fb.limites.ce_que_nous_faisons;
   const limitesPasFaisons = limites?.ce_que_nous_ne_faisons_pas?.length ? limites.ce_que_nous_ne_faisons_pas : fb.limites.ce_que_nous_ne_faisons_pas;
-  const limitesBadges = limites?.badges?.length ? limites.badges : fb.limites.badges;
   const garanties = acf?.garanties;
   const garantiesItems = garanties?.items?.length ? garanties.items : null;
   const faq = acf?.faq;
@@ -62,59 +61,59 @@ export default async function FamillesPage() {
   // ── Résolution des images côté serveur ──
   const resolvedHandicapTypes = handicapTypes
     ? await Promise.all(
-        handicapTypes.map(async (item, idx) => ({
-          label: item.label,
-          imageUrl: typeof item.image === 'number'
-            ? await resolveImageUrl(item.image)
-            : getImageUrl(item.image),
-          fallback_icon: fb.handicaps.types[idx]?.fallback_icon,
-        }))
-      )
-    : fb.handicaps.types.map((item) => ({
+      handicapTypes.map(async (item, idx) => ({
         label: item.label,
-        imageUrl: '',
-        fallback_icon: item.fallback_icon,
-      }));
+        imageUrl: typeof item.image === 'number'
+          ? await resolveImageUrl(item.image)
+          : getImageUrl(item.image),
+        fallback_icon: fb.handicaps.types[idx]?.fallback_icon,
+      }))
+    )
+    : fb.handicaps.types.map((item) => ({
+      label: item.label,
+      imageUrl: '',
+      fallback_icon: item.fallback_icon,
+    }));
 
   const resolvedGarantiesItems = garantiesItems
     ? await Promise.all(
-        garantiesItems.map(async (item, idx) => ({
-          title: item.title,
-          description: item.description,
-          imageUrl: typeof item.image === 'number'
-            ? await resolveImageUrl(item.image)
-            : getImageUrl(item.image),
-          fallback_icon: fb.garanties.items[idx]?.fallback_icon,
-        }))
-      )
-    : fb.garanties.items.map((item) => ({
+      garantiesItems.map(async (item, idx) => ({
         title: item.title,
         description: item.description,
-        imageUrl: '',
-        fallback_icon: item.fallback_icon,
-      }));
+        imageUrl: typeof item.image === 'number'
+          ? await resolveImageUrl(item.image)
+          : getImageUrl(item.image),
+        fallback_icon: fb.garanties.items[idx]?.fallback_icon,
+      }))
+    )
+    : fb.garanties.items.map((item) => ({
+      title: item.title,
+      description: item.description,
+      imageUrl: '',
+      fallback_icon: item.fallback_icon,
+    }));
 
   // Garanties Ligne 2 (avec images)
   const garantiesLigne2Raw = garanties?.garanties_ligne_2;
   const resolvedGarantiesLigne2 = garantiesLigne2Raw?.length
     ? await Promise.all(
-        garantiesLigne2Raw.map(async (item) => ({
-          title: item.titre,
-          description: item.description,
-          imageUrl: typeof item.image === 'number'
-            ? await resolveImageUrl(item.image)
-            : getImageUrl(item.image),
-        }))
-      )
+      garantiesLigne2Raw.map(async (item) => ({
+        title: item.titre,
+        description: item.description,
+        imageUrl: typeof item.image === 'number'
+          ? await resolveImageUrl(item.image)
+          : getImageUrl(item.image),
+      }))
+    )
     : [];
 
   // Garanties Ligne 3 (sans images)
   const garantiesLigne3Raw = garanties?.garantie_ligne_3;
   const resolvedGarantiesLigne3 = garantiesLigne3Raw?.length
     ? garantiesLigne3Raw.map((item) => ({
-        title: item.titre,
-        description: item.description,
-      }))
+      title: item.titre,
+      description: item.description,
+    }))
     : [];
 
   // Garanties Ligne 4 (zone de texte simple)
@@ -122,23 +121,23 @@ export default async function FamillesPage() {
 
   const resolvedServicesCards = servicesCards
     ? await Promise.all(
-        servicesCards.map(async (card) => ({
-          tag: card.tag,
-          title: card.title,
-          description: card.description,
-          tags: card.tags,
-          imageUrl: typeof card.image === 'number'
-            ? await resolveImageUrl(card.image)
-            : getImageUrl(card.image),
-        }))
-      )
-    : fb.services.cards.map((card) => ({
+      servicesCards.map(async (card) => ({
         tag: card.tag,
         title: card.title,
         description: card.description,
-        tags: [...card.tags],
-        imageUrl: '',
-      }));
+        tags: card.tags,
+        imageUrl: typeof card.image === 'number'
+          ? await resolveImageUrl(card.image)
+          : getImageUrl(card.image),
+      }))
+    )
+    : fb.services.cards.map((card) => ({
+      tag: card.tag,
+      title: card.title,
+      description: card.description,
+      tags: [...card.tags],
+      imageUrl: '',
+    }));
 
   const resolvedEtapesSteps = etapesSteps.map((step) => ({
     title: step.title,
@@ -177,9 +176,8 @@ export default async function FamillesPage() {
         titleHighlight={limites?.title_highlight || fb.limites.title_highlight}
         ceQueNousFaisons={[...limitesFaisons]}
         ceQueNousNeFaisonsPas={[...limitesPasFaisons]}
-        badges={[...limitesBadges]}
       />
-      
+
       <FamillesEtapes
         title={etapes?.title || fb.etapes.title}
         description={etapes?.description || fb.etapes.description}

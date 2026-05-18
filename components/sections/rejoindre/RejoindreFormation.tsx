@@ -17,38 +17,12 @@ interface RejoindreFormationProps {
 }
 
 const DEFAULTS = {
-  tag: "Formation & accompagnement",
-  title: "Vous êtes formés avant d'intervenir, puis",
-  titleHighlight: "accompagnés",
-  titleEnd: "dans vos missions",
-  description:
-    "Chez PUR Alpha, aucun intervenant ne démarre une mission sans préparation. La formation initiale permet de comprendre les bases du handicap, la posture attendue, les gestes du quotidien et les limites d'intervention.",
-  etapes: [
-    {
-      valeur: "70h",
-      sous_titre: "Formation initiale",
-      titre: "Un socle commun avant toute première mission : handicap, bientraitance, sécurité, gestes du quotidien, communication avec les familles.",
-      description: "",
-    },
-    {
-      valeur: "Interlocuteur identifié",
-      sous_titre: "Un point de contact clair",
-      titre: "Vous savez à qui vous adresser en cas de question, de doute ou de difficulté pendant votre mission.",
-      description: "",
-    },
-    {
-      valeur: "Suivi de mission",
-      sous_titre: "Des points réguliers",
-      titre: "Les retours terrain permettent d'ajuster les pratiques, de mieux comprendre les situations et de progresser dans votre rôle.",
-      description: "",
-    },
-    {
-      valeur: "Montée en compétences",
-      sous_titre: "Formation continue",
-      titre: "Actualisation régulière des compétences. PUR Alpha investit dans votre montée en compétences.",
-      description: "",
-    },
-  ],
+  tag: "",
+  title: "",
+  titleHighlight: "",
+  titleEnd: "",
+  description: "",
+  etapes: [] as FormationStep[],
 };
 
 export function RejoindreFormation({
@@ -61,26 +35,38 @@ export function RejoindreFormation({
 }: RejoindreFormationProps) {
   const steps = etapes?.length ? etapes : DEFAULTS.etapes;
 
+  if (!steps?.length && !tag && !title && !titleHighlight && !titleEnd && !description) return null;
+
   return (
     <section className="w-full py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        <FadeInView className="text-center mb-16">
-          <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">
-            {tag || DEFAULTS.tag}
-          </p>
-          <h2
-            className="font-extrabold text-navy-800 mb-6 leading-tight max-w-3xl mx-auto"
-            style={{ fontFamily: "Poppins, sans-serif", fontSize: "40px", lineHeight: "48px" }}
-          >
-            {title || DEFAULTS.title}
-            <br />
-            <span className="text-teal-400">{titleHighlight || DEFAULTS.titleHighlight}</span>{" "}
-            {titleEnd || DEFAULTS.titleEnd}
-          </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
-            {description || DEFAULTS.description}
-          </p>
-        </FadeInView>
+        {(tag || title || titleHighlight || titleEnd || description) && (
+          <FadeInView className="text-center mb-16">
+            {tag && (
+              <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">
+                {tag}
+              </p>
+            )}
+            {(title || titleHighlight || titleEnd) && (
+              <h2
+                className="font-extrabold text-navy-800 mb-6 leading-tight max-w-3xl mx-auto"
+                style={{ fontFamily: "Poppins, sans-serif", fontSize: "40px", lineHeight: "48px" }}
+              >
+                {title}
+                {(titleHighlight || titleEnd) && <br />}
+                {titleHighlight && (
+                  <span className="text-teal-400">{titleHighlight}</span>
+                )}{" "}
+                {titleEnd}
+              </h2>
+            )}
+            {description && (
+              <p className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
+                {description}
+              </p>
+            )}
+          </FadeInView>
+        )}
 
         <div className="relative">
 

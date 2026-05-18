@@ -62,6 +62,7 @@ export default async function ContactPage() {
       <ContactFormulaire
         formTitle={formulaire?.title || fb.formulaire.title}
         imageUrl={formulaireImageUrl}
+        notes={formulaire?.notes || fb.formulaire.notes}
       />
 
       <ContactCoordonnees

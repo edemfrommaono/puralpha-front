@@ -152,6 +152,7 @@ export interface HomePageACF {
     subtitle: string;
     badges: Array<{ text: string }>;
     cta_text: string;
+    cta_url?: string;
   };
 }
 
@@ -318,7 +319,6 @@ export interface PourLesFamillesACF {
     title_highlight: string;
     ce_que_nous_faisons: Array<{ text: string }>;
     ce_que_nous_ne_faisons_pas: Array<{ text: string }>;
-    badges: Array<{ text: string }>;
   };
   garanties?: {
     title: string;
@@ -370,10 +370,6 @@ export interface AidesFinancieresACF {
     title_line_2: string;
     title_highlight: string;
     description: string;
-    badges: Array<{
-      value: string;
-      label: string;
-    }>;
   };
   aides?: {
     section_tag: string;
