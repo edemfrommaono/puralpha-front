@@ -48,7 +48,7 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="PUR Alpha — 26 Rue des Sablons, 95360 Montmagny"
+                title="PUR Alpha — 14K - 26 Rue des Sablons, 95360 Montmagny"
                 className="w-full h-full"
               />
             </div>

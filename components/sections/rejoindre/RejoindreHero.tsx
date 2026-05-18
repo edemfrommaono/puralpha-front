@@ -15,12 +15,7 @@ export function RejoindreHero({
 }: RejoindreHeroProps) {
   return (
     <section className="relative w-full bg-[#ecf4f6] pt-32 pb-24 overflow-hidden flex flex-col items-center">
-      <div className="absolute top-1/2 right-[-30%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
-        <span className="text-[120px] md:text-[200px] font-black text-[#1e3a5f]/5 tracking-tighter whitespace-nowrap">
-          Équipe
-        </span>
-      </div>
-      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center text-center max-w-4xl">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center text-center max-w-5xl">
         <FadeInView>
           <h1 className="text-4xl md:text-5xl lg:text-[70px] font-black text-navy-800 leading-tight mb-8">
             <span className="block">{titleLine1}</span>

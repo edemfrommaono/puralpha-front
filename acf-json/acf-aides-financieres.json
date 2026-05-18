@@ -12,14 +12,7 @@
           { "key": "field_af_hero_l1", "label": "Titre ligne 1", "name": "title_line_1", "type": "text", "default_value": "L'accompagnement" },
           { "key": "field_af_hero_l2", "label": "Titre ligne 2", "name": "title_line_2", "type": "text", "default_value": "que vous méritez," },
           { "key": "field_af_hero_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "au juste prix." },
-          { "key": "field_af_hero_desc", "label": "Description", "name": "description", "type": "textarea" },
-          {
-            "key": "field_af_hero_badges", "label": "Badges", "name": "badges", "type": "repeater", "layout": "table",
-            "sub_fields": [
-              { "key": "field_af_hb_val", "label": "Valeur", "name": "value", "type": "text" },
-              { "key": "field_af_hb_lbl", "label": "Label", "name": "label", "type": "text" }
-            ]
-          }
+          { "key": "field_af_hero_desc", "label": "Description", "name": "description", "type": "textarea" }
         ]
       },
       { "key": "field_af_tab_aides", "label": "Aides", "type": "tab" },

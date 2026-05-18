@@ -1,11 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { FadeInView } from "@/components/ui/FadeInView";
 
-interface HeroBadge {
-  value: string;
-  label: string;
-}
-
 interface AidesHeroSectionProps {
   hero?: {
     title_line_1: string;
@@ -13,7 +8,6 @@ interface AidesHeroSectionProps {
     title_highlight: string;
     description: string;
   };
-  heroBadges: readonly HeroBadge[];
   fallback: {
     title_line_1: string;
     title_line_2: string;
@@ -22,7 +16,7 @@ interface AidesHeroSectionProps {
   };
 }
 
-export function AidesHeroSection({ hero, heroBadges, fallback: fb }: AidesHeroSectionProps) {
+export function AidesHeroSection({ hero, fallback: fb }: AidesHeroSectionProps) {
   return (
     <section className="bg-[#ecf4f6] pt-32 pb-32 lg:pt-40 lg:pb-48 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none" />
@@ -38,27 +32,7 @@ export function AidesHeroSection({ hero, heroBadges, fallback: fb }: AidesHeroSe
           </p>
         </FadeInView>
 
-        {/* Hero Badges */}
-        <FadeInView delay={0.2} className="mt-16 flex flex-col items-center gap-4 relative z-20">
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            {heroBadges.slice(0, 2).map((badge, i) => (
-              <div key={i} className="bg-white border border-gray-100 shadow-sm px-8 py-4 rounded-full flex items-center gap-3">
-                <span className="text-lg font-black text-teal-400">{badge.value}</span>
-                <span className="text-sm font-medium text-gray-600">{badge.label}</span>
-              </div>
-            ))}
-          </div>
-          {heroBadges.length > 2 && (
-            <div className="flex justify-center">
-              {heroBadges.slice(2).map((badge, i) => (
-                <div key={i} className="bg-white border border-gray-100 shadow-sm px-8 py-4 rounded-full flex items-center gap-3">
-                  <span className="text-lg font-black text-teal-400">{badge.value}</span>
-                  <span className="text-sm font-medium text-gray-600">{badge.label}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </FadeInView>
+
       </div>
 
       {/* Background Typography */}

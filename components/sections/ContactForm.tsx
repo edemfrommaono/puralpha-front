@@ -4,15 +4,17 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Button } from "@/components/ui/Button";
 
 // ── Schéma Zod — Forminator form 573 ──
 const contactSchema = z.object({
-  "select-1": z.string().min(1, "Ce champ est requis"),
-  "name-1": z.string().min(1, "Ce champ est requis"),
+  "select-1": z.string().min(1, "Ce champ est requis"),       // Vous êtes...
+  "name-1": z.string().min(1, "Ce champ est requis"),          // Nom
+  "name-2": z.string().min(1, "Ce champ est requis"),          // Prénoms
   "email-1": z.string().email("Adresse mail invalide").min(1, "Ce champ est requis"),
-  "phone-1": z.string().min(1, "Ce champ est requis"),
-  "textarea-1": z.string().min(1, "Ce champ est requis"),
+  "phone-1": z.string().optional(),                            // Téléphone
+  "text-1": z.string().optional(),                             // Commune concernée
+  "select-2": z.string().min(1, "Ce champ est requis"),        // Objet de votre demande
+  "textarea-1": z.string().optional(),                         // Votre message
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -20,16 +22,20 @@ type ContactFormData = z.infer<typeof contactSchema>;
 const FIELD_MAPPING = {
   "select-1": "select-1",
   "name-1": "name-1",
+  "name-2": "name-2",
   "email-1": "email-1",
   "phone-1": "phone-1",
+  "text-1": "text-1",
+  "select-2": "select-2",
   "textarea-1": "textarea-1",
 } as const;
 
 interface ContactFormProps {
   formTitle?: string;
+  notes?: string;
 }
 
-export function ContactForm({ formTitle }: ContactFormProps) {
+export function ContactForm({ formTitle, notes }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -43,8 +49,11 @@ export function ContactForm({ formTitle }: ContactFormProps) {
     defaultValues: {
       "select-1": "",
       "name-1": "",
+      "name-2": "",
       "email-1": "",
       "phone-1": "",
+      "text-1": "",
+      "select-2": "",
       "textarea-1": "",
     },
   });
@@ -85,13 +94,16 @@ export function ContactForm({ formTitle }: ContactFormProps) {
 
   return (
     <div className="w-full lg:w-1/2 bg-[#ecf4f6] rounded-[24px] p-8 lg:p-12 relative z-20">
-      <h2 className="text-2xl font-bold text-navy-900 mb-8">{formTitle || "Envoyez-nous un message"}</h2>
+      <h2 className="text-2xl font-bold text-navy-900 mb-2">{formTitle || "Envoyez-nous votre demande"}</h2>
+      <p className="text-gray-600 text-sm mb-8 leading-relaxed">
+        Quelques informations suffisent pour comprendre votre demande et vous répondre de manière adaptée.
+      </p>
 
       {isSubmitted && (
-        <div className="bg-white/80 backdrop-blur border border-teal-200 text-teal-800 rounded-xl p-8 text-center flex flex-col justify-center items-center mb-6">
+        <div className="bg-white border border-teal-200 text-teal-800 rounded-xl p-8 text-center flex flex-col justify-center items-center mb-6">
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl">✅</div>
-          <h3 className="text-xl font-bold mb-2">Message envoyé !</h3>
-          <p>Nous avons bien reçu votre demande et vous recontacterons très vite.</p>
+          <h3 className="text-xl font-bold mb-2">Demande envoyée !</h3>
+          <p className="text-sm">Nous avons bien reçu votre demande et vous recontacterons très vite.</p>
         </div>
       )}
 
@@ -103,72 +115,137 @@ export function ContactForm({ formTitle }: ContactFormProps) {
 
       {!isSubmitted && (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+          {/* Vous êtes... */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="role" className="text-[13px] font-semibold text-navy-900">Vous êtes... <span className="text-teal-500">*</span></label>
+            <label htmlFor="role" className="text-[13px] font-semibold text-navy-900">Vous êtes... *</label>
             <select
               id="role"
               {...register("select-1")}
-              className={`px-4 py-3 bg-white border ${errors["select-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-sm text-gray-700`}
+              className={`px-4 py-3 bg-white border ${errors["select-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-sm text-gray-700 cursor-pointer`}
             >
               <option value="">Sélectionnez...</option>
-              <option value="one">Une famille</option>
-              <option value="two">Un(e) intervenant(e)</option>
-              <option value="Partenaire">Un partenaire</option>
+              <option value="Une famille">Une famille</option>
+              <option value="Un(e) intervenant(e)">Un(e) intervenant(e)</option>
+              <option value="Un partenaire">Un partenaire</option>
               <option value="Autre">Autre</option>
             </select>
             {errors["select-1"] && <p className="text-red-500 text-xs">{errors["select-1"].message}</p>}
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="fullname" className="text-[13px] font-semibold text-navy-900">Nom complet <span className="text-teal-500">*</span></label>
-            <input
-              type="text" id="fullname"
-              {...register("name-1")}
-              className={`px-4 py-3 bg-white border ${errors["name-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-sm`}
-              placeholder="Jean Dupont"
-            />
-            {errors["name-1"] && <p className="text-red-500 text-xs">{errors["name-1"].message}</p>}
+          {/* Nom & Prénoms */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="name" className="text-[13px] font-semibold text-navy-900">Nom *</label>
+              <input
+                type="text"
+                id="name"
+                {...register("name-1")}
+                className={`px-4 py-3 bg-white border ${errors["name-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-sm`}
+                placeholder="Votre nom"
+              />
+              {errors["name-1"] && <p className="text-red-500 text-xs">{errors["name-1"].message}</p>}
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="firstname" className="text-[13px] font-semibold text-navy-900">Prénoms *</label>
+              <input
+                type="text"
+                id="firstname"
+                {...register("name-2")}
+                className={`px-4 py-3 bg-white border ${errors["name-2"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-sm`}
+                placeholder="Votre prénom"
+              />
+              {errors["name-2"] && <p className="text-red-500 text-xs">{errors["name-2"].message}</p>}
+            </div>
           </div>
 
+          {/* Email */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-[13px] font-semibold text-navy-900">Email <span className="text-teal-500">*</span></label>
+            <label htmlFor="email" className="text-[13px] font-semibold text-navy-900">Email *</label>
             <input
-              type="email" id="email"
+              type="email"
+              id="email"
               {...register("email-1")}
               className={`px-4 py-3 bg-white border ${errors["email-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-sm`}
-              placeholder="jean.dupont@email.com"
+              placeholder="votre@email.fr"
             />
             {errors["email-1"] && <p className="text-red-500 text-xs">{errors["email-1"].message}</p>}
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="phone" className="text-[13px] font-semibold text-navy-900">Téléphone <span className="text-teal-500">*</span></label>
-            <input
-              type="tel" id="phone"
-              {...register("phone-1")}
-              className={`px-4 py-3 bg-white border ${errors["phone-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-sm`}
-              placeholder="06 12 34 56 78"
-            />
-            {errors["phone-1"] && <p className="text-red-500 text-xs">{errors["phone-1"].message}</p>}
+          {/* Téléphone & Commune concernée */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="phone" className="text-[13px] font-semibold text-navy-900">Téléphone</label>
+              <input
+                type="tel"
+                id="phone"
+                {...register("phone-1")}
+                className="px-4 py-3 bg-white border border-[#f3f4f6] rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-sm"
+                placeholder="06 XX XX XX XX"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="commune" className="text-[13px] font-semibold text-navy-900">Commune concernée</label>
+              <input
+                type="text"
+                id="commune"
+                {...register("text-1")}
+                className="px-4 py-3 bg-white border border-[#f3f4f6] rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-sm"
+                placeholder="Votre commune"
+              />
+            </div>
           </div>
 
+          {/* Objet de votre demande */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="message" className="text-[13px] font-semibold text-navy-900">Votre message <span className="text-teal-500">*</span></label>
+            <label htmlFor="subject" className="text-[13px] font-semibold text-navy-900">Objet de votre demande *</label>
+            <select
+              id="subject"
+              {...register("select-2")}
+              className={`px-4 py-3 bg-white border ${errors["select-2"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-sm text-gray-700 cursor-pointer`}
+            >
+              <option value="">Sélectionnez...</option>
+              <option value="Renseignements généraux">Renseignements généraux</option>
+              <option value="Demande d'accompagnement">Demande d'accompagnement</option>
+              <option value="Devenir intervenant(e)">Devenir intervenant(e)</option>
+              <option value="Partenariat">Partenariat</option>
+              <option value="Autre demande">Autre demande</option>
+            </select>
+            {errors["select-2"] && <p className="text-red-500 text-xs">{errors["select-2"].message}</p>}
+          </div>
+
+          {/* Votre message */}
+          <div className="flex flex-col gap-2">
+            <label htmlFor="message" className="text-[13px] font-semibold text-navy-900">Votre message</label>
             <textarea
-              id="message" rows={4}
+              id="message"
+              rows={4}
               {...register("textarea-1")}
-              className={`px-4 py-3 bg-white border ${errors["textarea-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all resize-y text-sm`}
+              className="px-4 py-3 bg-white border border-[#f3f4f6] rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all resize-y text-sm"
               placeholder="Expliquez-nous votre besoin..."
             ></textarea>
-            {errors["textarea-1"] && <p className="text-red-500 text-xs">{errors["textarea-1"].message}</p>}
           </div>
 
           <div className="mt-2">
-            <Button variant="navy" type="submit" disabled={isSubmitting} className="w-full justify-center py-4 rounded-xl shadow-lg">
-              {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
-            </Button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-[#1c3553] hover:bg-[#152a42] disabled:opacity-60 transition-colors text-white font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(30,58,95,0.2)] text-[15px]"
+            >
+              {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
+              {!isSubmitting && (
+                <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                </svg>
+              )}
+            </button>
           </div>
         </form>
+      )}
+
+      {notes && (
+        <p className="text-xs text-gray-500 mt-6 leading-relaxed">
+          {notes}
+        </p>
       )}
     </div>
   );

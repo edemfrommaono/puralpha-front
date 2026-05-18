@@ -3,9 +3,10 @@ import { ContactForm } from "@/components/sections/ContactForm";
 interface ContactFormulaireProps {
   formTitle: string;
   imageUrl?: string;
+  notes?: string;
 }
 
-export function ContactFormulaire({ formTitle, imageUrl }: ContactFormulaireProps) {
+export function ContactFormulaire({ formTitle, imageUrl, notes }: ContactFormulaireProps) {
   return (
     <section className="py-12 lg:py-16">
       <div className="container mx-auto px-4 lg:px-8">
@@ -23,7 +24,7 @@ export function ContactFormulaire({ formTitle, imageUrl }: ContactFormulaireProp
           </div>
 
           {/* Formulaire (Client Component) */}
-          <ContactForm formTitle={formTitle} />
+          <ContactForm formTitle={formTitle} notes={notes} />
         </div>
       </div>
     </section>
