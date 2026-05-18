@@ -5,39 +5,157 @@
     "active": true,
     "show_in_rest": true,
     "fields": [
-      { "key": "field_contact_tab_hero", "label": "Hero", "type": "tab" },
       {
-        "key": "field_contact_hero", "label": "Section Hero", "name": "hero", "type": "group", "show_in_rest": true,
-        "sub_fields": [
-          { "key": "field_contact_hero_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Prenons" },
-          { "key": "field_contact_hero_title_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "contact" },
-          { "key": "field_contact_hero_desc", "label": "Description", "name": "description", "type": "textarea", "default_value": "Tout commence par une écoute. Parlez-nous de votre situation." }
-        ]
+        "key": "field_contact_tab_hero",
+        "label": "Hero",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0,
+        "selected": 0
       },
-      { "key": "field_contact_tab_form", "label": "Formulaire", "type": "tab" },
       {
-        "key": "field_contact_formulaire", "label": "Formulaire", "name": "formulaire", "type": "group", "show_in_rest": true,
+        "key": "field_contact_hero",
+        "label": "Section Hero",
+        "name": "hero",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_contact_form_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Envoyez-nous un message" },
-          { "key": "field_contact_form_image", "label": "Image", "name": "image", "type": "image", "return_format": "id" }
-        ]
-      },
-      { "key": "field_contact_tab_coords", "label": "Coordonnées", "type": "tab" },
-      {
-        "key": "field_contact_coordonnees", "label": "Coordonnées", "name": "coordonnees", "type": "group", "show_in_rest": true,
-        "sub_fields": [
-          { "key": "field_contact_coords_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Nos coordonnées" },
           {
-            "key": "field_contact_coords_items", "label": "Items", "name": "items", "type": "repeater", "layout": "block",
+            "key": "field_contact_hero_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Prenons"
+          },
+          {
+            "key": "field_contact_hero_title_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "contact"
+          },
+          {
+            "key": "field_contact_hero_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "default_value": "Tout commence par une écoute. Parlez-nous de votre situation."
+          }
+        ],
+        "layout": "block"
+      },
+      {
+        "key": "field_contact_tab_form",
+        "label": "Formulaire",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0,
+        "selected": 0
+      },
+      {
+        "key": "field_contact_formulaire",
+        "label": "Formulaire",
+        "name": "formulaire",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_contact_form_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Envoyez-nous un message"
+          },
+          {
+            "key": "field_contact_form_image",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "medium"
+          },
+          {
+            "key": "field_6a0b9cbb9f915",
+            "label": "Notes",
+            "name": "notes",
+            "type": "textarea",
+            "default_value": ""
+          }
+        ],
+        "layout": "block"
+      },
+      {
+        "key": "field_contact_tab_coords",
+        "label": "Coordonnées",
+        "name": "",
+        "type": "tab",
+        "placement": "top",
+        "endpoint": 0,
+        "selected": 0
+      },
+      {
+        "key": "field_contact_coordonnees",
+        "label": "Coordonnées",
+        "name": "coordonnees",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_contact_coords_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Nos coordonnées"
+          },
+          {
+            "key": "field_contact_coords_items",
+            "label": "Items",
+            "name": "items",
+            "type": "repeater",
+            "layout": "block",
             "sub_fields": [
-              { "key": "field_contact_coord_icon", "label": "Icône", "name": "icon", "type": "text" },
-              { "key": "field_contact_coord_label", "label": "Label", "name": "label", "type": "text" },
-              { "key": "field_contact_coord_value", "label": "Valeur", "name": "value", "type": "text" }
+              {
+                "key": "field_contact_coord_icon",
+                "label": "Icône",
+                "name": "image",
+                "type": "image",
+                "return_format": "array",
+                "preview_size": "medium"
+              },
+              {
+                "key": "field_contact_coord_label",
+                "label": "Label",
+                "name": "label",
+                "type": "text"
+              },
+              {
+                "key": "field_contact_coord_value",
+                "label": "Valeur",
+                "name": "value",
+                "type": "text"
+              }
             ]
           }
-        ]
+        ],
+        "layout": "block"
       }
     ],
-    "location": [[{ "param": "page_slug", "operator": "==", "value": "contact" }]]
+    "location": [
+      [
+        {
+          "param": "page",
+          "operator": "==",
+          "value": "14"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
   }
 ]

@@ -18,7 +18,6 @@ export default async function AidesFinancieresPage() {
 
   // Hero
   const hero = acf?.hero;
-  const heroBadges = hero?.badges?.length ? hero.badges : fb.hero.badges;
 
   // Aides
   const aides = acf?.aides;
@@ -57,7 +56,6 @@ export default async function AidesFinancieresPage() {
     <div className="flex flex-col w-full bg-white">
       <AidesHeroSection
         hero={hero}
-        heroBadges={heroBadges}
         fallback={fb.hero}
       />
 

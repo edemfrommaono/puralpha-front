@@ -50,7 +50,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="shrink-0 mt-0.5"> <img src="/icons/map.png" alt="location" /></span>
-                26 Rue des Sablons, 95360 Montmagny
+                14K - 26 Rue des Sablons, 95360 Montmagny
               </li>
               <li className="flex items-start gap-3">
                 <span className="shrink-0 mt-0.5"> <img src="/icons/time.png" alt="time" /></span>

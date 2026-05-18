@@ -40,6 +40,8 @@ export default async function NousRejoindre() {
   const vh = acf?.valeurs_humaines;
   const qualities = vh?.qualities?.length ? vh.qualities : fb.valeurs_humaines.qualities;
   const temoignage = acf?.temoignage;
+  const process = acf?.process;
+  const processEtapes = process?.etapes?.length ? process.etapes : null;
   const faq = acf?.faq;
   const faqItems = faq?.items?.length ? faq.items : fb.faq.items;
   const formulaire = acf?.formulaire;
@@ -115,7 +117,13 @@ export default async function NousRejoindre() {
         backgroundImageUrl={temoignageBgUrl}
       />
 
-      <RejoindreProcess />
+      <RejoindreProcess
+        sectionTag={process?.section_tag}
+        title={process?.title}
+        titleHighlight={process?.title_highlight}
+        titleEnd={process?.title_end}
+        etapes={processEtapes}
+      />
 
       <RejoindreFaq
         sectionTag={faq?.section_tag || fb.faq.section_tag}
@@ -130,6 +138,7 @@ export default async function NousRejoindre() {
         description={formulaire?.description || fb.formulaire.description}
         submitText={formulaire?.submit_text || fb.formulaire.submit_text}
         emailFallback={formulaire?.email_fallback || fb.formulaire.email_fallback}
+        notes={formulaire?.notes || fb.formulaire.notes}
       />
     </main>
   );

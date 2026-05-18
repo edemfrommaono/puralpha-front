@@ -1,0 +1,37 @@
+[
+  {
+    "key": "group_process_recrutement",
+    "title": "Process de recrutement",
+    "active": true,
+    "show_in_rest": true,
+    "fields": [
+      {
+        "key": "field_nr_process",
+        "label": "Process de recrutement",
+        "name": "process",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_nr_pr_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Process de recrutement" },
+          { "key": "field_nr_pr_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Simple," },
+          { "key": "field_nr_pr_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "transparent" },
+          { "key": "field_nr_pr_tend", "label": "Fin du titre", "name": "title_end", "type": "text", "default_value": ", humain" },
+          {
+            "key": "field_nr_pr_etapes",
+            "label": "Étapes",
+            "name": "etapes",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+              { "key": "field_nr_pre_num", "label": "Numéro", "name": "num", "type": "text" },
+              { "key": "field_nr_pre_icon", "label": "Icône alternative", "name": "icon", "type": "text" },
+              { "key": "field_nr_pre_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_nr_pre_desc", "label": "Description", "name": "description", "type": "textarea" }
+            ]
+          }
+        ]
+      }
+    ],
+    "location": [[{ "param": "page_slug", "operator": "==", "value": "nous-rejoindre" }]]
+  }
+]

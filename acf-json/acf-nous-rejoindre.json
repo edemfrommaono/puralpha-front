@@ -59,6 +59,25 @@
           { "key": "field_nr_tem_author", "label": "Auteur", "name": "author", "type": "text" }
         ]
       },
+      { "key": "field_nr_tab_process", "label": "Process de recrutement", "type": "tab" },
+      {
+        "key": "field_nr_process", "label": "Process de recrutement", "name": "process", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_nr_pr_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Process de recrutement" },
+          { "key": "field_nr_pr_title", "label": "Titre", "name": "title", "type": "text" },
+          { "key": "field_nr_pr_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_nr_pr_tend", "label": "Fin du titre", "name": "title_end", "type": "text" },
+          {
+            "key": "field_nr_pr_etapes", "label": "Étapes", "name": "etapes", "type": "repeater", "layout": "block",
+            "sub_fields": [
+              { "key": "field_nr_pre_num", "label": "Numéro", "name": "num", "type": "text" },
+              { "key": "field_nr_pre_icon", "label": "Icône alternative", "name": "icon", "type": "text" },
+              { "key": "field_nr_pre_title", "label": "Titre", "name": "title", "type": "text" },
+              { "key": "field_nr_pre_desc", "label": "Description", "name": "description", "type": "textarea" }
+            ]
+          }
+        ]
+      },
       { "key": "field_nr_tab_faq", "label": "FAQ", "type": "tab" },
       {
         "key": "field_nr_faq", "label": "FAQ", "name": "faq", "type": "group", "show_in_rest": true,
@@ -83,7 +102,8 @@
           { "key": "field_nr_form_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Prêt(e) à rejoindre l'équipe PUR Alpha ?" },
           { "key": "field_nr_form_desc", "label": "Description", "name": "description", "type": "textarea" },
           { "key": "field_nr_form_submit", "label": "Texte bouton", "name": "submit_text", "type": "text", "default_value": "Envoyer ma candidature" },
-          { "key": "field_nr_form_email", "label": "Email fallback", "name": "email_fallback", "type": "text", "default_value": "contact@puralpha.fr" }
+          { "key": "field_nr_form_email", "label": "Email fallback", "name": "email_fallback", "type": "text", "default_value": "contact@puralpha.fr" },
+          { "key": "field_nr_form_note", "label": "Note de bas de page", "name": "note", "type": "textarea" }
         ]
       }
     ],

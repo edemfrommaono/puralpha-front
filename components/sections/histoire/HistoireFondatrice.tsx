@@ -44,11 +44,11 @@ export function HistoireFondatrice({
             {/* <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
                   {sectionTag}
                 </span> */}
-            <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+            <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight mb-6">
               {title}<br />
               <span className="text-teal-400">{titleHighlight}</span>
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">{paragraph1}</p>
+            <p className="text-gray-600 text-lg leading-relaxed mb-4">{paragraph1}</p>
             <p className="text-gray-600 text-lg leading-relaxed">{paragraph2}</p>
             {/* <div className="mt-4 p-6 bg-gold-500/5 rounded-tr-xl rounded-br-xl border-l-4 border-gold-500">
                 <p className="text-navy-800 italic text-lg leading-relaxed">{quote}</p>
