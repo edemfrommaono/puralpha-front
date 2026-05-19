@@ -17,7 +17,7 @@ const SPANS = [
 
 export function HistoireGalerie({ images }: HistoireGalerieProps) {
   return (
-    <section className="container mx-auto px-4 lg:px-8 py-10 lg:py-20 h-auto lg:h-[700px] max-w-7xl">
+    <section className="container mx-auto px-4 lg:px-8 py-6 lg:py-20 h-auto lg:h-[700px] max-w-7xl">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-2 h-full">
         {images.map((img, i) => (
           <div key={i} className={`relative rounded-xl overflow-hidden ${SPANS[i % SPANS.length]}`}>

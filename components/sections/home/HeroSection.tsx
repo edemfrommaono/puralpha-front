@@ -30,13 +30,13 @@ interface HeroSectionProps {
 
 export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallback: fb }: HeroSectionProps) {
   return (
-    <section className="relative w-full min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-teal-50 via-[#f7f5f0] to-white pt-28 pb-20 lg:pt-24 lg:pb-24">
+    <section className="relative w-full min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-teal-50 via-[#f7f5f0] to-white pt-10 pb-12 lg:pt-24 lg:pb-24">
       <div className="container mx-auto px-4 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-8 lg:gap-8 items-center">
           <div className="flex flex-col gap-6 max-w-xl">
             {(hero?.title || fb.title || hero?.title_highlight || fb.title_highlight) && (
               <FadeInView direction="left" delay={0}>
-                <h1 className="text-4xl lg:text-5xl font-black text-navy-800 leading-[45px]">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-navy-800 leading-[1.2] lg:leading-[45px]">
                   {hero?.title || fb.title}{" "}
                   {(hero?.title_highlight || fb.title_highlight) && (
                     <span className="text-teal-500">
@@ -48,14 +48,14 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
             )}
             {(hero?.subtitle || fb.subtitle) && (
               <FadeInView direction="left" delay={0.1}>
-                <p className="text-lg lg:text-xl font-semibold text-gray-700">
+                <p className="text-base md:text-lg lg:text-xl font-semibold text-gray-700">
                   {hero?.subtitle || fb.subtitle}
                 </p>
               </FadeInView>
             )}
             {(hero?.description || fb.description) && (
               <FadeInView direction="left" delay={0.2}>
-                <p className="text-base text-gray-700 leading-relaxed">
+                <p className="text-[15px] md:text-base text-gray-700 leading-relaxed">
                   {hero?.description || fb.description}
                 </p>
               </FadeInView>
@@ -90,9 +90,9 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
           </div>
 
           {/* Hero images — URLs résolues côté serveur */}
-          <FadeInView direction="right" delay={0.2} className="relative h-[400px] lg:h-[600px] w-full flex gap-4 lg:gap-6 justify-end">
+          <FadeInView direction="right" delay={0.2} className="relative min-h-[320px] md:min-h-[400px] lg:min-h-0 lg:h-[600px] w-full flex items-stretch gap-4 lg:gap-6 justify-end">
             {/* Colonne gauche — image unique, pleine hauteur */}
-            <div className="relative w-[55%] rounded-3xl overflow-hidden shadow-lg">
+            <div className="relative w-[55%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg">
               {heroImageLeftUrl ? (
                 <Image
                   src={heroImageLeftUrl}
@@ -106,7 +106,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
             </div>
             {/* Colonne droite — image fluide + texte adaptatif */}
             <div className="relative w-[41%] flex flex-col gap-4 min-h-0">
-              <div className="w-full flex-1 min-h-[50%] rounded-3xl overflow-hidden shadow-lg relative">
+              <div className="w-full flex-1 min-h-[50%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg relative">
                 {heroImageRightUrl ? (
                   <Image
                     src={heroImageRightUrl}
@@ -119,8 +119,8 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
                 )}
               </div>
               {(hero?.hero_overlay_text || fb.hero_overlay_text) && (
-                <div className="bg-navy-700 text-white p-6 rounded-3xl shadow-lg shrink-0 flex items-center">
-                  <p className="font-bold text-sm leading-relaxed">
+                <div className="bg-navy-700 text-white p-4 lg:p-6 rounded-2xl lg:rounded-3xl shadow-lg shrink-0 flex items-center">
+                  <p className="font-bold text-xs lg:text-sm leading-relaxed">
                     {hero?.hero_overlay_text || fb.hero_overlay_text}
                   </p>
                 </div>

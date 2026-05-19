@@ -23,16 +23,16 @@ export function FamillesServices({
   cards,
 }: FamillesServicesProps) {
   return (
-    <section className="py-20 lg:py-32 bg-[#ecf4f6]">
+    <section className="py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8">
-        <FadeInView className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl lg:text-4xl font-black text-navy-800 mb-6">
+        <FadeInView className="text-center mb-8 lg:mb-16 max-w-3xl mx-auto">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-6">
             {title} <span className="text-teal-400">{titleHighlight}</span>
           </h2>
-          <p className="text-gray-600 text-lg">{description}</p>
+          <p className="text-gray-600 text-[15px] md:text-lg">{description}</p>
         </FadeInView>
 
-        <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8">
           {cards.map((card, i) => (
             <StaggerItem key={i} className="bg-white border border-[#f3f4f6] rounded-[20px] overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
               <div className="h-48 bg-teal-800/10 relative">
@@ -48,8 +48,8 @@ export function FamillesServices({
                   <span className="text-navy-800 font-black text-xs tracking-wider uppercase">{card.tag}</span>
                 </div>
               </div>
-              <div className="p-8 flex-grow flex flex-col">
-                <h3 className="text-xl font-bold text-navy-800 mb-4">{card.title}</h3>
+              <div className="p-6 lg:p-8 flex-grow flex flex-col">
+                <h3 className="text-lg lg:text-xl font-bold text-navy-800 mb-4">{card.title}</h3>
                 <p className="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">{card.description}</p>
                 {/* <div className="flex flex-wrap gap-2">
                   {card.tags.map((tag, j) => (

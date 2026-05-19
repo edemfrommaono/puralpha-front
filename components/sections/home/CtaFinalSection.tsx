@@ -26,7 +26,7 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
   const ctaUrl = ctaFinal?.cta_url || fb.cta_url;
 
   return (
-    <section className="bg-navy-800 py-[100px] relative overflow-hidden">
+    <section className="bg-navy-800 py-16 lg:py-[100px] relative overflow-hidden">
       {ctaFondUrl && (
         <Image
           src={ctaFondUrl}
@@ -39,13 +39,13 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
       <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <FadeInView className="max-w-3xl mx-auto flex flex-col items-center text-center gap-8">
-          <h2 className="text-4xl lg:text-5xl font-black text-white leading-[50.4px]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight lg:leading-[50.4px]">
             {ctaFinal?.title || fb.title}{" "}
             <span className="text-gold-500">
               {ctaFinal?.title_highlight || fb.title_highlight}
             </span>
           </h2>
-          <p className="text-xl text-white/80">
+          <p className="text-lg lg:text-xl text-white/80">
             {ctaFinal?.subtitle || fb.subtitle}
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-white/80 my-4">
@@ -61,7 +61,7 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
           {ctaUrl && ctaUrl !== "#" && (
             <Button
               variant="gold"
-              className="px-10 py-4 text-lg mt-4"
+              className="px-8 py-3 lg:px-10 lg:py-4 text-base lg:text-lg mt-4"
               href={ctaUrl}
               style={{ borderRadius: '50px', background: '#F2C94C', boxShadow: '0 4px 15px 0 rgba(242, 201, 76, 0.30)' }}
               iconRight={<ArrowRight className="w-4 h-4" />}

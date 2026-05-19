@@ -22,19 +22,19 @@ interface EtapesSectionProps {
 
 export function EtapesSection({ title, description, steps, ctaText, ctaUrl }: EtapesSectionProps) {
   return (
-    <section className="py-20 lg:py-32 w-full bg-gray-50">
+    <section className="py-12 lg:py-32 w-full bg-gray-50">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <FadeInView>
-          <h2 className="text-3xl lg:text-4xl font-black text-navy-800 mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-4">
             {title}
           </h2>
-          <p className="text-gray-500 text-base max-w-2xl mx-auto mb-16">
+          <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto mb-12 lg:mb-16">
             {description}
           </p>
         </FadeInView>
         <div className="relative">
           <div className="hidden lg:block absolute top-[27px] left-[15%] right-[15%] h-px bg-teal-400/40" />
-          <StaggerContainer stagger={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          <StaggerContainer stagger={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
             {steps.map((step, i) => (
               <StaggerItem
                 key={i}
@@ -68,7 +68,7 @@ export function EtapesSection({ title, description, steps, ctaText, ctaUrl }: Et
             ))}
           </StaggerContainer>
         </div>
-        <div className="mt-16">
+        <div className="mt-10 lg:mt-16">
           <Button
             variant="navy"
             href={ctaUrl}

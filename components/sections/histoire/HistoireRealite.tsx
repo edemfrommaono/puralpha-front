@@ -31,19 +31,19 @@ export function HistoireRealite({
   const borders = ["border-teal-400", "border-gold-500", "border-teal-400"];
 
   return (
-    <section className="py-20 lg:py-32 bg-[#ecf4f6] relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[150px] lg:text-[280px] font-black text-navy-800/[0.04] leading-none select-none pointer-events-none">
+    <section className="py-8 lg:py-24 bg-[#ecf4f6] relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[100px] md:text-[150px] lg:text-[280px] font-black text-navy-800/[0.04] leading-none select-none pointer-events-none">
         PURA
       </div>
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20">
           {/* Colonne gauche : Carte PURA */}
-          <FadeInView direction="left" className="bg-white rounded-3xl p-8 lg:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.06)] border border-navy-800/10 flex flex-col justify-center relative overflow-hidden">
+          <FadeInView direction="left" className="bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.06)] border border-navy-800/10 flex flex-col justify-center relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-teal-400/10 blur-2xl rounded-full" />
             <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px] mb-4">
               {puraSectionTag}
             </span>
-            <h3 className="text-2xl lg:text-3xl font-extrabold text-navy-800 mb-6 leading-tight">
+            <h3 className="text-xl lg:text-3xl font-extrabold text-navy-800 mb-6 leading-tight">
               {puraTitle}
             </h3>
             <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-6">
@@ -58,16 +58,16 @@ export function HistoireRealite({
             </div>
           </FadeInView>
           {/* Colonne droite : Les problèmes */}
-          <FadeInView direction="right" delay={0.15} className="flex flex-col gap-8 justify-center">
+          <FadeInView direction="right" delay={0.15} className="flex flex-col gap-6 lg:gap-8 justify-center">
             <div>
-              <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-tight">
                 {title}<br />
                 <span className="text-teal-400">{titleHighlight}</span>
               </h2>
             </div>
             <div className="flex flex-col gap-6">
               {problems.map((problem, i) => (
-                <div key={i} className={`bg-white rounded-2xl p-6 flex gap-4 shadow-sm border-l-4 ${borders[i % borders.length]} relative`}>
+                <div key={i} className={`bg-white rounded-2xl p-5 md:p-6 flex gap-3 md:gap-4 shadow-sm border-l-4 ${borders[i % borders.length]} relative`}>
                   <div className="text-2xl mt-1 shrink-0">
                     {problem.imageUrl ? (
                       <img src={problem.imageUrl} alt="" className="w-7 h-7 object-contain" />

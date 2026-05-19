@@ -25,23 +25,23 @@ export function RejoindreProcess({
   if (!etapes || etapes.length === 0) return null;
 
   return (
-    <section className="w-full py-24 bg-[#ecf4f6]">
+    <section className="w-full py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 md:px-6 max-w-8xl">
-        <FadeInView className="text-center mb-16">
+        <FadeInView className="text-center mb-8 lg:mb-16">
           {sectionTag && (
             <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
           )}
-          <h2 className="text-3xl md:text-[38px] font-extrabold text-[#1C3553] mb-6 md:leading-[45.6px] font-poppins text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-[#1C3553] mb-4 lg:mb-6 md:leading-[45.6px] font-poppins text-center">
             {title}{" "}
             {titleHighlight && (
-              <span className="text-[#4ECDC4] font-poppins not-italic font-extrabold text-3xl md:text-[38px]">
+              <span className="text-[#4ECDC4] font-poppins not-italic font-extrabold text-2xl md:text-3xl lg:text-[38px]">
                 {titleHighlight}
               </span>
             )}
             {titleEnd && <span>{titleEnd}</span>}
           </h2>
         </FadeInView>
-        <StaggerContainer stagger={0.12} className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4 relative">
+        <StaggerContainer stagger={0.12} className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-4 relative">
           {etapes.map((step, i) => {
             const hasIcon = step.icon && step.icon !== "";
 
