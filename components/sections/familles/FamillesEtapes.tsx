@@ -27,13 +27,13 @@ export function FamillesEtapes({
   ctaUrl,
 }: FamillesEtapesProps) {
   return (
-    <section className="py-20 lg:py-32 bg-[#ecf4f6]">
+    <section className="py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <FadeInView>
-          <h2 className="text-3xl lg:text-4xl font-black text-navy-800 mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-4">
             {title}
           </h2>
-          <p className="text-gray-500 text-base max-w-2xl mx-auto mb-16">
+          <p className="text-gray-500 text-base max-w-2xl mx-auto mb-8 lg:mb-16">
             {description}
           </p>
         </FadeInView>
@@ -43,7 +43,7 @@ export function FamillesEtapes({
           {/* Ligne de connexion desktop */}
           <div className="hidden lg:block absolute top-[28px] left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-teal-300 via-teal-400 to-gold-400" />
 
-          <StaggerContainer stagger={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6">
+          <StaggerContainer stagger={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
             {steps.map((step, i) => {
               const isGold = i >= steps.length - 2;
               const accentBorder = isGold ? "border-[#F2C94C]" : "border-teal-400";
@@ -82,7 +82,7 @@ export function FamillesEtapes({
           </StaggerContainer>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-8 lg:mt-16">
           <Button
             variant="navy"
             href={ctaUrl}
