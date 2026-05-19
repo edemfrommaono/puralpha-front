@@ -45,16 +45,16 @@ export function ParcoursSection({
   const cards = resolvedParcoursCards || fallbackCards;
 
   return (
-    <section className="py-20 lg:py-32 w-full bg-white">
+    <section className="py-12 lg:py-32 w-full bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <FadeInView className="flex flex-col items-center text-center mb-16">
+        <FadeInView className="flex flex-col items-center text-center mb-10 lg:mb-16">
           <div className="flex items-center gap-3 mb-4">
 
             <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">
               {parcours?.section_tag || fb.section_tag}
             </span>
           </div>
-          <h2 className="text-3xl lg:text-4xl font-black text-navy-700">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-700">
             {parcours?.title || fb.title}
           </h2>
         </FadeInView>
@@ -69,10 +69,10 @@ export function ParcoursSection({
                 className={`${isFamille
                     ? "bg-teal-50/50 border-teal-100"
                     : "bg-gold-500/10 border-gold-500/20"
-                  } rounded-3xl border flex flex-col overflow-hidden group hover:shadow-xl transition-all`}
+                  } rounded-2xl lg:rounded-3xl border flex flex-col overflow-hidden group hover:shadow-xl transition-all`}
               >
                 {coverUrl && (
-                  <div className="relative w-full h-[250px] lg:h-[300px] overflow-hidden">
+                  <div className="relative w-full h-[200px] md:h-[250px] lg:h-[300px] overflow-hidden">
                     <Image
                       src={coverUrl}
                       alt={card.title}
@@ -81,7 +81,7 @@ export function ParcoursSection({
                     />
                   </div>
                 )}
-                <div className="p-8 lg:p-10 flex flex-col flex-grow">
+                <div className="p-6 lg:p-10 flex flex-col flex-grow">
                   <span
                     className={`inline-block w-fit px-4 py-1.5 ${isFamille
                         ? "bg-teal-400/10 text-teal-500"

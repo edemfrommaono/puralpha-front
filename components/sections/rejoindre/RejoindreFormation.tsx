@@ -38,10 +38,10 @@ export function RejoindreFormation({
   if (!steps?.length && !tag && !title && !titleHighlight && !titleEnd && !description) return null;
 
   return (
-    <section className="w-full py-24 bg-[#ecf4f6]">
+    <section className="w-full py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         {(tag || title || titleHighlight || titleEnd || description) && (
-          <FadeInView className="text-center mb-16">
+          <FadeInView className="text-center mb-8 lg:mb-16">
             {tag && (
               <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">
                 {tag}
@@ -49,8 +49,8 @@ export function RejoindreFormation({
             )}
             {(title || titleHighlight || titleEnd) && (
               <h2
-                className="font-extrabold text-navy-800 mb-6 leading-tight max-w-3xl mx-auto"
-                style={{ fontFamily: "Poppins, sans-serif", fontSize: "40px", lineHeight: "48px" }}
+                className="font-extrabold text-navy-800 mb-4 lg:mb-6 max-w-3xl mx-auto text-2xl md:text-3xl lg:text-[40px] leading-tight lg:leading-[48px]"
+                style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {title}
                 {(titleHighlight || titleEnd) && <br />}
@@ -73,22 +73,13 @@ export function RejoindreFormation({
           <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 relative z-10">
             {steps.map((step, i) => (
               <StaggerItem key={i} className="flex flex-col items-center text-center">
-                <span
-                  className="mb-2"
-                  style={{ color: "#4ECDC4", fontFamily: "Poppins, sans-serif", fontSize: "18px", fontWeight: 800, lineHeight: "22px", textAlign: "center" }}
-                >
+                <span className="text-teal-400 font-extrabold text-lg leading-tight text-center mb-2">
                   {step.valeur}
                 </span>
-                <h4
-                  className="mb-1"
-                  style={{ color: "#1C3553", fontFamily: "Poppins, sans-serif", fontSize: "14px", fontWeight: 700, lineHeight: "22.4px", textAlign: "center" }}
-                >
+                <h4 className="text-navy-800 font-bold text-sm leading-relaxed text-center mb-1">
                   {step.sous_titre}
                 </h4>
-                <p
-                  className="max-w-[220px] mb-6"
-                  style={{ color: "#6B7280", fontFamily: "Poppins, sans-serif", fontSize: "13px", fontWeight: 400, lineHeight: "20.15px", textAlign: "center" }}
-                >
+                <p className="text-gray-500 text-[13px] leading-relaxed text-center mb-6 max-w-[220px]">
                   {step.titre}
                 </p>
               </StaggerItem>

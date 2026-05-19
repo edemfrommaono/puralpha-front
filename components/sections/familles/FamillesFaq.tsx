@@ -21,18 +21,18 @@ export function FamillesFaq({
   items,
 }: FamillesFaqProps) {
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <section className="py-8 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 lg:mb-16">
           <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
             {sectionTag}
-          </span> 
-          <h2 className="text-md md:text-2xl lg:text-4xl font-black text-navy-800 mt-4">
+          </span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mt-4">
             {title} <span className="text-teal-400">{titleHighlight}</span>
           </h2>
         </div>
         <Accordion items={items} />
-        <div className="mt-16 text-center">
+        <div className="mt-8 lg:mt-16 text-center">
           <Button
             variant="navy"
             href="/aides-financieres"

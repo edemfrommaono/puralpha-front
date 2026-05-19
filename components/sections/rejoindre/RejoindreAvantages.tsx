@@ -21,14 +21,14 @@ export function RejoindreAvantages({
   sectionTag, title, titleHighlight, description, cards,
 }: RejoindreAvantagesProps) {
   return (
-    <section className="w-full pt-24 pb-32 lg:pb-40 bg-white">
+    <section className="w-full pt-8 pb-12 lg:pt-24 lg:pb-40 bg-white">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <div className="max-w-3xl mx-auto">
-          <FadeInView className="text-center mb-16">
+          <FadeInView className="text-center mb-8 lg:mb-16">
             <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
-            <h2 className="text-3xl md:text-[38px] font-extrabold text-navy-800 mb-6 md:leading-[45.6px]">
+            <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-navy-800 mb-4 lg:mb-6 md:leading-[45.6px]">
               {title}{" "}
-              <span className="text-[#4ECDC4] font-poppins not-italic font-extrabold text-3xl md:text-[38px]">
+              <span className="text-[#4ECDC4] font-poppins not-italic font-extrabold text-2xl md:text-3xl lg:text-[38px]">
                 {titleHighlight}
               </span>
             </h2>
@@ -39,7 +39,7 @@ export function RejoindreAvantages({
         {/* Première ligne — 3 colonnes */}
         <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cards.slice(0, 3).map((card, i) => (
-            <StaggerItem key={i} className="bg-[#ecf4f6] border border-gray-100 rounded-[20px] p-8 flex flex-col items-start">
+            <StaggerItem key={i} className="bg-[#ecf4f6] border border-gray-100 rounded-[20px] p-6 lg:p-8 flex flex-col items-start">
               <div className={`w-12 h-12 rounded-xl ${ICON_BGS[i % ICON_BGS.length]} flex items-center justify-center text-2xl mb-6`}>
                 {card.imageUrl ? (
                   <img src={card.imageUrl} alt="" className="w-7 h-7 object-contain" />
@@ -56,7 +56,7 @@ export function RejoindreAvantages({
         {cards.length > 3 && (
           <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             {cards.slice(3).map((card, i) => (
-              <StaggerItem key={i + 3} className="bg-[#ecf4f6] border border-gray-100 rounded-[20px] p-8 flex flex-col items-start">
+              <StaggerItem key={i + 3} className="bg-[#ecf4f6] border border-gray-100 rounded-[20px] p-6 lg:p-8 flex flex-col items-start">
                 <div className={`w-12 h-12 rounded-xl ${ICON_BGS[(i + 3) % ICON_BGS.length]} flex items-center justify-center text-2xl mb-6`}>
                   {card.imageUrl ? (
                     <img src={card.imageUrl} alt="" className="w-7 h-7 object-contain" />

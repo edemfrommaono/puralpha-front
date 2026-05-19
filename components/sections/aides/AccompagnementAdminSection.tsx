@@ -31,13 +31,13 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
   const accompagnements = accAdmin?.accompagnements?.length ? accAdmin.accompagnements : fb.accompagnements;
 
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <section className="py-8 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 lg:mb-16">
           <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
             {accAdmin?.tag || fb.tag}
           </span>
-          <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
             {accAdmin?.titre_1 || fb.titre_1}{" "}
             <span className="text-teal-400">{accAdmin?.title_highlight || fb.title_highlight}</span>
             <br />
@@ -50,7 +50,7 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {accompagnements.map((item, i) => (
-            <div key={i} className="bg-[#ECF4F6] border border-[#F3F4F6] rounded-[18px] p-8 shadow-sm flex flex-col gap-4 relative overflow-hidden">
+            <div key={i} className="bg-[#ECF4F6] border border-[#F3F4F6] rounded-[18px] p-6 lg:p-8 shadow-sm flex flex-col gap-4 relative overflow-hidden">
               <span className="text-[60px] font-black text-teal-400/10 leading-none">
                 {String(item.ordre).padStart(2, "0")}
               </span>
