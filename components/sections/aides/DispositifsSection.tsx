@@ -8,7 +8,7 @@ interface AideCard {
   description: string;
   highlight_value: string;
   highlight_label: string;
-  tags: { text: string }[];
+  tags: readonly { text: string }[];
 }
 
 interface ResolvedAideCard extends AideCard {

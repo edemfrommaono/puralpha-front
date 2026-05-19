@@ -104,9 +104,9 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
                 <div className="absolute inset-0 bg-teal-400" />
               )}
             </div>
-            {/* Colonne droite — 80% image + 20% texte */}
+            {/* Colonne droite — image fluide + texte adaptatif */}
             <div className="relative w-[41%] flex flex-col gap-4 min-h-0">
-              <div className="w-full h-[80%] rounded-3xl overflow-hidden shadow-lg relative">
+              <div className="w-full flex-1 min-h-[50%] rounded-3xl overflow-hidden shadow-lg relative">
                 {heroImageRightUrl ? (
                   <Image
                     src={heroImageRightUrl}
@@ -119,7 +119,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
                 )}
               </div>
               {(hero?.hero_overlay_text || fb.hero_overlay_text) && (
-                <div className="bg-navy-700 text-white p-6 rounded-3xl shadow-lg h-[20%] flex items-center">
+                <div className="bg-navy-700 text-white p-6 rounded-3xl shadow-lg shrink-0 flex items-center">
                   <p className="font-bold text-sm leading-relaxed">
                     {hero?.hero_overlay_text || fb.hero_overlay_text}
                   </p>

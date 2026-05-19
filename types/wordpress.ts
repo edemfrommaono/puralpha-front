@@ -127,11 +127,13 @@ export interface HomePageACF {
     section_tag: string;
     title: string;
     title_highlight: string;
+    titre_2?: string;
     description_1: string;
     description_2: string;
     cta_text: string;
     cta_url: string;
     image_de_carte: ACFImage;
+    logos?: Array<{ image_logo: number | string }>;
   };
   parcours?: {
     section_tag: string;
@@ -314,6 +316,7 @@ export interface PourLesFamillesACF {
     cta_text: string;
     cta_url: string;
   };
+  steps?: Array<{ title: string; items: Array<{ text: string }> }>;
   limites?: {
     title: string;
     title_highlight: string;
@@ -480,6 +483,17 @@ export interface NousRejoindreACF {
     quote: string;
     author: string;
   };
+  process?: {
+    section_tag?: string;
+    title?: string;
+    title_highlight?: string;
+    title_end?: string;
+    etapes?: Array<{
+      title: string;
+      description: string;
+      icon?: string;
+    }>;
+  };
   faq?: {
     section_tag: string;
     title: string;
@@ -495,6 +509,7 @@ export interface NousRejoindreACF {
     description: string;
     submit_text: string;
     email_fallback: string;
+    notes?: string;
   };
 }
 
@@ -511,6 +526,7 @@ export interface ContactPageACF {
   formulaire?: {
     title: string;
     image: ACFImage;
+    notes?: string;
   };
   coordonnees?: {
     title: string;

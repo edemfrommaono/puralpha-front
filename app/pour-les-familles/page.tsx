@@ -66,10 +66,10 @@ export default async function FamillesPage() {
         imageUrl: typeof item.image === 'number'
           ? await resolveImageUrl(item.image)
           : getImageUrl(item.image),
-        fallback_icon: fb.handicaps.types[idx]?.fallback_icon,
+        fallback_icon: (fb.handicaps.types as unknown as Array<{ fallback_icon?: string }>)[idx]?.fallback_icon,
       }))
     )
-    : fb.handicaps.types.map((item) => ({
+    : (fb.handicaps.types as unknown as Array<{ label: string; fallback_icon?: string }>).map((item) => ({
       label: item.label,
       imageUrl: '',
       fallback_icon: item.fallback_icon,
@@ -83,10 +83,10 @@ export default async function FamillesPage() {
         imageUrl: typeof item.image === 'number'
           ? await resolveImageUrl(item.image)
           : getImageUrl(item.image),
-        fallback_icon: fb.garanties.items[idx]?.fallback_icon,
+        fallback_icon: (fb.garanties.items as unknown as Array<{ fallback_icon?: string }>)[idx]?.fallback_icon,
       }))
     )
-    : fb.garanties.items.map((item) => ({
+    : (fb.garanties.items as unknown as Array<{ title: string; description: string; fallback_icon?: string }>).map((item) => ({
       title: item.title,
       description: item.description,
       imageUrl: '',
@@ -131,7 +131,7 @@ export default async function FamillesPage() {
           : getImageUrl(card.image),
       }))
     )
-    : fb.services.cards.map((card) => ({
+    : (fb.services.cards as unknown as Array<{ tag: string; title: string; description: string; tags: Array<{ text: string }> }>).map((card) => ({
       tag: card.tag,
       title: card.title,
       description: card.description,

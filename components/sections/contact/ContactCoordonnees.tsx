@@ -2,7 +2,7 @@ interface CoordItem {
   label: string;
   value: string;
   imageUrl: string;
-  fallback_icon: string;
+  fallback_icon?: string;
 }
 
 interface ContactCoordonneesProps {
