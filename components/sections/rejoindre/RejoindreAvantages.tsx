@@ -4,7 +4,7 @@ interface AvantageCard {
   title: string;
   description: string;
   imageUrl: string;
-  fallback_icon: string;
+  fallback_icon?: string;
 }
 
 interface RejoindreAvantagesProps {
