@@ -41,10 +41,10 @@ export default async function ContactPage() {
           imageUrl: typeof item.image === "number"
             ? await resolveImageUrl(item.image)
             : getImageUrl(item.image),
-          fallback_icon: fb.coordonnees.items[i]?.fallback_icon,
+          fallback_icon: (fb.coordonnees.items as unknown as Array<{ fallback_icon?: string }>)[i]?.fallback_icon,
         }))
       )
-    : fb.coordonnees.items.map((item) => ({
+    : (fb.coordonnees.items as unknown as Array<{ label: string; value: string; fallback_icon?: string }>).map((item) => ({
         label: item.label,
         value: item.value,
         imageUrl: "",

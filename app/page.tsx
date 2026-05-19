@@ -38,8 +38,10 @@ export default async function Home() {
   const territoireImageUrl = await resolveImageUrl(territoire?.image_de_carte);
   const territoireLogoUrls = territoire?.logos?.length
     ? await Promise.all(
-        territoire.logos.map(async (logo: { image_logo: number | string }) => ({
-          url: await resolveImageUrl(logo.image_logo),
+        territoire.logos.map(async (logo) => ({
+          url: typeof logo.image_logo === 'string'
+            ? logo.image_logo
+            : await resolveImageUrl(logo.image_logo),
         }))
       )
     : [];
@@ -59,7 +61,7 @@ export default async function Home() {
   const resolvedAccServices = await Promise.all(
     accServices.map(async (srv) => ({
       ...srv,
-      imageUrl: await resolveImageUrl(srv.image),
+      imageUrl: await resolveImageUrl((srv as { image?: Parameters<typeof resolveImageUrl>[0] }).image),
     }))
   );
 
@@ -120,7 +122,7 @@ export default async function Home() {
       <TerritoireSection
         territoire={territoire}
         territoireImageUrl={territoireImageUrl}
-        logoUrls={territoireLogoUrls.map(l => l.url).filter(Boolean)}
+        logoUrls={territoireLogoUrls.map((l: { url: string }) => l.url).filter(Boolean)}
         fallback={fb.territoire}
       />
 

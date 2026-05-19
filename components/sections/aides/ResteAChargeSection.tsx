@@ -39,12 +39,12 @@ export function ResteAChargeSection({
   if (!title && !titleHighlight && !description && !imageUrl && !ctaPrimaryText && !ctaSecondaryText) return null;
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-8 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
           {/* Image */}
           {(imageUrl || imageCaption || DEFAULTS.imageCaption) && (
-            <div className="relative overflow-hidden shadow-xl w-full lg:w-[45%] shrink-0" style={{ borderRadius: "16px", minHeight: "490px", background: "lightgray 50% / cover no-repeat" }}>
+            <div className="relative overflow-hidden shadow-xl w-full lg:w-[45%] shrink-0 min-h-[350px] lg:min-h-[490px]" style={{ borderRadius: "16px", background: "lightgray 50% / cover no-repeat" }}>
                 {imageUrl ? (
                   <Image
                     src={imageUrl}
@@ -83,24 +83,19 @@ export function ResteAChargeSection({
           <div>
             {(title || titleHighlight) && (
               <h2
-                className="font-extrabold mb-6"
+                className="font-extrabold mb-4 lg:mb-6 text-3xl md:text-4xl lg:text-[40px] leading-tight lg:leading-[48px]"
                 style={{
                   color: "#1C3553",
                   fontFamily: "Poppins, sans-serif",
-                  fontSize: "40px",
-                  fontWeight: 800,
-                  lineHeight: "48px",
                 }}
               >
                 {title}{" "}
                 {titleHighlight && (
                   <span
+                    className="text-3xl md:text-4xl lg:text-[40px] leading-tight lg:leading-[48px]"
                     style={{
                       color: "#4ECDC4",
                       fontFamily: "Poppins, sans-serif",
-                      fontSize: "40px",
-                      fontWeight: 800,
-                      lineHeight: "48px",
                     }}
                   >
                     {titleHighlight}
@@ -111,13 +106,10 @@ export function ResteAChargeSection({
 
             {description && (
               <p
-                className="mb-10"
+                className="mb-8 lg:mb-10 text-[15px] lg:text-[16px] leading-relaxed lg:leading-[29.6px]"
                 style={{
                   color: "#6B7280",
                   fontFamily: "Poppins, sans-serif",
-                  fontSize: "16px",
-                  fontWeight: 400,
-                  lineHeight: "29.6px",
                 }}
               >
                 {description}

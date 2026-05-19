@@ -17,12 +17,12 @@ interface ValuesBarSectionProps {
 
 export function ValuesBarSection({ resolvedValuesBar, fallbackValues }: ValuesBarSectionProps) {
   return (
-    <section className="bg-navy-700 text-white py-8 w-full overflow-hidden">
+    <section className="bg-navy-700 text-white py-6 lg:py-8 w-full overflow-hidden">
       <FadeInView direction="none" className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-wrap lg:flex-nowrap justify-between items-center gap-6 lg:gap-4 overflow-x-auto pb-2 lg:pb-0 hide-scrollbar">
+        <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center gap-y-6 gap-x-4 lg:gap-4 overflow-x-hidden pb-2 lg:pb-0 hide-scrollbar">
           {resolvedValuesBar
             ? resolvedValuesBar.map((v, i) => (
-              <div key={i} className="flex items-center gap-3 shrink-0">
+              <div key={i} className="flex items-center justify-center lg:justify-start gap-2 md:gap-3 shrink-0 w-[calc(50%-8px)] md:w-[calc(33%-16px)] lg:w-auto">
                 {v.imageUrl ? (
                   <Image
                     src={v.imageUrl}
@@ -32,15 +32,15 @@ export function ValuesBarSection({ resolvedValuesBar, fallbackValues }: ValuesBa
                     className="object-contain"
                   />
                 ) : (
-                  <span className="text-xl">✦</span>
+                  <span className="text-lg lg:text-xl">✦</span>
                 )}
-                <span className="font-semibold tracking-wide">{v.label}</span>
+                <span className="font-semibold tracking-wide text-sm lg:text-base">{v.label}</span>
               </div>
             ))
             : fallbackValues.map((v, i) => (
-              <div key={i} className="flex items-center gap-3 shrink-0">
-                <span className="text-xl">✦</span>
-                <span className="font-semibold tracking-wide">{v.label}</span>
+              <div key={i} className="flex items-center justify-center lg:justify-start gap-2 md:gap-3 shrink-0 w-[calc(50%-8px)] md:w-[calc(33%-16px)] lg:w-auto">
+                <span className="text-lg lg:text-xl">✦</span>
+                <span className="font-semibold tracking-wide text-sm lg:text-base">{v.label}</span>
               </div>
             ))}
         </div>

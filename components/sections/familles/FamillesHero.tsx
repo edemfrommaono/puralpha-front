@@ -20,11 +20,11 @@ export function FamillesHero({
   stats,
 }: FamillesHeroProps) {
   return (
-    <section className="bg-[#ecf4f6] relative overflow-hidden py-20 lg:py-32">
+    <section className="bg-[#ecf4f6] relative overflow-hidden pt-10 pb-8 lg:py-24">
       <div className="container mx-auto px-4 lg:px-8 relative z-10 flex flex-col items-center text-center">
         {(title || titleHighlight) && (
           <FadeInView>
-            <h1 className="text-4xl lg:text-5xl lg:text-6xl font-black text-navy-800 leading-tight mb-6 max-w-4xl">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-navy-800 leading-tight mb-6 max-w-4xl">
               {title}{" "}
               {titleHighlight && (
                 <span className="text-teal-400">{titleHighlight}</span>
@@ -34,13 +34,13 @@ export function FamillesHero({
         )}
         {description && (
           <FadeInView delay={0.15}>
-            <p className="text-lg md:text-xl text-gray-700 max-w-2xl mb-10">
+            <p className="text-base md:text-lg lg:text-xl text-gray-700 max-w-2xl mb-8 lg:mb-10">
               {description}
             </p>
           </FadeInView>
         )}
         {(ctaPrimaryText || ctaSecondaryText) && (
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-16">
             {ctaPrimaryText && (
               <Button variant="navy" href="/contact" iconRight={<ArrowRight className="w-4 h-4" />}>
                 {ctaPrimaryText}

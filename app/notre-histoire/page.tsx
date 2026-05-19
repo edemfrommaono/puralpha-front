@@ -62,10 +62,10 @@ export default async function NotreHistoirePage() {
         imageUrl: typeof p.image === "number"
           ? await resolveImageUrl(p.image)
           : getImageUrl(p.image),
-        fallback_icon: fb.realite_familles.problems[idx]?.fallback_icon,
+        fallback_icon: (fb.realite_familles.problems as unknown as Array<{ fallback_icon?: string }>)[idx]?.fallback_icon,
       }))
     )
-    : fb.realite_familles.problems.map((p) => ({
+    : (fb.realite_familles.problems as unknown as Array<{ title: string; description: string; fallback_icon?: string }>).map((p) => ({
       title: p.title,
       description: p.description,
       imageUrl: "",
@@ -83,7 +83,7 @@ export default async function NotreHistoirePage() {
           : getImageUrl(img.image_mis_en_avant),
       }))
     )
-    : fb.galerie.images.map((img) => ({ libelle: img.libelle, imageUrl: "" }));
+    : (fb.galerie.images as unknown as Array<{ libelle: string }>).map((img) => ({ libelle: img.libelle, imageUrl: "" }));
 
   // Pourquoi PUR Alpha existe
   const pourquoiImageUrl = await resolveImageUrl(pourquoi?.image_mise_en_avant ?? null);
@@ -97,10 +97,10 @@ export default async function NotreHistoirePage() {
         imageUrl: typeof v.image === "number"
           ? await resolveImageUrl(v.image)
           : getImageUrl(v.image),
-        fallback_icon: fb.valeurs.items[idx]?.fallback_icon,
+        fallback_icon: (fb.valeurs.items as unknown as Array<{ fallback_icon?: string }>)[idx]?.fallback_icon,
       }))
     )
-    : fb.valeurs.items.map((v) => ({
+    : (fb.valeurs.items as unknown as Array<{ title: string; description: string; fallback_icon?: string }>).map((v) => ({
       title: v.title,
       description: v.description,
       imageUrl: "",

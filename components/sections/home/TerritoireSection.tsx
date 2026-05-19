@@ -7,7 +7,7 @@ interface TerritoireSectionProps {
     section_tag: string;
     title: string;
     title_highlight: string;
-    titre_2: string;
+    titre_2?: string;
     description_1: string;
     description_2: string;
     cta_text: string;
@@ -29,10 +29,10 @@ interface TerritoireSectionProps {
 
 export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fallback: fb }: TerritoireSectionProps) {
   return (
-    <section className="py-20 lg:py-32 w-full bg-[#ecf4f6]">
+    <section className="py-12 lg:py-32 w-full bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <FadeInView direction="left" className="order-2 lg:order-1 relative h-[400px] lg:h-[500px] w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <FadeInView direction="left" className="order-2 lg:order-1 relative h-[300px] md:h-[400px] lg:h-[500px] w-full">
             {territoireImageUrl ? (
               <Image
                 src={territoireImageUrl}
@@ -61,7 +61,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
                 </div>
               )}
               {(territoire?.title || fb.title || territoire?.title_highlight || fb.title_highlight || territoire?.titre_2 || fb.titre_2) && (
-                <h2 className="text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
                   {territoire?.title || fb.title}{" "}
                   {(territoire?.title_highlight || fb.title_highlight) && (
                     <span className="text-teal-400">
@@ -73,7 +73,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
               )}
             </div>
             {(territoire?.description_1 || fb.description_1) && (
-              <p className="text-base text-gray-700 leading-relaxed">
+              <p className="text-[15px] md:text-base text-gray-700 leading-relaxed">
                 {territoire?.description_1 || fb.description_1}
               </p>
             )}
@@ -92,7 +92,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
               </div>
             )}
             {(territoire?.description_2 || fb.description_2) && (
-              <p className="text-base text-gray-700 leading-relaxed mb-4">
+              <p className="text-[15px] md:text-base text-gray-700 leading-relaxed mb-4">
                 {territoire?.description_2 || fb.description_2}
               </p>
             )}

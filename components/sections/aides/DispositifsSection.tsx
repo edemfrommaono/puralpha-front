@@ -8,7 +8,7 @@ interface AideCard {
   description: string;
   highlight_value: string;
   highlight_label: string;
-  tags: { text: string }[];
+  tags: readonly { text: string }[];
 }
 
 interface ResolvedAideCard extends AideCard {
@@ -52,13 +52,13 @@ export function DispositifsSection({
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <section className="py-8 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <FadeInView className="text-center mb-16">
+        <FadeInView className="text-center mb-8 lg:mb-16">
           <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
             {aides?.section_tag || fb.section_tag}
           </span>
-          <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
             {aides?.title || fb.title}<br />
             <span className="text-teal-400">{aides?.title_highlight || fb.title_highlight}</span>
           </h2>
@@ -67,14 +67,14 @@ export function DispositifsSection({
           </p>
         </FadeInView>
 
-        <StaggerContainer stagger={0.12} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <StaggerContainer stagger={0.12} className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {cards.map((card, i) => {
             const c = palettes[card.accent_color] || palettes["#52bdc7"];
             const fbCard = fallbackCards[i];
             const imageUrl = "imageUrl" in card ? card.imageUrl : null;
 
             return (
-              <StaggerItem key={i} className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex flex-col gap-6 relative overflow-hidden pt-10">
+              <StaggerItem key={i} className="bg-white border border-gray-100 rounded-2xl lg:rounded-3xl p-6 lg:p-8 shadow-sm flex flex-col gap-5 lg:gap-6 relative overflow-hidden pt-8 lg:pt-10">
                 <div className={`absolute top-0 left-0 right-0 h-1 ${c.bar}`} />
                 <div className="flex gap-4 items-start">
                   <div className={`w-14 h-14 ${c.iconBg} rounded-2xl flex items-center justify-center text-2xl shrink-0`}>
@@ -85,7 +85,7 @@ export function DispositifsSection({
                     )}
                   </div>
                   <div>
-                    <h3 className={`text-2xl font-black leading-tight ${c.titleColor}`}>{card.title}</h3>
+                    <h3 className={`text-xl lg:text-2xl font-black leading-tight ${c.titleColor}`}>{card.title}</h3>
                     <p className="text-sm text-gray-500 mt-1">{card.subtitle}</p>
                   </div>
                 </div>

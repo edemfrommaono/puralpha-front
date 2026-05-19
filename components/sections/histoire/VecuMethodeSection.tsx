@@ -31,14 +31,14 @@ export function VecuMethodeSection({
   if (!cardItems?.length && !title && !titleHighlight && !description) return null;
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-8 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
         {(title || titleHighlight || description) && (
-          <FadeInView className="text-center mb-12">
+          <FadeInView className="text-center mb-8 lg:mb-12">
             {(title || titleHighlight) && (
               <h2
-                className="font-extrabold text-navy-800 leading-tight mb-6"
-                style={{ fontFamily: "Poppins, sans-serif", fontSize: "40px", lineHeight: "48px" }}
+                className="font-extrabold text-navy-800 mb-4 lg:mb-6 text-2xl md:text-3xl lg:text-[40px] leading-tight lg:leading-[48px]"
+                style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {title}{" "}
                 {titleHighlight && (
@@ -59,8 +59,7 @@ export function VecuMethodeSection({
             {cardItems.map((item, i) => (
               <StaggerItem
                 key={i}
-                className="bg-[#ECF4F6] border border-gray-100 shadow-sm flex flex-col items-center text-center"
-                style={{ padding: "40px 30px", borderRadius: "16px" }}
+                className="bg-[#ECF4F6] border border-gray-100 shadow-sm flex flex-col items-center text-center p-6 lg:p-8 rounded-2xl"
               >
                 <div
                   className="flex items-center justify-center border-2 border-teal-400 text-teal-400 font-bold text-lg mb-5"

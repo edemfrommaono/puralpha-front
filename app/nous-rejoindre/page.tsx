@@ -63,10 +63,10 @@ export default async function NousRejoindre() {
           imageUrl: typeof card.image === "number"
             ? await resolveImageUrl(card.image)
             : getImageUrl(card.image),
-          fallback_icon: fb.avantages.cards[i]?.fallback_icon,
+          fallback_icon: (fb.avantages.cards as unknown as Array<{ fallback_icon?: string }>)[i]?.fallback_icon,
         }))
       )
-    : fb.avantages.cards.map((c) => ({
+    : (fb.avantages.cards as unknown as Array<{ title: string; description: string; fallback_icon?: string }>).map((c) => ({
         title: c.title,
         description: c.description,
         imageUrl: "",
