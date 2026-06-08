@@ -13,7 +13,7 @@ export function ContactHero({ title, titleHighlight, description }: ContactHeroP
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-navy-900 mb-4 md:mb-6">
           {title} <span className="text-teal-400">{titleHighlight}</span>
         </h1>
-        <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto">{description}</p>
+        <p className="text-base text-center md:text-lg text-gray-500 max-w-2xl mx-auto">{description}</p>
       </FadeInView>
     </section>
   );
