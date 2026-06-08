@@ -50,7 +50,7 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {accompagnements.map((item, i) => (
-            <div key={i} className="bg-[#ECF4F6] border border-[#F3F4F6] rounded-[18px] p-6 lg:p-8 shadow-sm flex flex-col gap-4 relative overflow-hidden">
+            <div key={i} className="bg-[#F6F4EF] border border-[#F3F4F6] rounded-[18px] p-6 lg:p-8 shadow-sm flex flex-col gap-4 relative overflow-hidden">
               <span className="text-[60px] font-black text-[#F2C94C]/50 leading-none">
                 {String(item.ordre).padStart(2, "0")}
               </span>
