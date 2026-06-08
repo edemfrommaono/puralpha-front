@@ -10,10 +10,12 @@ const candidatureSchema = z.object({
   "name-1": z.string().min(1, "Ce champ est requis"),       // Prénom
   "name-2": z.string().min(1, "Ce champ est requis"),       // Nom
   "email-1": z.string().email("Adresse mail invalide").min(1, "Ce champ est requis"),
-  "phone-1": z.string().optional(),                          // Téléphone
+  "phone-1": z.string().min(1, "Ce champ est requis"),                          // Téléphone
   "text-1": z.string().min(1, "Ce champ est requis"),        // Commune de résidence
   "text-2": z.string().min(1, "Ce champ est requis"),        // Disponibilités principales
   "select-1": z.string().optional(),                         // Expérience handicap
+  "select-2": z.string().min(1, "Ce champ est requis"),      // Accompagnement enfants situation handicap
+  "text-3": z.string().min(1, "Ce champ est requis"),        // Nombre d'années d'expérience
   "upload-1": z.any().refine((files) => files && files.length > 0, "Un CV est requis"), // CV *
   "textarea-1": z.string().max(180, "180 caractères max").optional(),
   "consent": z.boolean().refine((val) => val === true, "Vous devez accepter pour continuer"),
@@ -29,6 +31,8 @@ const FIELD_MAPPING = {
   "text-1": "text-1",
   "text-2": "text-2",
   "select-1": "select-1",
+  "select-2": "select-2",
+  "text-3": "text-3",
   "upload-1": "upload-1",
   "textarea-1": "textarea-1",
 } as const;
@@ -66,6 +70,8 @@ export function RejoindreFormulaire({
       "text-1": "",
       "text-2": "",
       "select-1": "",
+      "select-2": "",
+      "text-3": "",
       "upload-1": null,
       "textarea-1": "",
       "consent": false,
@@ -191,13 +197,14 @@ export function RejoindreFormulaire({
                   {errors["email-1"] && <p className="text-red-500 text-xs">{errors["email-1"].message}</p>}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Téléphone</label>
+                  <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Téléphone *</label>
                   <input
                     type="tel"
                     placeholder="06 XX XX XX XX"
                     {...register("phone-1")}
-                    className="w-full bg-[#ecf4f6] border border-[#f3f4f6] rounded-lg px-5 py-4 text-[15px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    className={`w-full bg-[#ecf4f6] border ${errors["phone-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-lg px-5 py-4 text-[15px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400`}
                   />
+                  {errors["phone-1"] && <p className="text-red-500 text-xs">{errors["phone-1"].message}</p>}
                 </div>
               </div>
 
@@ -235,6 +242,43 @@ export function RejoindreFormulaire({
                   <option value="Personnelle">Personnelle</option>
                   <option value="Professionnelle">Professionnelle</option>
                 </select>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2 justify-between">
+                  <span className="text-xs font-bold text-navy-800 uppercase tracking-wide">Avez-vous déjà accompagné des enfants en situation de handicap ? *</span>
+                  <div className="flex items-center gap-6 py-2">
+                    <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 font-semibold select-none">
+                      <input
+                        type="radio"
+                        value="Oui"
+                        {...register("select-2")}
+                        className={`h-5 w-5 text-teal-500 bg-[#ecf4f6] border ${errors["select-2"] ? "border-red-400" : "border-gray-300"} focus:ring-teal-400 cursor-pointer`}
+                      />
+                      Oui
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 font-semibold select-none">
+                      <input
+                        type="radio"
+                        value="Non"
+                        {...register("select-2")}
+                        className={`h-5 w-5 text-teal-500 bg-[#ecf4f6] border ${errors["select-2"] ? "border-red-400" : "border-gray-300"} focus:ring-teal-400 cursor-pointer`}
+                      />
+                      Non
+                    </label>
+                  </div>
+                  {errors["select-2"] && <p className="text-red-500 text-xs mt-1">{errors["select-2"].message}</p>}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Nombre d'années d'expérience *</label>
+                  <input
+                    type="text"
+                    placeholder="Ex: 2 ans"
+                    {...register("text-3")}
+                    className={`w-full bg-[#ecf4f6] border ${errors["text-3"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-lg px-5 py-4 text-[15px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400`}
+                  />
+                  {errors["text-3"] && <p className="text-red-500 text-xs">{errors["text-3"].message}</p>}
+                </div>
               </div>
 
               <div className="flex flex-col gap-2">
