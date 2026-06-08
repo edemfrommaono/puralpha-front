@@ -7,6 +7,11 @@
   --foreground: #1c3553;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -15,5 +20,15 @@ body {
 @layer base {
   p {
     @apply text-justify;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

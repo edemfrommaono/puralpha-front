@@ -25,7 +25,7 @@ interface AidesCtaSectionProps {
 
 export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: AidesCtaSectionProps) {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden bg-navy-800 text-center">
+    <section className="relative py-12 lg:py-24 overflow-hidden bg-navy-800 text-center">
       {/* Background image */}
       {ctaFondUrl && (
         <Image
@@ -38,15 +38,15 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
       <div className="absolute inset-0 bg-gradient-to-r from-navy-800/80 to-navy-800/80 z-10" />
 
       <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center">
-        <h2 className="text-3xl lg:text-[42px] font-black text-white mb-6 leading-tight max-w-4xl">
+        <h2 className="text-2xl md:text-3xl lg:text-[42px] font-black text-white mb-4 lg:mb-6 leading-[50.4px] max-w-4xl">
           {cta?.title || fb.title} <br className="hidden md:block" />
           <span className="text-gold-500">{cta?.title_highlight || fb.title_highlight}</span>
         </h2>
-        <p className="text-white/85 text-xl mb-12 max-w-3xl leading-relaxed">
+        <p className="text-white/85 text-lg lg:text-xl mb-6 lg:mb-12 max-w-3xl leading-relaxed">
           {cta?.description || fb.description}
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12 text-sm text-white/80">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-6 lg:mb-12 text-sm text-white/80">
           {ctaBadges.map((badge, i) => (
             <div key={i} className="flex items-center gap-2">
               <Check className="w-4 h-4" style={{ color: '#F2C94C' }} /> {badge.titre}
@@ -61,7 +61,7 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
           <Button
             variant="gold"
             href={cta?.cta_url || fb.cta_url}
-            className="px-10"
+            className="px-6 md:px-10"
             style={{ borderRadius: '50px', background: '#F2C94C', boxShadow: '0 4px 15px 0 rgba(242, 201, 76, 0.30)' }}
             iconRight={<ArrowRight className="w-4 h-4" />}
           >
@@ -70,7 +70,7 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
           <Button
             variant="outline-navy"
             href="/contact"
-            className="px-10"
+            className="px-6 md:px-10"
             style={{ borderRadius: '50px', borderColor: '#F2C94C', color: '#F2C94C' }}
           >
             {(cta as Record<string, unknown>)?.cta_texte_2 as string || "Nous contacter"}

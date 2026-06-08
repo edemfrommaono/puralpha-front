@@ -49,7 +49,7 @@ const ESTIMATION_DEFAULTS = {
 
 export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: fb }: TarificationSectionProps) {
   return (
-    <section className="py-20 lg:py-32 relative bg-navy-800 text-white overflow-hidden">
+    <section className="py-8 lg:py-24 relative bg-navy-800 text-white overflow-hidden">
       {/* Background Gradients */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold-500/10 blur-[100px] rounded-full translate-x-1/3 -translate-y-1/3" />
@@ -57,22 +57,22 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
-        <FadeInView className="text-center mb-16">
+        <FadeInView className="text-center mb-8 lg:mb-16">
           <span className="text-teal-400/80 font-bold text-xs uppercase tracking-[3px]">
             {tarif?.section_tag || fb.section_tag}
           </span>
-          <h2 className="text-3xl lg:text-[40px] font-extrabold text-white mt-4 leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-white mt-4 leading-tight">
             {tarif?.title || fb.title}<br />
             <span className="text-gold-500">{tarif?.title_highlight || fb.title_highlight}</span>
           </h2>
         </FadeInView>
 
-        <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-12 text-center mb-16">
+        <div className="bg-white/5 border border-white/10 rounded-2xl lg:rounded-3xl p-6 lg:p-12 text-center mb-8 lg:mb-16">
           <div className="flex items-center justify-center gap-1">
-            <span className="text-7xl lg:text-[80px] font-black text-gold-500 leading-none">{tarif?.price || fb.price}</span>
-            <span className="text-3xl font-black text-gold-500 self-start mt-2">€</span>
+            <span className="text-6xl md:text-7xl lg:text-[80px] font-black text-gold-500 leading-none">{tarif?.price || fb.price}</span>
+            <span className="text-2xl lg:text-3xl font-black text-gold-500 self-start mt-2">€</span>
           </div>
-          <p className="text-white/50 mt-4">{tarif?.price_details || fb.price_details}</p>
+          <p className="text-white/50 mt-4 text-center">{tarif?.price_details || fb.price_details}</p>
 
           {/* Badges Inclus */}
           <div className="flex flex-wrap justify-center gap-3 mt-8">
@@ -85,11 +85,11 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
         </div>
 
         {/* Bloc estimation reste à charge */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h3 className="text-xl lg:text-2xl font-extrabold text-white mb-4">
+        <div className="text-center">
+          <h3 className="text-lg lg:text-2xl font-extrabold text-white mb-4 text-center">
             {tarif?.estimation_title || ESTIMATION_DEFAULTS.title}
           </h3>
-          <p className="text-sm text-white/60 leading-relaxed mb-8">
+          <p className="text-sm text-white/60 leading-relaxed mb-8 text-center">
             {tarif?.estimation_description || ESTIMATION_DEFAULTS.description}
           </p>
           <Button

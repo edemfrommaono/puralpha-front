@@ -125,21 +125,21 @@ export function RejoindreFormulaire({
   };
 
   return (
-    <section className="w-full py-24 bg-gradient-to-br from-[#1c3553] to-[#2faaa1]">
+    <section id="candidature" className="w-full py-8 lg:py-24 bg-gradient-to-br from-[#1c3553] to-[#2faaa1]">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 lg:mb-12">
           {sectionTag && (
-            <p className="text-white/55 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
+            <p className="text-center text-white/55 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
           )}
           {title && (
-            <h2 className="text-3xl md:text-[44px] font-extrabold text-white mb-6 leading-tight">{title}</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-[44px] font-extrabold text-white mb-4 lg:mb-6 leading-tight">{title}</h2>
           )}
           {description && (
             <p className="text-white/65 text-lg">{description}</p>
           )}
         </div>
 
-        <div className="bg-white rounded-[24px] p-8 md:p-12 shadow-[0_20px_30px_rgba(30,58,95,0.12)]">
+        <div className="bg-white rounded-[24px] p-6 md:p-8 lg:p-12 shadow-[0_20px_30px_rgba(30,58,95,0.12)]">
           {isSubmitted && (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✅</div>

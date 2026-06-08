@@ -40,17 +40,17 @@ export function ModalitesPaiementSection({
   if (!items?.length && !tag && !title && !titleHighlight && !title2 && !description) return null;
 
   return (
-    <section className="py-20 lg:py-28 bg-[#ecf4f6]">
+    <section className="py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         {(tag || title || titleHighlight || title2 || description) && (
-          <div className="text-center mb-12">
+          <div className="text-center mb-6 lg:mb-12">
             {tag && (
               <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
                 {tag}
               </span>
             )}
             {(title || titleHighlight || title2) && (
-              <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
                 {title}{" "}
                 {titleHighlight && (
                   <span className="text-teal-400">{titleHighlight}</span>
@@ -72,8 +72,7 @@ export function ModalitesPaiementSection({
             {items.map((proc, i) => (
               <div
                 key={i}
-                className="bg-white shadow-sm self-stretch flex-1"
-                style={{ display: "flex", padding: "40px", flexDirection: "column", alignItems: "flex-start", gap: "10px", borderRadius: "0px" }}
+                className="bg-white shadow-sm self-stretch flex-1 p-6 md:p-8 lg:p-10 flex flex-col items-start gap-2.5 rounded-2xl"
               >
                 {proc.tag && (
                   <span className="text-teal-400 font-bold text-[11px] uppercase tracking-[2px]">

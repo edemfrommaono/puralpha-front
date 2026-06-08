@@ -85,10 +85,10 @@ export default async function AidesFinancieresPage() {
         fallback={fb.tarification}
       />
 
-      <SimulateurSection
+      {/* <SimulateurSection
         simulateur={simulateur}
         fallback={fb.simulateur}
-      />
+      /> */}
 
       <AccompagnementAdminSection
         accAdmin={accAdmin}

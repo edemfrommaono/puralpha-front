@@ -1,3 +1,6 @@
+import { ThumbsUp, ThumbsDown } from "lucide-react";
+import { FadeInView } from "@/components/ui/FadeInView";
+
 interface FamillesLimitesProps {
   title: string;
   titleHighlight: string;
@@ -11,49 +14,101 @@ export function FamillesLimites({
   ceQueNousFaisons,
   ceQueNousNeFaisonsPas,
 }: FamillesLimitesProps) {
-  if (!title && !titleHighlight && (!ceQueNousFaisons || ceQueNousFaisons.length === 0) && (!ceQueNousNeFaisonsPas || ceQueNousNeFaisonsPas.length === 0)) {
+  if (
+    !title &&
+    !titleHighlight &&
+    (!ceQueNousFaisons || ceQueNousFaisons.length === 0) &&
+    (!ceQueNousNeFaisonsPas || ceQueNousNeFaisonsPas.length === 0)
+  ) {
     return null;
   }
 
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <section className="py-8 lg:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-black text-navy-800 mb-6">
-            {title} <br className="hidden lg:block" /><span className="text-teal-400">{titleHighlight}</span>
-          </h2>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 max-w-6xl mx-auto">
-          {/* OUI */}
-          <div className="bg-teal-50/40 border border-navy-800/5 rounded-[18px] p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-8">
-              <h3 className="text-teal-500 font-bold text-lg tracking-widest uppercase">Ce que nous faisons</h3>
-            </div>
-            <ul className="flex flex-col gap-4">
-              {ceQueNousFaisons.map((item, i) => (
-                <li key={i} className="flex items-start gap-4 pb-4 border-b border-navy-800/5 last:border-0">
-                  <span className="bg-teal-400/20 text-teal-600 rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</span>
-                  <span className="text-gray-800">{item.text}</span>
-                </li>
-              ))}
-            </ul>
+        {/* Titre */}
+        <FadeInView>
+          <div className="text-center mb-10 lg:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800">
+              {title}{" "}
+              <br className="hidden lg:block" />
+              <span className="text-gold-500">{titleHighlight}</span>
+            </h2>
           </div>
+        </FadeInView>
 
-          {/* NON */}
-          <div className="bg-red-50/30 border border-navy-800/5 rounded-[18px] p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-8">
-              <h3 className="text-red-600 font-bold text-lg tracking-widest uppercase">Ce que nous ne faisons pas</h3>
+        {/* Cartes */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+
+          {/* CE QUE NOUS FAISONS */}
+          <FadeInView direction="left" delay={0.1}>
+            <div className="rounded-2xl overflow-hidden">
+              {/* Icône flottante au-dessus */}
+              <div className="flex justify-center -mb-5 relative z-10">
+                <div className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center border border-[#202F53]">
+                  <img src="/icons/good.png" alt="" width={25} height={25} />
+                </div>
+              </div>
+              {/* Header */}
+              <div className="bg-navy-800 text-white text-center py-4 px-6 rounded-2xl">
+                <h3 className="text-xs font-bold tracking-widest uppercase">
+                  Ce que nous faisons
+                </h3>
+              </div>
+              {/* Body */}
+              <div className="bg-[#B2DCDD] p-6 lg:p-8 rounded-2xl">
+                <ul className="flex flex-col gap-3">
+                  {ceQueNousFaisons.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 rounded-xl px-4 py-2"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-navy-800 shrink-0 mt-1.5" />
+                      <span className="text-navy-800 text-sm leading-relaxed font-semibold">
+                        {item.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <ul className="flex flex-col gap-4">
-              {ceQueNousNeFaisonsPas.map((item, i) => (
-                <li key={i} className="flex items-start gap-4 pb-4 border-b border-navy-800/5 last:border-0">
-                  <span className="bg-red-600/10 text-red-600 rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✕</span>
-                  <span className="text-gray-800">{item.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          </FadeInView>
+
+          {/* CE QUE NOUS NE FAISONS PAS */}
+          <FadeInView direction="right" delay={0.15}>
+            <div className="rounded-2xl overflow-hidden">
+              {/* Icône flottante au-dessus */}
+              <div className="flex justify-center -mb-3 relative z-10">
+                <div className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center border border-[#202F53]">
+                  <img src="/icons/bad.png" alt="" width={20} height={20} />
+                </div>
+              </div>
+              {/* Header */}
+              <div className="bg-navy-800 text-white text-center py-4 px-6 rounded-2xl">
+                <h3 className="text-xs font-bold tracking-widest uppercase">
+                  Ce que nous ne faisons pas
+                </h3>
+              </div>
+              {/* Body */}
+              <div className="bg-[#B2DCDD] p-6 lg:p-8 rounded-2xl">
+                <ul className="flex flex-col gap-3">
+                  {ceQueNousNeFaisonsPas.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 rounded-xl px-4 py-2"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-navy-800 shrink-0 mt-1.5" />
+                      <span className="text-navy-800 text-sm font-semibold leading-relaxed">
+                        {item.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </FadeInView>
+
         </div>
       </div>
     </section>

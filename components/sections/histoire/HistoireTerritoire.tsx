@@ -25,7 +25,7 @@ export function HistoireTerritoire({
   mapImageUrl,
 }: HistoireTerritoireProps) {
   return (
-    <section className="py-20 lg:py-32 relative bg-navy-800 text-white overflow-hidden">
+    <section className="py-8 lg:py-24 relative bg-navy-800 text-white overflow-hidden">
       {backgroundImageUrl && (
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30 z-0"
@@ -35,15 +35,15 @@ export function HistoireTerritoire({
       <div className="absolute inset-0 bg-gradient-to-br from-navy-800/90 via-navy-800/80 to-navy-900/90 z-[1]" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-6xl">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-24 items-center">
           {/* Colonne gauche : texte + cartes */}
-          <div className="flex-1 flex flex-col gap-8">
+          <div className="flex-1 flex flex-col gap-6 lg:gap-8">
             <div className="flex flex-col gap-6">
               <span className="text-teal-400/80 font-bold text-xs uppercase tracking-[3px]">{tag}</span>
-              <h2 className="text-3xl lg:text-[40px] font-extrabold leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold leading-tight">
                 {titre1} <span className="text-gold-500 font-black">{titleHighlight}</span>
               </h2>
-              <p className="text-white/70 text-lg leading-relaxed">{description}</p>
+              <p className="text-white/70 text-[15px] md:text-lg leading-relaxed">{description}</p>
             </div>
 
             {/* Cartes dynamiques */}
@@ -53,16 +53,16 @@ export function HistoireTerritoire({
                 return (
                   <div
                     key={i}
-                    className={`p-8 rounded-3xl flex flex-col items-center text-center gap-2 relative ${
+                    className={`p-6 lg:p-8 rounded-2xl lg:rounded-3xl flex flex-col items-center text-center gap-2 relative ${
                       isActive
                         ? "bg-gradient-to-br from-navy-800 to-[#1a4a6e] border border-teal-400/25 shadow-lg"
                         : "bg-white/5 border border-white/10"
                     }`}
                   >
-                    <span className={`text-6xl font-black mb-2 ${isActive ? "text-gold-500" : "text-white/10"}`}>
+                    <span className={`text-5xl lg:text-6xl font-black mb-2 ${isActive ? "text-gold-500" : "text-white/10"}`}>
                       {impact.chiffre}
                     </span>
-                    <h3 className={`text-xl font-extrabold ${isActive ? "text-white" : "text-white/30"}`}>
+                    <h3 className={`text-lg lg:text-xl font-extrabold ${isActive ? "text-white" : "text-white/30"}`}>
                       {impact.titre}
                     </h3>
                     <p className={`text-sm leading-relaxed mt-1 whitespace-pre-line ${isActive ? "text-white/50" : "text-white/20"}`}>

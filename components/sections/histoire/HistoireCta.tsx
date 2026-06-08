@@ -24,7 +24,7 @@ export function HistoireCta({
   backgroundImageUrl,
 }: HistoireCtaProps) {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden bg-navy-800 text-center">
+    <section className="relative py-12 lg:py-24 overflow-hidden bg-navy-800 text-center">
       {backgroundImageUrl && (
         <div
           className="absolute inset-0 bg-cover bg-center opacity-90 z-0"
@@ -34,11 +34,11 @@ export function HistoireCta({
       <div className="absolute inset-0 bg-gradient-to-r from-navy-800/90 to-navy-800/90 z-[1]" />
 
       <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center max-w-6xl">
-        <blockquote className="text-white leading-snug italic mb-6 lg:mb-8 text-xl md:text-[30px]">
+        <blockquote className="text-white leading-snug italic mb-6 lg:mb-8 text-3xl md:text-[42px]">
           {citation}
         </blockquote>
-        <p className="text-white/50 font-bold text-[10px] uppercase tracking-[3px] mb-6">— {auteur}</p>
-        <p className="text-white/80 font-semibold text-lg lg:text-xl mb-10">{sousTitre}</p>
+        <p className="text-white/50 font-bold text-[10px] uppercase tracking-[3px] mb-4 lg:mb-6">— {auteur}</p>
+        <p className="text-white/80 font-semibold text-base md:text-lg lg:text-xl mb-6 lg:mb-10">{sousTitre}</p>
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <Button variant="gold" href={cta1Url} iconRight={<ArrowRight className="w-4 h-4" />}>{cta1Texte}</Button>
           {cta2Texte && cta2Url && (

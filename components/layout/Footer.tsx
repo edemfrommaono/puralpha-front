@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
@@ -42,19 +44,19 @@ export function Footer() {
             <ul className="flex flex-col gap-3 text-sm text-white/60">
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 shrink-0 mt-0.5" />
-                06 14 79 60 47
+                <span>06 14 79 60 47</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 shrink-0 mt-0.5" />
-                contact@puralpha.fr
+                <span>contact@puralpha.fr</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                14K - 26 Rue des Sablons, 95360 Montmagny
+                <span>14K - 26 Rue des Sablons, 95360 Montmagny</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 shrink-0 mt-0.5" />
-                Lun-Ven : 9h00 - 17h30
+                <span>Lun-Ven : 9h00 - 17h30</span>
               </li>
             </ul>
           </div>

@@ -26,21 +26,21 @@ export function HistoireModele({
   qualites,
 }: HistoireModeleProps) {
   return (
-    <section className="py-20 lg:py-32">
+    <section className="py-8 lg:py-24">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <FadeInView direction="left" className="flex flex-col gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
+          <FadeInView direction="left" className="flex flex-col gap-6 lg:gap-8">
             <div>
               <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">{tag}</span>
-              <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
                 {titreLigne1}<br />
                 <span className="text-teal-400">{titleHighlight}</span>
               </h2>
             </div>
-            <p className="text-gray-600 text-lg leading-relaxed">{descrition1}</p>
-            <p className="text-gray-600 text-lg leading-relaxed">{description2}</p>
-            <div className="mt-4 p-6 bg-gold-500/5 rounded-tr-xl rounded-br-xl border-l-4 border-gold-500">
-              <p className="text-navy-800 italic text-lg leading-relaxed">
+            <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed">{descrition1}</p>
+            <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed">{description2}</p>
+            <div className="mt-4 p-5 md:p-6 bg-gold-500/5 rounded-tr-xl rounded-br-xl border-l-4 border-gold-500">
+              <p className="text-navy-800 italic text-[15px] md:text-lg leading-relaxed">
                 &quot;{notrePromesseValeur}&quot;
               </p>
               <p className="text-teal-400 font-bold text-xs uppercase tracking-[2px] mt-4">{notrePromesseLibelle}</p>
@@ -54,7 +54,7 @@ export function HistoireModele({
               ))}
             </div>
           </FadeInView>
-          <FadeInView direction="right" delay={0.15} className="relative h-[400px] lg:h-[620px] overflow-hidden shadow-xl">
+          <FadeInView direction="right" delay={0.15} className="relative h-[300px] md:h-[400px] lg:h-[620px] rounded-2xl lg:rounded-none overflow-hidden shadow-xl">
             {imageUrl ? (
               <img src={imageUrl} alt={legende} className="absolute inset-0 w-full h-full object-cover" />
             ) : (

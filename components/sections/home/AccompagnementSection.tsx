@@ -41,10 +41,10 @@ export function AccompagnementSection({
   fallback: fb,
 }: AccompagnementSectionProps) {
   return (
-    <section className="py-20 lg:py-32 w-full bg-white">
+    <section className="py-12 lg:py-32 w-full bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
-          <FadeInView direction="left" className="relative w-full rounded-3xl overflow-hidden shadow-xl bg-gray-100 min-h-[400px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+          <FadeInView direction="left" className="relative w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100 min-h-[300px] lg:min-h-[400px]">
             {imageMiseEnAvantUrl ? (
               <Image
                 src={imageMiseEnAvantUrl}
@@ -56,7 +56,7 @@ export function AccompagnementSection({
               <div className="absolute inset-0 bg-gray-100" />
             )}
           </FadeInView>
-          <FadeInView direction="right" delay={0.15} className="flex flex-col gap-10">
+          <FadeInView direction="right" delay={0.15} className="flex flex-col gap-8 lg:gap-10">
             <div>
               <div className="flex items-center gap-3 mb-4">
 
@@ -64,7 +64,7 @@ export function AccompagnementSection({
                   {acc?.section_tag || fb.section_tag}
                 </span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
                 {acc?.title || fb.title}
                 <br />
                 <span className="text-teal-400">
@@ -105,7 +105,7 @@ export function AccompagnementSection({
                 </div>
               ))}
             </div>
-            <div className="flex flex-row gap-4 mt-2">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2">
               {accInfoBoxes.map((box, i) => (
                 <div
                   key={i}

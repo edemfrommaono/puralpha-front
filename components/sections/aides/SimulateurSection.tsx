@@ -23,10 +23,10 @@ const PCH_OPTIONS = [
 
 export function SimulateurSection({ simulateur, fallback: fb }: SimulateurSectionProps) {
   return (
-    <section className="bg-[#ecf4f6] py-20 lg:py-32">
+    <section className="bg-[#ecf4f6] py-8 lg:py-24">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-tight">
+        <div className="text-center mb-8 lg:mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-tight">
             {simulateur?.titre || fb.titre}<br />
             <span className="text-teal-400">{simulateur?.title_highlight || fb.title_highlight}</span>
           </h2>
@@ -35,7 +35,7 @@ export function SimulateurSection({ simulateur, fallback: fb }: SimulateurSectio
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-gray-100 flex flex-col gap-8 max-w-3xl mx-auto">
+        <div className="bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-12 shadow-sm border border-gray-100 flex flex-col gap-6 lg:gap-8 max-w-3xl mx-auto">
           {/* Ligne 1 — Heures + Autres aides */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="flex flex-col gap-2">
