@@ -20,10 +20,10 @@ export function HistoireHero({
   founderSubtitle,
 }: HistoireHeroProps) {
   return (
-    <section className="bg-[#ecf4f6] pt-10 pb-8 lg:pt-40 lg:pb-32 relative overflow-hidden">
+    <section className="bg-[#ecf4f6] pt-8 pb-8 lg:pt-32 lg:pb-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 lg:px-8 relative z-10 flex flex-col items-center text-center">
-        <div className="max-w-4xl mx-auto flex flex-col gap-6 lg:gap-8 items-center">
+        <div className="max-w-4xl mx-auto flex flex-col gap-4 lg:gap-6 items-center">
           <FadeInView delay={0}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-navy-800 leading-tight text-center">
               {titleLine1}<br />

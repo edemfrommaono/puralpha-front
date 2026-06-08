@@ -72,7 +72,7 @@ export function ModalitesPaiementSection({
             {items.map((proc, i) => (
               <div
                 key={i}
-                className="bg-white shadow-sm self-stretch flex-1 p-6 md:p-8 lg:p-10 flex flex-col items-start gap-2.5 rounded-none"
+                className="bg-white shadow-sm self-stretch flex-1 p-6 md:p-8 lg:p-10 flex flex-col items-start gap-2.5 rounded-2xl"
               >
                 {proc.tag && (
                   <span className="text-teal-400 font-bold text-[11px] uppercase tracking-[2px]">

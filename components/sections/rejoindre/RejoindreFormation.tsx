@@ -43,7 +43,7 @@ export function RejoindreFormation({
         {(tag || title || titleHighlight || titleEnd || description) && (
           <FadeInView className="text-center mb-8 lg:mb-16">
             {tag && (
-              <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">
+              <p className="text-center text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">
                 {tag}
               </p>
             )}
@@ -88,12 +88,11 @@ export function RejoindreFormation({
 
           {/* Timeline line at the bottom */}
           <div className="hidden lg:flex items-center justify-between mt-2 px-[12%] relative">
-            <div className="absolute left-[12%] right-[12%] top-1/2 -translate-y-1/2 h-[3px] bg-gradient-to-r from-teal-400 via-teal-400 to-gold-500" />
+            <div className="absolute left-[12%] right-[12%] top-1/2 -translate-y-1/2 h-[3px] bg-teal-400" />
             {steps.map((_, i) => (
               <div
                 key={i}
-                className="w-4 h-4 rounded-full bg-teal-400 relative z-10"
-                style={i === steps.length - 1 ? { background: "#F2C94C" } : {}}
+                className="w-4 h-4 rounded-full bg-[#F2C94C] relative z-10"
               />
             ))}
           </div>

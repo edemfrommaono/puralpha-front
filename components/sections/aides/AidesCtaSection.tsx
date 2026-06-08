@@ -38,7 +38,7 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
       <div className="absolute inset-0 bg-gradient-to-r from-navy-800/80 to-navy-800/80 z-10" />
 
       <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center">
-        <h2 className="text-2xl md:text-3xl lg:text-[42px] font-black text-white mb-4 lg:mb-6 leading-tight max-w-4xl">
+        <h2 className="text-2xl md:text-3xl lg:text-[42px] font-black text-white mb-4 lg:mb-6 leading-[50.4px] max-w-4xl">
           {cta?.title || fb.title} <br className="hidden md:block" />
           <span className="text-gold-500">{cta?.title_highlight || fb.title_highlight}</span>
         </h2>

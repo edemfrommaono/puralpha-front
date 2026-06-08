@@ -129,7 +129,7 @@ export function RejoindreFormulaire({
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <div className="text-center mb-8 lg:mb-12">
           {sectionTag && (
-            <p className="text-white/55 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
+            <p className="text-center text-white/55 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
           )}
           {title && (
             <h2 className="text-2xl md:text-3xl lg:text-[44px] font-extrabold text-white mb-4 lg:mb-6 leading-tight">{title}</h2>

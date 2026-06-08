@@ -42,7 +42,7 @@ export function VecuMethodeSection({
               >
                 {title}{" "}
                 {titleHighlight && (
-                  <span className="text-teal-400">{titleHighlight}</span>
+                  <span className="text-[#F2C94C]">{titleHighlight}</span>
                 )}
               </h2>
             )}
@@ -62,7 +62,7 @@ export function VecuMethodeSection({
                 className="bg-[#ECF4F6] border border-gray-100 shadow-sm flex flex-col items-center text-center p-6 lg:p-8 rounded-2xl"
               >
                 <div
-                  className="flex items-center justify-center border-2 border-teal-400 text-teal-400 font-bold text-lg mb-5"
+                  className="flex items-center justify-center border-2 border-[#F2C94C] text-[#F2C94C] font-bold text-lg mb-5"
                   style={{ width: "50px", height: "50px", borderRadius: "50%" }}
                 >
                   {item.ordre}

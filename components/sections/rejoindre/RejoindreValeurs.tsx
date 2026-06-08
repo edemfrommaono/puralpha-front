@@ -38,7 +38,7 @@ export function RejoindreValeurs({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {qualities.map((q, i) => (
               <div key={i} className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded bg-teal-400"></div>
+                <div className="w-2 h-2 rounded bg-[#F2C94C]"></div>
                 <span className="text-sm font-semibold text-navy-800">{q.text}</span>
               </div>
             ))}

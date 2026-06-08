@@ -20,7 +20,7 @@ export function RejoindreTemoignage({ quote, author, backgroundImageUrl }: Rejoi
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(493.45% 80.41% at 20% 50%, rgba(78, 205, 196, 0.18) 0%, rgba(78, 205, 196, 0.00) 50%), radial-gradient(497.38% 81.06% at 80% 80%, rgba(242, 201, 76, 0.12) 0%, rgba(242, 201, 76, 0.00) 50%), rgba(10, 20, 40, 0.82)",
+          background: "radial-gradient(493.45% 80.41% at 20% 50%, rgba(242, 201, 76, 0.12) 0%, rgba(242, 201, 76, 0.00) 50%), rgba(10, 20, 40, 0.82)",
         }}
       />
       <FadeInView className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10 flex flex-col items-center text-center">

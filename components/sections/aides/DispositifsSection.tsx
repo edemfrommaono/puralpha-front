@@ -44,15 +44,45 @@ export function DispositifsSection({
 }: DispositifsSectionProps) {
   const cards = resolvedAidesCards || fallbackCards;
 
-  const palettes: Record<string, { bar: string; iconBg: string; titleColor: string; hlBg: string; hlText: string; tagBg: string; tagText: string }> = {
-    "#52bdc7": { bar: "bg-teal-400", iconBg: "bg-teal-400/10", titleColor: "text-navy-800", hlBg: "bg-[#ecf4f6]", hlText: "text-teal-400", tagBg: "bg-teal-400/10", tagText: "text-teal-600" },
-    "#f2c94c": { bar: "bg-gold-500", iconBg: "bg-gold-500/10", titleColor: "text-gold-500", hlBg: "bg-gold-500/10", hlText: "text-gold-500", tagBg: "bg-gold-500/10", tagText: "text-[#b8860b]" },
-    "#1c3553": { bar: "bg-navy-800", iconBg: "bg-navy-800/5", titleColor: "text-navy-800", hlBg: "bg-[#ecf4f6]", hlText: "text-teal-400", tagBg: "bg-teal-400/10", tagText: "text-teal-600" },
-    "#718096": { bar: "bg-gray-500", iconBg: "bg-gray-100", titleColor: "text-navy-800", hlBg: "bg-gray-100", hlText: "text-gray-600", tagBg: "bg-gray-100", tagText: "text-gray-600" },
+  const palettes: Record<string, {
+    border: string;
+    iconBg: string;
+    titleColor: string;
+    retenirBg: string;
+    retenirText: string;
+  }> = {
+    "#52bdc7": {
+      border: "border-t-teal-400",
+      iconBg: "bg-teal-400/10",
+      titleColor: "text-navy-800",
+      retenirBg: "bg-[#ECF4F6]",
+      retenirText: "text-teal-600",
+    },
+    "#f2c94c": {
+      border: "border-t-gold-500",
+      iconBg: "bg-gold-500/10",
+      titleColor: "text-gold-500",
+      retenirBg: "bg-gold-500/10",
+      retenirText: "text-[#b8860b]",
+    },
+    "#1c3553": {
+      border: "border-t-navy-800",
+      iconBg: "bg-navy-800/5",
+      titleColor: "text-navy-800",
+      retenirBg: "bg-[#ECF4F6]",
+      retenirText: "text-teal-600",
+    },
+    "#718096": {
+      border: "border-t-gray-500",
+      iconBg: "bg-gray-100",
+      titleColor: "text-navy-800",
+      retenirBg: "bg-gray-100",
+      retenirText: "text-gray-600",
+    },
   };
 
   return (
-    <section className="py-8 lg:py-24 bg-white">
+    <section className="py-8 lg:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <FadeInView className="text-center mb-8 lg:mb-16">
           <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
@@ -62,47 +92,62 @@ export function DispositifsSection({
             {aides?.title || fb.title}<br />
             <span className="text-teal-400">{aides?.title_highlight || fb.title_highlight}</span>
           </h2>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-center text-sm lg:text-base">
             {aides?.description || fb.description}
           </p>
         </FadeInView>
 
         <StaggerContainer stagger={0.12} className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {cards.map((card, i) => {
-            const c = palettes[card.accent_color] || palettes["#52bdc7"];
+            const accentKey = card.accent_color?.toLowerCase();
+            const c = palettes[accentKey] || palettes["#52bdc7"];
             const fbCard = fallbackCards[i];
             const imageUrl = "imageUrl" in card ? card.imageUrl : null;
 
+            // "À retenir" : on utilise le premier tag, ou highlight_value + highlight_label
+            const retenirText =
+              card.tags?.[0]?.text ||
+              [card.highlight_value, card.highlight_label].filter(Boolean).join(" — ");
+
             return (
-              <StaggerItem key={i} className="bg-white border border-gray-100 rounded-2xl lg:rounded-3xl p-6 lg:p-8 shadow-sm flex flex-col gap-5 lg:gap-6 relative overflow-hidden pt-8 lg:pt-10">
-                <div className={`absolute top-0 left-0 right-0 h-1 ${c.bar}`} />
-                <div className="flex gap-4 items-start">
-                  <div className={`w-14 h-14 ${c.iconBg} rounded-2xl flex items-center justify-center text-2xl shrink-0`}>
+              <StaggerItem
+                key={i}
+                className={`bg-white border border-gray-100 border-t-4 ${c.border} rounded-2xl p-6 lg:p-8 shadow-sm flex flex-col gap-5`}
+              >
+                {/* Icon + Titre */}
+                <div className="flex items-start gap-4">
+                  <div className={`w-10 h-10 ${c.iconBg} rounded-xl flex items-center justify-center text-xl shrink-0 mt-0.5`}>
                     {imageUrl ? (
-                      <Image src={imageUrl} alt={card.title} width={32} height={32} className="object-contain" />
+                      <Image
+                        src={imageUrl}
+                        alt={card.title}
+                        width={22}
+                        height={22}
+                        className="object-contain"
+                      />
                     ) : (
                       <span>{fbCard?.fallback_icon || "📄"}</span>
                     )}
                   </div>
-                  <div>
-                    <h3 className={`text-xl lg:text-2xl font-black leading-tight ${c.titleColor}`}>{card.title}</h3>
-                    <p className="text-sm text-gray-500 mt-1">{card.subtitle}</p>
-                  </div>
+                  <h3 className={`font-bold text-base lg:text-lg leading-snug ${c.titleColor}`}>
+                    {card.title}
+                  </h3>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed flex-1">
+
+                {/* Description */}
+                <p className="text-gray-600 text-sm leading-relaxed text-left flex-1">
                   {card.description}
                 </p>
-                <div className={`${c.hlBg} rounded-xl p-4 flex items-center justify-between`}>
-                  <span className={`text-xl font-extrabold ${c.hlText}`}>{card.highlight_value}</span>
-                  <span className="text-xs text-gray-500">{card.highlight_label}</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {card.tags.map((tag, j) => (
-                    <span key={j} className={`px-3 py-1.5 ${c.tagBg} ${c.tagText} text-xs font-semibold rounded-full`}>
-                      {tag.text}
-                    </span>
-                  ))}
-                </div>
+
+                {/* À retenir */}
+                {retenirText && (
+                  <div className={`${c.retenirBg} rounded-xl px-4 py-3`}>
+                    <p className={`text-sm ${c.retenirText} text-left`}>
+                      <span className="font-semibold">À retenir : </span>
+                      {retenirText}
+                    </p>
+                  </div>
+                )}
               </StaggerItem>
             );
           })}

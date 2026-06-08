@@ -36,7 +36,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
           <div className="flex flex-col gap-6 max-w-xl">
             {(hero?.title || fb.title || hero?.title_highlight || fb.title_highlight) && (
               <FadeInView direction="left" delay={0}>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-navy-800 leading-[1.2] lg:leading-[45px]">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-navy-800 leading-tight lg:leading-[50.4px]">
                   {hero?.title || fb.title}{" "}
                   {(hero?.title_highlight || fb.title_highlight) && (
                     <span className="text-teal-500">

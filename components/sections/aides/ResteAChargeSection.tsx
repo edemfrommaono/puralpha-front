@@ -94,7 +94,7 @@ export function ResteAChargeSection({
                   <span
                     className="text-3xl md:text-4xl lg:text-[40px] leading-tight lg:leading-[48px]"
                     style={{
-                      color: "#4ECDC4",
+                      color: "#F2C94C",
                       fontFamily: "Poppins, sans-serif",
                     }}
                   >

@@ -76,11 +76,11 @@ export function FamillesHandicaps({
         )}
 
         {(highlightQuote || highlightDescription) && (
-          <div className="bg-gradient-to-br from-teal-400/10 to-gold-500/10 border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
-            <p className="font-bold text-navy-800 text-base leading-relaxed">
+          <div className="bg-[#F6F4EF] border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
+            <p className="font-bold text-navy-800 text-base leading-relaxed text-center">
               {highlightQuote && (
-                <span className="text-teal-500">{highlightQuote}</span>
-              )}
+                <span className="text-[#F2C94C]">{highlightQuote}</span>
+              )} <br />
               {highlightDescription && (
                 <span className="font-normal">{highlightDescription}</span>
               )}

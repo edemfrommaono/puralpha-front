@@ -33,7 +33,7 @@ export function FamillesEtapes({
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-4">
             {title}
           </h2>
-          <p className="text-gray-500 text-base max-w-2xl mx-auto mb-8 lg:mb-16">
+          <p className="text-gray-500 text-base max-w-2xl mx-auto mb-8 lg:mb-16 text-center">
             {description}
           </p>
         </FadeInView>
@@ -46,9 +46,9 @@ export function FamillesEtapes({
           <StaggerContainer stagger={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
             {steps.map((step, i) => {
               const isGold = i >= steps.length - 2;
-              const accentBorder = isGold ? "border-[#F2C94C]" : "border-teal-400";
-              const accentText = isGold ? "text-[#F2C94C]" : "text-teal-500";
-              const bulletColor = isGold ? "text-[#F2C94C]" : "text-teal-400";
+              const accentBorder = isGold ? "border-teal-400" : "border-teal-400";
+              const accentText = isGold ? "text-teal-500" : "text-teal-500";
+              const bulletColor = isGold ? "text-teal-400" : "text-teal-400";
 
               return (
               <StaggerItem key={i} className="relative flex flex-col items-center z-10">
@@ -60,7 +60,7 @@ export function FamillesEtapes({
                 </div>
 
                 {/* Titre */}
-                <h3 className="text-navy-800 font-black text-sm mb-3">
+                <h3 className="text-navy-800 font-black text-sm mb-3 text-teal-500">
                   {step.title}
                 </h3>
 

@@ -46,7 +46,7 @@ export function HistoireFondatrice({
                 </span> */}
             <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight mb-4 lg:mb-6">
               {title}<br />
-              <span className="text-teal-400">{titleHighlight}</span>
+              <span className="text-[#F2C94C]">{titleHighlight}</span>
             </h2>
             <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed mb-4">{paragraph1}</p>
             <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed">{paragraph2}</p>

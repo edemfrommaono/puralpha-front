@@ -72,7 +72,7 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
             <span className="text-6xl md:text-7xl lg:text-[80px] font-black text-gold-500 leading-none">{tarif?.price || fb.price}</span>
             <span className="text-2xl lg:text-3xl font-black text-gold-500 self-start mt-2">€</span>
           </div>
-          <p className="text-white/50 mt-4">{tarif?.price_details || fb.price_details}</p>
+          <p className="text-white/50 mt-4 text-center">{tarif?.price_details || fb.price_details}</p>
 
           {/* Badges Inclus */}
           <div className="flex flex-wrap justify-center gap-3 mt-8">
@@ -85,11 +85,11 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
         </div>
 
         {/* Bloc estimation reste à charge */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h3 className="text-lg lg:text-2xl font-extrabold text-white mb-4">
+        <div className="text-center">
+          <h3 className="text-lg lg:text-2xl font-extrabold text-white mb-4 text-center">
             {tarif?.estimation_title || ESTIMATION_DEFAULTS.title}
           </h3>
-          <p className="text-sm text-white/60 leading-relaxed mb-8">
+          <p className="text-sm text-white/60 leading-relaxed mb-8 text-center">
             {tarif?.estimation_description || ESTIMATION_DEFAULTS.description}
           </p>
           <Button

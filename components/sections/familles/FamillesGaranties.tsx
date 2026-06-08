@@ -1,6 +1,7 @@
 import {
   UserCheck, GraduationCap, Phone, BookOpen, ShieldCheck, RefreshCw,
   type LucideIcon,
+  Check,
 } from "lucide-react";
 import { FadeInView } from "@/components/ui/FadeInView";
 
@@ -49,9 +50,9 @@ export function FamillesGaranties({
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <FadeInView className="text-center mb-8 lg:mb-16 max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-6">
-            {title} <span className="text-gold-500">{titleHighlight}</span>
+            {title} <br className="hidden lg:block" /><span className="text-teal-400">{titleHighlight}</span>
           </h2>
-          <p className="text-lg text-white/70">{description}</p>
+          <p className="text-sm lg:text-base text-white/70 text-center">{description}</p>
         </FadeInView>
 
         {/* Ligne 1 — 3 colonnes avec icônes */}
@@ -93,26 +94,27 @@ export function FamillesGaranties({
           </div>
         )}
 
-        {/* Ligne 3 — 5 colonnes, texte seul */}
+        {/* Ligne 3 — Badges checkmark */}
         {ligne3.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-6">
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             {ligne3.map((item, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6">
-                <h4 className="font-bold text-sm mb-2">{item.title}</h4>
-                <p className="text-xs text-white/60 leading-relaxed">{item.description}</p>
+              <div
+                key={i}
+                className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2"
+              >
+                <Check className="w-4 h-4 text-[#F2C94C]" />
+                <span className="text-sm font-medium text-white whitespace-nowrap">{item.title}</span>
               </div>
             ))}
           </div>
         )}
 
-        {/* Ligne 4 — Bandeau informatif */}
+        {/* Ligne 4 — Note italique teal */}
         {ligne4 && (
-          <div className="mt-6">
-            <div className="bg-gradient-to-r from-teal-400/10 to-gold-500/10 border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-12 text-center">
-              <p className="text-sm text-white/70 leading-relaxed max-w-4xl mx-auto">
-                {ligne4}
-              </p>
-            </div>
+          <div className="mt-6 text-center max-w-4xl mx-auto">
+            <p className="text-sm text-[#F2C94C] italic leading-relaxed text-center">
+              {ligne4}
+            </p>
           </div>
         )}
       </div>
