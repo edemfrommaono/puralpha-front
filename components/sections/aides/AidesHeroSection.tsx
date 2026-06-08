@@ -27,7 +27,7 @@ export function AidesHeroSection({ hero, fallback: fb }: AidesHeroSectionProps) 
             {hero?.title_line_2 || fb.title_line_2}<br />
             <span className="text-teal-400">{hero?.title_highlight || fb.title_highlight}</span>
           </h1>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mt-2">
+          <p className="text-base text-center md:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mt-2">
             {hero?.description || fb.description}
           </p>
         </FadeInView>

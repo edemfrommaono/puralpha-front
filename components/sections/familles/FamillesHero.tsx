@@ -34,7 +34,7 @@ export function FamillesHero({
         )}
         {description && (
           <FadeInView delay={0.15}>
-            <p className="text-base md:text-lg lg:text-xl text-gray-700 max-w-2xl mb-8 lg:mb-10">
+            <p className="text-base text-center md:text-lg lg:text-xl text-gray-700 max-w-2xl mb-8 lg:mb-10">
               {description}
             </p>
           </FadeInView>

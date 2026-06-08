@@ -25,7 +25,7 @@ export function RejoindreTemoignage({ quote, author, backgroundImageUrl }: Rejoi
       />
       <FadeInView className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10 flex flex-col items-center text-center">
         <div className="text-[#4ECDC4] opacity-50 text-6xl font-serif mb-6">&quot;</div>
-        <p className="text-xl md:text-2xl lg:text-[28px] text-white/90 font-medium italic leading-relaxed mb-6 lg:mb-8">{quote}</p>
+        <p className="text-xl text-center md:text-2xl lg:text-[28px] text-white/90 font-medium italic leading-relaxed mb-6 lg:mb-8">{quote}</p>
         <p className="text-[#4ECDC4] text-sm font-bold tracking-[2px] uppercase">{author}</p>
       </FadeInView>
     </section>

@@ -61,7 +61,7 @@ export function RejoindreFormation({
               </h2>
             )}
             {description && (
-              <p className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
+              <p className="text-gray-500 max-w-3xl text-center mx-auto text-sm leading-relaxed">
                 {description}
               </p>
             )}

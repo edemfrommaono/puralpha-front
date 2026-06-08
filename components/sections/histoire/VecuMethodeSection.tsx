@@ -47,7 +47,7 @@ export function VecuMethodeSection({
               </h2>
             )}
             {description && (
-              <p className="text-gray-500 text-sm leading-relaxed max-w-2xl mx-auto">
+              <p className="text-gray-500 text-sm text-center leading-relaxed max-w-2xl mx-auto">
                 {description}
               </p>
             )}
@@ -68,7 +68,7 @@ export function VecuMethodeSection({
                   {item.ordre}
                 </div>
                 <h4 className="text-navy-800 font-bold text-sm mb-2">{item.titre}</h4>
-                <p className="text-gray-500 text-xs leading-relaxed">{item.description}</p>
+                <p className="text-gray-500 text-xs text-center leading-relaxed">{item.description}</p>
               </StaggerItem>
             ))}
           </StaggerContainer>

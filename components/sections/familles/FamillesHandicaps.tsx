@@ -49,7 +49,7 @@ export function FamillesHandicaps({
                 )}
               </h2>
             )}
-            {description && <p className="text-gray-600 text-base">{description}</p>}
+            {description && <p className="text-gray-600 text-center text-base">{description}</p>}
           </div>
         )}
 

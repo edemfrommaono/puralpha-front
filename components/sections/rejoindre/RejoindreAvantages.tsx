@@ -32,7 +32,7 @@ export function RejoindreAvantages({
                 {titleHighlight}
               </span>
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">{description}</p>
+            <p className="text-gray-600 text-center max-w-3xl mx-auto">{description}</p>
           </FadeInView>
         </div>
 

@@ -24,7 +24,7 @@ export function RejoindreHero({
           </h1>
         </FadeInView>
         <FadeInView delay={0.15}>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 mb-6 lg:mb-10 max-w-2xl">{description}</p>
+          <p className="text-base text-center md:text-lg lg:text-xl text-gray-600 mb-6 lg:mb-10 max-w-2xl">{description}</p>
         </FadeInView>
         <FadeInView delay={0.3}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
