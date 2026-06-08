@@ -27,7 +27,11 @@ export function FamillesFaq({
           <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
             {sectionTag}
           </span>
+<<<<<<< Updated upstream
           <h2 className="text-3xl lg:text-4xl font-black text-navy-800 mt-4">
+=======
+          <h2 className="text-  md md:text-2xl lg:text-4xl font-black text-navy-800 mt-4">
+>>>>>>> Stashed changes
             {title} <span className="text-teal-400">{titleHighlight}</span>
           </h2>
         </div>

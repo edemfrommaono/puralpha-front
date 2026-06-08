@@ -70,7 +70,7 @@ export function RejoindreFormation({
 
         <div className="relative">
 
-          <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
+          <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 relative z-10">
             {steps.map((step, i) => (
               <StaggerItem key={i} className="flex flex-col items-center text-center">
                 <span

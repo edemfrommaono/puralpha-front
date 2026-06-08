@@ -59,9 +59,13 @@ export function HistoireHero({
           </FadeInView>
         </div>
       </div>
+<<<<<<< Updated upstream
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 text-[100px] sm:text-[150px] lg:text-[200px] font-black text-navy-800/[0.04] leading-none select-none pointer-events-none whitespace-nowrap">
+=======
+      {/* <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 text-[80px] md:text-[100px] sm:text-[150px] lg:text-[200px] font-black text-navy-800/[0.04] leading-none select-none pointer-events-none whitespace-nowrap">
+>>>>>>> Stashed changes
         Histoire
-      </div>
+      </div> */}
     </section>
   );
 }

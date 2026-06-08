@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -41,19 +41,19 @@ export function Footer() {
             <h4 className="text-gold-500 font-bold text-base">Contact</h4>
             <ul className="flex flex-col gap-3 text-sm text-white/60">
               <li className="flex items-start gap-3">
-                <span className="shrink-0 mt-0.5"> <img src="/icons/phone.png" alt="phone" /></span>
+                <Phone className="w-4 h-4 shrink-0 mt-0.5" />
                 06 14 79 60 47
               </li>
               <li className="flex items-start gap-3">
-                <span className="shrink-0 mt-0.5"> <img src="/icons/mail.png" alt="mail" /></span>
+                <Mail className="w-4 h-4 shrink-0 mt-0.5" />
                 contact@puralpha.fr
               </li>
               <li className="flex items-start gap-3">
-                <span className="shrink-0 mt-0.5"> <img src="/icons/map.png" alt="location" /></span>
+                <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
                 14K - 26 Rue des Sablons, 95360 Montmagny
               </li>
               <li className="flex items-start gap-3">
-                <span className="shrink-0 mt-0.5"> <img src="/icons/time.png" alt="time" /></span>
+                <Clock className="w-4 h-4 shrink-0 mt-0.5" />
                 Lun-Ven : 9h00 - 17h30
               </li>
             </ul>

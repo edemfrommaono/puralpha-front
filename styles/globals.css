@@ -11,3 +11,9 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+@layer base {
+  p {
+    @apply text-justify;
+  }
+}

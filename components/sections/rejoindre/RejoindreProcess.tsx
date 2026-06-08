@@ -47,7 +47,7 @@ export function RejoindreProcess({
 
             return (
               <StaggerItem key={i} className="flex flex-col items-center text-center px-4">
-                <div className={`w-[60px] h-[60px] rounded-[30px] ${i === 0 ? "border border-teal-400" : "bg-white border-2 border-teal-400 shadow-sm"} flex items-center justify-center mb-4`}>
+                <div className="w-[60px] h-[60px] rounded-[30px] bg-white border-2 border-teal-400 shadow-sm flex items-center justify-center mb-4">
                   {hasIcon ? (
                     <span className="text-[24px]">
                       {step.icon?.startsWith("/") ? (
