@@ -16,7 +16,6 @@ export function ContactFormulaire({ formTitle, imageUrl, notes }: ContactFormula
             {imageUrl ? (
               <>
                 <img src={imageUrl} alt="Accompagnement" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#ecf4f6]/90 z-10" />
               </>
             ) : (
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#ecf4f6]/90 z-10" />

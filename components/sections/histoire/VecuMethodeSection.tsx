@@ -59,7 +59,7 @@ export function VecuMethodeSection({
             {cardItems.map((item, i) => (
               <StaggerItem
                 key={i}
-                className="bg-[#ECF4F6] border border-gray-100 shadow-sm flex flex-col items-center text-center p-6 lg:p-8 rounded-2xl"
+                className="bg-[#F6F4EF] border border-gray-100 shadow-sm flex flex-col items-center text-center p-6 lg:p-8 rounded-2xl"
               >
                 <div
                   className="flex items-center justify-center border-2 border-[#F2C94C] text-[#F2C94C] font-bold text-lg mb-5"

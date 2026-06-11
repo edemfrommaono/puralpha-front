@@ -11,7 +11,7 @@ const contactSchema = z.object({
   "name-1": z.string().min(1, "Ce champ est requis"),          // Nom
   "name-2": z.string().min(1, "Ce champ est requis"),          // Prénoms
   "email-1": z.string().email("Adresse mail invalide").min(1, "Ce champ est requis"),
-  "phone-1": z.string().optional(),                            // Téléphone
+  "phone-1": z.string().min(1, "Ce champ est requis"),          // Téléphone
   "text-1": z.string().optional(),                             // Commune concernée
   "select-2": z.string().min(1, "Ce champ est requis"),        // Objet de votre demande
   "textarea-1": z.string().optional(),                         // Votre message
@@ -174,14 +174,15 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
           {/* Téléphone & Commune concernée */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <label htmlFor="phone" className="text-[13px] font-semibold text-navy-900">Téléphone</label>
+              <label htmlFor="phone" className="text-[13px] font-semibold text-navy-900">Téléphone *</label>
               <input
                 type="tel"
                 id="phone"
                 {...register("phone-1")}
-                className="px-3 py-2.5 md:px-4 md:py-3 bg-white border border-[#f3f4f6] rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm"
+                className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["phone-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
                 placeholder="06 XX XX XX XX"
               />
+              {errors["phone-1"] && <p className="text-red-500 text-xs">{errors["phone-1"].message}</p>}
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="commune" className="text-[13px] font-semibold text-navy-900">Commune concernée</label>
