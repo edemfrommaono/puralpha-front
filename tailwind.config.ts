@@ -23,6 +23,7 @@ export default {
           50: "#e8f7f8",
         },
         gold: {
+          400: "#f5d473",
           500: "#f2c94c",
           600: "#b8930a",
         },
@@ -39,6 +40,16 @@ export default {
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
         arial: ["Arial", "sans-serif"],
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 9s linear infinite",
+        "marquee-fast": "marquee 5s linear infinite",
       },
     },
   },

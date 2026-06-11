@@ -1,9 +1,12 @@
+"use client";
+
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
 
 interface ValeurItem {
   title: string;
   description: string;
   imageUrl?: string;
+  imageDuFond?: string;
   fallback_icon?: string;
 }
 
@@ -20,8 +23,6 @@ export function HistoireValeurs({
   titleHighlight,
   items,
 }: HistoireValeursProps) {
-  const bgs = ["bg-teal-400/10", "bg-navy-800/5", "bg-gold-500/10", "bg-teal-400/10", "bg-navy-800/5"];
-
   return (
     <section className="py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
@@ -36,16 +37,52 @@ export function HistoireValeurs({
 
         <StaggerContainer stagger={0.08} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {items.map((item, i) => (
-            <StaggerItem key={i} className="bg-white border border-gray-100 rounded-2xl p-5 md:p-6 flex flex-col items-center text-center shadow-sm">
-              <div className={`w-16 h-16 ${bgs[i % bgs.length]} rounded-2xl flex items-center justify-center text-3xl mb-4`}>
-                {item.imageUrl ? (
-                  <img src={item.imageUrl} alt="" className="w-8 h-8 object-contain" />
-                ) : (
-                  <span>{item.fallback_icon || "⭐"}</span>
-                )}
+            <StaggerItem
+              key={i}
+              className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl
+                         transition-all duration-500 hover:-translate-y-1 aspect-[3/4] cursor-default"
+            >
+              {/* Image de fond */}
+              {item.imageDuFond ? (
+                <img
+                  src={item.imageDuFond}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-navy-800" />
+              )}
+
+              {/* Dégradé permanent bas → haut */}
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/85 via-navy-900/20 to-transparent" />
+
+              {/* Overlay plus sombre au survol */}
+              <div className="absolute inset-0 bg-navy-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Contenu bas */}
+              <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
+                {/* Icône */}
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3">
+                  {item.imageUrl ? (
+                    <img src={item.imageUrl} alt="" className="w-5 h-5 object-contain" style={{ filter: "brightness(0) invert(1)" }} />
+                  ) : (
+                    <span className="text-white text-base">{item.fallback_icon || "⭐"}</span>
+                  )}
+                </div>
+
+                {/* Titre — toujours visible */}
+                <h3 className="font-extrabold text-white text-sm uppercase tracking-wide leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
+                  {item.title}
+                </h3>
+
+                {/* Description — apparaît au survol */}
+                <p className="text-white/80 text-xs leading-relaxed
+                               max-h-0 overflow-hidden opacity-0
+                               group-hover:max-h-40 group-hover:opacity-100
+                               transition-all duration-500 ease-in-out">
+                  {item.description}
+                </p>
               </div>
-              <h3 className="font-extrabold text-navy-800 text-sm uppercase tracking-wide mb-2">{item.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
             </StaggerItem>
           ))}
         </StaggerContainer>

@@ -22,7 +22,7 @@ export function RejoindreValeurs({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 container mx-auto px-4 md:px-6 max-w-6xl items-center">
         <FadeInView direction="left" className="relative w-full h-[300px] md:h-[400px] lg:h-[600px] rounded-2xl lg:rounded-none overflow-hidden order-2 lg:order-1">
           {imageUrl ? (
-            <img src={imageUrl} alt="Nos valeurs humaines" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={imageUrl} alt="Nos valeurs humaines" className="absolute inset-0 w-full h-full object-cover rounded-2xl" />
           ) : (
             <div className="absolute inset-0 bg-gray-200" />
           )}

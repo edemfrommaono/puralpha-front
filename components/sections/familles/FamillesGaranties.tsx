@@ -1,3 +1,5 @@
+"use client";
+
 import {
   UserCheck, GraduationCap, Phone, BookOpen, ShieldCheck, RefreshCw,
   type LucideIcon,
@@ -55,40 +57,78 @@ export function FamillesGaranties({
           <p className="text-sm lg:text-base text-white/70 text-center">{description}</p>
         </FadeInView>
 
-        {/* Ligne 1 — 3 colonnes avec icônes */}
+        {/* Ligne 1 — 3 colonnes avec flip */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((item, i) => {
             const IconComp = item.fallback_icon ? ICON_MAP[item.fallback_icon] : null;
             return (
-              <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8">
-                <div className="w-12 h-12 bg-teal-400/15 rounded-xl flex items-center justify-center mb-6">
-                  {item.imageUrl ? (
-                    <img src={item.imageUrl} alt="" className="w-7 h-7 object-contain" />
-                  ) : IconComp ? (
-                    <IconComp className="w-6 h-6 text-teal-400" strokeWidth={1.8} />
-                  ) : (
-                    <span className="text-teal-400 text-2xl">⭐</span>
-                  )}
+              <div key={i} style={{ perspective: "1000px" }} className="h-52">
+                <div
+                  className="relative w-full h-full transition-transform duration-700 cursor-default"
+                  style={{ transformStyle: "preserve-3d" }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = "rotateY(180deg)")}
+                  onMouseLeave={e => (e.currentTarget.style.transform = "rotateY(0deg)")}
+                >
+                  {/* Recto — icône + titre */}
+                  <div
+                    className="absolute inset-0 bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 flex flex-col justify-center items-start"
+                    style={{ backfaceVisibility: "hidden" }}
+                  >
+                    <div className="w-12 h-12 bg-teal-400/15 rounded-xl flex items-center justify-center mb-5">
+                      {item.imageUrl ? (
+                        <img src={item.imageUrl} alt="" className="w-7 h-7 object-contain" />
+                      ) : IconComp ? (
+                        <IconComp className="w-6 h-6 text-teal-400" strokeWidth={1.8} />
+                      ) : (
+                        <span className="text-teal-400 text-2xl">⭐</span>
+                      )}
+                    </div>
+                    <h3 className="font-bold text-lg leading-snug">{item.title}</h3>
+                  </div>
+                  {/* Verso — description */}
+                  <div
+                    className="absolute inset-0 bg-teal-400/15 border border-teal-400/30 rounded-2xl p-6 lg:p-8 flex flex-col justify-center"
+                    style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                  >
+                    <p className="text-sm text-white/80 leading-relaxed">{item.description}</p>
+                  </div>
                 </div>
-                <h3 className="font-bold text-lg mb-3">{item.title}</h3>
-                <p className="text-sm text-white/60 leading-relaxed">{item.description}</p>
               </div>
             );
           })}
         </div>
 
-        {/* Ligne 2 — 2 colonnes avec icônes */}
+        {/* Ligne 2 — 2 colonnes avec flip */}
         {ligne2.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             {ligne2.map((item, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8">
-                {item.imageUrl && (
-                  <div className="w-12 h-12 bg-teal-400/15 rounded-xl flex items-center justify-center mb-6">
-                    <img src={item.imageUrl} alt="" className="w-7 h-7 object-contain" />
+              <div key={i} style={{ perspective: "1000px" }} className="h-44">
+                <div
+                  className="relative w-full h-full transition-transform duration-700 cursor-default"
+                  style={{ transformStyle: "preserve-3d" }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = "rotateY(180deg)")}
+                  onMouseLeave={e => (e.currentTarget.style.transform = "rotateY(0deg)")}
+                >
+                  {/* Recto */}
+                  <div
+                    className="absolute inset-0 bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 flex flex-col justify-center items-start"
+                    style={{ backfaceVisibility: "hidden" }}
+                  >
+                    {item.imageUrl && (
+                      <div className="w-12 h-12 bg-teal-400/15 rounded-xl flex items-center justify-center mb-5">
+                        <img src={item.imageUrl} alt="" className="w-7 h-7 object-contain" />
+                      </div>
+                    )}
+                    <h3 className="font-bold text-lg leading-snug">{item.title}</h3>
                   </div>
-                )}
-                <h3 className="font-bold text-lg mb-3">{item.title}</h3>
-                <p className="text-sm text-white/60 leading-relaxed">{item.description}</p>
+                  {/* Verso */}
+                  <div
+                    className="absolute inset-0 bg-teal-400/15 border border-teal-400/30 rounded-2xl p-6 lg:p-8 flex flex-col justify-center"
+                    style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                  >
+                    <p className="text-sm text-white/80 leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

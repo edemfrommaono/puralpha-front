@@ -12,8 +12,9 @@ export function Header() {
   const pathname = usePathname();
 
   const navLinks = [
-    { href: '/pour-les-familles', label: 'Familles' },
-    { href: '/aides-financieres', label: 'Aides financières' },
+    { href: '/', label: 'Accueil' },
+    { href: '/nos-services', label: 'Nos services' },
+    { href: '/nos-tarifs', label: 'Nos tarifs' },
     { href: '/notre-histoire', label: 'Notre histoire' },
     { href: '/nous-rejoindre', label: 'Nous rejoindre' },
   ];

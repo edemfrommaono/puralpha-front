@@ -1,4 +1,7 @@
+"use client";
+
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
+
 
 interface FormationStep {
   valeur: string;
@@ -69,33 +72,33 @@ export function RejoindreFormation({
         )}
 
         <div className="relative">
+          {/* Ligne de connexion — absolute, derrière les colonnes */}
+          <div className="hidden lg:block absolute bottom-[8px] left-[12%] right-[12%] h-[3px] bg-teal-400 z-0" />
 
           <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 relative z-10">
             {steps.map((step, i) => (
-              <StaggerItem key={i} className="flex flex-col items-center text-center">
+              <StaggerItem key={i} className="group flex flex-col items-center text-center cursor-default min-h-[160px]">
                 <span className="text-teal-400 font-extrabold text-lg leading-tight text-center mb-2">
                   {step.valeur}
                 </span>
-                <h4 className="text-navy-800 font-bold text-sm leading-relaxed text-center mb-1">
+                <h4 className="text-navy-800 font-bold text-sm leading-relaxed text-center mb-2">
                   {step.sous_titre}
                 </h4>
-                <p className="text-gray-500 text-[13px] leading-relaxed text-center mb-6 max-w-[220px]">
+                {/* Description — masquée par défaut, visible au survol */}
+                <p className="text-gray-500 text-[13px] leading-relaxed text-center max-w-[220px]
+                               max-h-0 overflow-hidden opacity-0
+                               group-hover:max-h-40 group-hover:opacity-100
+                               transition-all duration-500 ease-in-out">
                   {step.titre}
                 </p>
+                {/* Spacer flexible pour pousser le dot tout en bas */}
+                <div className="flex-1" />
+                {/* Point de la timeline — toujours en bas de la colonne */}
+                <div className="hidden lg:block w-4 h-4 rounded-full bg-[#F2C94C] mt-4 relative z-10
+                                transition-transform duration-300 group-hover:scale-150" />
               </StaggerItem>
             ))}
           </StaggerContainer>
-
-          {/* Timeline line at the bottom */}
-          <div className="hidden lg:flex items-center justify-between mt-2 px-[12%] relative">
-            <div className="absolute left-[12%] right-[12%] top-1/2 -translate-y-1/2 h-[3px] bg-teal-400" />
-            {steps.map((_, i) => (
-              <div
-                key={i}
-                className="w-4 h-4 rounded-full bg-[#F2C94C] relative z-10"
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>

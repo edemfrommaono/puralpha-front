@@ -78,10 +78,20 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
           <p>© 2026 PUR Alpha — Tous droits réservés</p>
-          <div className="flex items-center flex-wrap gap-6">
-            <Link href="#" className="hover:text-white transition-colors">Mentions légales</Link>
-            <Link href="#" className="hover:text-white transition-colors">Politique de confidentialité</Link>
-            <Link href="#" className="hover:text-white transition-colors">Cookies</Link>
+          <div className="flex items-center flex-wrap gap-x-4 gap-y-2">
+            <span>SIRET : 989 156 989 00018</span>
+            <span className="text-white/20">·</span>
+            <span>Agrément en cours</span>
+            <span className="text-white/20">·</span>
+            <span>Assurance RC Pro</span>
+            <span className="text-white/20">·</span>
+            {/* <Link href="#" className="hover:text-white transition-colors">Médiateur</Link> */}
+            {/* <span className="text-white/20">·</span> */}
+            <Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link>
+            <span className="text-white/20">·</span>
+            <Link href="/politique-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</Link>
+            <span className="text-white/20">·</span>
+            <Link href="/politique-cookies" className="hover:text-white transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

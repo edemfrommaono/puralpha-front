@@ -52,6 +52,23 @@ export default async function AidesFinancieresPage() {
   // Reste à charge
   const racImageUrl = await resolveImageUrl((acf as Record<string, unknown>)?.reste_a_charge_image as number | null);
 
+  // Modalités processus — résolution image_du_fond
+  const rawProcessus = accAdmin?.processus as Array<Record<string, unknown>> | undefined;
+  const resolvedProcessus = rawProcessus?.length
+    ? await Promise.all(
+        rawProcessus.map(async (p) => ({
+          tag: p.tag as string,
+          titre: p.titre as string,
+          description: p.description as string,
+          imageDuFond: typeof p.image_du_fond === "number"
+            ? await resolveImageUrl(p.image_du_fond)
+            : typeof p.image_du_fond === "object" && p.image_du_fond !== null
+              ? ((p.image_du_fond as Record<string, unknown>).url as string) || ""
+              : "",
+        }))
+      )
+    : fb.accompagnement_admin.processus.map((p) => ({ tag: p.tag, titre: p.titre, description: p.description, imageDuFond: "" }));
+
   return (
     <div className="flex flex-col w-full bg-white">
       <AidesHeroSection
@@ -101,7 +118,7 @@ export default async function AidesFinancieresPage() {
         titleHighlight={accAdmin?.modalites_title_highlight}
         title2={accAdmin?.modalites_title_2}
         description={accAdmin?.modalites_description}
-        processus={accAdmin?.processus}
+        processus={resolvedProcessus}
         fallbackProcessus={fb.accompagnement_admin.processus}
       />
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
 
 interface MethodeItem {
@@ -57,18 +59,35 @@ export function VecuMethodeSection({
         {cardItems.length > 0 && (
           <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {cardItems.map((item, i) => (
-              <StaggerItem
-                key={i}
-                className="bg-[#F6F4EF] border border-gray-100 shadow-sm flex flex-col items-center text-center p-6 lg:p-8 rounded-2xl"
-              >
+              <StaggerItem key={i} className="h-44" style={{ perspective: "1000px" }}>
                 <div
-                  className="flex items-center justify-center border-2 border-[#F2C94C] text-[#F2C94C] font-bold text-lg mb-5"
-                  style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+                  className="relative w-full h-full transition-transform duration-700 cursor-default"
+                  style={{ transformStyle: "preserve-3d" }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = "rotateY(180deg)")}
+                  onMouseLeave={e => (e.currentTarget.style.transform = "rotateY(0deg)")}
                 >
-                  {item.ordre}
+                  {/* Recto — numéro + titre */}
+                  <div
+                    className="absolute inset-0 bg-[#F6F4EF] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-6 rounded-2xl"
+                    style={{ backfaceVisibility: "hidden" }}
+                  >
+                    <div
+                      className="flex items-center justify-center border-2 border-[#F2C94C] text-[#F2C94C] font-bold text-lg mb-5"
+                      style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+                    >
+                      {item.ordre}
+                    </div>
+                    <h4 className="text-navy-800 font-bold text-sm">{item.titre}</h4>
+                  </div>
+
+                  {/* Verso — description */}
+                  <div
+                    className="absolute inset-0 bg-[#F6F4EF] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-6 rounded-2xl"
+                    style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                  >
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                  </div>
                 </div>
-                <h4 className="text-navy-800 font-bold text-sm mb-2">{item.titre}</h4>
-                <p className="text-gray-500 text-xs text-center leading-relaxed">{item.description}</p>
               </StaggerItem>
             ))}
           </StaggerContainer>

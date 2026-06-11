@@ -105,11 +105,11 @@ export function AccompagnementSection({
                 </div>
               ))}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2 items-stretch">
               {accInfoBoxes.map((box, i) => (
                 <div
                   key={i}
-                  className="bg-gray-50 border border-navy-800/10 p-5 rounded-xl"
+                  className="flex-1 bg-gray-50 border border-navy-800/10 p-5 rounded-xl flex flex-col"
                 >
                   <h4 className="text-navy-800 font-black text-sm mb-2">
                     {box.title}

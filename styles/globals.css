@@ -17,9 +17,20 @@ body {
   background: var(--background);
 }
 
-@layer base {
-  p {
-    @apply text-justify;
+/* ── Marquee infini ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+@media (max-width: 1023px) {
+  .marquee-track {
+    animation-duration: 10s;
   }
 }
 

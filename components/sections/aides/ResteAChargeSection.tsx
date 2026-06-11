@@ -128,7 +128,7 @@ export function ResteAChargeSection({
                   {ctaPrimaryText || DEFAULTS.ctaPrimaryText}
                 </Button>
               )}
-
+{/* 
               {(ctaSecondaryText || DEFAULTS.ctaSecondaryText) && (
                 <Button
                   variant="outline-navy"
@@ -138,7 +138,7 @@ export function ResteAChargeSection({
                 >
                   {ctaSecondaryText || DEFAULTS.ctaSecondaryText}
                 </Button>
-              )}
+              )} */}
             </div>
           </div>
         </div>

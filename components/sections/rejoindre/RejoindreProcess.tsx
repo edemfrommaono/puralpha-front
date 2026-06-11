@@ -1,4 +1,7 @@
+"use client";
+
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
+
 
 interface RecrutementStep {
   num?: string;
@@ -46,22 +49,31 @@ export function RejoindreProcess({
             const hasIcon = step.icon && step.icon !== "";
 
             return (
-              <StaggerItem key={i} className="flex flex-col items-center text-center px-4">
-                <div className="w-[60px] h-[60px] rounded-[30px] bg-white border-2 border-[#F2C94C] shadow-sm flex items-center justify-center mb-4">
+              <StaggerItem key={i} className="group flex flex-col items-center text-center px-4 cursor-default">
+                <div className="w-[60px] h-[60px] rounded-[30px] bg-white border-2 border-[#F2C94C] shadow-sm flex items-center justify-center mb-4
+                                transition-all duration-300 group-hover:scale-110 group-hover:bg-[#F2C94C] group-hover:shadow-md">
                   {hasIcon ? (
                     <span className="text-[24px]">
                       {step.icon?.startsWith("/") ? (
-                        <img src={step.icon} alt="" className="w-7 h-7 object-contain text-[#F2C94C]" />
+                        <img src={step.icon} alt="" className="w-7 h-7 object-contain" />
                       ) : (
                         <span>{step.icon}</span>
                       )}
                     </span>
                   ) : (
-                    <span className="text-[22px] font-extrabold text-[#F2C94C]">{step.num || (i + 1).toString()}</span>
+                    <span className="text-[22px] font-extrabold text-[#F2C94C] transition-colors duration-300 group-hover:text-white">
+                      {step.num || (i + 1).toString()}
+                    </span>
                   )}
                 </div>
-                <h3 className="text-sm font-bold text-navy-800 mb-2">{step.title}</h3>
-                <p className="text-[13px] text-gray-600 text-center">{step.description}</p>
+                <h3 className="text-sm font-bold text-navy-800 mb-0 group-hover:mb-2 transition-all duration-300">{step.title}</h3>
+                {/* Description — masquée par défaut, visible au survol */}
+                <p className="text-[13px] text-gray-600 text-center
+                               max-h-0 overflow-hidden opacity-0
+                               group-hover:max-h-40 group-hover:opacity-100
+                               transition-all duration-500 ease-in-out">
+                  {step.description}
+                </p>
               </StaggerItem>
             );
           })}
