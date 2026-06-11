@@ -91,20 +91,27 @@ export default async function NotreHistoirePage() {
   // Valeurs
   const resolvedValeurs = valeursItems
     ? await Promise.all(
-      valeursItems.map(async (v, idx) => ({
-        title: v.title,
-        description: v.description,
-        imageUrl: typeof v.image === "number"
-          ? await resolveImageUrl(v.image)
-          : getImageUrl(v.image),
-        fallback_icon: (fb.valeurs.items as unknown as Array<{ fallback_icon?: string }>)[idx]?.fallback_icon,
-      }))
+      valeursItems.map(async (v, idx) => {
+        const raw = v as Record<string, unknown>;
+        return {
+          title: v.title,
+          description: v.description,
+          imageUrl: typeof v.image === "number"
+            ? await resolveImageUrl(v.image)
+            : getImageUrl(v.image),
+          fallback_icon: (fb.valeurs.items as unknown as Array<{ fallback_icon?: string }>)[idx]?.fallback_icon,
+          imageDuFond: typeof raw.image_du_fond === "number"
+            ? await resolveImageUrl(raw.image_du_fond)
+            : getImageUrl(raw.image_du_fond),
+        };
+      })
     )
     : (fb.valeurs.items as unknown as Array<{ title: string; description: string; fallback_icon?: string }>).map((v) => ({
       title: v.title,
       description: v.description,
       imageUrl: "",
       fallback_icon: v.fallback_icon,
+      imageDuFond: "",
     }));
 
   // Impact local

@@ -1,7 +1,10 @@
+"use client";
+
 interface Processus {
   tag: string;
   titre: string;
   description: string;
+  imageDuFond?: string;
 }
 
 interface ModalitesPaiementSectionProps {
@@ -15,6 +18,7 @@ interface ModalitesPaiementSectionProps {
     tag: string;
     titre: string;
     description: string;
+    imageDuFond?: string;
   }[];
 }
 
@@ -72,19 +76,48 @@ export function ModalitesPaiementSection({
             {items.map((proc, i) => (
               <div
                 key={i}
-                className="bg-white shadow-sm self-stretch flex-1 p-6 md:p-8 lg:p-10 flex flex-col items-start gap-2.5 rounded-2xl"
+                className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl
+                           transition-all duration-500 hover:-translate-y-1 aspect-[4/3] cursor-default"
               >
-                {proc.tag && (
-                  <span className="text-teal-400 font-bold text-[11px] uppercase tracking-[2px]">
-                    {proc.tag}
-                  </span>
+                {/* Image de fond */}
+                {proc.imageDuFond ? (
+                  <img
+                    src={proc.imageDuFond}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-navy-800" />
                 )}
-                {proc.titre && <h4 className="text-navy-800 font-bold text-[15px]">{proc.titre}</h4>}
-                {proc.description && (
-                  <p className="text-gray-500 text-[13px] leading-relaxed">
+
+                {/* Dégradé permanent bas → haut */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-900/85 via-navy-900/20 to-transparent" />
+
+                {/* Overlay plus sombre au survol */}
+                <div className="absolute inset-0 bg-navy-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Contenu bas */}
+                <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
+                  {/* Tag */}
+                  {proc.tag && (
+                    <span className="text-white/70 font-bold text-[10px] uppercase tracking-[2px] mb-2 block">
+                      {proc.tag}
+                    </span>
+                  )}
+
+                  {/* Titre — toujours visible */}
+                  <h4 className="font-bold text-white text-base leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
+                    {proc.titre}
+                  </h4>
+
+                  {/* Description — apparaît au survol */}
+                  <p className="text-white/80 text-sm leading-relaxed
+                                 max-h-0 overflow-hidden opacity-0
+                                 group-hover:max-h-40 group-hover:opacity-100
+                                 transition-all duration-500 ease-in-out">
                     {proc.description}
                   </p>
-                )}
+                </div>
               </div>
             ))}
           </div>

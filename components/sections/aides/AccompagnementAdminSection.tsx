@@ -1,3 +1,5 @@
+"use client";
+
 interface Accompagnement {
   ordre: number;
   titre: string;
@@ -50,14 +52,35 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {accompagnements.map((item, i) => (
-            <div key={i} className="bg-[#F6F4EF] border border-[#F3F4F6] rounded-[18px] p-6 lg:p-8 shadow-sm flex flex-col gap-4 relative overflow-hidden">
-              <span className="text-[60px] font-black text-[#F2C94C]/50 leading-none">
-                {String(item.ordre).padStart(2, "0")}
-              </span>
-              <h3 className="font-bold text-navy-800 text-lg relative z-10">{item.titre}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed relative z-10 text-start">
-                {item.description}
-              </p>
+            <div key={i} style={{ perspective: "1000px" }} className="h-56">
+              <div
+                className="relative w-full h-full transition-transform duration-700 cursor-default"
+                style={{ transformStyle: "preserve-3d" }}
+                onMouseEnter={e => (e.currentTarget.style.transform = "rotateY(180deg)")}
+                onMouseLeave={e => (e.currentTarget.style.transform = "rotateY(0deg)")}
+              >
+                {/* Recto — numéro + titre */}
+                <div
+                  className="absolute inset-0 bg-[#F6F4EF] border border-[#F3F4F6] rounded-[18px] p-6 lg:p-8 shadow-sm flex flex-col gap-3 overflow-hidden"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <span className="text-[60px] font-black text-[#F2C94C]/50 leading-none">
+                    {String(item.ordre).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-bold text-navy-800 text-lg">{item.titre}</h3>
+                </div>
+
+                {/* Verso — description */}
+                <div
+                  className="absolute inset-0 bg-[#F6F4EF] border border-[#F3F4F6] rounded-[18px] p-6 lg:p-8 shadow-sm flex flex-col justify-center gap-3"
+                  style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                >
+                  <span className="text-[40px] font-black text-[#F2C94C]/40 leading-none">
+                    {String(item.ordre).padStart(2, "0")}
+                  </span>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

@@ -78,7 +78,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
               </p>
             )}
             {logoUrls.length > 0 && (
-              <div className="flex flex-row flex-wrap items-center gap-6">
+              <div className="flex flex-row flex-wrap items-center gap-12">
                 {logoUrls.map((url, i) => (
                   <div key={i} className="relative h-16 flex-1 min-w-0">
                     <Image

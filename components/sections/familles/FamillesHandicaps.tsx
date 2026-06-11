@@ -58,17 +58,26 @@ export function FamillesHandicaps({
             {items.map((item, idx) => {
               const IconComp = item.fallback_icon ? ICON_MAP[item.fallback_icon] : null;
               return (
-                <div key={idx} className="bg-[#f0f4f8] border border-[#f3f4f6] rounded-2xl p-5 md:p-6 flex flex-col items-center text-center gap-4 hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 rounded-xl bg-teal-400/10 flex items-center justify-center">
+                <div
+                  key={idx}
+                  className="group bg-[#f0f4f8] border border-[#f3f4f6] rounded-2xl p-5 md:p-6 flex flex-col items-center text-center gap-4 cursor-default
+                             transition-all duration-300
+                             hover:-translate-y-1 hover:shadow-lg hover:border-teal-300 hover:bg-white"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-teal-400/10 flex items-center justify-center
+                                  transition-all duration-300
+                                  group-hover:scale-125 group-hover:bg-teal-400/20">
                     {item.imageUrl ? (
-                      <img src={item.imageUrl} alt="" className="w-7 h-7 object-contain" />
+                      <img src={item.imageUrl} alt="" className="w-7 h-7 object-contain transition-transform duration-300 group-hover:scale-110" />
                     ) : IconComp ? (
-                      <IconComp className="w-6 h-6 text-teal-500" strokeWidth={1.8} />
+                      <IconComp className="w-6 h-6 text-teal-500 transition-colors duration-300 group-hover:text-teal-400" strokeWidth={1.8} />
                     ) : (
-                      <span className="text-teal-500 text-2xl">📌</span>
+                      <span className="text-teal-500 text-2xl transition-transform duration-300 group-hover:scale-110">📌</span>
                     )}
                   </div>
-                  <span className="font-bold text-navy-800 text-sm">{item.label}</span>
+                  <span className="font-bold text-navy-800 text-sm transition-colors duration-300 group-hover:text-teal-500">
+                    {item.label}
+                  </span>
                 </div>
               );
             })}

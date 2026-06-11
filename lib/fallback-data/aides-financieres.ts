@@ -46,7 +46,7 @@ export const AIDES_FALLBACK = {
     title_highlight: "",
     description: "",
     accompagnements: [],
-    processus: [],
+    processus: [] as { tag: string; titre: string; description: string }[],
   },
 
   cta_final: {
