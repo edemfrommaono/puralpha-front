@@ -16,6 +16,7 @@ export function Header() {
     { href: '/nos-services', label: 'Nos services' },
     { href: '/nos-tarifs', label: 'Nos tarifs' },
     { href: '/notre-histoire', label: 'Notre histoire' },
+    { href: '/blog', label: 'Blog' },
     { href: '/nous-rejoindre', label: 'Nous rejoindre' },
   ];
 
