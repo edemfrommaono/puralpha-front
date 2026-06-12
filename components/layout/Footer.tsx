@@ -34,6 +34,7 @@ export function Footer() {
               <li><Link href="/notre-histoire" className="hover:text-white transition-colors">Notre histoire</Link></li>
               <li><Link href="/pour-les-familles" className="hover:text-white transition-colors">Pour les familles</Link></li>
               <li><Link href="/aides-financieres" className="hover:text-white transition-colors">Les aides financières</Link></li>
+              <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><Link href="/nous-rejoindre" className="hover:text-white transition-colors">Nous rejoindre</Link></li>
             </ul>
           </div>
