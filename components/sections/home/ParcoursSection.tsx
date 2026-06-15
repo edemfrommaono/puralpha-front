@@ -106,6 +106,7 @@ export function ParcoursSection({
                       }
                       iconRight={<ArrowRight className="w-4 h-4" />}
                       className={!isFamille ? "shadow-none font-bold text-navy-800" : ""}
+                      target="_self"
                     >
                       {card.cta_text}
                     </Button>

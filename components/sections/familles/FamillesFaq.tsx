@@ -35,7 +35,7 @@ export function FamillesFaq({
         <div className="mt-8 lg:mt-16 text-center">
           <Button
             variant="navy"
-            href="/aides-financieres"
+            href="/nos-tarifs"
             style={{ borderRadius: "8px", background: "#1C3553" }}
             iconRight={<ArrowRight className="w-4 h-4" />}
           >

@@ -41,10 +41,10 @@ export function AccompagnementSection({
   fallback: fb,
 }: AccompagnementSectionProps) {
   return (
-    <section className="py-12 lg:py-32 w-full bg-white">
+    <section className="py-8 lg:py-32 w-full bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
-          <FadeInView direction="left" className="relative w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100 min-h-[300px] lg:min-h-[400px]">
+          <FadeInView direction="left" className="relative w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100 min-h-[200px] md:min-h-[300px] lg:min-h-[400px]">
             {imageMiseEnAvantUrl ? (
               <Image
                 src={imageMiseEnAvantUrl}

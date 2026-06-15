@@ -60,7 +60,7 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
             variant="gold"
-            href={cta?.cta_url || fb.cta_url}
+            href={(cta?.cta_url === '/contact' || !cta?.cta_url) ? '#simulateur' : cta.cta_url}
             className="px-6 md:px-10"
             style={{ borderRadius: '50px', background: '#F2C94C', boxShadow: '0 4px 15px 0 rgba(242, 201, 76, 0.30)' }}
             iconRight={<ArrowRight className="w-4 h-4" />}

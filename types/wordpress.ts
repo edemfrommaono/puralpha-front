@@ -517,6 +517,28 @@ export interface NousRejoindreACF {
 // ACF — PAGE CONTACT (slug: contact)
 // ────────────────────────────────────────────────
 
+// ────────────────────────────────────────────────
+// ACF — ARTICLES BLOG (post_type: post)
+// ────────────────────────────────────────────────
+
+export interface BlogPostACF {
+  /** Groupe "auteur" — champs personnalisés affichés sur l'article */
+  auteur?: {
+    nom?: string;
+    role?: string;
+    /** Peut être une URL (string) ou un ID d'image (number) selon la conf ACF REST */
+    avatar?: string | number;
+  };
+  /** Date personnalisée affichée (format ACF : "d F Y", ex: "12 juin 2026").
+   *  Si absent, on utilise WPPost.date (date WP native). */
+  date_publication?: string;
+  /** Extrait personnalisé à afficher dans les cartes listing.
+   *  Si absent, on utilise WPPost.excerpt.rendered. */
+  extrait?: string;
+  /** Alt de l'image mise en avant pour l'accessibilité SEO */
+  image_alt?: string;
+}
+
 export interface ContactPageACF {
   hero?: {
     title: string;

@@ -47,7 +47,7 @@ export function FamillesHero({
               </Button>
             )}
             {ctaSecondaryText && (
-              <Button variant="outline-navy" href="/aides-financieres">
+              <Button variant="outline-navy" href="/nos-tarifs">
                 {ctaSecondaryText}
               </Button>
             )}

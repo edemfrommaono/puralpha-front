@@ -17,7 +17,10 @@ import type {
   AidesFinancieresACF,
   NousRejoindreACF,
   ContactPageACF,
+  BlogPostACF,
+  ACFImage,
 } from '@/types/wordpress';
+import type { Post } from '@/lib/fallback-data/blog';
 
 const WP_API_BASE_URL =
   process.env.NEXT_PUBLIC_WP_API_URL || 'https://bk.puralpha.fr/wp-json/wp/v2';
@@ -60,6 +63,10 @@ export async function resolveImageUrl(
   options: { revalidate?: number } = {}
 ): Promise<string> {
   if (!image) return '';
+
+  if (typeof image === 'string') {
+    return image;
+  }
 
   if (typeof image === 'object') {
     if ('source_url' in image && image.source_url) return image.source_url;
@@ -147,19 +154,132 @@ export async function getMediaById(id: number) {
 }
 
 // ────────────────────────────────────────────────
-// POSTS (pour un futur blog / actualités)
+// POSTS — BLOG / ACTUALITÉS
 // ────────────────────────────────────────────────
 
-export async function getPosts<T = Record<string, unknown>>(
-  options: { per_page?: number } = {}
-) {
+/**
+ * Décode les entités HTML (utile si WordPress a double-échappé le contenu)
+ */
+function decodeHTMLEntities(text: string): string {
+  if (!text) return '';
+  return text
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/<p[^>]*>(\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, '') // Supprime les paragraphes vides de Gutenberg
+    .replace(/&nbsp;/g, ' '); // Remplace les espaces insécables parasites
+}
+
+/**
+ * Formate un objet WPPost<BlogPostACF> en interface Post (fallback-data/blog).
+ * Priorité : champs ACF > champs WordPress natifs.
+ */
+async function formatWPPost(wp: WPPost<BlogPostACF>): Promise<Post> {
+  // Image mise en avant via _embedded
+  const featuredMedia = wp._embedded?.['wp:featuredmedia']?.[0] as WPFeaturedMedia | undefined;
+  const imageUrl = featuredMedia?.source_url ?? '';
+
+  // Catégories : tous les termes de la taxonomie category (décodés pour éviter les &amp;)
+  const terms = wp._embedded?.['wp:term']?.[0] as Array<{ name: string }> | undefined;
+  const categories = terms && terms.length > 0 ? terms.map((t) => decodeHTMLEntities(t.name)) : ['Actualités'];
+
+  // Date affichée : ACF date_publication ou date WP formatée
+  let acfDate = wp.acf?.date_publication ?? '';
+  if (acfDate && acfDate.length === 8) {
+    const year = acfDate.substring(0, 4);
+    const month = parseInt(acfDate.substring(4, 6), 10) - 1;
+    const day = acfDate.substring(6, 8);
+    try {
+      acfDate = new Intl.DateTimeFormat('fr-FR', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date(parseInt(year), month, parseInt(day)));
+    } catch {
+      // Ignore
+    }
+  }
+  const date = acfDate || formatWPDate(wp.date);
+
+  // Auteur
+  const authorNom  = wp.acf?.auteur?.nom  ?? 'PUR Alpha';
+  const authorRole = wp.acf?.auteur?.role ?? '';
+  const authorAvatarRaw = wp.acf?.auteur?.avatar;
+  const authorAvatar = await resolveImageUrl(authorAvatarRaw as ACFImage);
+
+  // Content (décodage si double échappement)
+  const contentDecoded = decodeHTMLEntities(wp.content.rendered);
+
+  // Extrait : ACF > WP excerpt (strip HTML) > WP content (strip HTML)
+  let rawExcerpt = wp.acf?.extrait || wp.excerpt.rendered || contentDecoded;
+  let excerpt = rawExcerpt.replace(/<[^>]*>/g, '').trim();
+  if (excerpt.length > 200) {
+    excerpt = excerpt.substring(0, 200) + '...';
+  }
+
+  return {
+    id: String(wp.id),
+    slug: wp.slug,
+    title: wp.title.rendered,
+    excerpt,
+    content: contentDecoded,
+    date,
+    categories,
+    imageUrl,
+    author: {
+      name: authorNom,
+      role: authorRole,
+      avatarUrl: authorAvatar || undefined,
+    },
+  };
+}
+
+/** Formate une date ISO WordPress ("2026-06-12T17:07:00") en "12 juin 2026" */
+function formatWPDate(isoDate: string): string {
+  try {
+    return new Intl.DateTimeFormat('fr-FR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }).format(new Date(isoDate));
+  } catch {
+    return isoDate;
+  }
+}
+
+/**
+ * Récupère tous les articles de blog publiés, triés du plus récent au plus ancien.
+ * Retourne un tableau vide en cas d'erreur (fallback géré côté page).
+ */
+export async function getBlogPosts(options: { per_page?: number } = {}): Promise<Post[]> {
   const { per_page = 100 } = options;
   try {
-    return await fetchAPI<WPPost<T>[]>(
-      `/posts?_embed&per_page=${per_page}&orderby=date&order=desc`,
+    const posts = await fetchAPI<WPPost<BlogPostACF>[]>(
+      `/posts?_embed&per_page=${per_page}&orderby=date&order=desc&status=publish`,
       { revalidate: 0 }
     );
+    return Promise.all(posts.map(formatWPPost));
   } catch {
     return [];
+  }
+}
+
+/**
+ * Récupère un article de blog par son slug.
+ * Retourne null si l'article n'existe pas ou en cas d'erreur.
+ */
+export async function getBlogPostBySlug(slug: string): Promise<Post | null> {
+  try {
+    const posts = await fetchAPI<WPPost<BlogPostACF>[]>(
+      `/posts?slug=${encodeURIComponent(slug)}&_embed&status=publish`,
+      { revalidate: 0 }
+    );
+    if (!posts.length) return null;
+    return await formatWPPost(posts[0]);
+  } catch {
+    return null;
   }
 }

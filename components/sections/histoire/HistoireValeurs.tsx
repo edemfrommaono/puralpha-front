@@ -35,8 +35,8 @@ export function HistoireValeurs({
           </h2>
         </FadeInView>
 
-        <StaggerContainer stagger={0.08} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {items.map((item, i) => (
+        <StaggerContainer stagger={0.08} className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {items.slice(0, 3).map((item, i) => (
             <StaggerItem
               key={i}
               className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl

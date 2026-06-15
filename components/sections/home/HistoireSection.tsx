@@ -26,7 +26,7 @@ interface HistoireSectionProps {
 
 export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: HistoireSectionProps) {
   return (
-    <section className="py-12 lg:py-32 w-full bg-white">
+    <section className="py-8 lg:py-32 w-full bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <FadeInView direction="left" className="flex flex-col gap-6 max-w-xl">
@@ -37,7 +37,7 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
                   {histoire?.section_tag || fb.section_tag}
                 </span>
               </div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
+              <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
                 {histoire?.title || fb.title}{" "}
                 <span className="text-teal-400">
                   {histoire?.title_highlight || fb.title_highlight}
@@ -62,7 +62,7 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
             </div>
           </FadeInView>
           {/* Image fondatrice — résolution serveur */}
-          <FadeInView direction="right" delay={0.2} className="relative h-[300px] md:h-[400px] lg:h-[500px] w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100">
+          <FadeInView direction="right" delay={0.2} className="relative h-[220px] md:h-[400px] lg:h-[500px] w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100">
             {histoireImageUrl ? (
               <Image
                 src={histoireImageUrl}

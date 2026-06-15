@@ -74,7 +74,7 @@ export function SimulateurSection({ simulateur, fallback: fb }: SimulateurSectio
   // Rendu
   // ──────────────────────────────────────────────
   return (
-    <section className="bg-[#ecf4f6] py-8 lg:py-24">
+    <section id="simulateur" className="bg-[#ecf4f6] py-8 lg:py-24 scroll-mt-20">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
         {/* Titre */}
         <div className="text-center mb-8 lg:mb-12">

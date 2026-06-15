@@ -29,10 +29,10 @@ interface TerritoireSectionProps {
 
 export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fallback: fb }: TerritoireSectionProps) {
   return (
-    <section className="py-12 lg:py-32 w-full bg-[#ecf4f6]">
+    <section className="py-8 lg:py-32 w-full bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <FadeInView direction="left" className="order-2 lg:order-1 relative h-[300px] md:h-[400px] lg:h-[500px] w-full">
+          <FadeInView direction="left" className="order-2 lg:order-1 relative h-[220px] md:h-[380px] lg:h-[500px] w-full">
             {territoireImageUrl ? (
               <Image
                 src={territoireImageUrl}
@@ -61,7 +61,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
                 </div>
               )}
               {(territoire?.title || fb.title || territoire?.title_highlight || fb.title_highlight || territoire?.titre_2 || fb.titre_2) && (
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
+                <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
                   {territoire?.title || fb.title}{" "}
                   {(territoire?.title_highlight || fb.title_highlight) && (
                     <span className="text-teal-400">
