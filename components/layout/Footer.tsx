@@ -22,7 +22,7 @@ export function Footer() {
               />
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
-              Garde et accompagnement à domicile d'enfants et jeunes en situation de handicap dans le Val-d'Oise.²
+              Garde et accompagnement à domicile d'enfants et jeunes en situation de handicap dans le Val-d'Oise.
             </p>
           </div>
 
@@ -31,11 +31,11 @@ export function Footer() {
             <h4 className="text-gold-500 font-bold text-base">Navigation</h4>
             <ul className="flex flex-col gap-3 text-sm text-white/60">
               <li><Link href="/" className="hover:text-white transition-colors">Accueil</Link></li>
+              <li><Link href="/nos-services" className="hover:text-white transition-colors">Nos services</Link></li>
+              <li><Link href="/nos-tarifs" className="hover:text-white transition-colors">Nos tarifs</Link></li>
               <li><Link href="/notre-histoire" className="hover:text-white transition-colors">Notre histoire</Link></li>
-              <li><Link href="/pour-les-familles" className="hover:text-white transition-colors">Pour les familles</Link></li>
-              <li><Link href="/aides-financieres" className="hover:text-white transition-colors">Les aides financières</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><Link href="/nous-rejoindre" className="hover:text-white transition-colors">Nous rejoindre</Link></li>
+              <li><Link href="/blog" className="hover:text-white transition-colors">Actualités</Link></li>
             </ul>
           </div>
 
@@ -65,12 +65,12 @@ export function Footer() {
           {/* Certifications */}
           <div className="flex flex-col gap-5">
             <h4 className="text-gold-500 font-bold text-base">Informations administratives</h4>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-xs text-white/50 leading-relaxed">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-xs text-white/50 leading-relaxed space-y-1">
               <p>SIRET : 989 156 989 00018</p>
               <p>APE : 88.10B</p>
+              <p>Agrément SAP N° : SAP989156989</p>
               <p>Siège social : 10 B rue de Paris, 95350 Piscop</p>
               <p>Assurance RC Pro Hiscox n° : HA RCP0593442</p>
-              <p>Demande d'agrément qualité SAP en cours</p>
             </div>
           </div>
 
@@ -82,9 +82,9 @@ export function Footer() {
           <div className="flex items-center flex-wrap gap-x-4 gap-y-2">
             <span>SIRET : 989 156 989 00018</span>
             <span className="text-white/20">·</span>
-            <span>Agrément en cours</span>
+            <span>Agrément SAP N° SAP989156989</span>
             <span className="text-white/20">·</span>
-            <span>Assurance RC Pro</span>
+            <span>RC Pro Hiscox HA RCP0593442</span>
             <span className="text-white/20">·</span>
             {/* <Link href="#" className="hover:text-white transition-colors">Médiateur</Link> */}
             {/* <span className="text-white/20">·</span> */}

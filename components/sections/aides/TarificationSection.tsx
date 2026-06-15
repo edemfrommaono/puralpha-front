@@ -44,7 +44,7 @@ const ESTIMATION_DEFAULTS = {
   description:
     "Selon votre situation, certaines aides peuvent réduire le coût final : PCH, AEEH, crédit d'impôt SAP ou aides complémentaires. PUR Alpha vous aide à identifier les dispositifs mobilisables et à estimer votre reste à charge avant tout engagement.",
   cta_text: "Demander une simulation personnalisée",
-  cta_url: "/contact",
+  cta_url: "#simulateur",
 };
 
 export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: fb }: TarificationSectionProps) {
@@ -96,7 +96,7 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
             variant="navy"
             className="w-fit mx-auto"
             style={{ background: "#F2C94C", color: "#1C3553", borderRadius: "50px", boxShadow: "0 4px 15px 0 rgba(30, 58, 95, 0.30)" }}
-            href={tarif?.estimation_cta_url || ESTIMATION_DEFAULTS.cta_url}
+            href={(tarif?.estimation_cta_url === '/contact' || !tarif?.estimation_cta_url) ? '#simulateur' : tarif.estimation_cta_url}
             iconRight={<ArrowRight className="w-4 h-4" />}
           >
             {tarif?.estimation_cta_text || ESTIMATION_DEFAULTS.cta_text}

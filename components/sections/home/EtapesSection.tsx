@@ -48,13 +48,13 @@ export function EtapesSection({ title, description, steps, ctaText, ctaUrl }: Et
   }, []);
 
   return (
-    <section className="py-12 lg:py-32 w-full bg-gray-50 overflow-hidden">
+    <section className="py-8 lg:py-32 w-full bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <FadeInView>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-4">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-3">
             {title}
           </h2>
-          <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto mb-12 lg:mb-16 text-center">
+          <p className="text-gray-500 text-xs md:text-base max-w-2xl mx-auto mb-8 lg:mb-16 text-center">
             {description}
           </p>
         </FadeInView>

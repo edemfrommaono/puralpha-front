@@ -5,8 +5,7 @@ export interface Post {
   excerpt: string;
   content: string;
   date: string;
-  category: string;
-  readTime: string;
+  categories: string[];
   imageUrl: string;
   author: {
     name: string;
@@ -43,8 +42,7 @@ export const BLOG_POSTS_FALLBACK: Post[] = [
       <p>L'accompagnement à domicile par des professionnels formés permet de soulager les aidants familiaux tout en stimulant l'enfant dans son environnement rassurant. Le jeu sensoriel, la communication alternative (pictogrammes, langue des signes simplifiée) et le maintien des postures recommandées par les kinésithérapeutes font partie intégrante des interventions PUR Alpha.</p>
     `,
     date: "12 Juin 2026",
-    category: "Sensibilisation",
-    readTime: "5 min",
+    categories: ["Sensibilisation"],
     imageUrl: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop",
     author: {
       name: "Marc Leblanc",
@@ -69,8 +67,7 @@ export const BLOG_POSTS_FALLBACK: Post[] = [
       <p>L'État vous rembourse 50% de cette somme, que vous payiez des impôts ou non (il s'agit d'un crédit d'impôt et non d'une simple déduction fiscale). De plus, l'Avance Immédiate du crédit d'impôt se déploie progressivement pour vous éviter d'avancer les frais.</p>
     `,
     date: "08 Juin 2026",
-    category: "Démarches & Aides",
-    readTime: "4 min",
+    categories: ["Démarches & Aides"],
     imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
     author: {
       name: "Sabrina Benali",
@@ -95,8 +92,7 @@ export const BLOG_POSTS_FALLBACK: Post[] = [
       <p>Disposez au sol différentes dalles : du carton ondulé, du papier bulle, une serviette éponge, du gazon synthétique. Si l'enfant le peut, faites-le marcher pieds nus (ou guidez ses mains s'il est assis) pour ressentir les différents contrastes.</p>
     `,
     date: "03 Juin 2026",
-    category: "Activités",
-    readTime: "6 min",
+    categories: ["Activités"],
     imageUrl: "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=800&auto=format&fit=crop",
     author: {
       name: "Julie Dupont",

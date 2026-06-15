@@ -23,7 +23,7 @@ export const HOME_FALLBACK = {
     title: "",
     title_highlight: "",
     cta_text: "",
-    cta_url: "/pour-les-familles",
+    cta_url: "/nos-services",
   },
 
   accompagnement_services: [],

@@ -1,0 +1,122 @@
+[
+  {
+    "key": "group_blog_article",
+    "title": "Informations de l'article",
+    "active": true,
+    "show_in_rest": true,
+    "fields": [
+
+      {
+        "key": "field_blog_tab_auteur",
+        "label": "Auteur",
+        "type": "tab"
+      },
+
+      {
+        "key": "field_blog_auteur",
+        "label": "Auteur de l'article",
+        "name": "auteur",
+        "type": "group",
+        "show_in_rest": true,
+        "instructions": "Renseignez ici les informations de l'auteur à afficher sur l'article. Ces champs remplacent l'auteur WordPress natif pour un affichage personnalisé.",
+        "sub_fields": [
+          {
+            "key": "field_blog_auteur_nom",
+            "label": "Nom complet",
+            "name": "nom",
+            "type": "text",
+            "show_in_rest": true,
+            "required": 1,
+            "instructions": "Ex : Sabrina Benali",
+            "default_value": "",
+            "placeholder": "Prénom Nom"
+          },
+          {
+            "key": "field_blog_auteur_role",
+            "label": "Rôle / Poste",
+            "name": "role",
+            "type": "text",
+            "show_in_rest": true,
+            "required": 0,
+            "instructions": "Ex : Fondatrice PUR Alpha, Éducatrice Spécialisée, Responsable Administrative…",
+            "default_value": "",
+            "placeholder": "Intitulé du poste"
+          },
+          {
+            "key": "field_blog_auteur_avatar",
+            "label": "Photo de l'auteur",
+            "name": "avatar",
+            "type": "image",
+            "show_in_rest": true,
+            "return_format": "url",
+            "required": 0,
+            "instructions": "Format carré recommandé (ex : 200×200 px). Si absent, les initiales seront affichées.",
+            "preview_size": "thumbnail",
+            "mime_types": "jpg,jpeg,png,webp"
+          }
+        ]
+      },
+
+      {
+        "key": "field_blog_tab_meta",
+        "label": "Date & Catégorie",
+        "type": "tab"
+      },
+
+      {
+        "key": "field_blog_date_publication",
+        "label": "Date de publication",
+        "name": "date_publication",
+        "type": "date_picker",
+        "show_in_rest": true,
+        "required": 0,
+        "instructions": "Saisissez une date personnalisée à afficher sur l'article. Si ce champ est vide, la date de publication WordPress sera utilisée automatiquement.",
+        "display_format": "d F Y",
+        "return_format": "d F Y",
+        "first_day": 1
+      },
+
+      {
+        "key": "field_blog_tab_extrait",
+        "label": "Extrait & SEO",
+        "type": "tab"
+      },
+
+      {
+        "key": "field_blog_extrait",
+        "label": "Extrait personnalisé",
+        "name": "extrait",
+        "type": "textarea",
+        "show_in_rest": true,
+        "required": 0,
+        "instructions": "Courte description de l'article affichée dans les cartes du listing blog (max. 180 caractères recommandés). Si vide, l'extrait WordPress natif est utilisé.",
+        "rows": 3,
+        "maxlength": 250,
+        "placeholder": "Ex : Le syndrome PURA est une maladie génétique rare. Découvrez comment adapter l'accompagnement au quotidien…"
+      },
+
+      {
+        "key": "field_blog_image_mise_en_avant_alt",
+        "label": "Texte alternatif de l'image",
+        "name": "image_alt",
+        "type": "text",
+        "show_in_rest": true,
+        "required": 0,
+        "instructions": "Décrit l'image mise en avant pour l'accessibilité et le SEO. Ex : « Enfant jouant dans un bac sensoriel ».",
+        "placeholder": "Description de l'image"
+      }
+
+    ],
+    "location": [
+      [{ "param": "post_type", "operator": "==", "value": "post" }]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Champs personnalisés pour les articles de blog PUR Alpha : auteur, date affichée, extrait et SEO image."
+  }
+]
