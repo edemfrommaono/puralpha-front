@@ -42,8 +42,8 @@ export function CookieConsent() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [consent, setConsent] = useState<ConsentState>({
     fonctionnel: true,
-    statistiques: true,
-    marketing: true,
+    statistiques: false,
+    marketing: false,
   });
 
   useEffect(() => {
@@ -108,16 +108,12 @@ export function CookieConsent() {
                   className="border border-gray-100 rounded-xl overflow-hidden"
                 >
                   {/* Ligne catégorie — div pour éviter button-dans-button */}
-                  <div className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer select-none">
-                    {/* Zone gauche : label + chevron → ouvre/ferme l'accordéon */}
-                    <div
-                      className="flex items-center gap-2 flex-1"
-                      onClick={() =>
-                        setOpenCategory(
-                          openCategory === cat.id ? null : cat.id
-                        )
-                      }
-                    >
+                  <div 
+                    className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer select-none"
+                    onClick={() => setOpenCategory(openCategory === cat.id ? null : cat.id)}
+                  >
+                    {/* Zone gauche : label */}
+                    <div className="flex items-center gap-2 flex-1">
                       <span className="font-bold text-navy-800 text-sm">
                         {cat.label}
                       </span>
@@ -133,9 +129,10 @@ export function CookieConsent() {
                         /* Toggle — élément indépendant */
                         <button
                           type="button"
-                          onClick={() =>
-                            toggle(cat.id as "statistiques" | "marketing")
-                          }
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggle(cat.id as "statistiques" | "marketing");
+                          }}
                           aria-label={`Activer/désactiver ${cat.label}`}
                           className={`relative w-10 h-6 rounded-full transition-colors duration-200 ${
                             consent[cat.id as "statistiques" | "marketing"]
@@ -144,26 +141,20 @@ export function CookieConsent() {
                           }`}
                         >
                           <span
-                            className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 ${
+                            className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 ${
                               consent[cat.id as "statistiques" | "marketing"]
-                                ? "translate-x-5"
-                                : "translate-x-1"
+                                ? "translate-x-4"
+                                : "translate-x-0"
                             }`}
                           />
                         </button>
                       )}
-                      <div
-                        onClick={() =>
-                          setOpenCategory(
-                            openCategory === cat.id ? null : cat.id
-                          )
-                        }
-                      >
-                        {openCategory === cat.id ? (
-                          <ChevronUp className="w-4 h-4 text-gray-400 shrink-0" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4 text-gray-400 shrink-0" />
-                        )}
+                      <div className="flex items-center justify-center">
+                        <ChevronDown 
+                          className={`w-4 h-4 text-gray-400 shrink-0 transition-transform duration-200 ${
+                            openCategory === cat.id ? "rotate-180" : ""
+                          }`} 
+                        />
                       </div>
                     </div>
                   </div>
