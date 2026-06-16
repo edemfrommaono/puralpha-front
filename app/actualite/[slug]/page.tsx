@@ -44,7 +44,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="container mx-auto px-4 lg:px-8 pt-8 max-w-4xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <Link
-            href="/blog"
+            href="/actualite"
             className="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-teal-500 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </Link>
             <ChevronRight className="w-3 h-3" />
             <Link
-              href="/blog"
+              href="/actualite"
               className="hover:text-teal-500 transition-colors"
             >
               Actualités
@@ -181,7 +181,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {suggestions.map((p) => (
               <Link
-                href={`/blog/${p.slug}`}
+                href={`/actualite/${p.slug}`}
                 key={p.id}
                 className="group bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col gap-3"
               >

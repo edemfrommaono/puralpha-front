@@ -37,8 +37,7 @@ export function FamillesServices({
             <StaggerItem
               key={i}
               className="group relative rounded-[20px] overflow-hidden shadow-sm hover:shadow-2xl
-                         transition-all duration-500 hover:-translate-y-1
-                         aspect-[3/4]"
+                         transition-all duration-500 hover:-translate-y-1 h-[280px] w-[280px] mx-auto sm:w-full sm:h-auto sm:aspect-[3/4]"
             >
               {/* Image de fond */}
               {card.imageUrl ? (
@@ -66,11 +65,11 @@ export function FamillesServices({
               {/* Contenu bas */}
               <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
                 {/* Titre — toujours visible */}
-                <h3 className="text-white font-bold text-base lg:text-lg leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
+                <h3 className="text-white font-bold text-sm sm:text-base lg:text-lg leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
                   {card.title}
                 </h3>
                 {/* Description — apparaît au survol */}
-                <p className="text-white/80 text-sm leading-relaxed
+                <p className="text-white/80 text-xs sm:text-sm leading-relaxed
                                max-h-0 overflow-hidden opacity-0
                                group-hover:max-h-40 group-hover:opacity-100
                                transition-all duration-500 ease-in-out">

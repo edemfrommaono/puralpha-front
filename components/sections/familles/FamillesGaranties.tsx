@@ -62,7 +62,7 @@ export function FamillesGaranties({
           {items.map((item, i) => {
             const IconComp = item.fallback_icon ? ICON_MAP[item.fallback_icon] : null;
             return (
-              <div key={i} style={{ perspective: "1000px" }} className="h-52">
+              <div key={i} style={{ perspective: "1000px" }} className="h-44 md:h-52">
                 <div
                   className="relative w-full h-full transition-transform duration-700 cursor-default"
                   style={{ transformStyle: "preserve-3d" }}
@@ -83,14 +83,14 @@ export function FamillesGaranties({
                         <span className="text-teal-400 text-2xl">⭐</span>
                       )}
                     </div>
-                    <h3 className="font-bold text-lg leading-snug">{item.title}</h3>
+                    <h3 className="font-bold text-base md:text-lg leading-snug">{item.title}</h3>
                   </div>
                   {/* Verso — description */}
                   <div
                     className="absolute inset-0 bg-teal-400/15 border border-teal-400/30 rounded-2xl p-6 lg:p-8 flex flex-col justify-center"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                   >
-                    <p className="text-sm text-white/80 leading-relaxed">{item.description}</p>
+                    <p className="text-xs md:text-sm text-white/80 leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export function FamillesGaranties({
         {ligne2.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             {ligne2.map((item, i) => (
-              <div key={i} style={{ perspective: "1000px" }} className="h-44">
+              <div key={i} style={{ perspective: "1000px" }} className="h-40 md:h-44">
                 <div
                   className="relative w-full h-full transition-transform duration-700 cursor-default"
                   style={{ transformStyle: "preserve-3d" }}
@@ -119,14 +119,14 @@ export function FamillesGaranties({
                         <img src={item.imageUrl} alt="" className="w-7 h-7 object-contain" />
                       </div>
                     )}
-                    <h3 className="font-bold text-lg leading-snug">{item.title}</h3>
+                    <h3 className="font-bold text-base md:text-lg leading-snug">{item.title}</h3>
                   </div>
                   {/* Verso */}
                   <div
                     className="absolute inset-0 bg-teal-400/15 border border-teal-400/30 rounded-2xl p-6 lg:p-8 flex flex-col justify-center"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                   >
-                    <p className="text-sm text-white/80 leading-relaxed">{item.description}</p>
+                    <p className="text-xs md:text-sm text-white/80 leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               </div>

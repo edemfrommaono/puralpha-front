@@ -40,7 +40,7 @@ export function HistoireValeurs({
             <StaggerItem
               key={i}
               className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl
-                         transition-all duration-500 hover:-translate-y-1 aspect-[3/4] cursor-default"
+                         transition-all duration-500 hover:-translate-y-1 h-[280px] w-[280px] mx-auto sm:w-full sm:h-auto sm:aspect-[3/4] cursor-default"
             >
               {/* Image de fond */}
               {item.imageDuFond ? (
@@ -71,12 +71,12 @@ export function HistoireValeurs({
                 </div>
 
                 {/* Titre — toujours visible */}
-                <h3 className="font-extrabold text-white text-sm uppercase tracking-wide leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
+                <h3 className="font-extrabold text-white text-xs sm:text-sm uppercase tracking-wide leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
                   {item.title}
                 </h3>
 
                 {/* Description — apparaît au survol */}
-                <p className="text-white/80 text-xs leading-relaxed
+                <p className="text-white/80 text-[11px] sm:text-xs leading-relaxed
                                max-h-0 overflow-hidden opacity-0
                                group-hover:max-h-40 group-hover:opacity-100
                                transition-all duration-500 ease-in-out">

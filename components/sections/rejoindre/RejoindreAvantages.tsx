@@ -21,7 +21,7 @@ const ICON_BGS = ["bg-teal-400/10", "bg-gold-500/10", "bg-navy-800/10", "bg-teal
 
 function FlipCard({ card, idx }: { card: AvantageCard; idx: number }) {
   return (
-    <div style={{ perspective: "1000px" }} className="h-52">
+    <div style={{ perspective: "1000px" }} className="h-44 md:h-52">
       <div
         className="relative w-full h-full transition-transform duration-700 cursor-default"
         style={{ transformStyle: "preserve-3d" }}
@@ -40,7 +40,7 @@ function FlipCard({ card, idx }: { card: AvantageCard; idx: number }) {
               <span>{card.fallback_icon || "⭐"}</span>
             )}
           </div>
-          <h3 className="text-lg font-bold text-navy-800">{card.title}</h3>
+          <h3 className="text-base md:text-lg font-bold text-navy-800">{card.title}</h3>
         </div>
 
         {/* Verso — description */}
@@ -48,7 +48,7 @@ function FlipCard({ card, idx }: { card: AvantageCard; idx: number }) {
           className="absolute inset-0 bg-[#F6F4EF] border border-gray-100 rounded-[20px] p-6 lg:p-8 flex flex-col justify-center shadow-sm"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
-          <p className="text-sm text-gray-600 leading-relaxed">{card.description}</p>
+          <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{card.description}</p>
         </div>
       </div>
     </div>

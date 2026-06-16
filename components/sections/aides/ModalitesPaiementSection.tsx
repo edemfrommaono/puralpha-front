@@ -77,7 +77,7 @@ export function ModalitesPaiementSection({
               <div
                 key={i}
                 className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl
-                           transition-all duration-500 hover:-translate-y-1 aspect-[4/3] cursor-default"
+                           transition-all duration-500 hover:-translate-y-1 h-[200px] w-[280px] mx-auto sm:w-full sm:h-auto sm:aspect-[4/3] cursor-default"
               >
                 {/* Image de fond */}
                 {proc.imageDuFond ? (

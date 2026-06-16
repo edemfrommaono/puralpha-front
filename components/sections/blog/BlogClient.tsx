@@ -157,7 +157,7 @@ export function BlogClient({ posts, categories }: BlogClientProps) {
                   </div>
 
                   <Link
-                    href={`/blog/${post.slug}`}
+                    href={`/actualite/${post.slug}`}
                     className="w-9 h-9 rounded-full bg-[#ecf4f6] text-[#0d3d4f] hover:bg-[#0d3d4f] hover:text-white flex items-center justify-center transition-colors duration-200"
                   >
                     <ArrowRight className="w-4 h-4" />

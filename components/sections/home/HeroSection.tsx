@@ -90,7 +90,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
           </div>
 
           {/* Hero images — URLs résolues côté serveur */}
-          <FadeInView direction="right" delay={0.2} className="relative min-h-[220px] md:min-h-[380px] lg:min-h-0 lg:h-[600px] w-full flex items-stretch gap-3 lg:gap-6 justify-end">
+          <FadeInView direction="right" delay={0.2} className="relative min-h-[180px] md:min-h-[380px] lg:min-h-0 lg:h-[600px] w-full flex items-stretch gap-3 lg:gap-6 justify-end">
             {/* Colonne gauche — image unique, pleine hauteur */}
             <div className="relative w-[55%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg">
               {heroImageLeftUrl ? (
@@ -119,8 +119,8 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
                 )}
               </div>
               {(hero?.hero_overlay_text || fb.hero_overlay_text) && (
-                <div className="bg-navy-700 text-white p-4 lg:p-6 rounded-2xl lg:rounded-3xl shadow-lg shrink-0 flex items-center">
-                  <p className="font-bold text-xs lg:text-sm leading-relaxed">
+                <div className="bg-navy-700 text-white p-3 md:p-4 lg:p-6 rounded-2xl lg:rounded-3xl shadow-lg shrink-0 flex items-center">
+                  <p className="font-bold text-[10px] sm:text-xs lg:text-sm leading-tight sm:leading-relaxed">
                     {hero?.hero_overlay_text || fb.hero_overlay_text}
                   </p>
                 </div>
