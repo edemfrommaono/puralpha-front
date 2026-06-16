@@ -67,14 +67,14 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
           >
             {cta?.cta_text || fb.cta_text}
           </Button>
-          <Button
+          {/* <Button
             variant="outline-navy"
             href="/contact"
             className="px-6 md:px-10"
             style={{ borderRadius: '50px', borderColor: '#F2C94C', color: '#F2C94C' }}
           >
             {(cta as Record<string, unknown>)?.cta_texte_2 as string || "Nous contacter"}
-          </Button>
+          </Button> */}
         </div>
       </FadeInView>
     </section>
