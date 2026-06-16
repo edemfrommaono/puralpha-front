@@ -52,7 +52,7 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {accompagnements.map((item, i) => (
-            <div key={i} style={{ perspective: "1000px" }} className="h-56">
+            <div key={i} style={{ perspective: "1000px" }} className="h-44 md:h-56">
               <div
                 className="relative w-full h-full transition-transform duration-700 cursor-default"
                 style={{ transformStyle: "preserve-3d" }}
@@ -61,24 +61,24 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
               >
                 {/* Recto — numéro + titre */}
                 <div
-                  className="absolute inset-0 bg-[#F6F4EF] border border-[#F3F4F6] rounded-[18px] p-6 lg:p-8 shadow-sm flex flex-col gap-3 overflow-hidden"
+                  className="absolute inset-0 bg-[#F6F4EF] border border-[#F3F4F6] rounded-[18px] p-5 md:p-6 lg:p-8 shadow-sm flex flex-col gap-2 md:gap-3 overflow-hidden"
                   style={{ backfaceVisibility: "hidden" }}
                 >
-                  <span className="text-[60px] font-black text-[#F2C94C]/50 leading-none">
+                  <span className="text-[48px] md:text-[60px] font-black text-[#F2C94C]/50 leading-none">
                     {String(item.ordre).padStart(2, "0")}
                   </span>
-                  <h3 className="font-bold text-navy-800 text-lg">{item.titre}</h3>
+                  <h3 className="font-bold text-navy-800 text-base md:text-lg">{item.titre}</h3>
                 </div>
 
                 {/* Verso — description */}
                 <div
-                  className="absolute inset-0 bg-[#F6F4EF] border border-[#F3F4F6] rounded-[18px] p-6 lg:p-8 shadow-sm flex flex-col justify-center gap-3"
+                  className="absolute inset-0 bg-[#F6F4EF] border border-[#F3F4F6] rounded-[18px] p-5 md:p-6 lg:p-8 shadow-sm flex flex-col justify-center gap-2 md:gap-3"
                   style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
-                  <span className="text-[40px] font-black text-[#F2C94C]/40 leading-none">
+                  <span className="text-[32px] md:text-[40px] font-black text-[#F2C94C]/40 leading-none">
                     {String(item.ordre).padStart(2, "0")}
                   </span>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                  <p className="text-gray-600 text-xs md:text-sm leading-relaxed">{item.description}</p>
                 </div>
               </div>
             </div>
