@@ -1,4 +1,5 @@
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface HistoireHeroProps {
   titleLine1: string;
@@ -25,7 +26,7 @@ export function HistoireHero({
       <div className="container mx-auto px-4 lg:px-8 relative z-10 flex flex-col items-center text-center">
         <div className="max-w-4xl mx-auto flex flex-col gap-4 lg:gap-6 items-center">
           <FadeInView delay={0}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-navy-800 leading-tight text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-navy-800 leading-snug text-center">
               {titleLine1}<br />
               <span className="text-teal-400">{titleHighlight}</span>
             </h1>
@@ -37,11 +38,14 @@ export function HistoireHero({
               </p>
             </FadeInView>
           )}
-          <FadeInView delay={0.2}>
-            <p className="text-base text-gray-600 leading-relaxed max-w-2xl text-center">
-              {description}
-            </p>
-          </FadeInView>
+          {description && (
+            <FadeInView delay={0.2}>
+              <div
+                className="prose text-base text-gray-600 leading-relaxed max-w-2xl text-center"
+                dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+              />
+            </FadeInView>
+          )}
           {quote && (
             <FadeInView delay={0.3}>
               <p className="text-base lg:text-lg italic max-w-2xl text-center" style={{ color: "#6B7280" }}>

@@ -34,10 +34,10 @@ export function RejoindreProcess({
           {sectionTag && (
             <p className="text-center text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
           )}
-          <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-[#1C3553] mb-4 lg:mb-6 md:leading-[45.6px] font-poppins text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-[#1C3553] mb-4 lg:mb-6 leading-snug font-poppins text-center">
             {title}{" "}
             {titleHighlight && (
-              <span className="text-[#F2C94C] font-poppins not-italic font-extrabold text-2xl md:text-3xl lg:text-[38px]">
+              <span className="text-[#F2C94C] font-poppins not-italic font-extrabold text-2xl md:text-3xl lg:text-[38px] leading-snug">
                 {titleHighlight}
               </span>
             )}

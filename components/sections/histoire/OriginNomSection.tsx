@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface OriginNomSectionProps {
   title?: string;
@@ -25,13 +26,13 @@ export function OriginNomSection({
   return (
     <section className="py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
           {/* Texte */}
           {(title || titleHighlight || description) && (
-            <FadeInView direction="left">
+            <FadeInView direction="left" className="flex flex-col justify-center">
               {(title || titleHighlight) && (
                 <h2
-                  className="font-extrabold text-navy-800 mb-4 lg:mb-6 text-3xl md:text-4xl lg:text-[40px] leading-tight lg:leading-[48px]"
+                  className="font-extrabold text-navy-800 mb-4 lg:mb-6 text-3xl md:text-4xl lg:text-[40px] leading-snug lg:leading-snug"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                 >
                   {title}
@@ -42,15 +43,16 @@ export function OriginNomSection({
                 </h2>
               )}
               {description && (
-                <p className="text-gray-600 text-base leading-relaxed">
-                  {description}
-                </p>
+                <div
+                  className="prose text-gray-600 text-base leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+                />
               )}
             </FadeInView>
           )}
 
           {/* Image */}
-          <FadeInView direction="right" delay={0.15} className="relative overflow-hidden min-h-[300px] md:min-h-[400px] rounded-2xl">
+          <FadeInView direction="right" delay={0.15} className="relative overflow-hidden w-full h-full min-h-[300px] lg:min-h-[400px] rounded-2xl">
             {imageUrl ? (
               <Image
                 src={imageUrl}
@@ -59,7 +61,7 @@ export function OriginNomSection({
                 className="object-cover"
               />
             ) : (
-              <div className="w-full h-full min-h-[300px] md:min-h-[400px] bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
+              <div className="w-full h-full min-h-[300px] lg:min-h-[400px] bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
                 <span className="text-teal-500 text-lg font-medium">Image à venir</span>
               </div>
             )}

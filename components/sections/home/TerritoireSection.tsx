@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface TerritoireSectionProps {
   territoire?: {
@@ -8,8 +9,8 @@ interface TerritoireSectionProps {
     title: string;
     title_highlight: string;
     titre_2?: string;
-    description_1: string;
-    description_2: string;
+    description_1: string; // HTML issu du WYSIWYG
+    description_2: string; // HTML issu du WYSIWYG
     cta_text: string;
     cta_url: string;
   };
@@ -20,8 +21,8 @@ interface TerritoireSectionProps {
     title: string;
     title_highlight: string;
     titre_2: string;
-    description_1: string;
-    description_2: string;
+    description_1: string; // HTML issu du WYSIWYG
+    description_2: string; // HTML issu du WYSIWYG
     cta_text: string;
     cta_url: string;
   };
@@ -29,7 +30,7 @@ interface TerritoireSectionProps {
 
 export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fallback: fb }: TerritoireSectionProps) {
   return (
-    <section className="py-8 lg:py-32 w-full bg-[#ecf4f6]">
+    <section className="py-8 lg:py-20 w-full bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <FadeInView direction="left" className="order-2 lg:order-1 relative h-[220px] md:h-[380px] lg:h-[500px] w-full">
@@ -61,7 +62,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
                 </div>
               )}
               {(territoire?.title || fb.title || territoire?.title_highlight || fb.title_highlight || territoire?.titre_2 || fb.titre_2) && (
-                <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-tight">
+                <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-snug">
                   {territoire?.title || fb.title}{" "}
                   {(territoire?.title_highlight || fb.title_highlight) && (
                     <span className="text-teal-400">
@@ -73,9 +74,12 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
               )}
             </div>
             {(territoire?.description_1 || fb.description_1) && (
-              <p className="text-[15px] md:text-base text-gray-700 leading-relaxed">
-                {territoire?.description_1 || fb.description_1}
-              </p>
+              <div
+                className="prose max-w-none"
+                dangerouslySetInnerHTML={{
+                  __html: toHtml(territoire?.description_1 || fb.description_1),
+                }}
+              />
             )}
             {logoUrls.length > 0 && (
               <div className="flex flex-row flex-wrap items-center gap-12">
@@ -92,9 +96,12 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
               </div>
             )}
             {(territoire?.description_2 || fb.description_2) && (
-              <p className="text-[15px] md:text-base text-gray-700 leading-relaxed mb-4">
-                {territoire?.description_2 || fb.description_2}
-              </p>
+              <div
+                className="prose max-w-none"
+                dangerouslySetInnerHTML={{
+                  __html: toHtml(territoire?.description_2 || fb.description_2),
+                }}
+              />
             )}
             {territoire?.cta_url && territoire.cta_url !== "#" && (territoire?.cta_text || fb.cta_text) && (
               <div>

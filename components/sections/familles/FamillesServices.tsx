@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
 
+import { toHtml } from "@/lib/wysiwyg";
+
 interface ServiceCard {
   tag: string;
   title: string;
@@ -29,7 +31,12 @@ export function FamillesServices({
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-6">
             {title} <span className="text-teal-400">{titleHighlight}</span>
           </h2>
-          <p className="text-gray-600 text-[15px] md:text-lg">{description}</p>
+          {description && (
+            <div
+              className="prose max-w-3xl mx-auto text-center"
+              dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+            />
+          )}
         </FadeInView>
 
         <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8">

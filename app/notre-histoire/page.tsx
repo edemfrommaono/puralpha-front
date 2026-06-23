@@ -140,8 +140,7 @@ export default async function NotreHistoirePage() {
         sectionTag={fondatrice?.section_tag || fb.fondatrice.section_tag}
         title={fondatrice?.title || fb.fondatrice.title}
         titleHighlight={fondatrice?.title_highlight || fb.fondatrice.title_highlight}
-        paragraph1={fondatrice?.paragraph_1 || fb.fondatrice.paragraph_1}
-        paragraph2={fondatrice?.paragraph_2 || fb.fondatrice.paragraph_2}
+        paragraph_1={fondatrice?.paragraph_1 || fb.fondatrice.paragraph_1}
         quote={fondatrice?.quote || fb.fondatrice.quote}
         quoteAuthor={fondatrice?.quote_author || fb.fondatrice.quote_author}
         imageCaption={fondatrice?.image_caption || fb.fondatrice.image_caption}
@@ -149,17 +148,17 @@ export default async function NotreHistoirePage() {
       />
 
       <OriginNomSection
-        title={(acf as Record<string, unknown>)?.origin_nom_title as string}
-        titleHighlight={(acf as Record<string, unknown>)?.origin_nom_title_highlight as string}
-        description={(acf as Record<string, unknown>)?.origin_nom_description as string}
-        imageUrl={await resolveImageUrl((acf as Record<string, unknown>)?.origin_nom_image as number | null)}
+        title={acf?.origin_nom_title}
+        titleHighlight={acf?.origin_nom_title_highlight}
+        description={acf?.origin_nom_description}
+        imageUrl={await resolveImageUrl(acf?.origin_nom_image ?? null)}
       />
 
       <VecuMethodeSection
-        title={(acf as Record<string, unknown>)?.vecu_methode_title as string}
-        titleHighlight={(acf as Record<string, unknown>)?.vecu_methode_title_highlight as string}
-        description={(acf as Record<string, unknown>)?.vecu_methode_description as string}
-        items={(acf as Record<string, unknown>)?.vecu_methode_items as { ordre: number; titre: string; description: string }[]}
+        title={acf?.vecu_methode_title}
+        titleHighlight={acf?.vecu_methode_title_highlight}
+        description={acf?.vecu_methode_description}
+        items={acf?.vecu_methode_items}
       />
 
       {/* <HistoireRealite

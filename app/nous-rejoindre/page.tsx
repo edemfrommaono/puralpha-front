@@ -96,19 +96,18 @@ export default async function NousRejoindre() {
         sectionTag={vh?.section_tag || fb.valeurs_humaines.section_tag}
         title={vh?.title || fb.valeurs_humaines.title}
         titleHighlight={vh?.title_highlight || fb.valeurs_humaines.title_highlight}
-        paragraph1={vh?.paragraph_1 || fb.valeurs_humaines.paragraph_1}
-        paragraph2={vh?.paragraph_2 || fb.valeurs_humaines.paragraph_2}
+        paragraph={vh?.paragraph || fb.valeurs_humaines.paragraph}
         qualities={[...qualities]}
         imageUrl={vhImageUrl}
       />
 
       <RejoindreFormation
-        tag={(acf as Record<string, unknown>)?.formation_tag as string}
-        title={(acf as Record<string, unknown>)?.formation_title as string}
-        titleHighlight={(acf as Record<string, unknown>)?.formation_title_highlight as string}
-        titleEnd={(acf as Record<string, unknown>)?.formation_title_end as string}
-        description={(acf as Record<string, unknown>)?.formation_description as string}
-        etapes={(acf as Record<string, unknown>)?.formation_etapes as { valeur: string; sous_titre: string; titre: string; description: string }[]}
+        tag={acf?.formation_tag}
+        title={acf?.formation_title}
+        titleHighlight={acf?.formation_title_highlight}
+        titleEnd={acf?.formation_title_end}
+        description={acf?.formation_description}
+        etapes={acf?.formation_etapes}
       />
 
       <RejoindreTemoignage

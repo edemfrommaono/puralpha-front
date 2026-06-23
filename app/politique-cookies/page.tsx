@@ -83,7 +83,7 @@ Pour exercer ces droits, veuillez nous contacter. Référez-vous aux coordonnée
     id: "coordonnees",
     title: "10. Coordonnées",
     content: `PUR Alpha
-16 rue de la République, 95570 Bouffémont
+10 B rue de Paris, 95350 Piscop
 France
 Site web : https://pur-alpha.fr
 Email : contact@pur-alpha.fr

@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { FadeInView } from "@/components/ui/FadeInView";
 
+import { toHtml } from "@/lib/wysiwyg";
+
 /** Map des noms d'icônes Lucide → composants pour les garanties */
 const ICON_MAP: Record<string, LucideIcon> = {
   UserCheck, GraduationCap, Phone, BookOpen, ShieldCheck, RefreshCw,
@@ -54,7 +56,12 @@ export function FamillesGaranties({
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-6">
             {title} <br className="hidden lg:block" /><span className="text-teal-400">{titleHighlight}</span>
           </h2>
-          <p className="text-sm lg:text-base text-white/70 text-center">{description}</p>
+          {description && (
+            <div
+              className="prose prose-invert max-w-3xl mx-auto text-center"
+              dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+            />
+          )}
         </FadeInView>
 
         {/* Ligne 1 — 3 colonnes avec flip */}

@@ -1,11 +1,11 @@
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface HistoireFondatriceProps {
   sectionTag: string;
   title: string;
   titleHighlight: string;
-  paragraph1: string;
-  paragraph2: string;
+  paragraph_1?: string;
   quote: string;
   quoteAuthor: string;
   imageCaption: string;
@@ -16,8 +16,7 @@ export function HistoireFondatrice({
   sectionTag,
   title,
   titleHighlight,
-  paragraph1,
-  paragraph2,
+  paragraph_1,
   quote,
   quoteAuthor,
   imageCaption,
@@ -26,9 +25,9 @@ export function HistoireFondatrice({
   return (
     <section className="py-8 lg:py-24">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-stretch">
           {/* col 1 image gauche */}
-          <FadeInView direction="left" className="relative overflow-hidden shadow-xl min-h-[350px] lg:min-h-[490px] rounded-2xl lg:rounded-3xl">
+          <FadeInView direction="left" className="relative overflow-hidden shadow-xl w-full h-full min-h-[350px] lg:min-h-[490px] rounded-2xl lg:rounded-3xl">
             {imageUrl ? (
               <img src={imageUrl} alt={imageCaption} className="absolute inset-0 w-full h-full object-cover" />
             ) : (
@@ -40,16 +39,22 @@ export function HistoireFondatrice({
             </div>
           </FadeInView>
           {/* col 2 droite */}
-          <FadeInView direction="right" delay={0.15}>
+          <FadeInView direction="right" delay={0.15} className="flex flex-col justify-center">
             {/* <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
                   {sectionTag}
                 </span> */}
-            <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight mb-4 lg:mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-snug mb-4 lg:mb-6">
               {title}<br />
               <span className="text-[#F2C94C]">{titleHighlight}</span>
             </h2>
-            <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed mb-4">{paragraph1}</p>
-            <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed">{paragraph2}</p>
+            {paragraph_1 && (
+              <div
+                className="text-gray-600 text-[15px] md:text-lg leading-relaxed prose prose-p:mb-4 prose-p:last:mb-0 max-w-none"
+                dangerouslySetInnerHTML={{
+                  __html: toHtml(paragraph_1)
+                }}
+              />
+            )}
             {/* <div className="mt-4 p-6 bg-gold-500/5 rounded-tr-xl rounded-br-xl border-l-4 border-gold-500">
                 <p className="text-navy-800 italic text-lg leading-relaxed">{quote}</p>
                 <p className="text-teal-400 font-bold text-xs uppercase tracking-[2px] mt-4">— {quoteAuthor}</p>

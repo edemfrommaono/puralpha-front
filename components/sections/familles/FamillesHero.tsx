@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface FamillesHeroProps {
   title?: string;
@@ -34,9 +35,10 @@ export function FamillesHero({
         )}
         {description && (
           <FadeInView delay={0.15}>
-            <p className="text-base text-center md:text-lg lg:text-xl text-gray-700 max-w-2xl mb-8 lg:mb-10">
-              {description}
-            </p>
+            <div
+              className="prose max-w-3xl mx-auto text-center mb-8 lg:mb-10"
+              dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+            />
           </FadeInView>
         )}
         {(ctaPrimaryText || ctaSecondaryText) && (

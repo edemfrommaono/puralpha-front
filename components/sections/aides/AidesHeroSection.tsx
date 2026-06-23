@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/Button";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface AidesHeroSectionProps {
   hero?: {
@@ -27,9 +27,12 @@ export function AidesHeroSection({ hero, fallback: fb }: AidesHeroSectionProps) 
             {hero?.title_line_2 || fb.title_line_2}<br />
             <span className="text-teal-400">{hero?.title_highlight || fb.title_highlight}</span>
           </h1>
-          <p className="text-base text-center md:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mt-2">
-            {hero?.description || fb.description}
-          </p>
+          {(hero?.description || fb.description) && (
+            <div
+              className="prose max-w-2xl mx-auto text-center text-gray-600 mt-2"
+              dangerouslySetInnerHTML={{ __html: toHtml(hero?.description || fb.description) }}
+            />
+          )}
         </FadeInView>
 
 

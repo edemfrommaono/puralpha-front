@@ -11,7 +11,7 @@
         "sub_fields": [
           { "key": "field_plf_hero_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Votre enfant mérite une" },
           { "key": "field_plf_hero_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "présence stable et bienveillante" },
-          { "key": "field_plf_hero_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_plf_hero_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           { "key": "field_plf_hero_cta1_text", "label": "CTA 1 texte", "name": "cta_primary_text", "type": "text", "default_value": "Parlons de votre situation →" },
           { "key": "field_plf_hero_cta1_url", "label": "CTA 1 URL", "name": "cta_primary_url", "type": "url", "default_value": "/contact" },
           { "key": "field_plf_hero_cta2_text", "label": "CTA 2 texte", "name": "cta_secondary_text", "type": "text", "default_value": "Voir les aides financières" },
@@ -31,7 +31,7 @@
         "sub_fields": [
           { "key": "field_plf_h_title", "label": "Titre", "name": "title", "type": "text" },
           { "key": "field_plf_h_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_plf_h_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_plf_h_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
             "key": "field_plf_h_types", "label": "Types", "name": "types", "type": "repeater", "layout": "table",
             "sub_fields": [
@@ -49,7 +49,7 @@
         "sub_fields": [
           { "key": "field_plf_s_title", "label": "Titre", "name": "title", "type": "text" },
           { "key": "field_plf_s_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_plf_s_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_plf_s_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
             "key": "field_plf_s_cards", "label": "Cartes", "name": "cards", "type": "repeater", "layout": "block",
             "sub_fields": [
@@ -71,7 +71,7 @@
         "sub_fields": [
           { "key": "field_plf_g_title", "label": "Titre", "name": "title", "type": "text" },
           { "key": "field_plf_g_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_plf_g_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_plf_g_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
             "key": "field_plf_g_items", "label": "Garanties", "name": "items", "type": "repeater", "layout": "block",
             "sub_fields": [

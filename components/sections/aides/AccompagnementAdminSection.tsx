@@ -1,5 +1,7 @@
 "use client";
 
+import { toHtml } from "@/lib/wysiwyg";
+
 interface Accompagnement {
   ordre: number;
   titre: string;
@@ -45,9 +47,12 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
             <br />
             {accAdmin?.titre_2 || fb.titre_2}
           </h2>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            {accAdmin?.description || fb.description}
-          </p>
+          { (accAdmin?.description || fb.description) && (
+            <div
+              className="prose max-w-2xl mx-auto mt-4 text-center"
+              dangerouslySetInnerHTML={{ __html: toHtml(accAdmin?.description || fb.description) }}
+            />
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

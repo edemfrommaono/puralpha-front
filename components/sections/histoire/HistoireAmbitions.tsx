@@ -29,7 +29,7 @@ export function HistoireAmbitions({
               <div className="w-8 h-0.5 bg-teal-400" />
               <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">{sectionTag}</span>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-snug">
               {title}<br /><span className="text-teal-400 italic">{titleHighlight}</span>
             </h2>
             <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed mt-2">{description}</p>

@@ -26,8 +26,7 @@ export const NOUS_REJOINDRE_FALLBACK = {
     section_tag: "",
     title: "",
     title_highlight: "",
-    paragraph_1: "",
-    paragraph_2: "",
+    paragraph: "",
     qualities: [],
   },
 

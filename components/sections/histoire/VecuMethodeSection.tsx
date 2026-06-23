@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface MethodeItem {
   ordre: number;
@@ -39,7 +40,7 @@ export function VecuMethodeSection({
           <FadeInView className="text-center mb-8 lg:mb-12">
             {(title || titleHighlight) && (
               <h2
-                className="font-extrabold text-navy-800 mb-4 lg:mb-6 text-2xl md:text-3xl lg:text-[40px] leading-tight lg:leading-[48px]"
+                className="font-extrabold text-navy-800 mb-4 lg:mb-6 text-2xl md:text-3xl lg:text-[40px] leading-snug lg:leading-snug"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {title}{" "}
@@ -49,9 +50,10 @@ export function VecuMethodeSection({
               </h2>
             )}
             {description && (
-              <p className="text-gray-500 text-sm text-center leading-relaxed max-w-2xl mx-auto">
-                {description}
-              </p>
+              <div
+                className="prose text-base text-gray-600 text-center leading-relaxed max-w-2xl mx-auto"
+                dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+              />
             )}
           </FadeInView>
         )}

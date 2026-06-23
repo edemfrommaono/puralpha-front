@@ -32,7 +32,7 @@ export function HistoireModele({
           <FadeInView direction="left" className="flex flex-col gap-6 lg:gap-8">
             <div>
               <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">{tag}</span>
-              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-snug">
                 {titreLigne1}<br />
                 <span className="text-teal-400">{titleHighlight}</span>
               </h2>

@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface AvantageCard {
   title: string;
@@ -64,13 +65,18 @@ export function RejoindreAvantages({
         <div className="max-w-3xl mx-auto">
           <FadeInView className="text-center mb-8 lg:mb-16">
             <p className="text-center text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
-            <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-navy-800 mb-4 lg:mb-6 md:leading-[45.6px]">
+            <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-navy-800 mb-4 lg:mb-6 leading-snug">
               {title}{" "}
-              <span className="text-[#F2C94C] font-poppins not-italic font-extrabold text-2xl md:text-3xl lg:text-[38px]">
+              <span className="text-[#F2C94C] font-poppins not-italic font-extrabold text-2xl md:text-3xl lg:text-[38px] leading-snug">
                 {titleHighlight}
               </span>
             </h2>
-            <p className="text-gray-600 text-center max-w-3xl mx-auto">{description}</p>
+            {description && (
+              <div
+                className="prose text-gray-600 text-center max-w-3xl mx-auto"
+                dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+              />
+            )}
           </FadeInView>
         </div>
 

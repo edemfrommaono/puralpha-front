@@ -13,9 +13,9 @@ const sections = [
     content: `Conformément à l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, nous informons les utilisateurs du site internet pur-alpha.fr l'identité des différents acteurs impliqués dans sa création et son suivi :
 
 Propriétaire du site : PUR ALPHA
-Identification de l'entreprise : PUR ALPHA, SIRET 989 156 989 00018, sis 41 avenue des Reises, 75009 PARIS
+Identification de l'entreprise : PUR ALPHA, SIRET 989 156 989 00018, Agrément SAP N° SAP989156989, sis 10 B rue de Paris, 95350 Piscop
 Directeur de la publication : Marc LEBLANC
-Réalisation : Studio Créatif
+Réalisation : PUR ALPHA
 Hébergeur : OVH, Société par Actions Simplifiée au capital de 10 069 020 €, ayant son siège social au 2 rue Kellermann, 59100 ROUBAIX France, Siren 424 761 419 RCS Lille
 Délégué à la protection des données : Marc LEBLANC`,
   },

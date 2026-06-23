@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface TarifRow {
   creneau: string;
@@ -89,9 +90,12 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
           <h3 className="text-lg lg:text-2xl font-extrabold text-white mb-4 text-center">
             {tarif?.estimation_title || ESTIMATION_DEFAULTS.title}
           </h3>
-          <p className="text-sm text-white/60 leading-relaxed mb-8 text-center">
-            {tarif?.estimation_description || ESTIMATION_DEFAULTS.description}
-          </p>
+          { (tarif?.estimation_description || ESTIMATION_DEFAULTS.description) && (
+            <div
+              className="prose prose-invert max-w-3xl mx-auto text-sm text-white/60 leading-relaxed mb-8 text-center"
+              dangerouslySetInnerHTML={{ __html: toHtml(tarif?.estimation_description || ESTIMATION_DEFAULTS.description) }}
+            />
+          )}
           <Button
             variant="navy"
             className="w-fit mx-auto"

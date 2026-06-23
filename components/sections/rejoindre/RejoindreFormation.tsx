@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 
 interface FormationStep {
@@ -52,7 +53,7 @@ export function RejoindreFormation({
             )}
             {(title || titleHighlight || titleEnd) && (
               <h2
-                className="font-extrabold text-navy-800 mb-4 lg:mb-6 max-w-3xl mx-auto text-2xl md:text-3xl lg:text-[40px] leading-tight lg:leading-[48px]"
+                className="font-extrabold text-navy-800 mb-4 lg:mb-6 max-w-3xl mx-auto text-2xl md:text-3xl lg:text-[40px] leading-snug lg:leading-snug"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 {title}
@@ -64,9 +65,10 @@ export function RejoindreFormation({
               </h2>
             )}
             {description && (
-              <p className="text-gray-500 max-w-3xl text-center mx-auto text-sm leading-relaxed">
-                {description}
-              </p>
+              <div
+                className="prose text-gray-500 max-w-3xl text-center mx-auto text-sm leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+              />
             )}
           </FadeInView>
         )}

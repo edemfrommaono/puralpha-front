@@ -1,4 +1,5 @@
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface Quality {
   text: string;
@@ -8,14 +9,13 @@ interface RejoindreValeursProps {
   sectionTag: string;
   title: string;
   titleHighlight: string;
-  paragraph1: string;
-  paragraph2: string;
+  paragraph?: string;
   qualities: readonly Quality[];
   imageUrl?: string;
 }
 
 export function RejoindreValeurs({
-  sectionTag, title, titleHighlight, paragraph1, paragraph2, qualities, imageUrl,
+  sectionTag, title, titleHighlight, paragraph, qualities, imageUrl,
 }: RejoindreValeursProps) {
   return (
     <section className="w-full bg-white py-8 lg:py-24">
@@ -29,12 +29,18 @@ export function RejoindreValeurs({
         </FadeInView>
         <FadeInView direction="right" delay={0.15} className="flex flex-col justify-center order-1 lg:order-2">
           <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
-          <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-navy-800 mb-4 lg:mb-6 leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-navy-800 mb-4 lg:mb-6 leading-snug">
             {title} <br className="hidden md:block" />
-            <span className="text-teal-400 italic">{titleHighlight}</span>
+            <span className="text-teal-400">{titleHighlight}</span>
           </h2>
-          <p className="text-gray-600 text-[15px] leading-relaxed mb-4">{paragraph1}</p>
-          <p className="text-gray-600 text-[15px] leading-relaxed mb-10">{paragraph2}</p>
+          {paragraph && (
+            <div
+              className="text-gray-600 text-[15px] leading-relaxed prose prose-p:mb-4 prose-p:last:mb-0 max-w-none mb-10"
+              dangerouslySetInnerHTML={{
+                __html: toHtml(paragraph)
+              }}
+            />
+          )}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {qualities.map((q, i) => (
               <div key={i} className="flex items-center gap-3">

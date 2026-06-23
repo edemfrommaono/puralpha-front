@@ -43,8 +43,7 @@ export const HOME_FALLBACK = {
     section_tag: "",
     title: "",
     title_highlight: "",
-    paragraph_1: "",
-    paragraph_2: "",
+    paragraphe: "",
     cta_text: "",
     cta_url: "/notre-histoire",
   },
@@ -54,8 +53,8 @@ export const HOME_FALLBACK = {
     title: "",
     title_highlight: "",
     titre_2: "",
-    description_1: "",
-    description_2: "",
+    description_1: "", // HTML issu du WYSIWYG ACF
+    description_2: "", // HTML issu du WYSIWYG ACF
     cta_text: "",
     cta_url: "#",
   },

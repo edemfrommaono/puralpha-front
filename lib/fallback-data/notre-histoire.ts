@@ -20,7 +20,6 @@ export const NOTRE_HISTOIRE_FALLBACK = {
     title: "",
     title_highlight: "",
     paragraph_1: "",
-    paragraph_2: "",
     quote: "",
     quote_author: "",
     image_caption: "",

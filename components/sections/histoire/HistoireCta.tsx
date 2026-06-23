@@ -34,7 +34,7 @@ export function HistoireCta({
       <div className="absolute inset-0 bg-gradient-to-r from-navy-800/90 to-navy-800/90 z-[1]" />
 
       <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center max-w-6xl">
-        <blockquote className="text-white leading-snug italic mb-6 lg:mb-8 text-xl md:text-3xl lg:text-[42px]">
+        <blockquote className="text-white leading-snug italic mb-6 lg:mb-8 text-lg md:text-2xl lg:text-3xl">
           {citation}
         </blockquote>
         <p className="text-white/50 font-bold text-[10px] uppercase tracking-[3px] mb-4 lg:mb-6">— {auteur}</p>

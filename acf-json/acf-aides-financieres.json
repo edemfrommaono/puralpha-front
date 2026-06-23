@@ -12,9 +12,19 @@
           { "key": "field_af_hero_l1", "label": "Titre ligne 1", "name": "title_line_1", "type": "text", "default_value": "L'accompagnement" },
           { "key": "field_af_hero_l2", "label": "Titre ligne 2", "name": "title_line_2", "type": "text", "default_value": "que vous méritez," },
           { "key": "field_af_hero_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "au juste prix." },
-          { "key": "field_af_hero_desc", "label": "Description", "name": "description", "type": "textarea" }
+          { "key": "field_af_hero_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 }
         ]
       },
+      { "key": "field_af_tab_rac", "label": "Reste à charge", "type": "tab" },
+      { "key": "field_af_rac_title", "label": "Titre", "name": "reste_a_charge_title", "type": "text" },
+      { "key": "field_af_rac_hl", "label": "Titre coloré", "name": "reste_a_charge_title_highlight", "type": "text" },
+      { "key": "field_af_rac_desc", "label": "Description", "name": "reste_a_charge_description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
+      { "key": "field_af_rac_image", "label": "Image", "name": "reste_a_charge_image", "type": "image", "return_format": "id" },
+      { "key": "field_af_rac_caption", "label": "Légende de l'image", "name": "reste_a_charge_image_caption", "type": "text" },
+      { "key": "field_af_rac_cta_text", "label": "Texte CTA principal", "name": "reste_a_charge_cta_primary_text", "type": "text" },
+      { "key": "field_af_rac_cta_url", "label": "URL CTA principal", "name": "reste_a_charge_cta_primary_url", "type": "text" },
+      { "key": "field_af_rac_cta_sec_text", "label": "Texte CTA secondaire", "name": "reste_a_charge_cta_secondary_text", "type": "text" },
+      { "key": "field_af_rac_cta_sec_url", "label": "URL CTA secondaire", "name": "reste_a_charge_cta_secondary_url", "type": "text" },
       { "key": "field_af_tab_aides", "label": "Aides", "type": "tab" },
       {
         "key": "field_af_aides", "label": "Aides", "name": "aides", "type": "group", "show_in_rest": true,
@@ -22,7 +32,7 @@
           { "key": "field_af_a_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Dispositifs mobilisables" },
           { "key": "field_af_a_title", "label": "Titre", "name": "title", "type": "text" },
           { "key": "field_af_a_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_af_a_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_af_a_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
             "key": "field_af_a_cards", "label": "Cartes aides", "name": "cards", "type": "repeater", "layout": "block",
             "sub_fields": [
@@ -64,7 +74,54 @@
               { "key": "field_af_tr_rac", "label": "Reste à charge", "name": "reste_a_charge", "type": "text" }
             ]
           },
-          { "key": "field_af_t_footnote", "label": "Note de bas", "name": "footnote", "type": "textarea" }
+          { "key": "field_af_t_footnote", "label": "Note de bas", "name": "footnote", "type": "textarea" },
+          { "key": "field_af_t_est_title", "label": "Titre estimation", "name": "estimation_title", "type": "text" },
+          { "key": "field_af_t_est_desc", "label": "Description estimation", "name": "estimation_description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
+          { "key": "field_af_t_est_cta_text", "label": "Texte CTA estimation", "name": "estimation_cta_text", "type": "text" },
+          { "key": "field_af_t_est_cta_url", "label": "URL CTA estimation", "name": "estimation_cta_url", "type": "url" }
+        ]
+      },
+      { "key": "field_af_tab_simulateur", "label": "Simulateur", "type": "tab" },
+      {
+        "key": "field_af_simulateur", "label": "Simulateur", "name": "simulateur", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_af_sim_tag", "label": "Tag", "name": "tag", "type": "text" },
+          { "key": "field_af_sim_title", "label": "Titre", "name": "titre", "type": "text" },
+          { "key": "field_af_sim_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_af_sim_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 }
+        ]
+      },
+      { "key": "field_af_tab_accomp", "label": "Accompagnement", "type": "tab" },
+      {
+        "key": "field_af_accomp", "label": "Accompagnement", "name": "accompagnement_administratif", "type": "group", "show_in_rest": true,
+        "sub_fields": [
+          { "key": "field_af_acc_tag", "label": "Tag", "name": "tag", "type": "text" },
+          { "key": "field_af_acc_title1", "label": "Titre 1", "name": "titre_1", "type": "text" },
+          { "key": "field_af_acc_title2", "label": "Titre 2", "name": "titre_2", "type": "text" },
+          { "key": "field_af_acc_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
+          { "key": "field_af_acc_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
+          {
+            "key": "field_af_acc_items", "label": "Accompagnements", "name": "accompagnements", "type": "repeater", "layout": "block",
+            "sub_fields": [
+              { "key": "field_af_acci_ordre", "label": "Ordre", "name": "ordre", "type": "number" },
+              { "key": "field_af_acci_title", "label": "Titre", "name": "titre", "type": "text" },
+              { "key": "field_af_acci_desc", "label": "Description", "name": "description", "type": "textarea" }
+            ]
+          },
+          {
+            "key": "field_af_acc_proc", "label": "Processus", "name": "processus", "type": "repeater", "layout": "block",
+            "sub_fields": [
+              { "key": "field_af_accp_tag", "label": "Tag", "name": "tag", "type": "text" },
+              { "key": "field_af_accp_title", "label": "Titre", "name": "titre", "type": "text" },
+              { "key": "field_af_accp_desc", "label": "Description", "name": "description", "type": "textarea" },
+              { "key": "field_af_accp_bg", "label": "Image de fond", "name": "image_du_fond", "type": "image", "return_format": "array" }
+            ]
+          },
+          { "key": "field_af_acc_mod_tag", "label": "Modalités Tag", "name": "modalites_tag", "type": "text" },
+          { "key": "field_af_acc_mod_title", "label": "Modalités Titre", "name": "modalites_title", "type": "text" },
+          { "key": "field_af_acc_mod_hl", "label": "Modalités Titre coloré", "name": "modalites_title_highlight", "type": "text" },
+          { "key": "field_af_acc_mod_title2", "label": "Modalités Titre 2", "name": "modalites_title_2", "type": "text" },
+          { "key": "field_af_acc_mod_desc", "label": "Modalités Description", "name": "modalites_description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 }
         ]
       },
       { "key": "field_af_tab_cta", "label": "CTA Final", "type": "tab" },

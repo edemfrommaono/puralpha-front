@@ -40,7 +40,7 @@ export function HistoireTerritoire({
           <div className="flex-1 flex flex-col gap-6 lg:gap-8">
             <div className="flex flex-col gap-6">
               <span className="text-teal-400/80 font-bold text-xs uppercase tracking-[3px]">{tag}</span>
-              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold leading-snug">
                 {titre1} <span className="text-gold-500 font-black">{titleHighlight}</span>
               </h2>
               <p className="text-white/70 text-[15px] md:text-lg leading-relaxed">{description}</p>

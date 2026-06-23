@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface RejoindreHeroProps {
   titleLine1: string;
@@ -17,14 +18,19 @@ export function RejoindreHero({
     <section className="relative w-full bg-[#ecf4f6] pt-10 pb-8 md:pt-32 md:pb-24 overflow-hidden flex flex-col items-center">
       <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center text-center max-w-5xl">
         <FadeInView>
-          <h1 className="text-3xl md:text-5xl lg:text-[70px] font-black text-navy-800 leading-tight mb-6 lg:mb-8">
+          <h1 className="text-3xl md:text-5xl lg:text-[70px] font-black text-navy-800 leading-snug mb-6 lg:mb-8">
             <span className="block">{titleLine1}</span>
             <span className="block">{titleLine2}</span>
             <span className="block text-teal-400">{titleHighlight}</span>
           </h1>
         </FadeInView>
         <FadeInView delay={0.15}>
-          <p className="text-base text-center md:text-lg lg:text-xl text-gray-600 mb-6 lg:mb-10 max-w-2xl">{description}</p>
+          {description && (
+            <div
+              className="prose text-base text-center md:text-lg lg:text-xl text-gray-600 mb-6 lg:mb-10 max-w-2xl"
+              dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+            />
+          )}
         </FadeInView>
         <FadeInView delay={0.3}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

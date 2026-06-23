@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface ResteAChargeSectionProps {
   title?: string;
@@ -105,15 +106,14 @@ export function ResteAChargeSection({
             )}
 
             {description && (
-              <p
-                className="mb-8 lg:mb-10 text-[15px] lg:text-[16px] leading-relaxed lg:leading-[29.6px]"
+              <div
+                className="prose mb-8 lg:mb-10 text-[15px] lg:text-[16px] leading-relaxed lg:leading-[29.6px]"
                 style={{
                   color: "#6B7280",
                   fontFamily: "Poppins, sans-serif",
                 }}
-              >
-                {description}
-              </p>
+                dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+              />
             )}
 
             <div className="flex flex-col gap-4">

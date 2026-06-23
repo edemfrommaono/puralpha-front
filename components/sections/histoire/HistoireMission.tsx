@@ -1,4 +1,5 @@
 import { FadeInView } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface HistoireMissionProps {
   sectionTag: string;
@@ -13,9 +14,12 @@ export function HistoireMission({ sectionTag, description }: HistoireMissionProp
         <span className="text-white/50 font-bold text-xs uppercase tracking-[3px] mb-4 block">
           {sectionTag}
         </span>
-        <h2 className="text-xl md:text-2xl lg:text-4xl font-extrabold text-white/90 leading-tight max-w-4xl mx-auto">
-          {description}
-        </h2>
+        {description && (
+          <div
+            className="prose prose-invert text-xl md:text-2xl lg:text-4xl font-extrabold text-white/90 leading-snug max-w-4xl mx-auto"
+            dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+          />
+        )}
       </FadeInView>
     </section>
   );

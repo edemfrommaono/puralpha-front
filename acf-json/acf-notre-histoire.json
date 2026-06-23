@@ -11,7 +11,7 @@
         "sub_fields": [
           { "key": "field_nh_hero_l1", "label": "Titre ligne 1", "name": "title_line_1", "type": "text", "default_value": "Née d'un vécu." },
           { "key": "field_nh_hero_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "Construite pour vous." },
-          { "key": "field_nh_hero_desc", "label": "Description", "name": "description", "type": "textarea", "default_value": "PUR Alpha n'est pas né d'une étude de marché. C'est l'histoire d'une maman qui a cherché — et qui n'a pas trouvé ce dont son fils avait besoin." },
+          { "key": "field_nh_hero_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0, "default_value": "PUR Alpha n'est pas né d'une étude de marché. C'est l'histoire d'une maman qui a cherché — et qui n'a pas trouvé ce dont son fils avait besoin." },
           { "key": "field_nh_hero_fname", "label": "Nom fondatrice", "name": "founder_name", "type": "text", "default_value": "Arame Bougha" },
           { "key": "field_nh_hero_fsub", "label": "Sous-titre fondatrice", "name": "founder_subtitle", "type": "text", "default_value": "fondatrice, maman d'un enfant porteur du syndrome PURA" }
         ]
@@ -23,12 +23,28 @@
           { "key": "field_nh_fond_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "L'histoire de la fondatrice" },
           { "key": "field_nh_fond_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Pendant des années," },
           { "key": "field_nh_fond_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "j'ai cherché." },
-          { "key": "field_nh_fond_p1", "label": "Paragraphe 1", "name": "paragraph_1", "type": "textarea" },
-          { "key": "field_nh_fond_p2", "label": "Paragraphe 2", "name": "paragraph_2", "type": "textarea" },
+          { "key": "field_nh_fond_paragraph", "label": "Paragraphe", "name": "paragraph_1", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           { "key": "field_nh_fond_quote", "label": "Citation", "name": "quote", "type": "textarea" },
           { "key": "field_nh_fond_qa", "label": "Auteur citation", "name": "quote_author", "type": "text", "default_value": "Arame Bougha" },
           { "key": "field_nh_fond_img", "label": "Image", "name": "image", "type": "image", "return_format": "id" },
           { "key": "field_nh_fond_cap", "label": "Légende image", "name": "image_caption", "type": "text" }
+        ]
+      },
+      { "key": "field_nh_tab_origin", "label": "Droit au répit", "type": "tab" },
+      { "key": "field_nh_ori_title", "label": "Titre", "name": "origin_nom_title", "type": "text" },
+      { "key": "field_nh_ori_hl", "label": "Titre coloré", "name": "origin_nom_title_highlight", "type": "text" },
+      { "key": "field_nh_ori_desc", "label": "Description", "name": "origin_nom_description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
+      { "key": "field_nh_ori_img", "label": "Image", "name": "origin_nom_image", "type": "image", "return_format": "id" },
+      { "key": "field_nh_tab_vecu", "label": "Du vécu à une méthode", "type": "tab" },
+      { "key": "field_nh_vm_title", "label": "Titre", "name": "vecu_methode_title", "type": "text" },
+      { "key": "field_nh_vm_hl", "label": "Titre coloré", "name": "vecu_methode_title_highlight", "type": "text" },
+      { "key": "field_nh_vm_desc", "label": "Description", "name": "vecu_methode_description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
+      {
+        "key": "field_nh_vm_items", "label": "Items", "name": "vecu_methode_items", "type": "repeater", "layout": "block",
+        "sub_fields": [
+          { "key": "field_nh_vmi_ordre", "label": "Ordre", "name": "ordre", "type": "number" },
+          { "key": "field_nh_vmi_title", "label": "Titre", "name": "titre", "type": "text" },
+          { "key": "field_nh_vmi_desc", "label": "Description", "name": "description", "type": "textarea" }
         ]
       },
       { "key": "field_nh_tab_realite", "label": "Réalité familles", "type": "tab" },
@@ -63,7 +79,7 @@
         "key": "field_nh_mission", "label": "Mission", "name": "mission", "type": "group", "show_in_rest": true,
         "sub_fields": [
           { "key": "field_nh_miss_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Notre mission" },
-          { "key": "field_nh_miss_desc", "label": "Description", "name": "description", "type": "textarea" }
+          { "key": "field_nh_miss_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 }
         ]
       },
       { "key": "field_nh_tab_valeurs", "label": "Valeurs", "type": "tab" },

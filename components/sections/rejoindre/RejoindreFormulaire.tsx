@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { toHtml } from "@/lib/wysiwyg";
 
 // ── Schéma Zod — Forminator form 574 ──
 const candidatureSchema = z.object({
@@ -138,10 +139,13 @@ export function RejoindreFormulaire({
             <p className="text-center text-white/55 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
           )}
           {title && (
-            <h2 className="text-2xl md:text-3xl lg:text-[44px] font-extrabold text-white mb-4 lg:mb-6 leading-tight">{title}</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-[44px] font-extrabold text-white mb-4 lg:mb-6 leading-snug">{title}</h2>
           )}
           {description && (
-            <p className="text-white/65 text-lg">{description}</p>
+            <div
+              className="prose prose-invert text-white/65 text-lg mx-auto max-w-none text-center"
+              dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+            />
           )}
         </div>
 

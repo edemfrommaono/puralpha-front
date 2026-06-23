@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AlertTriangle, Lightbulb, Users, Euro } from "lucide-react";
+import { toHtml } from "@/lib/wysiwyg";
 
 // ──────────────────────────────────────────────
 // Types
@@ -87,11 +88,18 @@ export function SimulateurSection({ simulateur, fallback: fb }: SimulateurSectio
               {simulateur?.title_highlight || fb.title_highlight || "reste à charge"}
             </span>
           </h2>
-          <p className="text-gray-600 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
-            {simulateur?.description ||
-              fb.description ||
-              "Répondez aux questions ci-dessous pour obtenir une estimation personnalisée de votre reste à charge."}
-          </p>
+          {(simulateur?.description || fb.description) && (
+            <div
+              className="prose max-w-xl mx-auto text-sm leading-relaxed mt-4 text-center"
+              dangerouslySetInnerHTML={{
+                __html: toHtml(
+                  simulateur?.description ||
+                    fb.description ||
+                    "Répondez aux questions ci-dessous pour obtenir une estimation personnalisée de votre reste à charge."
+                )
+              }}
+            />
+          )}
         </div>
 
         {/* Carte principale */}

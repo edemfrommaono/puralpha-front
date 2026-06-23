@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/FadeInView";
+import { toHtml } from "@/lib/wysiwyg";
 
 interface AideCard {
   accent_color: string;
@@ -92,9 +93,12 @@ export function DispositifsSection({
             {aides?.title || fb.title}<br />
             <span className="text-teal-400">{aides?.title_highlight || fb.title_highlight}</span>
           </h2>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-center text-sm lg:text-base">
-            {aides?.description || fb.description}
-          </p>
+          { (aides?.description || fb.description) && (
+            <div
+              className="prose max-w-2xl mx-auto text-center mt-4"
+              dangerouslySetInnerHTML={{ __html: toHtml(aides?.description || fb.description) }}
+            />
+          )}
         </FadeInView>
 
         <StaggerContainer stagger={0.12} className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">

@@ -118,8 +118,7 @@ export interface HomePageACF {
     section_tag: string;
     title: string;
     title_highlight: string;
-    paragraph_1: string;
-    paragraph_2: string;
+    paragraphe: string;
     cta_text: string;
     image: ACFImage;
   };
@@ -177,7 +176,6 @@ export interface NotreHistoireACF {
     title: string;
     title_highlight: string;
     paragraph_1: string;
-    paragraph_2: string;
     quote: string;
     quote_author: string;
     image: ACFImage;
@@ -255,6 +253,18 @@ export interface NotreHistoireACF {
       description: string;
     }>;
   };
+  origin_nom_title?: string;
+  origin_nom_title_highlight?: string;
+  origin_nom_description?: string;
+  origin_nom_image?: ACFImage;
+  vecu_methode_title?: string;
+  vecu_methode_title_highlight?: string;
+  vecu_methode_description?: string;
+  vecu_methode_items?: Array<{
+    ordre: number;
+    titre: string;
+    description: string;
+  }>;
   cta_final?: {
     image_de_fond: ACFImage;
     citation: string;
@@ -473,8 +483,7 @@ export interface NousRejoindreACF {
     section_tag: string;
     title: string;
     title_highlight: string;
-    paragraph_1: string;
-    paragraph_2: string;
+    paragraph: string;
     qualities: Array<{ text: string }>;
     image: ACFImage;
   };
@@ -511,6 +520,17 @@ export interface NousRejoindreACF {
     email_fallback: string;
     notes?: string;
   };
+  formation_tag?: string;
+  formation_title?: string;
+  formation_title_highlight?: string;
+  formation_title_end?: string;
+  formation_description?: string;
+  formation_etapes?: Array<{
+    valeur: string;
+    sous_titre: string;
+    titre: string;
+    description: string;
+  }>;
 }
 
 // ────────────────────────────────────────────────

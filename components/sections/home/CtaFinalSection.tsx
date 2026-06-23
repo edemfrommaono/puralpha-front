@@ -26,7 +26,7 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
   const ctaUrl = ctaFinal?.cta_url || fb.cta_url;
 
   return (
-    <section className="bg-navy-800 py-16 lg:py-[100px] relative overflow-hidden">
+    <section className="bg-navy-800 py-16 lg:py-20 relative overflow-hidden">
       {ctaFondUrl && (
         <Image
           src={ctaFondUrl}
@@ -39,7 +39,7 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
       <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <FadeInView className="max-w-3xl mx-auto flex flex-col items-center text-center gap-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight lg:leading-[50.4px]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-snug">
             {ctaFinal?.title || fb.title}{" "}
             <span className="text-gold-500">
               {ctaFinal?.title_highlight || fb.title_highlight}

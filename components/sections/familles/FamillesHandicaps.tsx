@@ -2,6 +2,7 @@ import {
   Brain, Zap, Accessibility, Eye, Lightbulb, Microscope, ClipboardList, Puzzle,
   type LucideIcon,
 } from "lucide-react";
+import { toHtml } from "@/lib/wysiwyg";
 
 /** Map des noms d'icônes Lucide → composants pour les types de handicap */
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -49,7 +50,12 @@ export function FamillesHandicaps({
                 )}
               </h2>
             )}
-            {description && <p className="text-gray-600 text-center text-base">{description}</p>}
+            {description && (
+              <div
+                className="prose max-w-3xl mx-auto text-center"
+                dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+              />
+            )}
           </div>
         )}
 

@@ -1,5 +1,7 @@
 "use client";
 
+import { toHtml } from "@/lib/wysiwyg";
+
 interface Processus {
   tag: string;
   titre: string;
@@ -64,9 +66,10 @@ export function ModalitesPaiementSection({
               </h2>
             )}
             {description && (
-              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
-                {description}
-              </p>
+              <div
+                className="prose max-w-2xl mx-auto text-sm leading-relaxed mt-4 text-center"
+                dangerouslySetInnerHTML={{ __html: toHtml(description) }}
+              />
             )}
           </div>
         )}

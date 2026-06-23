@@ -12,7 +12,7 @@
           { "key": "field_nr_hero_l1", "label": "Titre ligne 1", "name": "title_line_1", "type": "text", "default_value": "Vous aimez" },
           { "key": "field_nr_hero_l2", "label": "Titre ligne 2", "name": "title_line_2", "type": "text", "default_value": "les gens." },
           { "key": "field_nr_hero_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "Rejoignez-nous." },
-          { "key": "field_nr_hero_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_nr_hero_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           { "key": "field_nr_hero_cta1", "label": "CTA primaire texte", "name": "cta_primary_text", "type": "text", "default_value": "Candidater maintenant" },
           { "key": "field_nr_hero_cta2", "label": "CTA secondaire texte", "name": "cta_secondary_text", "type": "text", "default_value": "Poser une question" }
         ]
@@ -24,7 +24,7 @@
           { "key": "field_nr_av_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Pourquoi nous rejoindre" },
           { "key": "field_nr_av_title", "label": "Titre", "name": "title", "type": "text" },
           { "key": "field_nr_av_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_nr_av_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_nr_av_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
             "key": "field_nr_av_cards", "label": "Cartes", "name": "cards", "type": "repeater", "layout": "block",
             "sub_fields": [
@@ -42,8 +42,7 @@
           { "key": "field_nr_vh_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Nos valeurs humaines" },
           { "key": "field_nr_vh_title", "label": "Titre", "name": "title", "type": "text" },
           { "key": "field_nr_vh_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_nr_vh_p1", "label": "Paragraphe 1", "name": "paragraph_1", "type": "textarea" },
-          { "key": "field_nr_vh_p2", "label": "Paragraphe 2", "name": "paragraph_2", "type": "textarea" },
+          { "key": "field_nr_vh_paragraph", "label": "Paragraphe", "name": "paragraph", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
             "key": "field_nr_vh_quals", "label": "Qualités", "name": "qualities", "type": "repeater", "layout": "table",
             "sub_fields": [{ "key": "field_nr_vhq_text", "label": "Texte", "name": "text", "type": "text" }]
@@ -100,7 +99,7 @@
         "sub_fields": [
           { "key": "field_nr_form_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Formulaire de candidature" },
           { "key": "field_nr_form_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Prêt(e) à rejoindre l'équipe PUR Alpha ?" },
-          { "key": "field_nr_form_desc", "label": "Description", "name": "description", "type": "textarea" },
+          { "key": "field_nr_form_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           { "key": "field_nr_form_submit", "label": "Texte bouton", "name": "submit_text", "type": "text", "default_value": "Envoyer ma candidature" },
           { "key": "field_nr_form_email", "label": "Email fallback", "name": "email_fallback", "type": "text", "default_value": "contact@puralpha.fr" },
           { "key": "field_nr_form_note", "label": "Note de bas de page", "name": "note", "type": "textarea" }

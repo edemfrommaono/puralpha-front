@@ -43,7 +43,7 @@ export function HistoireRealite({
             <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px] mb-4">
               {puraSectionTag}
             </span>
-            <h3 className="text-xl lg:text-3xl font-extrabold text-navy-800 mb-6 leading-tight">
+            <h3 className="text-xl lg:text-3xl font-extrabold text-navy-800 mb-6 leading-snug">
               {puraTitle}
             </h3>
             <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-6">
@@ -60,7 +60,7 @@ export function HistoireRealite({
           {/* Colonne droite : Les problèmes */}
           <FadeInView direction="right" delay={0.15} className="flex flex-col gap-6 lg:gap-8 justify-center">
             <div>
-              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-snug">
                 {title}<br />
                 <span className="text-teal-400">{titleHighlight}</span>
               </h2>
