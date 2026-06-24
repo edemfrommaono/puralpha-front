@@ -69,6 +69,10 @@ cp -r public "$DIST_DIR/"
 mkdir -p "$DIST_DIR/.next"
 cp -r "$NEXT_DIST_DIR/static" "$DIST_DIR/.next/"
 
+echo "   → Création de tmp/restart.txt pour redémarrer automatiquement l'application sur Plesk..."
+mkdir -p "$DIST_DIR/tmp"
+touch "$DIST_DIR/tmp/restart.txt"
+
 # Suppression de node_modules pour alléger le ZIP (npm install devra être fait sur le serveur)
 echo "🧹 Étape 5 — Suppression de node_modules pour le zip..."
 rm -rf "$DIST_DIR/node_modules"
