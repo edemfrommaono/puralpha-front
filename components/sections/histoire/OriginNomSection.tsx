@@ -31,10 +31,7 @@ export function OriginNomSection({
           {(title || titleHighlight || description) && (
             <FadeInView direction="left" className="flex flex-col justify-center">
               {(title || titleHighlight) && (
-                <h2
-                  className="font-extrabold text-navy-800 mb-4 lg:mb-6 text-3xl md:text-4xl lg:text-[40px] leading-snug lg:leading-snug"
-                  style={{ fontFamily: "Poppins, sans-serif" }}
-                >
+                <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6">
                   {title}
                   {titleHighlight && <br />}
                   {titleHighlight && (
@@ -44,7 +41,7 @@ export function OriginNomSection({
               )}
               {description && (
                 <div
-                  className="prose text-gray-600 text-base leading-relaxed"
+                  className="prose typo-body"
                   dangerouslySetInnerHTML={{ __html: toHtml(description) }}
                 />
               )}

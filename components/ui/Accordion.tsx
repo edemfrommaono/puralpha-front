@@ -1,5 +1,6 @@
 "use client";
 
+import { toHtml } from "@/lib/wysiwyg";
 import { useState } from "react";
 
 interface AccordionItem {
@@ -45,9 +46,8 @@ export function Accordion({ items }: AccordionProps) {
                 isOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'
               }`}
             >
-              <p className="text-gray-600 text-sm leading-relaxed pr-8">
-                {item.answer}
-              </p>
+              <div className="text-gray-600 text-sm leading-relaxed pr-8" dangerouslySetInnerHTML={{ __html: toHtml(item.answer) }}>
+              </div>
             </div>
           </div>
         );

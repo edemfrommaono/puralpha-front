@@ -30,10 +30,10 @@ export function FamillesEtapes({
     <section className="py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <FadeInView>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-4">
+          <h2 className="typo-h2 text-navy-800 mb-4">
             {title}
           </h2>
-          <p className="text-gray-500 text-base max-w-2xl mx-auto mb-8 lg:mb-16 text-center">
+          <p className="typo-body max-w-2xl mx-auto mb-8 lg:mb-16 text-center">
             {description}
           </p>
         </FadeInView>
@@ -62,7 +62,7 @@ export function FamillesEtapes({
                 </div>
 
                 {/* Titre */}
-                <h3 className="text-navy-800 font-black text-sm mb-3 text-teal-500 transition-colors duration-300 group-hover:text-navy-800">
+                <h3 className="typo-h3 mb-3 text-teal-500 transition-colors duration-300 group-hover:text-navy-800">
                   {step.title}
                 </h3>
 
@@ -71,7 +71,7 @@ export function FamillesEtapes({
                   {step.items.map((item, j) => (
                     <li
                       key={j}
-                      className="text-gray-600 text-xs leading-relaxed flex items-start gap-2"
+                      className="typo-small flex items-start gap-2"
                     >
                       <span className={`${bulletColor} mt-0.5 shrink-0`}>•</span>
                       {item.text}

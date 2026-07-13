@@ -59,10 +59,10 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
 
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
         <FadeInView className="text-center mb-8 lg:mb-16">
-          <span className="text-teal-400/80 font-bold text-xs uppercase tracking-[3px]">
+          <span className="typo-tag text-teal-400/80">
             {tarif?.section_tag || fb.section_tag}
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-white mt-4 leading-tight">
+          <h2 className="typo-h2 text-white mt-4">
             {tarif?.title || fb.title}<br />
             <span className="text-gold-500">{tarif?.title_highlight || fb.title_highlight}</span>
           </h2>
@@ -73,7 +73,7 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
             <span className="text-6xl md:text-7xl lg:text-[80px] font-black text-gold-500 leading-none">{tarif?.price || fb.price}</span>
             <span className="text-2xl lg:text-3xl font-black text-gold-500 self-start mt-2">€</span>
           </div>
-          <p className="text-white/50 mt-4 text-center">{tarif?.price_details || fb.price_details}</p>
+          <p className="typo-body text-white/50 mt-4 text-center">{tarif?.price_details || fb.price_details}</p>
 
           {/* Badges Inclus */}
           <div className="flex flex-wrap justify-center gap-3 mt-8">

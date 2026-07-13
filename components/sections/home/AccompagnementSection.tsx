@@ -60,11 +60,11 @@ export function AccompagnementSection({
             <div>
               <div className="flex items-center gap-3 mb-4">
 
-                <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">
+                <span className="typo-tag text-teal-400">
                   {acc?.section_tag || fb.section_tag}
                 </span>
               </div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-snug">
+              <h2 className="typo-h2 text-navy-800">
                 {acc?.title || fb.title}
                 <br />
                 <span className="text-teal-400">
@@ -95,10 +95,10 @@ export function AccompagnementSection({
                     )}
                   </div>
                   <div>
-                    <h3 className="text-gray-800 font-bold text-base mb-1">
+                    <h3 className="typo-h3 text-gray-800 mb-1">
                       {srv.title}
                     </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <p className="typo-small">
                       {srv.description}
                     </p>
                   </div>
@@ -111,10 +111,10 @@ export function AccompagnementSection({
                   key={i}
                   className="flex-1 bg-gray-50 border border-navy-800/10 p-5 rounded-xl flex flex-col"
                 >
-                  <h4 className="text-navy-800 font-black text-sm mb-2">
+                  <h4 className="typo-h3 text-navy-800 mb-2 text-sm">
                     {box.title}
                   </h4>
-                  <p className="text-gray-500 text-sm">{box.description}</p>
+                  <p className="typo-small">{box.description}</p>
                 </div>
               ))}
             </div>

@@ -50,11 +50,11 @@ export function ParcoursSection({
         <FadeInView className="flex flex-col items-center text-center mb-10 lg:mb-16">
           <div className="flex items-center gap-3 mb-4">
 
-            <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">
+            <span className="typo-tag text-teal-400">
               {parcours?.section_tag || fb.section_tag}
             </span>
           </div>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-700 leading-snug">
+          <h2 className="typo-h2 text-navy-700">
             {parcours?.title || fb.title}
           </h2>
         </FadeInView>
@@ -90,10 +90,10 @@ export function ParcoursSection({
                   >
                     {card.tag}
                   </span>
-                  <h3 className="text-xl font-bold text-navy-700 mb-3">
+                  <h3 className="typo-h3 text-navy-700 mb-3">
                     {card.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                  <p className="typo-body mb-6 flex-grow">
                     {card.description}
                   </p>
                   <div>

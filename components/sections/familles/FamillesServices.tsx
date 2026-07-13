@@ -28,12 +28,12 @@ export function FamillesServices({
     <section className="py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8">
         <FadeInView className="text-center mb-8 lg:mb-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-6">
+          <h2 className="typo-h2 text-navy-800 mb-6">
             {title} <span className="text-teal-400">{titleHighlight}</span>
           </h2>
           {description && (
             <div
-              className="prose max-w-3xl mx-auto text-center"
+              className="prose max-w-3xl mx-auto text-center typo-body"
               dangerouslySetInnerHTML={{ __html: toHtml(description) }}
             />
           )}
@@ -72,11 +72,11 @@ export function FamillesServices({
               {/* Contenu bas */}
               <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
                 {/* Titre — toujours visible */}
-                <h3 className="text-white font-bold text-sm sm:text-base lg:text-lg leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
+                <h3 className="typo-h3 text-white mb-0 group-hover:mb-3 transition-all duration-300">
                   {card.title}
                 </h3>
                 {/* Description — apparaît au survol */}
-                <p className="text-white/80 text-xs sm:text-sm leading-relaxed
+                <p className="typo-small text-white/80
                                max-h-0 overflow-hidden opacity-0
                                group-hover:max-h-40 group-hover:opacity-100
                                transition-all duration-500 ease-in-out">

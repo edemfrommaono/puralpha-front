@@ -39,10 +39,7 @@ export function VecuMethodeSection({
         {(title || titleHighlight || description) && (
           <FadeInView className="text-center mb-8 lg:mb-12">
             {(title || titleHighlight) && (
-              <h2
-                className="font-extrabold text-navy-800 mb-4 lg:mb-6 text-2xl md:text-3xl lg:text-[40px] leading-snug lg:leading-snug"
-                style={{ fontFamily: "Poppins, sans-serif" }}
-              >
+              <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6">
                 {title}{" "}
                 {titleHighlight && (
                   <span className="text-[#F2C94C]">{titleHighlight}</span>
@@ -51,7 +48,7 @@ export function VecuMethodeSection({
             )}
             {description && (
               <div
-                className="prose text-base text-gray-600 text-center leading-relaxed max-w-2xl mx-auto"
+                className="prose text-center max-w-2xl mx-auto typo-body"
                 dangerouslySetInnerHTML={{ __html: toHtml(description) }}
               />
             )}
@@ -79,7 +76,7 @@ export function VecuMethodeSection({
                     >
                       {item.ordre}
                     </div>
-                    <h4 className="text-navy-800 font-bold text-sm">{item.titre}</h4>
+                    <h4 className="typo-h3 text-navy-800 text-sm">{item.titre}</h4>
                   </div>
 
                   {/* Verso — description */}
@@ -87,7 +84,7 @@ export function VecuMethodeSection({
                     className="absolute inset-0 bg-[#ecf4f6] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-6 rounded-2xl"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                   >
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                    <p className="typo-small text-gray-600">{item.description}</p>
                   </div>
                 </div>
               </StaggerItem>

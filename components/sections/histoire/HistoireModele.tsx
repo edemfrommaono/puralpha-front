@@ -31,25 +31,25 @@ export function HistoireModele({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
           <FadeInView direction="left" className="flex flex-col gap-6 lg:gap-8">
             <div>
-              <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">{tag}</span>
-              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-snug">
+              <span className="typo-tag text-teal-400">{tag}</span>
+              <h2 className="typo-h2 text-navy-800 mt-4">
                 {titreLigne1}<br />
                 <span className="text-teal-400">{titleHighlight}</span>
               </h2>
             </div>
-            <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed">{descrition1}</p>
-            <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed">{description2}</p>
+            <p className="typo-body">{descrition1}</p>
+            <p className="typo-body">{description2}</p>
             <div className="mt-4 p-5 md:p-6 bg-gold-500/5 rounded-tr-xl rounded-br-xl border-l-4 border-gold-500">
-              <p className="text-navy-800 italic text-[15px] md:text-lg leading-relaxed">
+              <p className="typo-body text-navy-800 italic">
                 &quot;{notrePromesseValeur}&quot;
               </p>
-              <p className="text-teal-400 font-bold text-xs uppercase tracking-[2px] mt-4">{notrePromesseLibelle}</p>
+              <p className="typo-tag text-teal-400 mt-4">{notrePromesseLibelle}</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mt-6">
               {qualites.map((q, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <span className="text-teal-400 shrink-0">✓</span>
-                  <span className="text-gray-600 text-sm">{q.la_qualite}</span>
+                  <span className="typo-small">{q.la_qualite}</span>
                 </div>
               ))}
             </div>

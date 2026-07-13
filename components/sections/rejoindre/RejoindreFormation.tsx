@@ -47,15 +47,12 @@ export function RejoindreFormation({
         {(tag || title || titleHighlight || titleEnd || description) && (
           <FadeInView className="text-center mb-8 lg:mb-16">
             {tag && (
-              <p className="text-center text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">
+              <p className="text-center typo-tag text-teal-400 mb-4">
                 {tag}
               </p>
             )}
             {(title || titleHighlight || titleEnd) && (
-              <h2
-                className="font-extrabold text-navy-800 mb-4 lg:mb-6 max-w-3xl mx-auto text-2xl md:text-3xl lg:text-[40px] leading-snug lg:leading-snug"
-                style={{ fontFamily: "Poppins, sans-serif" }}
-              >
+              <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6 max-w-3xl mx-auto">
                 {title}
                 {(titleHighlight || titleEnd) && <br />}
                 {titleHighlight && (
@@ -66,7 +63,7 @@ export function RejoindreFormation({
             )}
             {description && (
               <div
-                className="prose text-gray-500 max-w-3xl text-center mx-auto text-sm leading-relaxed"
+                className="prose typo-body text-gray-500 max-w-3xl text-center mx-auto"
                 dangerouslySetInnerHTML={{ __html: toHtml(description) }}
               />
             )}
@@ -80,14 +77,14 @@ export function RejoindreFormation({
           <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 relative z-10">
             {steps.map((step, i) => (
               <StaggerItem key={i} className="group flex flex-col items-center text-center cursor-default min-h-[160px]">
-                <span className="text-teal-400 font-extrabold text-lg leading-tight text-center mb-2">
+                <span className="typo-h3 text-teal-400 text-center mb-2">
                   {step.valeur}
                 </span>
-                <h4 className="text-navy-800 font-bold text-sm leading-relaxed text-center mb-2">
+                <h4 className="typo-small text-navy-800 font-bold text-center mb-2">
                   {step.sous_titre}
                 </h4>
                 {/* Description — masquée par défaut, visible au survol */}
-                <p className="text-gray-500 text-[13px] leading-relaxed text-center max-w-[220px]
+                <p className="typo-small text-gray-500 text-center max-w-[220px]
                                max-h-0 overflow-hidden opacity-0
                                group-hover:max-h-40 group-hover:opacity-100
                                transition-all duration-500 ease-in-out">

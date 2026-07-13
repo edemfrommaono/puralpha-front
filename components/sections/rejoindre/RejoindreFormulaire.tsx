@@ -136,14 +136,14 @@ export function RejoindreFormulaire({
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <div className="text-center mb-8 lg:mb-12">
           {sectionTag && (
-            <p className="text-center text-white/55 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
+            <p className="typo-tag text-white/55 text-center mb-4">{sectionTag}</p>
           )}
           {title && (
-            <h2 className="text-2xl md:text-3xl lg:text-[44px] font-extrabold text-white mb-4 lg:mb-6 leading-snug">{title}</h2>
+            <h2 className="typo-h2 text-white mb-4 lg:mb-6">{title}</h2>
           )}
           {description && (
             <div
-              className="prose prose-invert text-white/65 text-lg mx-auto max-w-none text-center"
+              className="prose prose-invert typo-body text-white/65 mx-auto max-w-none text-center"
               dangerouslySetInnerHTML={{ __html: toHtml(description) }}
             />
           )}

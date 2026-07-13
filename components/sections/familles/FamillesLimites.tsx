@@ -30,7 +30,7 @@ export function FamillesLimites({
         {/* Titre */}
         <FadeInView>
           <div className="text-center mb-10 lg:mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800">
+            <h2 className="typo-h2 text-navy-800 text-center">
               {title}{" "}
               <br className="hidden lg:block" />
               <span className="text-gold-500">{titleHighlight}</span>
@@ -42,8 +42,8 @@ export function FamillesLimites({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
 
           {/* CE QUE NOUS FAISONS */}
-          <FadeInView direction="left" delay={0.1}>
-            <div className="rounded-2xl overflow-hidden">
+          <FadeInView direction="left" delay={0.1} className="h-full">
+            <div className="rounded-2xl overflow-hidden h-full flex flex-col">
               {/* Icône flottante au-dessus */}
               <div className="flex justify-center -mb-4 relative z-10">
                 <div className="w-14 h-14 rounded-full bg-white shadow flex items-center justify-center border-4 border-[#202F53]">
@@ -56,12 +56,12 @@ export function FamillesLimites({
               </div>
               {/* Header */}
               <div className="bg-navy-800 text-white text-center py-4 px-6 rounded-2xl">
-                <h3 className="text-xs font-bold tracking-widest uppercase">
+                <h3 className="typo-tag text-white">
                   Ce que nous faisons
                 </h3>
               </div>
               {/* Body */}
-              <div className="bg-[#B2DCDD] p-6 lg:p-8 rounded-2xl">
+              <div className="bg-[#B2DCDD] p-6 lg:p-8 rounded-2xl flex-1">
                 <ul className="flex flex-col gap-3">
                   {ceQueNousFaisons.map((item, i) => (
                     <li
@@ -69,7 +69,7 @@ export function FamillesLimites({
                       className="flex items-start gap-3 rounded-xl px-4 py-2"
                     >
                       <span className="w-2 h-2 rounded-full bg-navy-800 shrink-0 mt-1.5" />
-                      <span className="text-navy-800 text-sm leading-relaxed font-semibold">
+                      <span className="typo-body text-navy-800 font-semibold">
                         {item.text}
                       </span>
                     </li>
@@ -80,8 +80,8 @@ export function FamillesLimites({
           </FadeInView>
 
           {/* CE QUE NOUS NE FAISONS PAS */}
-          <FadeInView direction="right" delay={0.15}>
-            <div className="rounded-2xl overflow-hidden">
+          <FadeInView direction="right" delay={0.15} className="h-full">
+            <div className="rounded-2xl overflow-hidden h-full flex flex-col">
               {/* Icône flottante au-dessus */}
               <div className="flex justify-center -mb-3 relative z-10">
                 <div className="w-14 h-14 rounded-full bg-white shadow flex items-center justify-center border-4 border-[#202F53]">
@@ -94,12 +94,12 @@ export function FamillesLimites({
               </div>
               {/* Header */}
               <div className="bg-navy-800 text-white text-center py-4 px-6 rounded-2xl">
-                <h3 className="text-xs font-bold tracking-widest uppercase">
+                <h3 className="typo-tag text-white">
                   Ce que nous ne faisons pas
                 </h3>
               </div>
               {/* Body */}
-              <div className="bg-[#B2DCDD] p-6 lg:p-8 rounded-2xl">
+              <div className="bg-[#B2DCDD] p-6 lg:p-8 rounded-2xl flex-1">
                 <ul className="flex flex-col gap-3">
                   {ceQueNousNeFaisonsPas.map((item, i) => (
                     <li
@@ -107,7 +107,7 @@ export function FamillesLimites({
                       className="flex items-start gap-3 rounded-xl px-4 py-2"
                     >
                       <span className="w-2 h-2 rounded-full bg-navy-800 shrink-0 mt-1.5" />
-                      <span className="text-navy-800 text-sm font-semibold leading-relaxed">
+                      <span className="typo-body text-navy-800 font-semibold">
                         {item.text}
                       </span>
                     </li>

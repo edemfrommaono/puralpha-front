@@ -38,10 +38,10 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
     <section className="py-8 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <div className="text-center mb-8 lg:mb-16">
-          <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
+          <span className="typo-tag text-teal-400">
             {accAdmin?.tag || fb.tag}
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+          <h2 className="typo-h2 text-navy-800 mt-4">
             {accAdmin?.titre_1 || fb.titre_1}{" "}
             <span className="text-[#F2C94C]">{accAdmin?.title_highlight || fb.title_highlight}</span>
             <br />
@@ -49,7 +49,7 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
           </h2>
           {(accAdmin?.description || fb.description) && (
             <div
-              className="prose max-w-2xl mx-auto mt-4 text-center"
+              className="prose max-w-2xl mx-auto mt-4 text-center typo-body"
               dangerouslySetInnerHTML={{ __html: toHtml(accAdmin?.description || fb.description) }}
             />
           )}
@@ -72,7 +72,7 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
                   <span className="text-[48px] md:text-[60px] font-black text-[#F2C94C]/50 leading-none">
                     {String(item.ordre).padStart(2, "0")}
                   </span>
-                  <h3 className="font-bold text-navy-800 text-base md:text-lg">{item.titre}</h3>
+                  <h3 className="typo-h3 text-navy-800">{item.titre}</h3>
                 </div>
 
                 {/* Verso — description */}
@@ -83,7 +83,7 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
                   <span className="text-[32px] md:text-[40px] font-black text-[#F2C94C]/40 leading-none">
                     {String(item.ordre).padStart(2, "0")}
                   </span>
-                  <p className="text-gray-600 text-xs md:text-sm leading-relaxed">{item.description}</p>
+                  <p className="typo-small">{item.description}</p>
                 </div>
               </div>
             </div>

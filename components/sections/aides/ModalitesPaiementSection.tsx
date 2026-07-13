@@ -51,12 +51,12 @@ export function ModalitesPaiementSection({
         {(tag || title || titleHighlight || title2 || description) && (
           <div className="text-center mb-6 lg:mb-12">
             {tag && (
-              <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
+              <span className="typo-tag text-teal-400">
                 {tag}
               </span>
             )}
             {(title || titleHighlight || title2) && (
-              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+              <h2 className="typo-h2 text-navy-800 mt-4">
                 {title}{" "}
                 {titleHighlight && (
                   <span className="text-teal-400">{titleHighlight}</span>
@@ -67,7 +67,7 @@ export function ModalitesPaiementSection({
             )}
             {description && (
               <div
-                className="prose max-w-2xl mx-auto text-sm leading-relaxed mt-4 text-center"
+                className="prose max-w-2xl mx-auto mt-4 text-center typo-body"
                 dangerouslySetInnerHTML={{ __html: toHtml(description) }}
               />
             )}
@@ -103,18 +103,18 @@ export function ModalitesPaiementSection({
                 <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
                   {/* Tag */}
                   {proc.tag && (
-                    <span className="text-white/70 font-bold text-[10px] uppercase tracking-[2px] mb-2 block">
+                    <span className="typo-tag text-white/70 mb-2 block">
                       {proc.tag}
                     </span>
                   )}
 
                   {/* Titre — toujours visible */}
-                  <h4 className="font-bold text-white text-base leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
+                  <h4 className="typo-h3 text-white mb-0 group-hover:mb-3 transition-all duration-300">
                     {proc.titre}
                   </h4>
 
                   {/* Description — apparaît au survol */}
-                  <p className="text-white/80 text-sm leading-relaxed
+                  <p className="typo-small text-white/80
                                  max-h-0 overflow-hidden opacity-0
                                  group-hover:max-h-40 group-hover:opacity-100
                                  transition-all duration-500 ease-in-out">

@@ -18,7 +18,7 @@ export function RejoindreHero({
     <section className="relative w-full bg-[#ecf4f6] pt-10 pb-8 md:pt-32 md:pb-24 overflow-hidden flex flex-col items-center">
       <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center text-center max-w-5xl">
         <FadeInView>
-          <h1 className="text-3xl md:text-5xl lg:text-[70px] font-black text-navy-800 leading-snug mb-6 lg:mb-8">
+          <h1 className="typo-h1 text-navy-800 mb-6 lg:mb-8">
             <span className="block">{titleLine1}</span>
             <span className="block">{titleLine2}</span>
             <span className="block text-teal-400">{titleHighlight}</span>
@@ -27,7 +27,7 @@ export function RejoindreHero({
         <FadeInView delay={0.15}>
           {description && (
             <div
-              className="prose text-base text-center md:text-lg lg:text-xl text-gray-600 mb-6 lg:mb-10 max-w-2xl"
+              className="prose text-center typo-body text-gray-600 mb-6 lg:mb-10 max-w-2xl"
               dangerouslySetInnerHTML={{ __html: toHtml(description) }}
             />
           )}

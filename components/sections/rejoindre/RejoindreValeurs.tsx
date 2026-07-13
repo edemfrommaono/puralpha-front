@@ -28,14 +28,14 @@ export function RejoindreValeurs({
           )}
         </FadeInView>
         <FadeInView direction="right" delay={0.15} className="flex flex-col justify-center order-1 lg:order-2">
-          <p className="text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
-          <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-navy-800 mb-4 lg:mb-6 leading-snug">
+          <p className="typo-tag text-teal-400 mb-4">{sectionTag}</p>
+          <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6">
             {title} <br className="hidden md:block" />
             <span className="text-teal-400">{titleHighlight}</span>
           </h2>
           {paragraph && (
             <div
-              className="text-gray-600 text-[15px] leading-relaxed prose prose-p:mb-4 prose-p:last:mb-0 max-w-none mb-10"
+              className="typo-body prose prose-p:mb-4 prose-p:last:mb-0 max-w-none mb-10"
               dangerouslySetInnerHTML={{
                 __html: toHtml(paragraph)
               }}
@@ -45,7 +45,7 @@ export function RejoindreValeurs({
             {qualities.map((q, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded bg-[#F2C94C]"></div>
-                <span className="text-sm font-semibold text-navy-800">{q.text}</span>
+                <span className="typo-small font-semibold text-navy-800">{q.text}</span>
               </div>
             ))}
           </div>

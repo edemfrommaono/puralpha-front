@@ -25,7 +25,7 @@ export function FamillesHero({
       <div className="container mx-auto px-4 lg:px-8 relative z-10 flex flex-col items-center text-center">
         {(title || titleHighlight) && (
           <FadeInView>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-navy-800 leading-tight mb-6 max-w-4xl">
+            <h1 className="typo-h1 text-navy-800 mb-6 max-w-4xl">
               {title}{" "}
               {titleHighlight && (
                 <span className="text-teal-400">{titleHighlight}</span>
@@ -36,7 +36,7 @@ export function FamillesHero({
         {description && (
           <FadeInView delay={0.15}>
             <div
-              className="prose max-w-3xl mx-auto text-center mb-8 lg:mb-10"
+              className="prose max-w-3xl mx-auto text-center mb-8 lg:mb-10 typo-body"
               dangerouslySetInnerHTML={{ __html: toHtml(description) }}
             />
           </FadeInView>

@@ -39,11 +39,11 @@ export function HistoireTerritoire({
           {/* Colonne gauche : texte + cartes */}
           <div className="flex-1 flex flex-col gap-6 lg:gap-8">
             <div className="flex flex-col gap-6">
-              <span className="text-teal-400/80 font-bold text-xs uppercase tracking-[3px]">{tag}</span>
-              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold leading-snug">
-                {titre1} <span className="text-gold-500 font-black">{titleHighlight}</span>
+              <span className="typo-tag text-teal-400/80">{tag}</span>
+              <h2 className="typo-h2">
+                {titre1} <span className="text-gold-500">{titleHighlight}</span>
               </h2>
-              <p className="text-white/70 text-[15px] md:text-lg leading-relaxed">{description}</p>
+              <p className="typo-body text-white/70">{description}</p>
             </div>
 
             {/* Cartes dynamiques */}
@@ -59,13 +59,13 @@ export function HistoireTerritoire({
                         : "bg-white/5 border border-white/10"
                     }`}
                   >
-                    <span className={`text-5xl lg:text-6xl font-black mb-2 ${isActive ? "text-gold-500" : "text-white/10"}`}>
+                    <span className={`typo-h1 mb-2 ${isActive ? "text-gold-500" : "text-white/10"}`}>
                       {impact.chiffre}
                     </span>
-                    <h3 className={`text-lg lg:text-xl font-extrabold ${isActive ? "text-white" : "text-white/30"}`}>
+                    <h3 className={`typo-h3 ${isActive ? "text-white" : "text-white/30"}`}>
                       {impact.titre}
                     </h3>
-                    <p className={`text-sm leading-relaxed mt-1 whitespace-pre-line ${isActive ? "text-white/50" : "text-white/20"}`}>
+                    <p className={`typo-small mt-1 whitespace-pre-line ${isActive ? "text-white/50" : "text-white/20"}`}>
                       {impact.description}
                     </p>
                     <div className={`mt-4 px-4 py-2 rounded-full flex items-center gap-2 ${

@@ -43,13 +43,13 @@ export function HistoireFondatrice({
             {/* <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
                   {sectionTag}
                 </span> */}
-            <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-snug mb-4 lg:mb-6">
+            <h2 className="typo-h2 text-navy-800 mt-4 mb-4 lg:mb-6">
               {title}<br />
               <span className="text-[#F2C94C]">{titleHighlight}</span>
             </h2>
             {paragraph_1 && (
               <div
-                className="text-gray-600 text-[15px] md:text-lg leading-relaxed prose prose-p:mb-4 prose-p:last:mb-0 max-w-none"
+                className="prose prose-p:mb-4 prose-p:last:mb-0 max-w-none typo-body"
                 dangerouslySetInnerHTML={{
                   __html: toHtml(paragraph_1)
                 }}

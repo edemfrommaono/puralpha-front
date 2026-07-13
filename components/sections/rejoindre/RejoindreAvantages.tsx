@@ -41,7 +41,7 @@ function FlipCard({ card, idx }: { card: AvantageCard; idx: number }) {
               <span>{card.fallback_icon || "⭐"}</span>
             )}
           </div>
-          <h3 className="text-base md:text-lg font-bold text-navy-800">{card.title}</h3>
+          <h3 className="typo-h3 text-navy-800">{card.title}</h3>
         </div>
 
         {/* Verso — description */}
@@ -49,7 +49,7 @@ function FlipCard({ card, idx }: { card: AvantageCard; idx: number }) {
           className="absolute inset-0 bg-[#ecf4f6] border border-gray-100 rounded-[20px] p-6 lg:p-8 flex flex-col justify-center shadow-sm"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
-          <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{card.description}</p>
+          <p className="typo-small text-gray-600">{card.description}</p>
         </div>
       </div>
     </div>
@@ -64,16 +64,16 @@ export function RejoindreAvantages({
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <div className="max-w-3xl mx-auto">
           <FadeInView className="text-center mb-8 lg:mb-16">
-            <p className="text-center text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
-            <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-navy-800 mb-4 lg:mb-6 leading-snug">
+            <p className="text-center typo-tag text-teal-400 mb-4">{sectionTag}</p>
+            <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6">
               {title}{" "}
-              <span className="text-[#F2C94C] font-poppins not-italic font-extrabold text-2xl md:text-3xl lg:text-[38px] leading-snug">
+              <span className="text-[#F2C94C]">
                 {titleHighlight}
               </span>
             </h2>
             {description && (
               <div
-                className="prose text-gray-600 text-center max-w-3xl mx-auto"
+                className="prose typo-body text-gray-600 text-center max-w-3xl mx-auto"
                 dangerouslySetInnerHTML={{ __html: toHtml(description) }}
               />
             )}

@@ -51,10 +51,10 @@ export function EtapesSection({ title, description, steps, ctaText, ctaUrl }: Et
     <section className="py-8 lg:py-20 w-full bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <FadeInView>
-          <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-snug mb-3">
+          <h2 className="typo-h2 text-navy-800 mb-3">
             {title}
           </h2>
-          <p className="text-gray-500 text-xs md:text-base max-w-2xl mx-auto mb-8 lg:mb-16 text-center">
+          <p className="typo-body max-w-2xl mx-auto mb-8 lg:mb-16 text-center">
             {description}
           </p>
         </FadeInView>
@@ -134,7 +134,7 @@ export function EtapesSection({ title, description, steps, ctaText, ctaUrl }: Et
                     transition={{ duration: 0.25 }}
                   >
                     <motion.h3
-                      className="font-black text-base mb-2 text-center"
+                      className="typo-h3 mb-2 text-center"
                       variants={{
                         rest: { color: "#1c3553" },
                         hovered: { color: "#52bdc7" },
@@ -143,7 +143,7 @@ export function EtapesSection({ title, description, steps, ctaText, ctaUrl }: Et
                     >
                       {step.title}
                     </motion.h3>
-                    <p className="text-gray-500 text-sm text-center">{step.description}</p>
+                    <p className="typo-small text-center">{step.description}</p>
                   </motion.div>
                 </motion.div>
               </StaggerItem>

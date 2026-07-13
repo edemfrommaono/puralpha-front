@@ -47,3 +47,25 @@ body {
     display: none;
   }
 }
+
+@layer components {
+  .typo-h1 {
+    @apply font-black text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight;
+  }
+  .typo-h2 {
+    @apply font-extrabold text-2xl md:text-3xl lg:text-[40px] leading-tight tracking-tight;
+  }
+  .typo-h3 {
+    @apply font-bold text-lg md:text-xl leading-snug;
+  }
+  .typo-tag {
+    @apply font-bold text-xs uppercase tracking-[3px];
+  }
+  .typo-body {
+    @apply text-sm md:text-base leading-relaxed text-gray-600;
+  }
+  .typo-small {
+    @apply text-xs md:text-sm leading-relaxed text-gray-500;
+  }
+}
+

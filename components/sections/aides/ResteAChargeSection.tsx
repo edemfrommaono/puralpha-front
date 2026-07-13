@@ -84,7 +84,7 @@ export function ResteAChargeSection({
           <div>
             {(title || titleHighlight) && (
               <h2
-                className="font-extrabold mb-4 lg:mb-6 text-3xl md:text-4xl lg:text-[40px] leading-tight lg:leading-[48px]"
+                className="typo-h2 mb-4 lg:mb-6"
                 style={{
                   color: "#1C3553",
                   fontFamily: "Poppins, sans-serif",
@@ -93,7 +93,6 @@ export function ResteAChargeSection({
                 {title}{" "}
                 {titleHighlight && (
                   <span
-                    className="text-3xl md:text-4xl lg:text-[40px] leading-tight lg:leading-[48px]"
                     style={{
                       color: "#F2C94C",
                       fontFamily: "Poppins, sans-serif",
@@ -107,11 +106,7 @@ export function ResteAChargeSection({
 
             {description && (
               <div
-                className="prose mb-8 lg:mb-10 text-[15px] lg:text-[16px] leading-relaxed lg:leading-[29.6px]"
-                style={{
-                  color: "#6B7280",
-                  fontFamily: "Poppins, sans-serif",
-                }}
+                className="prose mb-8 lg:mb-10 typo-body"
                 dangerouslySetInnerHTML={{ __html: toHtml(description) }}
               />
             )}
