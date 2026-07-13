@@ -27,20 +27,20 @@ export function HistoireAmbitions({
           <FadeInView direction="left" className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <div className="w-8 h-0.5 bg-teal-400" />
-              <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">{sectionTag}</span>
+              <span className="typo-tag text-teal-400">{sectionTag}</span>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-snug">
+            <h2 className="typo-h2 text-navy-800">
               {title}<br /><span className="text-teal-400 italic">{titleHighlight}</span>
             </h2>
-            <p className="text-gray-600 text-[15px] md:text-lg leading-relaxed mt-2">{description}</p>
+            <p className="typo-body text-gray-600 mt-2">{description}</p>
           </FadeInView>
           <FadeInView direction="right" delay={0.15} className="flex flex-col gap-6">
             {items.map((item, i) => (
               <div key={i} className="bg-[#ecf4f6] border border-gray-100 rounded-2xl p-5 md:p-6 lg:p-8 flex gap-4 md:gap-6 items-start">
                 <span className="text-3xl md:text-4xl font-black text-teal-400/25 leading-none">{String(i + 1).padStart(2, '0')}</span>
                 <div>
-                  <h3 className="font-bold text-navy-800 text-lg mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                  <h3 className="typo-h3 text-navy-800 text-lg mb-2">{item.title}</h3>
+                  <p className="typo-small text-gray-600">{item.description}</p>
                 </div>
               </div>
             ))}

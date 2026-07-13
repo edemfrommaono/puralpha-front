@@ -146,7 +146,7 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
               {errors["name-1"] && <p className="text-red-500 text-xs">{errors["name-1"].message}</p>}
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="firstname" className="text-[13px] font-semibold text-navy-900">Prénoms *</label>
+              <label htmlFor="firstname" className="text-[13px] font-semibold text-navy-900">Prénom *</label>
               <input
                 type="text"
                 id="firstname"

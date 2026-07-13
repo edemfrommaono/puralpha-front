@@ -40,27 +40,27 @@ export function HistoireRealite({
           {/* Colonne gauche : Carte PURA */}
           <FadeInView direction="left" className="bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-12 shadow-[0_4px_24px_rgba(30,58,95,0.06)] border border-navy-800/10 flex flex-col justify-center relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-teal-400/10 blur-2xl rounded-full" />
-            <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px] mb-4">
+            <span className="typo-tag text-teal-400 mb-4">
               {puraSectionTag}
             </span>
-            <h3 className="text-xl lg:text-3xl font-extrabold text-navy-800 mb-6 leading-snug">
+            <h3 className="typo-h3 text-navy-800 mb-6">
               {puraTitle}
             </h3>
-            <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-6">
+            <p className="typo-body text-gray-600 mb-6">
               {puraDescription1}
             </p>
-            <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-8">
+            <p className="typo-body text-gray-600 mb-8">
               {puraDescription2}
             </p>
             <div className="inline-flex items-center gap-3 bg-navy-800/5 px-6 py-3 rounded-full border border-navy-800/10 self-start">
               <div className="w-4 h-4 bg-teal-400 rounded-full" />
-              <span className="font-bold text-navy-800 text-sm">{puraBadgeText}</span>
+              <span className="typo-small font-bold text-navy-800">{puraBadgeText}</span>
             </div>
           </FadeInView>
           {/* Colonne droite : Les problèmes */}
           <FadeInView direction="right" delay={0.15} className="flex flex-col gap-6 lg:gap-8 justify-center">
             <div>
-              <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-snug">
+              <h2 className="typo-h2 text-navy-800">
                 {title}<br />
                 <span className="text-teal-400">{titleHighlight}</span>
               </h2>
@@ -76,8 +76,8 @@ export function HistoireRealite({
                     )}
                   </div>
                   <div>
-                    <h3 className="font-bold text-navy-800 text-base mb-2">{problem.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{problem.description}</p>
+                    <h3 className="typo-h3 text-navy-800 text-base mb-2">{problem.title}</h3>
+                    <p className="typo-small text-gray-600">{problem.description}</p>
                   </div>
                 </div>
               ))}

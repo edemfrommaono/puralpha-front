@@ -32,10 +32,10 @@ export function FamillesCta({
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <FadeInView className="max-w-3xl mx-auto flex flex-col items-center text-center gap-6 lg:gap-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
+          <h2 className="typo-h1 text-white">
             {title} <br className="hidden md:block" /><span className="text-gold-500">{titleHighlight}</span>
           </h2>
-          <p className="text-lg lg:text-xl text-white/80">{subtitle}</p>
+          <p className="typo-h3 text-white/85">{subtitle}</p>
 
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-white/80 my-4">
             {badges.map((badge, i) => (

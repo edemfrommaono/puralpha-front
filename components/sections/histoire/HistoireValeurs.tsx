@@ -27,10 +27,10 @@ export function HistoireValeurs({
     <section className="py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
         <FadeInView className="text-center mb-8 lg:mb-16">
-          <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
+          <span className="typo-tag text-teal-400">
             {sectionTag}
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-snug">
+          <h2 className="typo-h2 text-navy-800 mt-4">
             {title} <span className="text-teal-400">{titleHighlight}</span>
           </h2>
         </FadeInView>
@@ -71,12 +71,12 @@ export function HistoireValeurs({
                 </div>
 
                 {/* Titre — toujours visible */}
-                <h3 className="font-extrabold text-white text-xs sm:text-sm uppercase tracking-wide leading-snug mb-0 group-hover:mb-3 transition-all duration-300">
+                <h3 className="typo-tag text-white mb-0 group-hover:mb-3 transition-all duration-300">
                   {item.title}
                 </h3>
 
                 {/* Description — apparaît au survol */}
-                <p className="text-white/80 text-[11px] sm:text-xs leading-relaxed
+                <p className="typo-small text-white/80
                                max-h-0 overflow-hidden opacity-0
                                group-hover:max-h-40 group-hover:opacity-100
                                transition-all duration-500 ease-in-out">

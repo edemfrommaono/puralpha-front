@@ -53,12 +53,12 @@ export function FamillesGaranties({
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <FadeInView className="text-center mb-8 lg:mb-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-6">
+          <h2 className="typo-h2 text-white mb-6">
             {title} <br className="hidden lg:block" /><span className="text-teal-400">{titleHighlight}</span>
           </h2>
           {description && (
             <div
-              className="prose prose-invert max-w-3xl mx-auto text-center"
+              className="prose prose-invert max-w-3xl mx-auto text-center typo-body text-white/80"
               dangerouslySetInnerHTML={{ __html: toHtml(description) }}
             />
           )}
@@ -90,14 +90,14 @@ export function FamillesGaranties({
                         <span className="text-teal-400 text-2xl">⭐</span>
                       )}
                     </div>
-                    <h3 className="font-bold text-base md:text-lg leading-snug">{item.title}</h3>
+                    <h3 className="typo-h3 text-white">{item.title}</h3>
                   </div>
                   {/* Verso — description */}
                   <div
                     className="absolute inset-0 bg-teal-400/15 border border-teal-400/30 rounded-2xl p-6 lg:p-8 flex flex-col justify-center"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                   >
-                    <p className="text-xs md:text-sm text-white/80 leading-relaxed">{item.description}</p>
+                    <p className="typo-small text-white/80">{item.description}</p>
                   </div>
                 </div>
               </div>
@@ -126,14 +126,14 @@ export function FamillesGaranties({
                         <img src={item.imageUrl} alt="" className="w-7 h-7 object-contain" />
                       </div>
                     )}
-                    <h3 className="font-bold text-base md:text-lg leading-snug">{item.title}</h3>
+                    <h3 className="typo-h3 text-white">{item.title}</h3>
                   </div>
                   {/* Verso */}
                   <div
                     className="absolute inset-0 bg-teal-400/15 border border-teal-400/30 rounded-2xl p-6 lg:p-8 flex flex-col justify-center"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                   >
-                    <p className="text-xs md:text-sm text-white/80 leading-relaxed">{item.description}</p>
+                    <p className="typo-small text-white/80">{item.description}</p>
                   </div>
                 </div>
               </div>
@@ -159,7 +159,7 @@ export function FamillesGaranties({
         {/* Ligne 4 — Note italique teal */}
         {ligne4 && (
           <div className="mt-6 text-center max-w-4xl mx-auto">
-            <p className="text-sm text-[#F2C94C] italic leading-relaxed text-center">
+            <p className="typo-small text-[#F2C94C] italic text-center">
               {ligne4}
             </p>
           </div>

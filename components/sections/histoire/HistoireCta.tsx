@@ -34,11 +34,11 @@ export function HistoireCta({
       <div className="absolute inset-0 bg-gradient-to-r from-navy-800/90 to-navy-800/90 z-[1]" />
 
       <FadeInView className="container mx-auto px-4 relative z-20 flex flex-col items-center max-w-6xl">
-        <blockquote className="text-white leading-snug italic mb-6 lg:mb-8 text-lg md:text-2xl lg:text-3xl">
+        <blockquote className="typo-h3 text-white italic mb-6 lg:mb-8">
           {citation}
         </blockquote>
-        <p className="text-white/50 font-bold text-[10px] uppercase tracking-[3px] mb-4 lg:mb-6">— {auteur}</p>
-        <p className="text-white/80 font-semibold text-base md:text-lg lg:text-xl mb-6 lg:mb-10">{sousTitre}</p>
+        <p className="typo-tag text-white/50 mb-4 lg:mb-6">— {auteur}</p>
+        <p className="typo-body text-white/80 font-semibold mb-6 lg:mb-10">{sousTitre}</p>
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <Button variant="gold" href={cta1Url} iconRight={<ArrowRight className="w-4 h-4" />}>{cta1Texte}</Button>
           {cta2Texte && cta2Url && (

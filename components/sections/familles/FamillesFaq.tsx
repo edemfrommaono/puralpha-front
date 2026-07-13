@@ -24,10 +24,10 @@ export function FamillesFaq({
     <section className="py-8 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
         <div className="text-center mb-8 lg:mb-16">
-          <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
+          <span className="typo-tag text-teal-400">
             {sectionTag}
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mt-4">
+          <h2 className="typo-h2 text-navy-800 mt-4">
             {title} <span className="text-teal-400">{titleHighlight}</span>
           </h2>
         </div>

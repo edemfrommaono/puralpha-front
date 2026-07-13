@@ -42,7 +42,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium transition-colors hover:text-[#4ECDC4]"
+              className="text-md font-medium transition-colors hover:text-[#4ECDC4]"
               style={{ color: pathname === link.href ? '#4ECDC4' : undefined }}
             >
               {link.label}

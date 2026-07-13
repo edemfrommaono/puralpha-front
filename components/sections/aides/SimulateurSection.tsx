@@ -79,10 +79,10 @@ export function SimulateurSection({ simulateur, fallback: fb }: SimulateurSectio
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
         {/* Titre */}
         <div className="text-center mb-8 lg:mb-12">
-          <span className="inline-block text-teal-400 text-xs font-bold uppercase tracking-widest mb-4">
+          <span className="typo-tag text-teal-400 mb-4 inline-block">
             {simulateur?.tag || fb.tag || "Simulateur"}
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 leading-tight">
+          <h2 className="typo-h2 text-navy-800">
             {simulateur?.titre || fb.titre || "Estimez votre"}{" "}
             <span className="text-teal-400">
               {simulateur?.title_highlight || fb.title_highlight || "reste à charge"}
@@ -90,7 +90,7 @@ export function SimulateurSection({ simulateur, fallback: fb }: SimulateurSectio
           </h2>
           {(simulateur?.description || fb.description) && (
             <div
-              className="prose max-w-xl mx-auto text-sm leading-relaxed mt-4 text-center"
+              className="prose max-w-xl mx-auto mt-4 text-center typo-body"
               dangerouslySetInnerHTML={{
                 __html: toHtml(
                   simulateur?.description ||

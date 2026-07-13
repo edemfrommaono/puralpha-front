@@ -40,7 +40,7 @@ export function FamillesHandicaps({
         {(title || titleHighlight || description) && (
           <div className="text-center mb-8 lg:mb-16 max-w-6xl mx-auto">
             {(title || titleHighlight) && (
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-navy-800 mb-6">
+              <h2 className="typo-h2 text-navy-800 mb-6">
                 {title}
                 {titleHighlight && (
                   <>
@@ -52,7 +52,7 @@ export function FamillesHandicaps({
             )}
             {description && (
               <div
-                className="prose max-w-3xl mx-auto text-center"
+                className="prose max-w-3xl mx-auto text-center typo-body"
                 dangerouslySetInnerHTML={{ __html: toHtml(description) }}
               />
             )}
@@ -81,7 +81,7 @@ export function FamillesHandicaps({
                       <span className="text-teal-500 text-2xl transition-transform duration-300 group-hover:scale-110">📌</span>
                     )}
                   </div>
-                  <span className="font-bold text-navy-800 text-sm transition-colors duration-300 group-hover:text-teal-500">
+                  <span className="typo-h3 text-navy-800 text-sm transition-colors duration-300 group-hover:text-teal-500">
                     {item.label}
                   </span>
                 </div>
@@ -91,13 +91,13 @@ export function FamillesHandicaps({
         )}
 
         {(highlightQuote || highlightDescription) && (
-          <div className="bg-[#F6F4EF] border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
-            <p className="font-bold text-navy-800 text-base leading-relaxed text-center">
+          <div className="bg-[#ecf4f6] border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
+            <p className="typo-h3 text-navy-800 text-center leading-relaxed">
               {highlightQuote && (
                 <span className="text-[#F2C94C]">{highlightQuote}</span>
               )} <br />
               {highlightDescription && (
-                <span className="font-normal">{highlightDescription}</span>
+                <span className="font-normal" dangerouslySetInnerHTML={{__html: highlightDescription}} ></span>
               )}
             </p>
           </div>

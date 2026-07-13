@@ -33,11 +33,11 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
             <div>
               <div className="flex items-center gap-3 mb-4">
 
-                <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">
+                <span className="typo-tag text-teal-400">
                   {histoire?.section_tag || fb.section_tag}
                 </span>
               </div>
-              <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-snug">
+              <h2 className="typo-h2 text-navy-800">
                 {histoire?.title || fb.title}{" "}
                 <span className="text-teal-400">
                   {histoire?.title_highlight || fb.title_highlight}
@@ -46,7 +46,7 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
             </div>
             {(histoire?.paragraphe || fb.paragraphe) && (
               <div
-                className="prose max-w-none"
+                className="prose max-w-none typo-body"
                 dangerouslySetInnerHTML={{ __html: toHtml(histoire?.paragraphe || fb.paragraphe) }}
               />
             )}

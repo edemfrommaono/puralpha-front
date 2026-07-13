@@ -56,13 +56,13 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
             <div>
               {(territoire?.section_tag || fb.section_tag) && (
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">
+                  <span className="typo-tag text-teal-400">
                     {territoire?.section_tag || fb.section_tag}
                   </span>
                 </div>
               )}
               {(territoire?.title || fb.title || territoire?.title_highlight || fb.title_highlight || territoire?.titre_2 || fb.titre_2) && (
-                <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-navy-800 leading-snug">
+                <h2 className="typo-h2 text-navy-800">
                   {territoire?.title || fb.title}{" "}
                   {(territoire?.title_highlight || fb.title_highlight) && (
                     <span className="text-teal-400">
@@ -75,7 +75,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
             </div>
             {(territoire?.description_1 || fb.description_1) && (
               <div
-                className="prose max-w-none"
+                className="prose max-w-none typo-body"
                 dangerouslySetInnerHTML={{
                   __html: toHtml(territoire?.description_1 || fb.description_1),
                 }}

@@ -38,14 +38,14 @@ export function CtaFinalSection({ ctaFinal, ctaBadges, ctaFondUrl, fallback: fb 
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-teal-400/10 via-transparent to-transparent pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <FadeInView className="max-w-3xl mx-auto flex flex-col items-center text-center gap-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-snug">
+        <FadeInView className="max-w-4xl mx-auto flex flex-col items-center text-center gap-8">
+          <h2 className="typo-h1 text-white">
             {ctaFinal?.title || fb.title}{" "}
             <span className="text-gold-500">
               {ctaFinal?.title_highlight || fb.title_highlight}
             </span>
           </h2>
-          <p className="text-lg lg:text-xl text-white/80">
+          <p className="typo-h3 text-white/80">
             {ctaFinal?.subtitle || fb.subtitle}
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-white/80 my-4">

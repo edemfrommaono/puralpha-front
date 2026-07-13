@@ -28,16 +28,16 @@ export function RejoindreProcess({
   if (!etapes || etapes.length === 0) return null;
 
   return (
-    <section className="w-full py-8 lg:py-24 bg-[#F6F4EF]">
+    <section className="w-full py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 md:px-6 max-w-8xl">
         <FadeInView className="text-center mb-8 lg:mb-16">
           {sectionTag && (
-            <p className="text-center text-teal-400 font-bold text-xs tracking-[3px] uppercase mb-4">{sectionTag}</p>
+            <p className="text-center typo-tag text-teal-400 mb-4">{sectionTag}</p>
           )}
-          <h2 className="text-2xl md:text-3xl lg:text-[38px] font-extrabold text-[#1C3553] mb-4 lg:mb-6 leading-snug font-poppins text-center">
+          <h2 className="typo-h2 text-[#1C3553] mb-4 lg:mb-6 text-center">
             {title}{" "}
             {titleHighlight && (
-              <span className="text-[#F2C94C] font-poppins not-italic font-extrabold text-2xl md:text-3xl lg:text-[38px] leading-snug">
+              <span className="text-[#F2C94C]">
                 {titleHighlight}
               </span>
             )}
@@ -66,9 +66,9 @@ export function RejoindreProcess({
                     </span>
                   )}
                 </div>
-                <h3 className="text-sm font-bold text-navy-800 mb-0 group-hover:mb-2 transition-all duration-300">{step.title}</h3>
+                <h3 className="typo-h3 text-navy-800 mb-0 group-hover:mb-2 transition-all duration-300">{step.title}</h3>
                 {/* Description — masquée par défaut, visible au survol */}
-                <p className="text-[13px] text-gray-600 text-center
+                <p className="typo-small text-gray-600 text-center
                                max-h-0 overflow-hidden opacity-0
                                group-hover:max-h-40 group-hover:opacity-100
                                transition-all duration-500 ease-in-out">

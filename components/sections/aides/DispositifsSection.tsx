@@ -86,16 +86,16 @@ export function DispositifsSection({
     <section className="py-8 lg:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <FadeInView className="text-center mb-8 lg:mb-16">
-          <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
+          <span className="typo-tag text-teal-400">
             {aides?.section_tag || fb.section_tag}
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-[40px] font-extrabold text-navy-800 mt-4 leading-tight">
+          <h2 className="typo-h2 text-navy-800 mt-4">
             {aides?.title || fb.title}<br />
             <span className="text-teal-400">{aides?.title_highlight || fb.title_highlight}</span>
           </h2>
           { (aides?.description || fb.description) && (
             <div
-              className="prose max-w-2xl mx-auto text-center mt-4"
+              className="prose max-w-2xl mx-auto text-center typo-body mt-4"
               dangerouslySetInnerHTML={{ __html: toHtml(aides?.description || fb.description) }}
             />
           )}
@@ -133,13 +133,13 @@ export function DispositifsSection({
                       <span>{fbCard?.fallback_icon || "📄"}</span>
                     )}
                   </div>
-                  <h3 className={`font-bold text-base lg:text-lg leading-snug ${c.titleColor}`}>
+                  <h3 className={`typo-h3 ${c.titleColor}`}>
                     {card.title}
                   </h3>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed text-left flex-1">
+                <p className="typo-body text-left flex-1">
                   {card.description}
                 </p>
 

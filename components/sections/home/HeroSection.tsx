@@ -33,10 +33,10 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
     <section className="relative w-full min-h-[auto] lg:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-teal-50 via-[#f7f5f0] to-white pt-24 pb-8 lg:pt-24 lg:pb-24">
       <div className="container mx-auto px-4 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-8 lg:gap-8 items-center">
-          <div className="flex flex-col gap-6 max-w-xl">
+          <div className="flex flex-col gap-6 max-w-3xl">
             {(hero?.title || fb.title || hero?.title_highlight || fb.title_highlight) && (
               <FadeInView direction="left" delay={0}>
-                <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-navy-800 leading-tight lg:leading-[50.4px]">
+                <h1 className="typo-h1 text-navy-800">
                   {hero?.title || fb.title}{" "}
                   {(hero?.title_highlight || fb.title_highlight) && (
                     <span className="text-teal-500">
@@ -48,14 +48,14 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
             )}
             {(hero?.subtitle || fb.subtitle) && (
               <FadeInView direction="left" delay={0.1}>
-                <p className="text-sm md:text-lg lg:text-xl font-semibold text-gray-700">
+                <p className="typo-h3 text-gray-700">
                   {hero?.subtitle || fb.subtitle}
                 </p>
               </FadeInView>
             )}
             {(hero?.description || fb.description) && (
               <FadeInView direction="left" delay={0.2}>
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                <p className="typo-body text-gray-700">
                   {hero?.description || fb.description}
                 </p>
               </FadeInView>
