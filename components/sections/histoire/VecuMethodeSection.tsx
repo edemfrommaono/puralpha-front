@@ -70,7 +70,7 @@ export function VecuMethodeSection({
                 >
                   {/* Recto — numéro + titre */}
                   <div
-                    className="absolute inset-0 bg-[#F6F4EF] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-6 rounded-2xl"
+                    className="absolute inset-0 bg-[#ecf4f6] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-6 rounded-2xl"
                     style={{ backfaceVisibility: "hidden" }}
                   >
                     <div
@@ -84,7 +84,7 @@ export function VecuMethodeSection({
 
                   {/* Verso — description */}
                   <div
-                    className="absolute inset-0 bg-[#F6F4EF] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-6 rounded-2xl"
+                    className="absolute inset-0 bg-[#ecf4f6] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-6 rounded-2xl"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                   >
                     <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>

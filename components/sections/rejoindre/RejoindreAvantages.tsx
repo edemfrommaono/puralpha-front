@@ -31,7 +31,7 @@ function FlipCard({ card, idx }: { card: AvantageCard; idx: number }) {
       >
         {/* Recto — icône + titre */}
         <div
-          className="absolute inset-0 bg-[#F6F4EF] border border-gray-100 rounded-[20px] p-6 lg:p-8 flex flex-col items-start shadow-sm"
+          className="absolute inset-0 bg-[#ecf4f6] border border-gray-100 rounded-[20px] p-6 lg:p-8 flex flex-col items-start shadow-sm"
           style={{ backfaceVisibility: "hidden" }}
         >
           <div className={`w-12 h-12 rounded-xl ${ICON_BGS[idx % ICON_BGS.length]} flex items-center justify-center text-2xl mb-6`}>
@@ -46,7 +46,7 @@ function FlipCard({ card, idx }: { card: AvantageCard; idx: number }) {
 
         {/* Verso — description */}
         <div
-          className="absolute inset-0 bg-[#F6F4EF] border border-gray-100 rounded-[20px] p-6 lg:p-8 flex flex-col justify-center shadow-sm"
+          className="absolute inset-0 bg-[#ecf4f6] border border-gray-100 rounded-[20px] p-6 lg:p-8 flex flex-col justify-center shadow-sm"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
           <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{card.description}</p>

@@ -28,7 +28,7 @@ export function RejoindreProcess({
   if (!etapes || etapes.length === 0) return null;
 
   return (
-    <section className="w-full py-8 lg:py-24 bg-[#F6F4EF]">
+    <section className="w-full py-8 lg:py-24 bg-[#ecf4f6]">
       <div className="container mx-auto px-4 md:px-6 max-w-8xl">
         <FadeInView className="text-center mb-8 lg:mb-16">
           {sectionTag && (

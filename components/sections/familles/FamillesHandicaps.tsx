@@ -91,13 +91,13 @@ export function FamillesHandicaps({
         )}
 
         {(highlightQuote || highlightDescription) && (
-          <div className="bg-[#F6F4EF] border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
+          <div className="bg-[#ecf4f6] border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
             <p className="font-bold text-navy-800 text-base leading-relaxed text-center">
               {highlightQuote && (
                 <span className="text-[#F2C94C]">{highlightQuote}</span>
               )} <br />
               {highlightDescription && (
-                <span className="font-normal">{highlightDescription}</span>
+                <span className="font-normal" dangerouslySetInnerHTML={{__html: highlightDescription}} ></span>
               )}
             </p>
           </div>
