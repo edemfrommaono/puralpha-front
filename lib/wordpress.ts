@@ -229,6 +229,7 @@ async function formatWPPost(wp: WPPost<BlogPostACF>): Promise<Post> {
     date,
     categories,
     imageUrl,
+    videoUrl: wp.acf?.url_video || undefined,
     author: {
       name: authorNom,
       role: authorRole,

@@ -301,12 +301,43 @@ export function BlogClient({ posts }: BlogClientProps) {
               <X className="w-5 h-5" />
             </button>
             <div className="aspect-video w-full">
-              <video 
-                src={activeVideoUrl} 
-                controls 
-                autoPlay 
-                className="w-full h-full"
-              />
+              {(() => {
+                let youtubeId = null;
+                
+                if (activeVideoUrl.includes("youtube.com") || activeVideoUrl.includes("youtu.be")) {
+                  if (activeVideoUrl.includes("/shorts/")) {
+                    youtubeId = activeVideoUrl.split("/shorts/")[1]?.split("?")[0];
+                  } else if (activeVideoUrl.includes("youtu.be/")) {
+                    youtubeId = activeVideoUrl.split("youtu.be/")[1]?.split("?")[0];
+                  } else if (activeVideoUrl.includes("v=")) {
+                    try {
+                      youtubeId = new URLSearchParams(new URL(activeVideoUrl).search).get("v");
+                    } catch (e) { /* ignore */ }
+                  } else if (activeVideoUrl.includes("/embed/")) {
+                    youtubeId = activeVideoUrl.split("/embed/")[1]?.split("?")[0];
+                  }
+                }
+                
+                if (youtubeId) {
+                  return (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  );
+                }
+                
+                return (
+                  <video 
+                    src={activeVideoUrl} 
+                    controls 
+                    autoPlay 
+                    className="w-full h-full"
+                  />
+                );
+              })()}
             </div>
           </div>
         </div>

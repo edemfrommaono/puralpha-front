@@ -33,8 +33,8 @@ const FIELD_MAPPING = {
   "text-1": "text-1",
   "text-2": "text-2",
   "select-1": "select-1",
-  "select-2": "select-2",
-  "text-3": "text-3",
+  "select-2": "checkbox-2",
+  "text-3": "number-1",
   "upload-1": "upload-1",
   "textarea-1": "textarea-1",
 } as const;
@@ -117,33 +117,46 @@ export function RejoindreFormulaire({
       const baseUrl = wpApiUrl ? wpApiUrl.replace("/wp-json/wp/v2", "") : "https://bk.puralpha.fr";
       const submissionUrl = `${baseUrl}/wp-json/v1/submit-form`;
 
-      const entries = Object.entries(formData)
-        .filter(([key]) => Object.prototype.hasOwnProperty.call(FIELD_MAPPING, key))
+      const entries: { name: string; value: string | string[] }[] = Object.entries(formData)
+        .filter(([key]) => Object.prototype.hasOwnProperty.call(FIELD_MAPPING, key) && key !== "upload-1")
         .map(([key, value]) => {
-          if (key === "upload-1") {
-            const files = value as FileList;
-            return {
-              name: FIELD_MAPPING[key],
-              value: files && files.length > 0 ? files[0].name : "",
-            };
+          const fieldName = FIELD_MAPPING[key as keyof typeof FIELD_MAPPING];
+          let mappedValue: string | string[] = (value as string) || "";
+          
+          // Les cases à cocher Forminator nécessitent un tableau, même pour une seule valeur
+          if (fieldName === "checkbox-2" && mappedValue !== "") {
+            mappedValue = [mappedValue as string];
           }
+
           return {
-            name: FIELD_MAPPING[key as keyof typeof FIELD_MAPPING],
-            value: (value as string) || "",
+            name: fieldName,
+            value: mappedValue,
           };
         });
 
+      // Gestion de la case à cocher Vivier (checkbox-1)
+      if (formData.consent_vivier) {
+        entries.push({ name: "checkbox-1", value: ["oui"] });
+      }
+
+      const formDataToSend = new FormData();
+      formDataToSend.append("form_id", "574");
+      formDataToSend.append("data", JSON.stringify(entries));
+
+      if (formData["upload-1"] && (formData["upload-1"] as FileList).length > 0) {
+        formDataToSend.append("upload-1", (formData["upload-1"] as FileList)[0]);
+      }
+
       const response = await fetch(submissionUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          form_id: "574",
-          data: entries,
-        }),
+        // Pas de header Content-Type, le navigateur gère le multipart/form-data automatiquement
+        body: formDataToSend,
       });
 
       if (!response.ok) {
-        throw new Error("Une erreur est survenue lors de l'envoi.");
+        const errorData = await response.json().catch(() => null);
+        console.error("Erreur renvoyée par le backend:", errorData);
+        throw new Error(errorData?.message || "Une erreur est survenue lors de l'envoi.");
       }
 
       // Enregistrement de la preuve de consentement pour le vivier
@@ -167,7 +180,7 @@ export function RejoindreFormulaire({
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
-      setSubmitError("Une erreur est survenue. Veuillez réessayer plus tard.");
+      setSubmitError(error instanceof Error ? error.message : "Une erreur est survenue. Veuillez réessayer plus tard.");
     }
   };
 

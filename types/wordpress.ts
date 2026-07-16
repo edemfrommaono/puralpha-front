@@ -557,6 +557,8 @@ export interface BlogPostACF {
   extrait?: string;
   /** Alt de l'image mise en avant pour l'accessibilité SEO */
   image_alt?: string;
+  /** URL de la vidéo (YouTube, etc.) ajoutée dans ACF */
+  url_video?: string;
 }
 
 export interface ContactPageACF {
