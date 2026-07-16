@@ -83,10 +83,10 @@ Pour exercer ces droits, veuillez nous contacter. Référez-vous aux coordonnée
     id: "coordonnees",
     title: "10. Coordonnées",
     content: `PUR Alpha
-10 B rue de Paris, 95350 Piscop
+26 rue des Sablons, 95360 Montmagny
 France
 Site web : https://pur-alpha.fr
-Email : contact@pur-alpha.fr
+Email : contact@puralpha.fr
 Numéro de téléphone : 06 14 79 60 47
 
 Cette politique de cookies a été synchronisée avec cookiedatabase.org le 19 avril 2025.`,

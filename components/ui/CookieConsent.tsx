@@ -49,6 +49,27 @@ export function CookieConsent() {
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) setVisible(true);
+    else {
+      // Charger les préférences existantes pour les afficher si l'utilisateur rouvre le panneau
+      try {
+        const parsed = JSON.parse(stored) as ConsentState;
+        setConsent(parsed);
+      } catch { /* ignore */ }
+    }
+
+    // Écouter les demandes de réouverture des paramètres cookies
+    const handleOpen = () => {
+      const existing = localStorage.getItem(STORAGE_KEY);
+      if (existing) {
+        try {
+          setConsent(JSON.parse(existing) as ConsentState);
+        } catch { /* ignore */ }
+      }
+      setShowPreferences(true);
+      setVisible(true);
+    };
+    window.addEventListener("open-cookie-settings", handleOpen);
+    return () => window.removeEventListener("open-cookie-settings", handleOpen);
   }, []);
 
   const save = (state: ConsentState) => {

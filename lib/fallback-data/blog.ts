@@ -7,6 +7,7 @@ export interface Post {
   date: string;
   categories: string[];
   imageUrl: string;
+  videoUrl?: string; // Optionnel pour les vidéos
   author: {
     name: string;
     role: string;
@@ -39,10 +40,10 @@ export const BLOG_POSTS_FALLBACK: Post[] = [
       </ul>
 
       <h2>Comment adapter l'accompagnement à domicile ?</h2>
-      <p>L'accompagnement à domicile par des professionnels formés permet de soulager les aidants familiaux tout en stimulant l'enfant dans son environnement rassurant. Le jeu sensoriel, la communication alternative (pictogrammes, langue des signes simplifiée) et le maintien des postures recommandées par les kinésithérapeutes font partie intégrante des interventions PUR Alpha.</p>
+      <p>L'accompagnement à domicile by des professionnels formés permet de soulager les aidants familiaux tout en stimulant l'enfant dans son environnement rassurant. Le jeu sensoriel, la communication alternative (pictogrammes, langue des signes simplifiée) et le maintien des postures recommandées par les kinésithérapeutes font partie intégrante des interventions PUR Alpha.</p>
     `,
     date: "12 Juin 2026",
-    categories: ["Sensibilisation"],
+    categories: ["Articles", "Sensibilisation"],
     imageUrl: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop",
     author: {
       name: "Marc Leblanc",
@@ -67,7 +68,7 @@ export const BLOG_POSTS_FALLBACK: Post[] = [
       <p>L'État vous rembourse 50% de cette somme, que vous payiez des impôts ou non (il s'agit d'un crédit d'impôt et non d'une simple déduction fiscale). De plus, l'Avance Immédiate du crédit d'impôt se déploie progressivement pour vous éviter d'avancer les frais.</p>
     `,
     date: "08 Juin 2026",
-    categories: ["Démarches & Aides"],
+    categories: ["Articles", "Démarches & Aides"],
     imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
     author: {
       name: "Sabrina Benali",
@@ -92,11 +93,51 @@ export const BLOG_POSTS_FALLBACK: Post[] = [
       <p>Disposez au sol différentes dalles : du carton ondulé, du papier bulle, une serviette éponge, du gazon synthétique. Si l'enfant le peut, faites-le marcher pieds nus (ou guidez ses mains s'il est assis) pour ressentir les différents contrastes.</p>
     `,
     date: "03 Juin 2026",
-    categories: ["Activités"],
+    categories: ["Articles", "Activités"],
     imageUrl: "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=800&auto=format&fit=crop",
     author: {
       name: "Julie Dupont",
       role: "Éducatrice Spécialisée"
+    }
+  },
+  {
+    id: "4",
+    slug: "pur-alpha-parution-presse-locale-val-doise",
+    title: "PUR Alpha à l'honneur dans la presse locale du Val-d'Oise",
+    excerpt: "Le journal régional consacre un dossier spécial sur l'accompagnement à domicile des enfants en situation de handicap et salue l'engagement de PUR Alpha.",
+    content: `
+      <p>Nous sommes fiers de vous partager l'article paru cette semaine dans la presse locale, mettant en lumière notre mission d'accompagnement à domicile dans le Val-d'Oise.</p>
+      <h2>Un engagement salué par les familles</h2>
+      <p>L'article retrace l'histoire de PUR Alpha, de sa fondation à son rôle clé aujourd'hui dans le Val-d'Oise. À travers le témoignage de plusieurs familles et de nos intervenants, le journaliste met en avant le professionnalisme de nos équipes et l'importance de ce relais pour les aidants.</p>
+      <blockquote>
+        "PUR Alpha apporte un souffle d'air frais aux familles. Leur expertise et leur dévouement transforment le quotidien de nos enfants."
+      </blockquote>
+      <p>Merci à nos équipes pour leur travail incroyable au quotidien et aux familles pour leur confiance renouvelée.</p>
+    `,
+    date: "15 Juin 2026",
+    categories: ["Actualités"],
+    imageUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop",
+    author: {
+      name: "Marc Leblanc",
+      role: "Fondateur PUR Alpha"
+    }
+  },
+  {
+    id: "5",
+    slug: "decouvrez-accompagnement-pur-alpha-video",
+    title: "Découvrez notre accompagnement à domicile en vidéo",
+    excerpt: "Visionnez notre vidéo de présentation pour comprendre notre démarche et notre accompagnement au quotidien auprès des enfants extraordinaires.",
+    content: `
+      <p>Plongez au cœur du quotidien de nos intervenants. Cette vidéo vous présente notre méthodologie d'éveil, notre charte de bienveillance, et des moments de complicité partagés à domicile.</p>
+      <p>Un grand merci à toutes les familles et intervenants qui ont participé à ce projet vidéo de présentation.</p>
+    `,
+    date: "20 Juin 2026",
+    categories: ["Vidéos"],
+    imageUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=800&auto=format&fit=crop",
+    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    author: {
+      name: "Marc Leblanc",
+      role: "Fondateur PUR Alpha"
     }
   }
 ];
