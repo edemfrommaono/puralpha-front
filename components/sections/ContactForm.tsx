@@ -26,7 +26,6 @@ type ContactFormData = z.infer<typeof contactSchema>;
 const FIELD_MAPPING = {
   "select-1": "select-1",
   "name-1": "name-1",
-  "name-2": "name-2",
   "email-1": "email-1",
   "phone-1": "phone-1",
   "text-1": "text-1",
@@ -98,18 +97,27 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
 
       const entries = Object.entries(formData)
         .filter(([key]) => Object.prototype.hasOwnProperty.call(FIELD_MAPPING, key))
-        .map(([key, value]) => ({
-          name: FIELD_MAPPING[key as keyof typeof FIELD_MAPPING],
-          value: (value as string) || "",
-        }));
+        .map(([key, value]) => {
+          let mappedValue = (value as string) || "";
+          
+          // Forminator n'a qu'un champ "Nom complet" (name-1), on y combine le Prénom et le Nom
+          if (key === "name-1") {
+            mappedValue = `${formData["name-2"]} ${formData["name-1"]}`.trim();
+          }
+
+          return {
+            name: FIELD_MAPPING[key as keyof typeof FIELD_MAPPING],
+            value: mappedValue,
+          };
+        });
+
+      const formDataToSend = new FormData();
+      formDataToSend.append("form_id", "573");
+      formDataToSend.append("data", JSON.stringify(entries));
 
       const response = await fetch(submissionUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          form_id: "573",
-          data: entries,
-        }),
+        body: formDataToSend,
       });
 
       if (!response.ok) {
@@ -261,11 +269,11 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
               className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["select-2"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-[13px] md:text-sm text-gray-700 cursor-pointer`}
             >
               <option value="">Sélectionnez...</option>
-              <option value="Renseignements généraux">Renseignements généraux</option>
-              <option value="Demande d'accompagnement">Demande d'accompagnement</option>
-              <option value="Devenir intervenant(e)">Devenir intervenant(e)</option>
+              <option value="one">Renseignements généraux</option>
+              <option value="two">Demande d'accompagnement</option>
+              <option value="Devenir-intervenant(e)">Devenir intervenant(e)</option>
               <option value="Partenariat">Partenariat</option>
-              <option value="Autre demande">Autre demande</option>
+              <option value="Autre-demande">Autre demande</option>
             </select>
             {errors["select-2"] && <p className="text-red-500 text-xs">{errors["select-2"].message}</p>}
           </div>

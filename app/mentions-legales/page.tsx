@@ -135,6 +135,7 @@ export default function MentionsLegalesPage() {
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 py-10 lg:py-12">
         <div className="flex flex-col gap-10 max-w-4xl mx-auto">
+          {/* Contenu masqué temporairement à la demande du client
           {sections.map((section) => (
             <article
               key={section.id}
@@ -149,6 +150,7 @@ export default function MentionsLegalesPage() {
               </div>
             </article>
           ))}
+          */}
         </div>
 
         {/* Back to top */}

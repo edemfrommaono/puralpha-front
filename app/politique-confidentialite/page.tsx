@@ -71,6 +71,7 @@ export default function PolitiqueConfidentialitePage() {
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 py-10 lg:py-12">
         <div className="flex flex-col gap-10">
+          {/* Contenu masqué temporairement à la demande du client
           {sections.map((section) => (
             <article key={section.id} id={section.id}>
               <h2 className="text-lg lg:text-xl font-black text-navy-800 mb-5 pb-4">
@@ -81,6 +82,7 @@ export default function PolitiqueConfidentialitePage() {
               </div>
             </article>
           ))}
+          */}
         </div>
 
         {/* Back to top */}
