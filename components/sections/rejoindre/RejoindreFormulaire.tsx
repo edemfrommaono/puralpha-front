@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toHtml } from "@/lib/wysiwyg";
+import { InfoNotice } from "@/components/ui/InfoNotice";
 
 // ── Schéma Zod — Forminator form 574 ──
 const candidatureSchema = z.object({
@@ -19,7 +20,7 @@ const candidatureSchema = z.object({
   "text-3": z.string().min(1, "Ce champ est requis"),        // Nombre d'années d'expérience
   "upload-1": z.any().refine((files) => files && files.length > 0, "Un CV est requis"), // CV *
   "textarea-1": z.string().max(180, "180 caractères max").optional(),
-  "consent": z.boolean().refine((val) => val === true, "Vous devez accepter pour continuer"),
+  "consent_vivier": z.boolean().optional(),
 });
 
 type CandidatureFormData = z.infer<typeof candidatureSchema>;
@@ -37,6 +38,30 @@ const FIELD_MAPPING = {
   "upload-1": "upload-1",
   "textarea-1": "textarea-1",
 } as const;
+
+interface ConsentProof {
+  email: string;
+  choice: string;
+  label: string;
+  accepted: boolean;
+  date: string;
+  time: string;
+  source: string;
+  canal: string;
+  text_version: string;
+}
+
+const saveConsentProof = (proof: ConsentProof) => {
+  try {
+    const existing = localStorage.getItem("puralpha_consent_proofs");
+    const list = existing ? JSON.parse(existing) : [];
+    list.push(proof);
+    localStorage.setItem("puralpha_consent_proofs", JSON.stringify(list));
+    console.log("Consent proof recorded:", proof);
+  } catch (err) {
+    console.error("Failed to save consent proof:", err);
+  }
+};
 
 interface RejoindreFormulaireProps {
   sectionTag: string;
@@ -75,7 +100,7 @@ export function RejoindreFormulaire({
       "text-3": "",
       "upload-1": null,
       "textarea-1": "",
-      "consent": false,
+      "consent_vivier": false,
     },
   });
 
@@ -93,7 +118,7 @@ export function RejoindreFormulaire({
       const submissionUrl = `${baseUrl}/wp-json/v1/submit-form`;
 
       const entries = Object.entries(formData)
-        .filter(([key]) => key !== "consent")
+        .filter(([key]) => Object.prototype.hasOwnProperty.call(FIELD_MAPPING, key))
         .map(([key, value]) => {
           if (key === "upload-1") {
             const files = value as FileList;
@@ -104,7 +129,7 @@ export function RejoindreFormulaire({
           }
           return {
             name: FIELD_MAPPING[key as keyof typeof FIELD_MAPPING],
-            value: value || "",
+            value: (value as string) || "",
           };
         });
 
@@ -120,6 +145,21 @@ export function RejoindreFormulaire({
       if (!response.ok) {
         throw new Error("Une erreur est survenue lors de l'envoi.");
       }
+
+      // Enregistrement de la preuve de consentement pour le vivier
+      const email = formData["email-1"];
+      const timestamp = new Date().toISOString();
+      saveConsentProof({
+        email,
+        choice: "consent_vivier",
+        label: "J'accepte que PUR Alpha conserve ma candidature pendant 2 ans à compter du dernier contact afin de pouvoir me recontacter pour de futures opportunités.",
+        accepted: !!formData.consent_vivier,
+        date: timestamp.split("T")[0],
+        time: timestamp.split("T")[1].substring(0, 8),
+        source: "Formulaire de candidature - pur-alpha.fr",
+        canal: "Web",
+        text_version: "v1.0 - July 2026"
+      });
 
       setIsSubmitted(true);
       setSelectedFileName(null);
@@ -328,15 +368,14 @@ export function RejoindreFormulaire({
                 <div className="flex items-start gap-3">
                   <input
                     type="checkbox"
-                    id="consent"
-                    {...register("consent")}
-                    className={`mt-1 h-5 w-5 bg-[#ecf4f6] border ${errors.consent ? "border-red-400" : "border-gray-300"} rounded focus:ring-teal-400 cursor-pointer`}
+                    id="consent_vivier"
+                    {...register("consent_vivier")}
+                    className="mt-1 h-5 w-5 bg-[#ecf4f6] border border-gray-300 rounded focus:ring-teal-400 cursor-pointer"
                   />
-                  <label htmlFor="consent" className="text-sm text-gray-600 leading-normal cursor-pointer select-none">
-                    J'accepte que les informations transmises soient utilisées par PUR Alpha pour traiter ma candidature.
+                  <label htmlFor="consent_vivier" className="text-sm text-gray-600 leading-normal cursor-pointer select-none">
+                    <strong>Vivier de candidats (facultatif) :</strong> J'accepte que PUR Alpha conserve ma candidature pendant 2 ans à compter du dernier contact afin de pouvoir me recontacter pour de futures opportunités.
                   </label>
                 </div>
-                {errors.consent && <p className="text-red-500 text-xs">{errors.consent.message}</p>}
               </div>
 
               <button
@@ -357,13 +396,11 @@ export function RejoindreFormulaire({
               </p>
             </form>
           )}
+          
+          <div className="mt-4 pt-4 border-t border-gray-100">
+            <InfoNotice text="Les informations et le CV transmis sont utilisés par PUR Alpha pour examiner votre candidature et prendre les mesures précontractuelles nécessaires au recrutement. Les champs marqués d’un astérisque sont obligatoires. Les données sont accessibles uniquement aux personnes habilitées intervenant dans le recrutement et, dans la stricte mesure nécessaire, aux prestataires techniques de PUR Alpha. Si votre candidature n’est pas retenue, elle est supprimée à l’issue du recrutement, sauf si vous acceptez sa conservation dans notre vivier. Vous pouvez exercer vos droits en écrivant à contact@puralpha.fr. Pour en savoir plus, consultez notre Politique de confidentialité." />
+          </div>
         </div>
-
-        {notes && (
-          <p className="text-center text-sm text-white/80 mt-8 max-w-2xl mx-auto leading-relaxed">
-            {notes}
-          </p>
-        )}
       </div>
     </section>
   );

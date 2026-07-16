@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { InfoNotice } from "@/components/ui/InfoNotice";
 
 // ── Schéma Zod — Forminator form 573 ──
 const contactSchema = z.object({
@@ -15,6 +16,9 @@ const contactSchema = z.object({
   "text-1": z.string().optional(),                             // Commune concernée
   "select-2": z.string().min(1, "Ce champ est requis"),        // Objet de votre demande
   "textarea-1": z.string().optional(),                         // Votre message
+  "consent_email": z.boolean().optional(),
+  "consent_sms": z.boolean().optional(),
+  "consent_phone": z.boolean().optional(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -29,6 +33,30 @@ const FIELD_MAPPING = {
   "select-2": "select-2",
   "textarea-1": "textarea-1",
 } as const;
+
+interface ConsentProof {
+  email: string;
+  choice: string;
+  label: string;
+  accepted: boolean;
+  date: string;
+  time: string;
+  source: string;
+  canal: string;
+  text_version: string;
+}
+
+const saveConsentProof = (proof: ConsentProof) => {
+  try {
+    const existing = localStorage.getItem("puralpha_consent_proofs");
+    const list = existing ? JSON.parse(existing) : [];
+    list.push(proof);
+    localStorage.setItem("puralpha_consent_proofs", JSON.stringify(list));
+    console.log("Consent proof recorded:", proof);
+  } catch (err) {
+    console.error("Failed to save consent proof:", err);
+  }
+};
 
 interface ContactFormProps {
   formTitle?: string;
@@ -55,6 +83,9 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
       "text-1": "",
       "select-2": "",
       "textarea-1": "",
+      "consent_email": false,
+      "consent_sms": false,
+      "consent_phone": false,
     },
   });
 
@@ -65,10 +96,12 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
       const baseUrl = wpApiUrl ? wpApiUrl.replace("/wp-json/wp/v2", "") : "https://bk.puralpha.fr";
       const submissionUrl = `${baseUrl}/wp-json/v1/submit-form`;
 
-      const entries = Object.entries(formData).map(([key, value]) => ({
-        name: FIELD_MAPPING[key as keyof typeof FIELD_MAPPING],
-        value: value || "",
-      }));
+      const entries = Object.entries(formData)
+        .filter(([key]) => Object.prototype.hasOwnProperty.call(FIELD_MAPPING, key))
+        .map(([key, value]) => ({
+          name: FIELD_MAPPING[key as keyof typeof FIELD_MAPPING],
+          value: (value as string) || "",
+        }));
 
       const response = await fetch(submissionUrl, {
         method: "POST",
@@ -82,6 +115,29 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
       if (!response.ok) {
         throw new Error("Une erreur est survenue lors de l'envoi.");
       }
+
+      // Enregistrement des preuves de consentement
+      const email = formData["email-1"];
+      const timestamp = new Date().toISOString();
+      const consents = [
+        { key: "consent_email", label: "J'accepte de recevoir des informations et actualités de PUR Alpha par e-mail.", value: !!formData.consent_email },
+        { key: "consent_sms", label: "J'accepte de recevoir des informations et actualités de PUR Alpha par SMS.", value: !!formData.consent_sms },
+        { key: "consent_phone", label: "J'accepte d'être contacté(e) par téléphone par PUR Alpha au sujet de ses services et actualités.", value: !!formData.consent_phone }
+      ];
+
+      consents.forEach(c => {
+        saveConsentProof({
+          email,
+          choice: c.key,
+          label: c.label,
+          accepted: c.value,
+          date: timestamp.split("T")[0],
+          time: timestamp.split("T")[1].substring(0, 8),
+          source: "Formulaire de contact - pur-alpha.fr",
+          canal: "Web",
+          text_version: "v1.0 - July 2026"
+        });
+      });
 
       setIsSubmitted(true);
       reset();
@@ -217,13 +273,54 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
           {/* Votre message */}
           <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-[13px] font-semibold text-navy-900">Votre message</label>
-              <textarea
+            <textarea
               id="message"
               rows={4}
               {...register("textarea-1")}
               className="px-3 py-2.5 md:px-4 md:py-3 bg-white border border-[#f3f4f6] rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all resize-y text-[13px] md:text-sm"
               placeholder="Expliquez-nous votre besoin..."
             ></textarea>
+            <p className="text-[11px] md:text-xs text-amber-700 bg-amber-50 border border-amber-100 rounded-xl p-3 leading-relaxed mt-1">
+              ⚠️ <strong>Avertissement données sensibles :</strong> Pour ce premier contact, merci de ne pas transmettre d’informations médicales détaillées ni de documents de santé concernant votre enfant.
+            </p>
+          </div>
+
+          {/* Consentements marketing */}
+          <div className="flex flex-col gap-3 mt-2">
+            <span className="text-[11px] md:text-xs font-bold text-navy-900 uppercase tracking-wide">Consentements marketing (facultatif)</span>
+            
+            <label className="flex items-start gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                {...register("consent_email")}
+                className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-400 cursor-pointer"
+              />
+              <span className="text-xs text-gray-600 leading-normal">
+                J’accepte de recevoir des informations et actualités de PUR Alpha par e-mail.
+              </span>
+            </label>
+
+            <label className="flex items-start gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                {...register("consent_sms")}
+                className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-400 cursor-pointer"
+              />
+              <span className="text-xs text-gray-600 leading-normal">
+                J’accepte de recevoir des informations et actualités de PUR Alpha par SMS.
+              </span>
+            </label>
+
+            <label className="flex items-start gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                {...register("consent_phone")}
+                className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-400 cursor-pointer"
+              />
+              <span className="text-xs text-gray-600 leading-normal">
+                J’accepte d’être contacté(e) par téléphone par PUR Alpha au sujet de ses services et actualités.
+              </span>
+            </label>
           </div>
 
           <div className="mt-2">
@@ -243,11 +340,7 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
         </form>
       )}
 
-      {notes && (
-        <p className="text-xs text-gray-500 mt-6 leading-relaxed">
-          {notes}
-        </p>
-      )}
+      <InfoNotice text="Les informations recueillies sont utilisées par PUR Alpha pour répondre à votre demande. Les champs marqués d’un astérisque sont obligatoires. Selon l’objet de votre demande, le traitement repose sur les mesures précontractuelles prises à votre initiative ou sur l’intérêt légitime de PUR Alpha à répondre aux sollicitations reçues. Les données sont accessibles aux personnes habilitées de PUR Alpha et, dans la stricte mesure nécessaire, à ses prestataires techniques. Elles sont conservées pendant 3 ans à compter du dernier échange. Vous pouvez exercer vos droits en écrivant à contact@puralpha.fr. Pour en savoir plus, consultez notre Politique de confidentialité." />
     </div>
   );
 }

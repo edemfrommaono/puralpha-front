@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -24,6 +24,35 @@ export function Footer() {
             <p className="text-white/60 text-sm leading-relaxed">
               Garde et accompagnement à domicile d'enfants et jeunes en situation de handicap dans le Val-d'Oise.
             </p>
+            <div className="flex items-center gap-3 mt-2">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-teal-500 hover:border-teal-500 text-white/65 hover:text-white flex items-center justify-center transition-all cursor-pointer"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-teal-500 hover:border-teal-500 text-white/65 hover:text-white flex items-center justify-center transition-all cursor-pointer"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-teal-500 hover:border-teal-500 text-white/65 hover:text-white flex items-center justify-center transition-all cursor-pointer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Navigation */}
@@ -53,7 +82,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>14K - 26 Rue des Sablons, 95360 Montmagny</span>
+                <span>26 rue des Sablons, 95360 Montmagny</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 shrink-0 mt-0.5" />
@@ -69,7 +98,7 @@ export function Footer() {
               <p>SIRET : 989 156 989 00018</p>
               <p>APE : 88.10B</p>
               <p>Agrément SAP N° : SAP989156989</p>
-              <p>Siège social : 10 B rue de Paris, 95350 Piscop</p>
+              <p>Siège social : 26 rue des Sablons, 95360 Montmagny</p>
               <p>Assurance RC Pro Hiscox n° : HA RCP0593442</p>
             </div>
           </div>
@@ -86,13 +115,20 @@ export function Footer() {
             <span className="text-white/20">·</span>
             <span>RC Pro Hiscox HA RCP0593442</span>
             <span className="text-white/20">·</span>
-            {/* <Link href="#" className="hover:text-white transition-colors">Médiateur</Link> */}
-            {/* <span className="text-white/20">·</span> */}
+            <Link href="/mentions-legales#litiges" className="hover:text-white transition-colors">Médiateur</Link>
+            <span className="text-white/20">·</span>
             <Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link>
             <span className="text-white/20">·</span>
             <Link href="/politique-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</Link>
             <span className="text-white/20">·</span>
             <Link href="/politique-cookies" className="hover:text-white transition-colors">Cookies</Link>
+            <span className="text-white/20">·</span>
+            <button
+              onClick={() => window.dispatchEvent(new Event("open-cookie-settings"))}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Gérer les cookies
+            </button>
           </div>
         </div>
       </div>

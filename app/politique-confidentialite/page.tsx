@@ -10,7 +10,7 @@ const sections = [
   {
     id: "introduction",
     title: "Introduction",
-    content: `Dans le cadre de ses activités, la société PUR Alpha, dont le siège social est situé au 10 B rue de Paris, 95350 Piscop, collecte et traite des informations, dont certaines sont considérées comme des « données personnelles ». PUR Alpha accorde une grande importance à la protection de la vie privée et utilise ces données de manière responsable, confidentielle et pour des finalités précises.`,
+    content: `Dans le cadre de ses activités, la société PUR Alpha, dont le siège social est situé au 26 rue des Sablons, 95360 Montmagny, collecte et traite des informations, dont certaines sont considérées comme des « données personnelles ». PUR Alpha accorde une grande importance à la protection de la vie privée et utilise ces données de manière responsable, confidentielle et pour des finalités précises.`,
   },
   {
     id: "donnees-personnelles",
@@ -50,7 +50,7 @@ Droit de déterminer le sort des données après la mort
 
 (voir aussi l'autorité de contrôle compétente : CNIL - https://www.cnil.fr / RGPD)
 
-Pour exercer vos droits, veuillez envoyer votre demande à 10 B rue de Paris, 95350 Piscop ou par email à contact@pur-alpha.fr.
+Pour exercer vos droits, veuillez envoyer votre demande au 26 rue des Sablons, 95360 Montmagny ou par email à contact@puralpha.fr.
 Pour que le responsable du traitement puisse répondre à votre demande, vous devrez peut-être fournir certaines informations telles que : vos noms et prénoms, votre adresse e-mail ainsi que votre numéro de compte ou d'abonné.
 
 Consultez ce lien pour plus d'informations sur vos droits.`,
