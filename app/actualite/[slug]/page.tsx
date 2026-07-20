@@ -156,7 +156,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             {/* Corps de l'article */}
-            <FadeInView direction="up" delay={0.1}>
+            <FadeInView direction="up" delay={0.1} once={true} amount={0}>
               <div
                 className="prose prose-slate max-w-none text-navy-800/95 leading-relaxed text-sm md:text-base
                 prose-headings:text-navy-800 prose-headings:font-extrabold
