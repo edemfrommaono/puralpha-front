@@ -97,7 +97,7 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
             )}
             {(territoire?.description_2 || fb.description_2) && (
               <div
-                className="prose max-w-none"
+                className="prose max-w-none typo-body"
                 dangerouslySetInnerHTML={{
                   __html: toHtml(territoire?.description_2 || fb.description_2),
                 }}
