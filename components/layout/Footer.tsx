@@ -57,7 +57,7 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-gold-500 font-bold text-base">Navigation</h4>
+            <h4 className="typo-h3 text-gold-500">Navigation</h4>
             <ul className="flex flex-col gap-3 text-sm text-white/60">
               <li><Link href="/" className="hover:text-white transition-colors">Accueil</Link></li>
               <li><Link href="/nos-services" className="hover:text-white transition-colors">Nos services</Link></li>
@@ -70,7 +70,7 @@ export function Footer() {
 
           {/* Contact */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-gold-500 font-bold text-base">Contact</h4>
+            <h4 className="typo-h3 text-gold-500">Contact</h4>
             <ul className="flex flex-col gap-3 text-sm text-white/60">
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 shrink-0 mt-0.5" />
@@ -93,7 +93,7 @@ export function Footer() {
 
           {/* Certifications */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-gold-500 font-bold text-base">Informations administratives</h4>
+            <h4 className="typo-h3 text-gold-500">Informations administratives</h4>
             <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-xs text-white/50 leading-relaxed space-y-1">
               <p>SIRET : 989 156 989 00018</p>
               <p>APE : 88.10B</p>

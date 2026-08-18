@@ -41,9 +41,9 @@ export function ValuesBarSection({ resolvedValuesBar, fallbackValues }: ValuesBa
                 className="object-contain shrink-0"
               />
             ) : (
-              <span className="text-base shrink-0 text-gold-400">✦</span>
+              <span className="typo-body shrink-0 text-gold-400">✦</span>
             )}
-            <span className="font-semibold tracking-wide text-sm lg:text-base">
+            <span className="typo-btn">
               {v.label}
             </span>
           </div>

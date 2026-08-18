@@ -157,9 +157,9 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
   };
 
   return (
-    <div className="w-full lg:w-1/2 bg-[#ecf4f6] rounded-[24px] p-6 lg:p-12 relative z-20">
-      <h2 className="text-xl md:text-2xl font-bold text-navy-900 mb-2">{formTitle || "Envoyez-nous votre demande"}</h2>
-      <p className="text-gray-600 text-[13px] md:text-sm mb-6 md:mb-8 leading-relaxed">
+    <div className="w-full lg:w-1/2 bg-gray-100 rounded-[24px] p-6 lg:p-12 relative z-20">
+      <h2 className="typo-h3 text-navy-900 mb-2">{formTitle || "Envoyez-nous votre demande"}</h2>
+      <p className="typo-small text-gray-600 mb-6 md:mb-8">
         Quelques informations suffisent pour comprendre votre demande et vous répondre de manière adaptée.
       </p>
 
@@ -181,11 +181,11 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 md:gap-5">
           {/* Vous êtes... */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="role" className="text-[13px] font-semibold text-navy-900">Vous êtes... *</label>
+              <label htmlFor="role" className="typo-small font-bold text-navy-900">Vous êtes... *</label>
             <select
               id="role"
               {...register("select-1")}
-              className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["select-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-[13px] md:text-sm text-gray-700 cursor-pointer`}
+              className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["select-1"] ? "border-red-400" : "border-gray-200"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-[13px] md:text-sm text-gray-700 cursor-pointer`}
             >
               <option value="">Sélectionnez...</option>
               <option value="Une famille">Une famille</option>
@@ -199,23 +199,23 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
           {/* Nom & Prénoms */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <label htmlFor="name" className="text-[13px] font-semibold text-navy-900">Nom *</label>
+              <label htmlFor="name" className="typo-small font-bold text-navy-900">Nom *</label>
               <input
                 type="text"
                 id="name"
                 {...register("name-1")}
-                className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["name-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
+                className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["name-1"] ? "border-red-400" : "border-gray-200"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
                 placeholder="Votre nom"
               />
               {errors["name-1"] && <p className="text-red-500 text-xs">{errors["name-1"].message}</p>}
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="firstname" className="text-[13px] font-semibold text-navy-900">Prénom *</label>
+              <label htmlFor="firstname" className="typo-small font-bold text-navy-900">Prénom *</label>
               <input
                 type="text"
                 id="firstname"
                 {...register("name-2")}
-                className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["name-2"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
+                className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["name-2"] ? "border-red-400" : "border-gray-200"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
                 placeholder="Votre prénom"
               />
               {errors["name-2"] && <p className="text-red-500 text-xs">{errors["name-2"].message}</p>}
@@ -224,12 +224,12 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
 
           {/* Email */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-[13px] font-semibold text-navy-900">Email *</label>
+            <label htmlFor="email" className="typo-small font-bold text-navy-900">Email *</label>
             <input
               type="email"
               id="email"
               {...register("email-1")}
-              className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["email-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
+              className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["email-1"] ? "border-red-400" : "border-gray-200"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
               placeholder="votre@email.fr"
             />
             {errors["email-1"] && <p className="text-red-500 text-xs">{errors["email-1"].message}</p>}
@@ -238,23 +238,23 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
           {/* Téléphone & Commune concernée */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <label htmlFor="phone" className="text-[13px] font-semibold text-navy-900">Téléphone *</label>
+              <label htmlFor="phone" className="typo-small font-bold text-navy-900">Téléphone *</label>
               <input
                 type="tel"
                 id="phone"
                 {...register("phone-1")}
-                className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["phone-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
+                className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["phone-1"] ? "border-red-400" : "border-gray-200"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm`}
                 placeholder="06 XX XX XX XX"
               />
               {errors["phone-1"] && <p className="text-red-500 text-xs">{errors["phone-1"].message}</p>}
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="commune" className="text-[13px] font-semibold text-navy-900">Commune concernée</label>
+              <label htmlFor="commune" className="typo-small font-bold text-navy-900">Commune concernée</label>
               <input
                 type="text"
                 id="commune"
                 {...register("text-1")}
-                className="px-3 py-2.5 md:px-4 md:py-3 bg-white border border-[#f3f4f6] rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm"
+                className="px-3 py-2.5 md:px-4 md:py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all text-[13px] md:text-sm"
                 placeholder="Votre commune"
               />
             </div>
@@ -262,11 +262,11 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
 
           {/* Objet de votre demande */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="subject" className="text-[13px] font-semibold text-navy-900">Objet de votre demande *</label>
+            <label htmlFor="subject" className="typo-small font-bold text-navy-900">Objet de votre demande *</label>
             <select
               id="subject"
               {...register("select-2")}
-              className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["select-2"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-[13px] md:text-sm text-gray-700 cursor-pointer`}
+              className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["select-2"] ? "border-red-400" : "border-gray-200"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-[13px] md:text-sm text-gray-700 cursor-pointer`}
             >
               <option value="">Sélectionnez...</option>
               <option value="one">Renseignements généraux</option>
@@ -280,12 +280,12 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
 
           {/* Votre message */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="message" className="text-[13px] font-semibold text-navy-900">Votre message</label>
+            <label htmlFor="message" className="typo-small font-bold text-navy-900">Votre message</label>
             <textarea
               id="message"
               rows={4}
               {...register("textarea-1")}
-              className="px-3 py-2.5 md:px-4 md:py-3 bg-white border border-[#f3f4f6] rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all resize-y text-[13px] md:text-sm"
+              className="px-3 py-2.5 md:px-4 md:py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all resize-y text-[13px] md:text-sm"
               placeholder="Expliquez-nous votre besoin..."
             ></textarea>
             <p className="text-[11px] md:text-xs text-amber-700 bg-amber-50 border border-amber-100 rounded-xl p-3 leading-relaxed mt-1">
@@ -335,7 +335,7 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#1c3553] hover:bg-[#152a42] disabled:opacity-60 transition-colors text-white font-semibold py-3 px-5 md:py-4 md:px-6 rounded-xl flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(30,58,95,0.2)] text-[14px] md:text-[15px]"
+              className="w-full bg-navy-800 hover:bg-navy-900 disabled:opacity-60 transition-colors text-white font-semibold py-3 px-5 md:py-4 md:px-6 rounded-xl flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(30,58,95,0.2)] text-[14px] md:text-[15px]"
             >
               {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
               {!isSubmitting && (

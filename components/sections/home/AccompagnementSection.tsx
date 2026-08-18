@@ -111,7 +111,7 @@ export function AccompagnementSection({
                   key={i}
                   className="flex-1 bg-gray-50 border border-navy-800/10 p-5 rounded-xl flex flex-col"
                 >
-                  <h4 className="typo-h3 text-navy-800 mb-2 text-sm">
+                  <h4 className="typo-btn text-navy-800 mb-2">
                     {box.title}
                   </h4>
                   <p className="typo-small">{box.description}</p>

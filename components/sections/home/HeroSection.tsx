@@ -120,7 +120,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
               </div>
               {(hero?.hero_overlay_text || fb.hero_overlay_text) && (
                 <div className="bg-navy-700 text-white p-3 md:p-4 lg:p-6 rounded-2xl lg:rounded-3xl shadow-lg shrink-0 flex items-center">
-                  <p className="font-bold text-[10px] sm:text-xs lg:text-sm leading-tight sm:leading-relaxed">
+                  <p className="typo-small font-bold text-white">
                     {hero?.hero_overlay_text || fb.hero_overlay_text}
                   </p>
                 </div>
