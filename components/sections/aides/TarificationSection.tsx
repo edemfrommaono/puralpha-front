@@ -50,7 +50,7 @@ const ESTIMATION_DEFAULTS = {
 
 export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: fb }: TarificationSectionProps) {
   return (
-    <section className="py-8 lg:py-24 relative bg-navy-800 text-white overflow-hidden">
+    <section className="py-8 lg:py-12 relative bg-navy-800 text-white overflow-hidden">
       {/* Background Gradients */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold-500/10 blur-[100px] rounded-full translate-x-1/3 -translate-y-1/3" />
@@ -64,7 +64,7 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
           </span>
           <h2 className="typo-h2 text-white mt-4">
             {tarif?.title || fb.title}<br />
-            <span className="text-gold-500">{tarif?.title_highlight || fb.title_highlight}</span>
+            <span className="text-teal-400">{tarif?.title_highlight || fb.title_highlight}</span>
           </h2>
         </FadeInView>
 
@@ -86,7 +86,7 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
         </div>
 
         {/* Bloc estimation reste à charge */}
-        <div className="text-center">
+        {/* <div className="text-center">
           <h3 className="text-lg lg:text-2xl font-extrabold text-white mb-4 text-center">
             {tarif?.estimation_title || ESTIMATION_DEFAULTS.title}
           </h3>
@@ -98,14 +98,13 @@ export function TarificationSection({ tarif, tarifRows, tarifInclus, fallback: f
           )}
           <Button
             variant="navy"
-            className="w-fit mx-auto"
-            style={{ background: "#F2C94C", color: "#1C3553", borderRadius: "50px", boxShadow: "0 4px 15px 0 rgba(30, 58, 95, 0.30)" }}
+            className="w-fit mx-auto bg-gold-500 text-navy-800 rounded-full shadow-[0_4px_15px_0_rgba(30,58,95,0.30)] hover:bg-gold-400"
             href={(tarif?.estimation_cta_url === '/contact' || !tarif?.estimation_cta_url) ? '#simulateur' : tarif.estimation_cta_url}
             iconRight={<ArrowRight className="w-4 h-4" />}
           >
             {tarif?.estimation_cta_text || ESTIMATION_DEFAULTS.cta_text}
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

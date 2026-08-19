@@ -60,13 +60,13 @@ export function FamillesHandicaps({
         )}
 
         {items.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-8 lg:mb-12">
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-6 mb-8 lg:mb-12">
             {items.map((item, idx) => {
               const IconComp = item.fallback_icon ? ICON_MAP[item.fallback_icon] : null;
               return (
                 <div
                   key={idx}
-                  className="group bg-[#f0f4f8] border border-[#f3f4f6] rounded-2xl p-5 md:p-6 flex flex-col items-center text-center gap-4 cursor-default
+                  className="w-[calc(50%-8px)] md:w-[calc(25%-12px)] lg:w-[calc(25%-18px)] group bg-[#f0f4f8] border border-[#f3f4f6] rounded-2xl p-5 md:p-6 flex flex-col items-center text-center gap-4 cursor-default
                              transition-all duration-300
                              hover:-translate-y-1 hover:shadow-lg hover:border-teal-300 hover:bg-white"
                 >
@@ -92,12 +92,12 @@ export function FamillesHandicaps({
 
         {(highlightQuote || highlightDescription) && (
           <div className="bg-[#ecf4f6] border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
-            <p className="typo-h3 text-navy-800 text-center leading-relaxed">
+            <p className="text-navy-800 text-center leading-relaxed">
               {highlightQuote && (
-                <span className="text-[#F2C94C]">{highlightQuote}</span>
+                <span className="typo-h3 text-[#F2C94C]">{highlightQuote}</span>
               )} <br />
               {highlightDescription && (
-                <span className="font-normal" dangerouslySetInnerHTML={{__html: highlightDescription}} ></span>
+                <span className="typo-body font-normal" dangerouslySetInnerHTML={{ __html: highlightDescription }} ></span>
               )}
             </p>
           </div>

@@ -24,7 +24,7 @@ export function HistoireFondatrice({
 }: HistoireFondatriceProps) {
   return (
     <section className="py-8 lg:py-24">
-      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-stretch">
           {/* col 1 image gauche */}
           <FadeInView direction="left" className="relative overflow-hidden shadow-xl w-full h-full min-h-[350px] lg:min-h-[490px] rounded-2xl lg:rounded-3xl">
@@ -41,11 +41,11 @@ export function HistoireFondatrice({
           {/* col 2 droite */}
           <FadeInView direction="right" delay={0.15} className="flex flex-col justify-center">
             {/* <span className="text-teal-400 font-bold text-xs uppercase tracking-[3px]">
-                  {sectionTag}
-                </span> */}
+              {sectionTag}
+            </span> */}
             <h2 className="typo-h2 text-navy-800 mt-4 mb-4 lg:mb-6">
               {title}<br />
-              <span className="text-[#F2C94C]">{titleHighlight}</span>
+              <span className="text-teal-400">{titleHighlight}</span>
             </h2>
             {paragraph_1 && (
               <div

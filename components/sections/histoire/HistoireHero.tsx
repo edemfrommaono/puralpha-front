@@ -48,7 +48,7 @@ export function HistoireHero({
           )}
           {quote && (
             <FadeInView delay={0.3}>
-              <p className="typo-body italic max-w-2xl text-center">
+              <p className="typo-h3 italic max-w-2xl text-center">
                 {quote}
               </p>
             </FadeInView>

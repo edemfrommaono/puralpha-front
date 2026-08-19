@@ -35,14 +35,14 @@ export function VecuMethodeSection({
 
   return (
     <section className="py-8 lg:py-24 bg-white">
-      <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
         {(title || titleHighlight || description) && (
           <FadeInView className="text-center mb-8 lg:mb-12">
             {(title || titleHighlight) && (
               <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6">
                 {title}{" "}
                 {titleHighlight && (
-                  <span className="text-[#F2C94C]">{titleHighlight}</span>
+                  <span className="text-teal-400">{titleHighlight}</span>
                 )}
               </h2>
             )}

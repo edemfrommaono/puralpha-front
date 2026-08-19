@@ -46,10 +46,10 @@ export function ModalitesPaiementSection({
   if (!items?.length && !tag && !title && !titleHighlight && !title2 && !description) return null;
 
   return (
-    <section className="py-8 lg:py-24 bg-[#ecf4f6]">
-      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+    <section className="py-8 lg:py-12 bg-[#ecf4f6]">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
         {(tag || title || titleHighlight || title2 || description) && (
-          <div className="text-center mb-6 lg:mb-12">
+          <div className="text-center mb-6 lg:mb-8">
             {tag && (
               <span className="typo-tag text-teal-400">
                 {tag}
@@ -67,7 +67,7 @@ export function ModalitesPaiementSection({
             )}
             {description && (
               <div
-                className="prose max-w-2xl mx-auto mt-4 text-center typo-body"
+                className="prose max-w-6xl mx-auto mt-4 text-center typo-body"
                 dangerouslySetInnerHTML={{ __html: toHtml(description) }}
               />
             )}

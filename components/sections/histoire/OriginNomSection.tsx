@@ -25,12 +25,13 @@ export function OriginNomSection({
 
   return (
     <section className="py-8 lg:py-24 bg-[#ecf4f6]">
-      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
           {/* Texte */}
           {(title || titleHighlight || description) && (
             <FadeInView direction="left" className="flex flex-col justify-center">
               {(title || titleHighlight) && (
+                
                 <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6">
                   {title}
                   {titleHighlight && <br />}

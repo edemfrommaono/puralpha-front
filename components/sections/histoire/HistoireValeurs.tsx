@@ -25,7 +25,7 @@ export function HistoireValeurs({
 }: HistoireValeursProps) {
   return (
     <section className="py-8 lg:py-24 bg-[#ecf4f6]">
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
         <FadeInView className="text-center mb-8 lg:mb-16">
           <span className="typo-tag text-teal-400">
             {sectionTag}
@@ -35,7 +35,7 @@ export function HistoireValeurs({
           </h2>
         </FadeInView>
 
-        <StaggerContainer stagger={0.08} className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <StaggerContainer stagger={0.08} className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-8xl mx-auto">
           {items.slice(0, 3).map((item, i) => (
             <StaggerItem
               key={i}

@@ -33,7 +33,7 @@ export function FamillesLimites({
             <h2 className="typo-h2 text-navy-800 text-center">
               {title}{" "}
               <br className="hidden lg:block" />
-              <span className="text-gold-500">{titleHighlight}</span>
+              <span className="text-teal-400">{titleHighlight}</span>
             </h2>
           </div>
         </FadeInView>
