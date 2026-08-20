@@ -5,6 +5,10 @@ import Link from "next/link";
 import { ArrowRight, Calendar, Search, Play, X, Facebook, Instagram, Linkedin } from "lucide-react";
 import { FadeInView } from "@/components/ui/FadeInView";
 import type { Post } from "@/lib/fallback-data/blog";
+import { SOCIAL_LINKS } from "@/lib/site-config";
+
+// Icônes associées aux réseaux sociaux — URLs centralisées dans lib/site-config.ts (§8.4)
+const SOCIAL_ICONS = { facebook: Facebook, instagram: Instagram, linkedin: Linkedin } as const;
 
 interface BlogClientProps {
   posts: Post[];
@@ -12,7 +16,7 @@ interface BlogClientProps {
 }
 
 export function BlogClient({ posts }: BlogClientProps) {
-  const [activeTab, setActiveTab] = useState<"Articles" | "Actualités" | "Vidéos">("Articles");
+  const [activeTab, setActiveTab] = useState<"Articles" | "Actualités" | "Vidéos">("Actualités");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
 
@@ -243,41 +247,23 @@ export function BlogClient({ posts }: BlogClientProps) {
             </div>
 
             <div className="flex flex-col gap-2.5">
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-[#ecf4f6] text-navy-800 hover:text-teal-600 hover:border-teal-100 transition-all font-semibold text-xs cursor-pointer group"
-              >
-                <div className="w-7 h-7 rounded-lg bg-teal-50 text-teal-500 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                  <Facebook className="w-4 h-4" />
-                </div>
-                <span>Facebook</span>
-              </a>
-
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-[#ecf4f6] text-navy-800 hover:text-teal-600 hover:border-teal-100 transition-all font-semibold text-xs cursor-pointer group"
-              >
-                <div className="w-7 h-7 rounded-lg bg-teal-50 text-teal-500 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                  <Instagram className="w-4 h-4" />
-                </div>
-                <span>Instagram</span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-[#ecf4f6] text-navy-800 hover:text-teal-600 hover:border-teal-100 transition-all font-semibold text-xs cursor-pointer group"
-              >
-                <div className="w-7 h-7 rounded-lg bg-teal-50 text-teal-500 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                  <Linkedin className="w-4 h-4" />
-                </div>
-                <span>LinkedIn</span>
-              </a>
+              {SOCIAL_LINKS.map(({ key, label, url }) => {
+                const Icon = SOCIAL_ICONS[key];
+                return (
+                  <a
+                    key={key}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gold-500/5 text-navy-800 hover:text-gold-600 hover:border-gold-500/30 transition-all font-semibold text-xs cursor-pointer group"
+                  >
+                    <div className="w-7 h-7 rounded-lg bg-gold-500/10 text-gold-500 flex items-center justify-center group-hover:bg-gold-500 group-hover:text-navy-900 transition-colors">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span>{label}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </aside>

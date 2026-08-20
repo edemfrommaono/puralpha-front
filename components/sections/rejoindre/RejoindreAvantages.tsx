@@ -67,7 +67,7 @@ export function RejoindreAvantages({
             <p className="text-center typo-tag text-teal-400 mb-4">{sectionTag}</p>
             <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6">
               {title}{" "}
-              <span className="text-[#F2C94C]">
+              <span className="text-teal-400">
                 {titleHighlight}
               </span>
             </h2>
@@ -81,24 +81,14 @@ export function RejoindreAvantages({
         </div>
 
         {/* Première ligne — 3 colonnes */}
-        <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cards.slice(0, 3).map((card, i) => (
+        <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {cards.slice(0, 4).map((card, i) => (
             <StaggerItem key={i}>
               <FlipCard card={card} idx={i} />
             </StaggerItem>
           ))}
         </StaggerContainer>
-
-        {/* Lignes suivantes — 2 colonnes */}
-        {cards.length > 3 && (
-          <StaggerContainer stagger={0.1} className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            {cards.slice(3).map((card, i) => (
-              <StaggerItem key={i + 3}>
-                <FlipCard card={card} idx={i + 3} />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        )}
+       
       </div>
     </section>
   );

@@ -2,231 +2,174 @@ import { getNotreHistoirePage, resolveImageUrl } from "@/lib/wordpress";
 import { NOTRE_HISTOIRE_FALLBACK } from "@/lib/fallback-data/notre-histoire";
 import {
   HistoireHero,
-  HistoireFondatrice,
-  HistoireRealite,
-  HistoireGalerie,
-  HistoireMission,
+  HistoireRelais,
+  HistoireQuotidien,
+  HistoireVideo,
+  HistoireConstruire,
+  HistoireExperience,
+  HistoireMethode,
   HistoireValeurs,
-  HistoireModele,
-  HistoireTerritoire,
-  HistoireAmbitions,
-  HistoireCta,
+  HistoireCitation,
 } from "@/components/sections/histoire";
-import { OriginNomSection } from "@/components/sections/histoire/OriginNomSection";
-import { VecuMethodeSection } from "@/components/sections/histoire/VecuMethodeSection";
 
 export const revalidate = 0;
-
-function getImageUrl(img: unknown): string {
-  if (!img || img === false || typeof img === "number") return "";
-  if (typeof img === "object" && img !== null) {
-    const o = img as Record<string, unknown>;
-    if (typeof o.url === "string") return o.url;
-    if (typeof o.source_url === "string") return o.source_url;
-  }
-  return "";
-}
 
 export default async function NotreHistoirePage() {
   const page = await getNotreHistoirePage();
   const acf = page?.acf;
   const fb = NOTRE_HISTOIRE_FALLBACK;
 
-  // ── Sections dynamiques ──
   const hero = acf?.hero;
-  const fondatrice = acf?.fondatrice;
-  const realite = acf?.realite_familles;
-  const problems = realite?.problems?.length ? realite.problems : null;
-  const pura = acf?.syndrome_pura;
+  const relais = acf?.relais;
   const galerie = acf?.galerie;
-  const pourquoi = acf?.section_pourquoi_pur_apha_existe;
-  const mission = acf?.mission;
+  const video = acf?.video;
+  const construction = acf?.construction;
+  const experience = acf?.experience;
+  const methode = acf?.methode;
   const valeurs = acf?.valeurs;
-  const valeursItems = valeurs?.items?.length ? valeurs.items : null;
-  const impactLocal = acf?.section_impact_local;
-  const ambitions = acf?.ambitions;
-  const ambitionsItems = ambitions?.items?.length ? ambitions.items : null;
-  const cta = acf?.cta_final;
+  const citation = acf?.citation_finale;
 
-  // ── Résolution images côté serveur ──
+  // ── Résolution des images côté serveur ──
+  const heroPhotoUrl = await resolveImageUrl(hero?.photo ?? null);
+  const relaisImageUrl = await resolveImageUrl(relais?.image ?? null);
+  const constructionImageUrl = await resolveImageUrl(
+    construction?.image ?? null
+  );
 
-  // Fondatrice
-  const fondatriceImageUrl = await resolveImageUrl(fondatrice?.image ?? null);
-
-  // Problèmes
-  const resolvedProblems = problems
+  // ── Galerie « Matthew et moi, au quotidien » (fallback : emplacements réservés) ──
+  const galeriePhotos = galerie?.photos?.length
     ? await Promise.all(
-      problems.map(async (p, idx) => ({
-        title: p.title,
-        description: p.description,
-        imageUrl: typeof p.image === "number"
-          ? await resolveImageUrl(p.image)
-          : getImageUrl(p.image),
-        fallback_icon: (fb.realite_familles.problems as unknown as Array<{ fallback_icon?: string }>)[idx]?.fallback_icon,
-      }))
-    )
-    : (fb.realite_familles.problems as unknown as Array<{ title: string; description: string; fallback_icon?: string }>).map((p) => ({
-      title: p.title,
-      description: p.description,
-      imageUrl: "",
-      fallback_icon: p.fallback_icon,
-    }));
+        galerie.photos.map(async (p) => ({
+          libelle: p.libelle || fb.galerie.photos[0].libelle,
+          note: p.note || fb.galerie.photos[0].note,
+          imageUrl: await resolveImageUrl(p.photo ?? null),
+        }))
+      )
+    : fb.galerie.photos.map((p) => ({
+        libelle: p.libelle,
+        note: p.note,
+        imageUrl: "",
+      }));
 
-  // Galerie
-  const galerieImages = galerie?.images?.length ? galerie.images : null;
-  const resolvedGalerie = galerieImages
+  // ── Chiffres clés « Expérience » ──
+  const experienceStats = (
+    experience?.stats?.length ? experience.stats : fb.experience.stats
+  ).map((s) => ({ chiffre: s.chiffre, description: s.description }));
+
+  // ── Étapes « Méthode » ──
+  const methodeEtapes = (
+    methode?.etapes?.length ? methode.etapes : fb.methode.etapes
+  ).map((e) => ({ titre: e.titre }));
+
+  // ── Cartes « Valeurs » ──
+  const valeursItems = valeurs?.items?.length
     ? await Promise.all(
-      galerieImages.map(async (img) => ({
-        libelle: img.libelle,
-        imageUrl: typeof img.image_mis_en_avant === "number"
-          ? await resolveImageUrl(img.image_mis_en_avant)
-          : getImageUrl(img.image_mis_en_avant),
-      }))
-    )
-    : (fb.galerie.images as unknown as Array<{ libelle: string }>).map((img) => ({ libelle: img.libelle, imageUrl: "" }));
-
-  // Pourquoi PUR Alpha existe
-  const pourquoiImageUrl = await resolveImageUrl(pourquoi?.image_mise_en_avant ?? null);
-
-  // Valeurs
-  const resolvedValeurs = valeursItems
-    ? await Promise.all(
-      valeursItems.map(async (v, idx) => {
-        const raw = v as Record<string, unknown>;
-        return {
-          title: v.title,
-          description: v.description,
-          imageUrl: typeof v.image === "number"
-            ? await resolveImageUrl(v.image)
-            : getImageUrl(v.image),
-          fallback_icon: (fb.valeurs.items as unknown as Array<{ fallback_icon?: string }>)[idx]?.fallback_icon,
-          imageDuFond: typeof raw.image_du_fond === "number"
-            ? await resolveImageUrl(raw.image_du_fond)
-            : getImageUrl(raw.image_du_fond),
-        };
-      })
-    )
-    : (fb.valeurs.items as unknown as Array<{ title: string; description: string; fallback_icon?: string }>).map((v) => ({
-      title: v.title,
-      description: v.description,
-      imageUrl: "",
-      fallback_icon: v.fallback_icon,
-      imageDuFond: "",
-    }));
-
-  // Impact local
-  const impactBgUrl = await resolveImageUrl(impactLocal?.image_de_fond ?? null);
-  const impactMapUrl = await resolveImageUrl(impactLocal?.image_mis_en_avant ?? null);
-  const impactItems = impactLocal?.impacts?.length
-    ? impactLocal.impacts
-    : fb.impact_local.impacts;
-
-  // CTA Final
-  const ctaBgUrl = await resolveImageUrl(cta?.image_de_fond ?? null);
+        valeurs.items.map(async (v) => ({
+          titre: v.titre,
+          imageUrl: await resolveImageUrl(v.image ?? null),
+        }))
+      )
+    : fb.valeurs.items.map((v) => ({ titre: v.titre, imageUrl: "" }));
 
   return (
-    <div className="flex flex-col w-full bg-white">
+    <main className="bg-white">
+      {/* 1. Hero — « Pourquoi PUR Alpha existe » */}
       <HistoireHero
-        titleLine1={hero?.title_line_1 || fb.hero.title_line_1}
+        sectionTag={hero?.section_tag || fb.hero.section_tag}
+        title={hero?.title || fb.hero.title}
         titleHighlight={hero?.title_highlight || fb.hero.title_highlight}
-        subtitle={hero?.subtitle || fb.hero.subtitle}
         description={hero?.description || fb.hero.description}
         quote={hero?.quote || fb.hero.quote}
         founderName={hero?.founder_name || fb.hero.founder_name}
-        founderSubtitle={hero?.founder_subtitle || fb.hero.founder_subtitle}
+        founderRole={hero?.founder_role || fb.hero.founder_role}
+        photoUrl={heroPhotoUrl}
+        photoLegende={hero?.photo_legende || fb.hero.photo_legende}
+        photoNote={hero?.photo_note || fb.hero.photo_note}
       />
 
-      <HistoireFondatrice
-        sectionTag={fondatrice?.section_tag || fb.fondatrice.section_tag}
-        title={fondatrice?.title || fb.fondatrice.title}
-        titleHighlight={fondatrice?.title_highlight || fb.fondatrice.title_highlight}
-        paragraph_1={fondatrice?.paragraph_1 || fb.fondatrice.paragraph_1}
-        quote={fondatrice?.quote || fb.fondatrice.quote}
-        quoteAuthor={fondatrice?.quote_author || fb.fondatrice.quote_author}
-        imageCaption={fondatrice?.image_caption || fb.fondatrice.image_caption}
-        imageUrl={fondatriceImageUrl}
+      {/* 2. « Quand trouver un relais devient un parcours » */}
+      <HistoireRelais
+        title={relais?.title || fb.relais.title}
+        titleHighlight={relais?.title_highlight || fb.relais.title_highlight}
+        paragraph1={relais?.paragraph_1 || fb.relais.paragraph_1}
+        paragraph2={relais?.paragraph_2 || fb.relais.paragraph_2}
+        paragraphHighlight={
+          relais?.paragraph_highlight || fb.relais.paragraph_highlight
+        }
+        imageUrl={relaisImageUrl}
+        imageAlt={relais?.image_alt || fb.relais.image_alt}
       />
 
-      <OriginNomSection
-        title={acf?.origin_nom_title}
-        titleHighlight={acf?.origin_nom_title_highlight}
-        description={acf?.origin_nom_description}
-        imageUrl={await resolveImageUrl(acf?.origin_nom_image ?? null)}
+      {/* 3. Carrousel « Matthew et moi, au quotidien » */}
+      <HistoireQuotidien
+        title={galerie?.title || fb.galerie.title}
+        titleHighlight={galerie?.title_highlight || fb.galerie.title_highlight}
+        photos={galeriePhotos}
       />
 
-      <VecuMethodeSection
-        title={acf?.vecu_methode_title}
-        titleHighlight={acf?.vecu_methode_title_highlight}
-        description={acf?.vecu_methode_description}
-        items={acf?.vecu_methode_items}
+      {/* 4. Vidéo « Notre histoire, racontée de vive voix » */}
+      <HistoireVideo
+        title={video?.title || fb.video.title}
+        titleHighlight={video?.title_highlight || fb.video.title_highlight}
+        description={video?.description || fb.video.description}
+        videoUrl={video?.video_url || ""}
+        placeholderLabel={video?.placeholder_label || fb.video.placeholder_label}
+        placeholderNote={video?.placeholder_note || fb.video.placeholder_note}
       />
 
-      {/* <HistoireRealite
-        title={realite?.title || fb.realite_familles.title}
-        titleHighlight={realite?.title_highlight || fb.realite_familles.title_highlight}
-        problems={resolvedProblems}
-        puraSectionTag={pura?.section_tag || fb.syndrome_pura.section_tag}
-        puraTitle={pura?.title || fb.syndrome_pura.title}
-        puraDescription1={pura?.description_1 || fb.syndrome_pura.description_1}
-        puraDescription2={pura?.description_2 || fb.syndrome_pura.description_2}
-        puraBadgeText={pura?.badge_text || fb.syndrome_pura.badge_text}
-      /> */}
+      {/* 5. « Ce qui manquait, j'ai décidé de le construire » */}
+      <HistoireConstruire
+        title={construction?.title || fb.construction.title}
+        titleHighlight={
+          construction?.title_highlight || fb.construction.title_highlight
+        }
+        paragraph1={construction?.paragraph_1 || fb.construction.paragraph_1}
+        paragraph2={construction?.paragraph_2 || fb.construction.paragraph_2}
+        paragraphHighlight={
+          construction?.paragraph_highlight ||
+          fb.construction.paragraph_highlight
+        }
+        imageUrl={constructionImageUrl}
+        imageAlt={construction?.image_alt || fb.construction.image_alt}
+      />
 
-      {/* <HistoireGalerie images={resolvedGalerie} /> */}
+      {/* 6. « Une expérience personnelle, mais aussi professionnelle » */}
+      <HistoireExperience
+        title={experience?.title || fb.experience.title}
+        titleHighlight={
+          experience?.title_highlight || fb.experience.title_highlight
+        }
+        stats={experienceStats}
+        paragraph1={experience?.paragraph_1 || fb.experience.paragraph_1}
+        paragraphHighlight={
+          experience?.paragraph_highlight || fb.experience.paragraph_highlight
+        }
+      />
 
-      {/* <HistoireModele
-        tag={pourquoi?.tag || fb.pourquoi.tag}
-        titreLigne1={pourquoi?.titre_ligne_1 || fb.pourquoi.titre_ligne_1}
-        titleHighlight={pourquoi?.title_highlight || fb.pourquoi.title_highlight}
-        descrition1={pourquoi?.descrition_1 || fb.pourquoi.descrition_1}
-        description2={pourquoi?.description_2 || fb.pourquoi.description_2}
-        notrePromesseValeur={pourquoi?.notre_promesse_valeur || fb.pourquoi.notre_promesse_valeur}
-        notrePromesseLibelle={pourquoi?.notre_promesse_libelle || fb.pourquoi.notre_promesse_libelle}
-        legende={pourquoi?.legende || fb.pourquoi.legende}
-        imageUrl={pourquoiImageUrl}
-        qualites={[...(pourquoi?.qualites || fb.pourquoi.qualites)]}
-      /> */}
+      {/* 7. « Du vécu à une méthode » */}
+      <HistoireMethode
+        title={methode?.title || fb.methode.title}
+        titleHighlight={methode?.title_highlight || fb.methode.title_highlight}
+        description={methode?.description || fb.methode.description}
+        etapes={methodeEtapes}
+      />
 
-      {/* <HistoireMission
-        sectionTag={mission?.section_tag || fb.mission.section_tag}
-        description={mission?.description || fb.mission.description}
-      /> */}
-
+      {/* 8. « Ce qui guide PUR Alpha » (valeurs) */}
       <HistoireValeurs
         sectionTag={valeurs?.section_tag || fb.valeurs.section_tag}
         title={valeurs?.title || fb.valeurs.title}
         titleHighlight={valeurs?.title_highlight || fb.valeurs.title_highlight}
-        items={resolvedValeurs}
+        items={valeursItems}
       />
 
-      {/* <HistoireTerritoire
-        tag={impactLocal?.tag || fb.impact_local.tag}
-        titre1={impactLocal?.titre_1 || fb.impact_local.titre_1}
-        titleHighlight={impactLocal?.title_highlight || fb.impact_local.title_highlight}
-        description={impactLocal?.description || fb.impact_local.description}
-        impacts={[...impactItems]}
-        backgroundImageUrl={impactBgUrl}
-        mapImageUrl={impactMapUrl}
-      /> */}
-
-      {/* <HistoireAmbitions
-        sectionTag={ambitions?.section_tag || fb.ambitions.section_tag}
-        title={ambitions?.title || fb.ambitions.title}
-        titleHighlight={ambitions?.title_highlight || fb.ambitions.title_highlight}
-        description={ambitions?.description || fb.ambitions.description}
-        items={[...(ambitionsItems || fb.ambitions.items)]}
-      /> */}
-
-      <HistoireCta
-        citation={cta?.citation || fb.cta_final.citation}
-        auteur={cta?.auteur || fb.cta_final.auteur}
-        sousTitre={cta?.['sous-titre'] || fb.cta_final['sous-titre']}
-        cta1Texte={cta?.cta_1_texte || fb.cta_final.cta_1_texte}
-        cta1Url={cta?.cta_1_url || fb.cta_final.cta_1_url}
-        cta2Texte={cta?.cta_2_texte || fb.cta_final.cta_2_texte}
-        cta2Url={cta?.cta_2_url || fb.cta_final.cta_2_url}
-        backgroundImageUrl={ctaBgUrl}
+      {/* 9. Citation finale + CTA */}
+      <HistoireCitation
+        citation={citation?.citation || fb.citation_finale.citation}
+        auteur={citation?.auteur || fb.citation_finale.auteur}
+        role={citation?.role || fb.citation_finale.role}
+        ctaTexte={citation?.cta_texte || fb.citation_finale.cta_texte}
+        ctaUrl={citation?.cta_url || fb.citation_finale.cta_url}
       />
-    </div>
+    </main>
   );
 }

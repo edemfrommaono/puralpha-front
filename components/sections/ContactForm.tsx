@@ -16,9 +16,7 @@ const contactSchema = z.object({
   "text-1": z.string().optional(),                             // Commune concernée
   "select-2": z.string().min(1, "Ce champ est requis"),        // Objet de votre demande
   "textarea-1": z.string().optional(),                         // Votre message
-  "consent_email": z.boolean().optional(),
-  "consent_sms": z.boolean().optional(),
-  "consent_phone": z.boolean().optional(),
+  "consent_email": z.boolean().optional(),                     // Newsletter e-mail (facultatif)
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -83,8 +81,6 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
       "select-2": "",
       "textarea-1": "",
       "consent_email": false,
-      "consent_sms": false,
-      "consent_phone": false,
     },
   });
 
@@ -128,9 +124,7 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
       const email = formData["email-1"];
       const timestamp = new Date().toISOString();
       const consents = [
-        { key: "consent_email", label: "J'accepte de recevoir des informations et actualités de PUR Alpha par e-mail.", value: !!formData.consent_email },
-        { key: "consent_sms", label: "J'accepte de recevoir des informations et actualités de PUR Alpha par SMS.", value: !!formData.consent_sms },
-        { key: "consent_phone", label: "J'accepte d'être contacté(e) par téléphone par PUR Alpha au sujet de ses services et actualités.", value: !!formData.consent_phone }
+        { key: "consent_email", label: "J'accepte de recevoir par e-mail les informations et actualités de PUR Alpha.", value: !!formData.consent_email },
       ];
 
       consents.forEach(c => {
@@ -143,7 +137,7 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
           time: timestamp.split("T")[1].substring(0, 8),
           source: "Formulaire de contact - pur-alpha.fr",
           canal: "Web",
-          text_version: "v1.0 - July 2026"
+          text_version: "v1.1 - August 2026"
         });
       });
 
@@ -188,13 +182,12 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
               className={`px-3 py-2.5 md:px-4 md:py-3 bg-white border ${errors["select-1"] ? "border-red-400" : "border-gray-200"} rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all appearance-none text-[13px] md:text-sm text-gray-700 cursor-pointer`}
             >
               <option value="">Sélectionnez...</option>
-              <option value="Une famille">Une famille</option>
-              <option value="Un(e) intervenant(e)">Un(e) intervenant(e)</option>
-              <option value="Un partenaire">Un partenaire</option>
+              <option value="one">Une famille / un représentant légal</option>
+              <option value="two">Un professionnel / une structure partenaire</option>
               <option value="Autre">Autre</option>
             </select>
             {errors["select-1"] && <p className="text-red-500 text-xs">{errors["select-1"].message}</p>}
-          </div>
+          </div> 
 
           {/* Nom & Prénoms */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -289,14 +282,13 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
               placeholder="Expliquez-nous votre besoin..."
             ></textarea>
             <p className="text-[11px] md:text-xs text-amber-700 bg-amber-50 border border-amber-100 rounded-xl p-3 leading-relaxed mt-1">
-              ⚠️ <strong>Avertissement données sensibles :</strong> Pour ce premier contact, merci de ne pas transmettre d’informations médicales détaillées ni de documents de santé concernant votre enfant.
+              ⚠️ <strong>Avertissement données sensibles :</strong> Pour ce premier contact, merci de ne pas transmettre d'informations médicales
+détaillées ni de documents de santé concernant la personne à accompagner.
             </p>
           </div>
 
-          {/* Consentements marketing */}
+          {/* Consentement marketing — case unique, facultative, non cochée par défaut */}
           <div className="flex flex-col gap-3 mt-2">
-            <span className="text-[11px] md:text-xs font-bold text-navy-900 uppercase tracking-wide">Consentements marketing (facultatif)</span>
-            
             <label className="flex items-start gap-3 cursor-pointer select-none">
               <input
                 type="checkbox"
@@ -304,29 +296,8 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
                 className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-400 cursor-pointer"
               />
               <span className="text-xs text-gray-600 leading-normal">
-                J’accepte de recevoir des informations et actualités de PUR Alpha par e-mail.
-              </span>
-            </label>
-
-            <label className="flex items-start gap-3 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                {...register("consent_sms")}
-                className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-400 cursor-pointer"
-              />
-              <span className="text-xs text-gray-600 leading-normal">
-                J’accepte de recevoir des informations et actualités de PUR Alpha par SMS.
-              </span>
-            </label>
-
-            <label className="flex items-start gap-3 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                {...register("consent_phone")}
-                className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-400 cursor-pointer"
-              />
-              <span className="text-xs text-gray-600 leading-normal">
-                J’accepte d’être contacté(e) par téléphone par PUR Alpha au sujet de ses services et actualités.
+                J’accepte de recevoir par e-mail les informations et actualités de PUR Alpha.{" "}
+                <span className="text-gray-400">(facultatif)</span>
               </span>
             </label>
           </div>
