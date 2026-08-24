@@ -76,7 +76,7 @@ export function EtapesSection({ title, description, steps, ctaText, ctaUrl }: Et
             }}
           />
 
-          <StaggerContainer stagger={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 min-w-0">
+          <StaggerContainer stagger={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-8 min-w-0">
             {steps.map((step, i) => (
               <StaggerItem
                 key={i}

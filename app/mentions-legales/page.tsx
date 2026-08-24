@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageBanner } from "@/components/ui/PageBanner";
+import { getMentionsLegalesPage } from "@/lib/wordpress";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -127,30 +128,46 @@ const sections = [
   },
 ];
 
-export default function MentionsLegalesPage() {
+export default async function MentionsLegalesPage() {
+  const wpPage = await getMentionsLegalesPage();
+  const wpContent = wpPage?.content?.rendered?.trim();
+
   return (
     <div className="min-h-screen">
       <PageBanner title="Mentions" titleHighlight="légales" />
 
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 py-10 lg:py-12">
-        <div className="flex flex-col gap-10 max-w-4xl mx-auto">
-          {/* Contenu masqué temporairement à la demande du client
-          {sections.map((section) => (
-            <article
-              key={section.id}
-              id={section.id}
-              className="border-b border-gray-100 pb-8 last:border-0"
-            >
-              <h2 className="text-lg lg:text-xl font-bold text-navy-800 mb-4">
-                {section.title}
-              </h2>
-              <div className="text-navy-950 text-sm lg:text-[15px] leading-relaxed">
-                {section.content}
-              </div>
-            </article>
-          ))}
-          */}
+        <div className="max-w-4xl mx-auto">
+          {wpContent ? (
+            <div
+              className="prose prose-slate max-w-none text-navy-800/95 leading-relaxed text-sm md:text-base
+                prose-headings:text-navy-800 prose-headings:font-extrabold
+                prose-h2:text-xl md:prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
+                prose-p:mb-5 prose-p:leading-relaxed
+                prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6
+                prose-strong:font-bold prose-strong:text-navy-800
+                prose-a:text-teal-600 prose-a:underline hover:prose-a:text-teal-700"
+              dangerouslySetInnerHTML={{ __html: wpContent }}
+            />
+          ) : (
+            <div className="flex flex-col gap-10">
+              {sections.map((section) => (
+                <article
+                  key={section.id}
+                  id={section.id}
+                  className="border-b border-gray-100 pb-8 last:border-0"
+                >
+                  <h2 className="text-lg lg:text-xl font-bold text-navy-800 mb-4">
+                    {section.title}
+                  </h2>
+                  <div className="text-navy-950 text-sm lg:text-[15px] leading-relaxed">
+                    {section.content}
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Back to top */}

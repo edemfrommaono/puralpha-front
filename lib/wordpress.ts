@@ -144,6 +144,22 @@ export async function getContactPage() {
   return getPageBySlug<ContactPageACF>('contact', { revalidate: 0 });
 }
 
+/** Page Mentions Légales (slug: mentions-legales) */
+export async function getMentionsLegalesPage() {
+  return getPageBySlug('mentions-legales', { revalidate: 0 });
+}
+
+/** Page Politique de Confidentialité (slug: politique-confidentialite) */
+export async function getPolitiqueConfidentialitePage() {
+  return getPageBySlug('politique-confidentialite', { revalidate: 0 });
+}
+
+/** Page Politique de Cookies (slug: politique-cookies) */
+export async function getPolitiqueCookiesPage() {
+  return getPageBySlug('politique-cookies', { revalidate: 0 });
+}
+
+
 // ────────────────────────────────────────────────
 // MÉDIAS
 // ────────────────────────────────────────────────
