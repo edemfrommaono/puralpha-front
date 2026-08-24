@@ -97,7 +97,7 @@ export function Footer() {
               <p>
                 Médiateur de la consommation :{" "}
                 <a
-                  href={MEDIATOR.website}
+                  href={MEDIATOR.pdfPath}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline decoration-white/20 underline-offset-2 hover:text-gold-400 transition-colors"
