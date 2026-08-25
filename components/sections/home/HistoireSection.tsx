@@ -29,10 +29,9 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
     <section className="py-8 lg:py-20 w-full bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <FadeInView direction="left" className="flex flex-col gap-6 max-w-xl">
+          <FadeInView direction="left" className="flex flex-col gap-6 max-w-xl items-center lg:items-start text-center lg:text-left">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <span className="typo-tag text-teal-400">
                   {histoire?.section_tag || fb.section_tag}
                 </span>
@@ -46,14 +45,15 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
             </div>
             {(histoire?.paragraphe || fb.paragraphe) && (
               <div
-                className="prose max-w-none typo-body"
+                className="prose max-w-none typo-body text-center lg:text-left"
                 dangerouslySetInnerHTML={{ __html: toHtml(histoire?.paragraphe || fb.paragraphe) }}
               />
             )}
-            <div>
+            <div className="w-full sm:w-auto flex justify-center lg:justify-start">
               <Button
                 variant="teal"
                 href={fb.cta_url}
+                className="w-full sm:w-fit"
                 style={{ borderRadius: '8px', background: '#52BDC7' }}
                 iconRight={<ArrowRight className="w-4 h-4" />}
               >
@@ -62,7 +62,7 @@ export function HistoireSection({ histoire, histoireImageUrl, fallback: fb }: Hi
             </div>
           </FadeInView>
           {/* Image fondatrice — résolution serveur */}
-          <FadeInView direction="right" delay={0.2} className="relative h-[220px] md:h-[400px] lg:h-[500px] w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100">
+          <FadeInView direction="right" delay={0.2} className="relative h-[250px] md:h-[400px] lg:h-[500px] w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100">
             {histoireImageUrl ? (
               <Image
                 src={histoireImageUrl}

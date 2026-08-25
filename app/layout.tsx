@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "@/styles/globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -25,8 +27,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const isGtm = gaId?.startsWith("GTM-");
+
   return (
     <html lang="fr" className={`${poppins.variable}`}>
+      <head>
+        <Script id="google-consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            });
+          `}
+        </Script>
+      </head>
       <body className="font-poppins bg-background text-foreground antialiased flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow pt-20">
@@ -35,6 +54,13 @@ export default function RootLayout({
         <Footer />
         <CookieConsent />
       </body>
+      {gaId && (
+        isGtm ? (
+          <GoogleTagManager gtmId={gaId} />
+        ) : (
+          <GoogleAnalytics gaId={gaId || "G-FZP4V003DF"} />
+        )
+      )}
     </html>
   );
 }

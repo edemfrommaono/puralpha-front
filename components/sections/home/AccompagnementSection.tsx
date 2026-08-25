@@ -44,7 +44,7 @@ export function AccompagnementSection({
     <section className="py-8 lg:py-20 w-full bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
-          <FadeInView direction="left" className="relative w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100 min-h-[200px] md:min-h-[300px] lg:min-h-[400px]">
+          <FadeInView direction="left" className="relative w-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl bg-gray-100 min-h-[240px] md:min-h-[300px] lg:min-h-[400px]">
             {imageMiseEnAvantUrl ? (
               <Image
                 src={imageMiseEnAvantUrl}
@@ -56,10 +56,9 @@ export function AccompagnementSection({
               <div className="absolute inset-0 bg-gray-100" />
             )}
           </FadeInView>
-          <FadeInView direction="right" delay={0.15} className="flex flex-col gap-8 lg:gap-10">
+          <FadeInView direction="right" delay={0.15} className="flex flex-col gap-8 lg:gap-10 items-center lg:items-start text-center lg:text-left">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <span className="typo-tag text-teal-400">
                   {acc?.section_tag || fb.section_tag}
                 </span>
@@ -72,7 +71,7 @@ export function AccompagnementSection({
                 </span>
               </h2>
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 w-full text-left">
               {resolvedAccServices.map((srv, i) => (
                 <div
                   key={i}
@@ -105,7 +104,7 @@ export function AccompagnementSection({
                 </div>
               ))}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 mt-2 items-stretch">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2 items-stretch w-full text-left">
               {accInfoBoxes.map((box, i) => (
                 <div
                   key={i}
@@ -118,10 +117,11 @@ export function AccompagnementSection({
                 </div>
               ))}
             </div>
-            <div className="mt-4">
+            <div className="mt-4 w-full sm:w-auto flex justify-center lg:justify-start">
               <Button
                 variant="teal"
                 href={fb.cta_url}
+                className="w-full sm:w-fit"
                 style={{ borderRadius: '8px', background: '#52BDC7' }}
                 iconRight={<ArrowRight className="w-4 h-4" />}
               >

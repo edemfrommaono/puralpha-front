@@ -28,10 +28,10 @@ export function HistoireHero({
 }: HistoireHeroProps) {
   return (
     <section className="bg-white pt-18 pb-12 lg:pt-26 lg:pb-10 overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Texte */}
-          <FadeInView direction="left">
+          <FadeInView direction="left" className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <span className="typo-tag text-teal-400">{sectionTag}</span>
             <h1 className="typo-h1 text-navy-800 mt-4">
               {title}
@@ -46,7 +46,7 @@ export function HistoireHero({
                 {quote}
               </p>
             )}
-            <div className="flex items-center gap-4 mt-8">
+            <div className="flex items-center justify-center lg:justify-start gap-4 mt-8">
               <div className="w-10 h-0.5 bg-teal-400" />
               <p className="text-navy-800 font-bold text-sm tracking-wide">
                 {founderName}{" "}

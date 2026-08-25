@@ -27,7 +27,7 @@ export function RejoindreValeurs({
             <div className="absolute inset-0 bg-gray-200" />
           )}
         </FadeInView>
-        <FadeInView direction="right" delay={0.15} className="flex flex-col justify-center order-1 lg:order-2">
+        <FadeInView direction="right" delay={0.15} className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left order-1 lg:order-2">
           <p className="typo-tag text-teal-400 mb-4">{sectionTag}</p>
           <h2 className="typo-h2 text-navy-800 mb-4 lg:mb-6">
             {title} <br className="hidden md:block" />
@@ -41,10 +41,10 @@ export function RejoindreValeurs({
               }}
             />
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:gap-4 w-full text-left">
             {qualities.map((q, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded bg-[#F2C94C]"></div>
+              <div key={i} className="flex items-center gap-2 sm:gap-3">
+                <div className="w-2 h-2 rounded-full bg-[#F2C94C] shrink-0"></div>
                 <span className="typo-small font-semibold text-navy-800">{q.text}</span>
               </div>
             ))}

@@ -41,7 +41,7 @@ export function HistoireQuotidien({
 
   return (
     <section className="bg-white py-12 lg:py-20">
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
         <FadeInView className="text-center mb-8 lg:mb-12">
           <h2 className="typo-h2 text-navy-800">
             {title}{" "}

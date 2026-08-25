@@ -66,10 +66,15 @@ export default async function NotreHistoirePage() {
     ? await Promise.all(
         valeurs.items.map(async (v) => ({
           titre: v.titre,
+          description: v.description,
           imageUrl: await resolveImageUrl(v.image ?? null),
         }))
       )
-    : fb.valeurs.items.map((v) => ({ titre: v.titre, imageUrl: "" }));
+    : fb.valeurs.items.map((v) => ({
+        titre: v.titre,
+        description: v.description,
+        imageUrl: "",
+      }));
 
   return (
     <main className="bg-white">

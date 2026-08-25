@@ -48,16 +48,16 @@ export function HistoireVideo({
 
   return (
     <section className="bg-navy-800 py-12 lg:py-24">
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Texte */}
-          <FadeInView direction="left">
+          <FadeInView direction="left" className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <Image
               src="/images/logo_white.png"
               alt="PUR Alpha"
               width={140}
               height={40}
-              className="h-10 w-auto mb-6"
+              className="h-10 w-auto mb-6 mx-auto lg:mx-0"
             />
             <h2 className="typo-h2 text-white">
               {title}

@@ -36,6 +36,21 @@ const categories = [
   },
 ];
 
+const updateGtagConsent = (state: ConsentState) => {
+  if (typeof window !== "undefined") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: any[]) {
+      window.dataLayer?.push(args);
+    }
+    gtag("consent", "update", {
+      analytics_storage: state.statistiques ? "granted" : "denied",
+      ad_storage: state.marketing ? "granted" : "denied",
+      ad_user_data: state.marketing ? "granted" : "denied",
+      ad_personalization: state.marketing ? "granted" : "denied",
+    });
+  }
+};
+
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
@@ -48,12 +63,14 @@ export function CookieConsent() {
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) setVisible(true);
-    else {
+    if (!stored) {
+      setVisible(true);
+    } else {
       // Charger les préférences existantes pour les afficher si l'utilisateur rouvre le panneau
       try {
         const parsed = JSON.parse(stored) as ConsentState;
         setConsent(parsed);
+        updateGtagConsent(parsed);
       } catch { /* ignore */ }
     }
 
@@ -62,7 +79,9 @@ export function CookieConsent() {
       const existing = localStorage.getItem(STORAGE_KEY);
       if (existing) {
         try {
-          setConsent(JSON.parse(existing) as ConsentState);
+          const parsed = JSON.parse(existing) as ConsentState;
+          setConsent(parsed);
+          updateGtagConsent(parsed);
         } catch { /* ignore */ }
       }
       setShowPreferences(true);
@@ -74,6 +93,7 @@ export function CookieConsent() {
 
   const save = (state: ConsentState) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    updateGtagConsent(state);
     setVisible(false);
   };
 

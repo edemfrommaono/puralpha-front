@@ -24,8 +24,8 @@ export function HistoireMethode({
 }: HistoireMethodeProps) {
   return (
     <section className="bg-white py-12 lg:py-24">
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
-        <FadeInView className="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
+        <FadeInView className="text-center max-w-4xl mx-auto mb-10 lg:mb-16">
           <h2 className="typo-h2 text-navy-800">
             {title} <span className="text-gold-500">{titleHighlight}</span>
           </h2>
@@ -35,7 +35,7 @@ export function HistoireMethode({
         {etapes.length > 0 && (
           <StaggerContainer
             stagger={0.12}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto"
           >
             {etapes.map((etape, i) => (
               <StaggerItem key={i}>

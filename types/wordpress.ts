@@ -234,6 +234,7 @@ export interface NotreHistoireACF {
     items: Array<{
       image: ACFImage;
       titre: string;
+      description: string;
     }>;
   };
   citation_finale?: {
@@ -242,6 +243,7 @@ export interface NotreHistoireACF {
     role: string;
     cta_texte: string;
     cta_url: string;
+    background_image?: ACFImage;
   };
 }
 

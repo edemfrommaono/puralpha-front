@@ -102,9 +102,21 @@ export const NOTRE_HISTOIRE_FALLBACK = {
     title: "Ce qui guide",
     title_highlight: "PUR Alpha",
     items: [
-      { titre: "Exigence" },
-      { titre: "Franchise" },
-      { titre: "Constance" },
+      {
+        titre: "Exigence",
+        description:
+          "Un niveau d'attente élevé dans le recrutement, la formation et le suivi de nos intervenants.",
+      },
+      {
+        titre: "Franchise",
+        description:
+          "Une communication transparente et bienveillante avec chaque famille à chaque étape.",
+      },
+      {
+        titre: "Constance",
+        description:
+          "La régularité et la continuité des interventions pour rassurer l'enfant et ses parents.",
+      },
     ],
   },
 
