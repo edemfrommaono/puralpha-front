@@ -56,9 +56,9 @@ export default function RootLayout({
       </body>
       {gaId && (
         isGtm ? (
-          <GoogleTagManager gtmId={gaId} />
+          <GoogleTagManager gtmId={gaId || "G-S60574HD6J"} />
         ) : (
-          <GoogleAnalytics gaId={gaId || "G-FZP4V003DF"} />
+          <GoogleAnalytics gaId={gaId || "G-S60574HD6J"} />
         )
       )}
     </html>

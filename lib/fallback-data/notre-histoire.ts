@@ -127,5 +127,6 @@ export const NOTRE_HISTOIRE_FALLBACK = {
     role: "Fondatrice et présidente de PUR Alpha",
     cta_texte: "Découvrir nos services",
     cta_url: "/nos-services",
+    background_image: "",
   },
 } as const;

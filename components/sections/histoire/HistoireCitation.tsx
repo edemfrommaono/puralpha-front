@@ -8,6 +8,7 @@ interface HistoireCitationProps {
   role: string;
   ctaTexte: string;
   ctaUrl: string;
+  backgroundImage: string;
 }
 
 /** Section finale — citation de la fondatrice sur fond bleu nuit + CTA doré. */
@@ -17,10 +18,18 @@ export function HistoireCitation({
   role,
   ctaTexte,
   ctaUrl,
+  backgroundImage,
 }: HistoireCitationProps) {
   return (
-    <section className="bg-navy-800 py-12 lg:py-24 text-center ">
-      <FadeInView className="container mx-auto px-4 lg:px-8 max-w-4xl flex flex-col items-center">
+    <section className="bg-navy-800 py-12 lg:py-24 text-center relative">
+      {backgroundImage && (
+        <img
+          src={backgroundImage}
+          alt="Background"
+          className="absolute inset-0 w-full h-full object-cover opacity-5"
+        />
+      )}
+      <FadeInView className="container mx-auto px-4 lg:px-8 max-w-4xl flex flex-col items-center relative z-10">
         {citation && (
           <blockquote className="typo-h3 text-white italic">
             {citation}

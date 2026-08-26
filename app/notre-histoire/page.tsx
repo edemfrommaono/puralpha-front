@@ -35,6 +35,9 @@ export default async function NotreHistoirePage() {
   const constructionImageUrl = await resolveImageUrl(
     construction?.image ?? null
   );
+  const citationBgImageUrl = await resolveImageUrl(
+    citation?.background_image ?? null
+  );
 
   // ── Galerie « Matthew et moi, au quotidien » (fallback : emplacements réservés) ──
   const galeriePhotos = galerie?.photos?.length
@@ -174,6 +177,9 @@ export default async function NotreHistoirePage() {
         role={citation?.role || fb.citation_finale.role}
         ctaTexte={citation?.cta_texte || fb.citation_finale.cta_texte}
         ctaUrl={citation?.cta_url || fb.citation_finale.cta_url}
+        backgroundImage={
+          citationBgImageUrl || fb.citation_finale.background_image
+        }
       />
     </main>
   );

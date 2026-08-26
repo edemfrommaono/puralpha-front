@@ -32,7 +32,7 @@ export function HistoireHero({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Texte */}
           <FadeInView direction="left" className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <span className="typo-tag text-teal-400">{sectionTag}</span>
+            {/* <span className="typo-tag text-teal-400">{sectionTag}</span> */}
             <h1 className="typo-h1 text-navy-800 mt-4">
               {title}
               <br />
