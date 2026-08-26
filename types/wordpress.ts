@@ -163,61 +163,69 @@ export interface HomePageACF {
 
 export interface NotreHistoireACF {
   hero?: {
-    title_line_1: string;
-    title_highlight: string;
-    subtitle?: string;
-    description: string;
-    quote?: string;
-    founder_name: string;
-    founder_subtitle: string;
-  };
-  fondatrice?: {
     section_tag: string;
+    title: string;
+    title_highlight: string;
+    description: string;
+    quote: string;
+    founder_name: string;
+    founder_role: string;
+    photo: ACFImage;
+    photo_legende: string;
+    photo_note: string;
+  };
+  relais?: {
     title: string;
     title_highlight: string;
     paragraph_1: string;
-    quote: string;
-    quote_author: string;
+    paragraph_2: string;
+    paragraph_highlight: string;
     image: ACFImage;
-    image_caption: string;
-  };
-  realite_familles?: {
-    title: string;
-    title_highlight: string;
-    problems: Array<{
-      image: ACFImage;
-      title: string;
-      description: string;
-    }>;
-  };
-  syndrome_pura?: {
-    section_tag: string;
-    title: string;
-    description_1: string;
-    description_2: string;
-    badge_text: string;
+    image_alt: string;
   };
   galerie?: {
-    images: Array<{
-      image_mis_en_avant: ACFImage;
+    title: string;
+    title_highlight: string;
+    photos: Array<{
+      photo: ACFImage;
       libelle: string;
+      note: string;
     }>;
   };
-  section_pourquoi_pur_apha_existe?: {
-    image_mise_en_avant: ACFImage;
-    legende: string;
-    tag: string;
-    titre_ligne_1: string;
+  video?: {
+    title: string;
     title_highlight: string;
-    descrition_1: string;
-    description_2: string;
-    notre_promesse_valeur: string;
-    notre_promesse_libelle: string;
-    qualites: Array<{ la_qualite: string }>;
-  };
-  mission?: {
-    section_tag: string;
     description: string;
+    video_url: string;
+    placeholder_label: string;
+    placeholder_note: string;
+  };
+  construction?: {
+    title: string;
+    title_highlight: string;
+    paragraph_1: string;
+    paragraph_2: string;
+    paragraph_highlight: string;
+    image: ACFImage;
+    image_alt: string;
+  };
+  experience?: {
+    title: string;
+    title_highlight: string;
+    stats: Array<{
+      chiffre: string;
+      description: string;
+    }>;
+    paragraph_1: string;
+    paragraph_highlight: string;
+  };
+  methode?: {
+    title: string;
+    title_highlight: string;
+    description: string;
+    etapes: Array<{
+      titre: string;
+    }>;
   };
   valeurs?: {
     section_tag: string;
@@ -225,55 +233,17 @@ export interface NotreHistoireACF {
     title_highlight: string;
     items: Array<{
       image: ACFImage;
-      title: string;
-      description: string;
-    }>;
-  };
-  section_impact_local?: {
-    image_de_fond: ACFImage;
-    image_mis_en_avant: ACFImage;
-    tag: string;
-    titre_1: string;
-    title_highlight: string;
-    description: string;
-    impacts: Array<{
-      chiffre: number;
       titre: string;
       description: string;
-      statut: string;
     }>;
   };
-  ambitions?: {
-    section_tag: string;
-    title: string;
-    title_highlight: string;
-    description: string;
-    items: Array<{
-      title: string;
-      description: string;
-    }>;
-  };
-  origin_nom_title?: string;
-  origin_nom_title_highlight?: string;
-  origin_nom_description?: string;
-  origin_nom_image?: ACFImage;
-  vecu_methode_title?: string;
-  vecu_methode_title_highlight?: string;
-  vecu_methode_description?: string;
-  vecu_methode_items?: Array<{
-    ordre: number;
-    titre: string;
-    description: string;
-  }>;
-  cta_final?: {
-    image_de_fond: ACFImage;
+  citation_finale?: {
     citation: string;
     auteur: string;
-    'sous-titre': string;
-    cta_1_texte: string;
-    cta_1_url: string;
-    cta_2_texte: string;
-    cta_2_url: string;
+    role: string;
+    cta_texte: string;
+    cta_url: string;
+    background_image?: ACFImage;
   };
 }
 

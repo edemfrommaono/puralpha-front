@@ -52,10 +52,10 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
               </div>
             )}
           </FadeInView>
-          <FadeInView direction="right" delay={0.15} className="order-1 lg:order-2 flex flex-col gap-6 max-w-xl">
+          <FadeInView direction="right" delay={0.15} className="order-1 lg:order-2 flex flex-col gap-6 max-w-xl items-center lg:items-start text-center lg:text-left">
             <div>
               {(territoire?.section_tag || fb.section_tag) && (
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                   <span className="typo-tag text-teal-400">
                     {territoire?.section_tag || fb.section_tag}
                   </span>
@@ -75,16 +75,16 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
             </div>
             {(territoire?.description_1 || fb.description_1) && (
               <div
-                className="prose max-w-none typo-body"
+                className="prose max-w-none typo-body text-center lg:text-left"
                 dangerouslySetInnerHTML={{
                   __html: toHtml(territoire?.description_1 || fb.description_1),
                 }}
               />
             )}
             {logoUrls.length > 0 && (
-              <div className="flex flex-row flex-wrap items-center gap-12">
+              <div className="flex flex-row flex-wrap items-center justify-center lg:justify-start gap-6 sm:gap-12 w-full">
                 {logoUrls.map((url, i) => (
-                  <div key={i} className="relative h-16 flex-1 min-w-0">
+                  <div key={i} className="relative h-12 sm:h-16 w-28 sm:w-36 flex-shrink-0">
                     <Image
                       src={url}
                       alt={`Logo partenaire ${i + 1}`}
@@ -97,17 +97,18 @@ export function TerritoireSection({ territoire, territoireImageUrl, logoUrls, fa
             )}
             {(territoire?.description_2 || fb.description_2) && (
               <div
-                className="prose max-w-none"
+                className="prose max-w-none typo-body text-center lg:text-left"
                 dangerouslySetInnerHTML={{
                   __html: toHtml(territoire?.description_2 || fb.description_2),
                 }}
               />
             )}
             {territoire?.cta_url && territoire.cta_url !== "#" && (territoire?.cta_text || fb.cta_text) && (
-              <div>
+              <div className="w-full sm:w-auto flex justify-center lg:justify-start">
                 <Button
                   variant="gold"
                   href={territoire.cta_url}
+                  className="w-full sm:w-fit"
                   style={{ borderRadius: '8px', background: '#F2C94C' }}
                 >
                   <span className="mr-2">▶</span>

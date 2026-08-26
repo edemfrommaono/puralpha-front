@@ -40,24 +40,24 @@ export function ResteAChargeSection({
   if (!title && !titleHighlight && !description && !imageUrl && !ctaPrimaryText && !ctaSecondaryText) return null;
 
   return (
-    <section className="py-8 lg:py-24 bg-white">
+    <section className="py-8 lg:py-12 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
           {/* Image */}
           {(imageUrl || imageCaption || DEFAULTS.imageCaption) && (
             <div className="relative overflow-hidden shadow-xl w-full lg:w-[45%] shrink-0 min-h-[350px] lg:min-h-[490px]" style={{ borderRadius: "16px", background: "lightgray 50% / cover no-repeat" }}>
-                {imageUrl ? (
-                  <Image
-                    src={imageUrl}
-                    alt={imageCaption || DEFAULTS.imageCaption}
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
-                    <span className="text-teal-500 text-lg font-medium">Image à venir</span>
-                  </div>
-                )}
+              {imageUrl ? (
+                <Image
+                  src={imageUrl}
+                  alt={imageCaption || DEFAULTS.imageCaption}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
+                  <span className="text-teal-500 text-lg font-medium">Image à venir</span>
+                </div>
+              )}
               {/* Ombre dégradée pour lisibilité de la légende */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
               {/* Légende */}
@@ -83,21 +83,10 @@ export function ResteAChargeSection({
           {/* Contenu */}
           <div>
             {(title || titleHighlight) && (
-              <h2
-                className="typo-h2 mb-4 lg:mb-6"
-                style={{
-                  color: "#1C3553",
-                  fontFamily: "Poppins, sans-serif",
-                }}
-              >
+              <h2 className="typo-h2 mb-4 lg:mb-6 text-navy-800">
                 {title}{" "}
                 {titleHighlight && (
-                  <span
-                    style={{
-                      color: "#F2C94C",
-                      fontFamily: "Poppins, sans-serif",
-                    }}
-                  >
+                  <span className="text-teal-400">
                     {titleHighlight}
                   </span>
                 )}
@@ -106,24 +95,23 @@ export function ResteAChargeSection({
 
             {description && (
               <div
-                className="prose mb-8 lg:mb-10 typo-body"
+                className="prose mb-6 lg:mb-8 typo-body"
                 dangerouslySetInnerHTML={{ __html: toHtml(description) }}
               />
             )}
 
             <div className="flex flex-col gap-4">
-              {(ctaPrimaryText || DEFAULTS.ctaPrimaryText) && (
+              {/* {(ctaPrimaryText || DEFAULTS.ctaPrimaryText) && (
                 <Button
                   variant="navy"
-                  className="w-fit rounded-lg"
-                  style={{ background: "#1C3553" }}
+                  className="w-fit rounded-lg bg-navy-800 text-white"
                   href={ctaPrimaryUrl || DEFAULTS.ctaPrimaryUrl}
                   iconRight={<ArrowRight className="w-4 h-4" />}
                 >
                   {ctaPrimaryText || DEFAULTS.ctaPrimaryText}
                 </Button>
-              )}
-{/* 
+              )} */}
+              {/* 
               {(ctaSecondaryText || DEFAULTS.ctaSecondaryText) && (
                 <Button
                   variant="outline-navy"

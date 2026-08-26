@@ -37,7 +37,7 @@ export function RejoindreProcess({
           <h2 className="typo-h2 text-[#1C3553] mb-4 lg:mb-6 text-center">
             {title}{" "}
             {titleHighlight && (
-              <span className="text-[#F2C94C]">
+              <span className="text-teal-400">
                 {titleHighlight}
               </span>
             )}

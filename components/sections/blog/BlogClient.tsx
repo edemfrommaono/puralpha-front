@@ -5,6 +5,10 @@ import Link from "next/link";
 import { ArrowRight, Calendar, Search, Play, X, Facebook, Instagram, Linkedin } from "lucide-react";
 import { FadeInView } from "@/components/ui/FadeInView";
 import type { Post } from "@/lib/fallback-data/blog";
+import { SOCIAL_LINKS } from "@/lib/site-config";
+
+// Icônes associées aux réseaux sociaux — URLs centralisées dans lib/site-config.ts (§8.4)
+const SOCIAL_ICONS = { facebook: Facebook, instagram: Instagram, linkedin: Linkedin } as const;
 
 interface BlogClientProps {
   posts: Post[];
@@ -12,7 +16,7 @@ interface BlogClientProps {
 }
 
 export function BlogClient({ posts }: BlogClientProps) {
-  const [activeTab, setActiveTab] = useState<"Articles" | "Actualités" | "Vidéos">("Articles");
+  const [activeTab, setActiveTab] = useState<"Articles" | "Actualités" | "Vidéos">("Actualités");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
 
@@ -82,49 +86,76 @@ export function BlogClient({ posts }: BlogClientProps) {
                     className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full"
                   >
                     {/* Image / Thumbnail */}
-                    <div 
-                      className={`relative h-52 w-full bg-gray-100 overflow-hidden ${
-                        isVideo ? "cursor-pointer" : ""
-                      }`}
-                      onClick={() => isVideo && post.videoUrl && setActiveVideoUrl(post.videoUrl)}
-                    >
-                      {post.imageUrl ? (
-                        <img
-                          src={post.imageUrl}
-                          alt={post.title}
-                          className="object-cover w-full h-full group-hover:scale-103 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-teal-50 flex items-center justify-center">
-                          <span className="text-teal-300 text-4xl">
-                            {isVideo ? "🎥" : "📰"}
-                          </span>
+                    {isVideo ? (
+                      <div 
+                        className="relative h-52 w-full bg-gray-100 overflow-hidden cursor-pointer"
+                        onClick={() => post.videoUrl && setActiveVideoUrl(post.videoUrl)}
+                      >
+                        {post.imageUrl ? (
+                          <img
+                            src={post.imageUrl}
+                            alt={post.title}
+                            className="object-cover w-full h-full group-hover:scale-103 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-teal-50 flex items-center justify-center">
+                            <span className="text-teal-300 text-4xl">🎥</span>
+                          </div>
+                        )}
+                        
+                        {/* Badge catégorie secondaire */}
+                        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                          {post.categories
+                            .filter((c) => c !== "Articles" && c !== "Actualités" && c !== "Vidéos")
+                            .map((cat) => (
+                              <span
+                                key={cat}
+                                className="bg-white/90 backdrop-blur-md text-[#0d3d4f] text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm"
+                              >
+                                {cat}
+                              </span>
+                            ))}
                         </div>
-                      )}
-                      
-                      {/* Badge catégorie secondaire */}
-                      <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                        {post.categories
-                          .filter((c) => c !== "Articles" && c !== "Actualités" && c !== "Vidéos")
-                          .map((cat) => (
-                            <span
-                              key={cat}
-                              className="bg-white/90 backdrop-blur-md text-[#0d3d4f] text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm"
-                            >
-                              {cat}
-                            </span>
-                          ))}
-                      </div>
 
-                      {/* Overlay Play pour Vidéos */}
-                      {isVideo && (
+                        {/* Overlay Play pour Vidéos */}
                         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 transition-colors flex items-center justify-center">
                           <div className="w-14 h-14 rounded-full bg-white/90 text-[#0d3d4f] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                             <Play className="w-6 h-6 ml-0.5 fill-current" />
                           </div>
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    ) : (
+                      <Link
+                        href={`/actualite/${post.slug}`}
+                        className="relative h-52 w-full bg-gray-100 overflow-hidden block"
+                      >
+                        {post.imageUrl ? (
+                          <img
+                            src={post.imageUrl}
+                            alt={post.title}
+                            className="object-cover w-full h-full group-hover:scale-103 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-teal-50 flex items-center justify-center">
+                            <span className="text-teal-300 text-4xl">📰</span>
+                          </div>
+                        )}
+                        
+                        {/* Badge catégorie secondaire */}
+                        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                          {post.categories
+                            .filter((c) => c !== "Articles" && c !== "Actualités" && c !== "Vidéos")
+                            .map((cat) => (
+                              <span
+                                key={cat}
+                                className="bg-white/90 backdrop-blur-md text-[#0d3d4f] text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm"
+                              >
+                                {cat}
+                              </span>
+                            ))}
+                        </div>
+                      </Link>
+                    )}
 
                     {/* Contenu */}
                     <div className="p-6 flex flex-col flex-grow">
@@ -135,14 +166,20 @@ export function BlogClient({ posts }: BlogClientProps) {
                         </span>
                       </div>
 
-                      <h3 
-                        className={`text-lg font-bold text-navy-800 line-clamp-2 mb-3 transition-colors duration-200 ${
-                          isVideo ? "cursor-pointer hover:text-teal-500" : "group-hover:text-teal-500"
-                        }`}
-                        onClick={() => isVideo && post.videoUrl && setActiveVideoUrl(post.videoUrl)}
-                      >
-                        {post.title}
-                      </h3>
+                      {isVideo ? (
+                        <h3 
+                          className="text-lg font-bold text-navy-800 line-clamp-2 mb-3 transition-colors duration-200 cursor-pointer hover:text-teal-500"
+                          onClick={() => post.videoUrl && setActiveVideoUrl(post.videoUrl)}
+                        >
+                          {post.title}
+                        </h3>
+                      ) : (
+                        <Link href={`/actualite/${post.slug}`}>
+                          <h3 className="text-lg font-bold text-navy-800 line-clamp-2 mb-3 transition-colors duration-200 group-hover:text-teal-500 hover:text-teal-600">
+                            {post.title}
+                          </h3>
+                        </Link>
+                      )}
 
                       <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-6">
                         {post.excerpt}
@@ -243,41 +280,23 @@ export function BlogClient({ posts }: BlogClientProps) {
             </div>
 
             <div className="flex flex-col gap-2.5">
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-[#ecf4f6] text-navy-800 hover:text-teal-600 hover:border-teal-100 transition-all font-semibold text-xs cursor-pointer group"
-              >
-                <div className="w-7 h-7 rounded-lg bg-teal-50 text-teal-500 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                  <Facebook className="w-4 h-4" />
-                </div>
-                <span>Facebook</span>
-              </a>
-
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-[#ecf4f6] text-navy-800 hover:text-teal-600 hover:border-teal-100 transition-all font-semibold text-xs cursor-pointer group"
-              >
-                <div className="w-7 h-7 rounded-lg bg-teal-50 text-teal-500 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                  <Instagram className="w-4 h-4" />
-                </div>
-                <span>Instagram</span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-[#ecf4f6] text-navy-800 hover:text-teal-600 hover:border-teal-100 transition-all font-semibold text-xs cursor-pointer group"
-              >
-                <div className="w-7 h-7 rounded-lg bg-teal-50 text-teal-500 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                  <Linkedin className="w-4 h-4" />
-                </div>
-                <span>LinkedIn</span>
-              </a>
+              {SOCIAL_LINKS.map(({ key, label, url }) => {
+                const Icon = SOCIAL_ICONS[key];
+                return (
+                  <a
+                    key={key}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gold-500/5 text-navy-800 hover:text-gold-600 hover:border-gold-500/30 transition-all font-semibold text-xs cursor-pointer group"
+                  >
+                    <div className="w-7 h-7 rounded-lg bg-gold-500/10 text-gold-500 flex items-center justify-center group-hover:bg-gold-500 group-hover:text-navy-900 transition-colors">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span>{label}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </aside>

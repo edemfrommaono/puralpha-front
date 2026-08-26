@@ -26,7 +26,7 @@ export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
     // Le bouton 'gold' est généralement plus arrondi (rounded-full) dans la maquette
     const defaultRounding = variant === 'gold' ? 'rounded-full px-8 py-3.5' : 'rounded-lg px-5 py-2.5';
     
-    const combinedClassName = `inline-flex items-center justify-center gap-2 font-poppins font-bold text-sm transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] ${defaultRounding} ${variantStyles[variant]} ${className}`;
+    const combinedClassName = `inline-flex items-center justify-center gap-2 typo-btn transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] ${defaultRounding} ${variantStyles[variant]} ${className}`;
 
     const innerContent = (
       <>

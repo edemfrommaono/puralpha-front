@@ -3,6 +3,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Linkedin } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import { SITE_CONFIG, SOCIAL_LINKS, MEDIATOR } from '@/lib/site-config';
+
+const SOCIAL_ICONS = { facebook: Facebook, instagram: Instagram, linkedin: Linkedin } as const;
+
+// Coordonnées harmonisées — source unique : lib/site-config.ts (§8.1)
+const CONTACT_ITEMS: Array<{ icon: LucideIcon; value: string; href?: string }> = [
+  { icon: Phone, value: SITE_CONFIG.phone, href: `tel:${SITE_CONFIG.phone.replace(/\s/g, "")}` },
+  { icon: Mail, value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}` },
+  { icon: MapPin, value: SITE_CONFIG.address },
+  { icon: Clock, value: SITE_CONFIG.hours },
+];
 
 export function Footer() {
   return (
@@ -21,44 +33,32 @@ export function Footer() {
                 className="h-14 w-auto brightness-0 invert"
               />
             </div>
-            <p className="text-white/60 text-sm leading-relaxed">
+            <p className="text-white/70 text-sm leading-relaxed">
               Garde et accompagnement à domicile d'enfants et jeunes en situation de handicap dans le Val-d'Oise.
             </p>
             <div className="flex items-center gap-3 mt-2">
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-teal-500 hover:border-teal-500 text-white/65 hover:text-white flex items-center justify-center transition-all cursor-pointer"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-teal-500 hover:border-teal-500 text-white/65 hover:text-white flex items-center justify-center transition-all cursor-pointer"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-teal-500 hover:border-teal-500 text-white/65 hover:text-white flex items-center justify-center transition-all cursor-pointer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
+              {SOCIAL_LINKS.map(({ key, label, url }) => {
+                const Icon = SOCIAL_ICONS[key];
+                return (
+                  <a
+                    key={key}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-gold-500 hover:border-gold-500 text-white/65 hover:text-navy-900 flex items-center justify-center transition-all cursor-pointer"
+                    aria-label={`${label} PUR Alpha (nouvel onglet)`}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
           {/* Navigation */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-gold-500 font-bold text-base">Navigation</h4>
-            <ul className="flex flex-col gap-3 text-sm text-white/60">
+            <h4 className="typo-h3 text-gold-500">Navigation</h4>
+            <ul className="flex flex-col gap-3 text-sm text-white/80">
               <li><Link href="/" className="hover:text-white transition-colors">Accueil</Link></li>
               <li><Link href="/nos-services" className="hover:text-white transition-colors">Nos services</Link></li>
               <li><Link href="/nos-tarifs" className="hover:text-white transition-colors">Nos tarifs</Link></li>
@@ -70,43 +70,48 @@ export function Footer() {
 
           {/* Contact */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-gold-500 font-bold text-base">Contact</h4>
-            <ul className="flex flex-col gap-3 text-sm text-white/60">
-              <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>06 14 79 60 47</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>contact@puralpha.fr</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>26 rue des Sablons, 95360 Montmagny</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>Lun-Ven : 9h00 - 17h30</span>
-              </li>
+            <h4 className="typo-h3 text-gold-500">Contact</h4>
+            <ul className="flex flex-col gap-3 text-sm text-white/80">
+              {CONTACT_ITEMS.map(({ icon: Icon, value, href }) => (
+                <li key={value} className="flex items-start gap-3">
+                  <Icon className="w-4 h-4 shrink-0 mt-0.5 text-gold-500" />
+                  {href ? (
+                    <a href={href} className="hover:text-gold-400 transition-colors">{value}</a>
+                  ) : (
+                    <span>{value}</span>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Certifications */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-gold-500 font-bold text-base">Informations administratives</h4>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-xs text-white/50 leading-relaxed space-y-1">
+            <h4 className="typo-h3 text-gold-500">Informations administratives</h4>
+            <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-xs text-white/60 leading-relaxed space-y-1">
               <p>SIRET : 989 156 989 00018</p>
               <p>APE : 88.10B</p>
               <p>Agrément SAP N° : SAP989156989</p>
-              <p>Siège social : 26 rue des Sablons, 95360 Montmagny</p>
+              <p>Siège social : {SITE_CONFIG.address}</p>
               <p>Assurance RC Pro Hiscox n° : HA RCP0593442</p>
+              <p>
+                Médiateur de la consommation :{" "}
+                <a
+                  href={MEDIATOR.pdfPath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-white/20 underline-offset-2 hover:text-gold-400 transition-colors"
+                >
+                  CMCO — {MEDIATOR.websiteLabel}
+                </a>
+              </p>
             </div>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50">
           <p>© 2026 PUR Alpha — Tous droits réservés</p>
           <div className="flex items-center flex-wrap gap-x-4 gap-y-2">
             <span>SIRET : 989 156 989 00018</span>
@@ -115,13 +120,21 @@ export function Footer() {
             <span className="text-white/20">·</span>
             <span>RC Pro Hiscox HA RCP0593442</span>
             <span className="text-white/20">·</span>
-            <Link href="/mentions-legales#litiges" className="hover:text-white transition-colors">Médiateur</Link>
-            <span className="text-white/20">·</span>
             <Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link>
             <span className="text-white/20">·</span>
             <Link href="/politique-confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</Link>
             <span className="text-white/20">·</span>
-            <Link href="/politique-cookies" className="hover:text-white transition-colors">Cookies</Link>
+            <Link href="/politique-cookies" className="hover:text-white transition-colors">Politique de cookies</Link>
+            <span className="text-white/20">·</span>
+            <a
+              href={MEDIATOR.pdfPath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+              title="Ouvre la fiche PDF du médiateur de la consommation dans un nouvel onglet"
+            >
+              Médiateur de la consommation
+            </a>
             <span className="text-white/20">·</span>
             <button
               onClick={() => window.dispatchEvent(new Event("open-cookie-settings"))}

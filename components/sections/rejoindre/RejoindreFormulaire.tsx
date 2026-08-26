@@ -15,9 +15,9 @@ const candidatureSchema = z.object({
   "phone-1": z.string().min(1, "Ce champ est requis"),                          // Téléphone
   "text-1": z.string().min(1, "Ce champ est requis"),        // Commune de résidence
   "text-2": z.string().min(1, "Ce champ est requis"),        // Disponibilités principales
-  "select-1": z.string().optional(),                         // Expérience handicap
-  "select-2": z.string().min(1, "Ce champ est requis"),      // Accompagnement enfants situation handicap
-  "text-3": z.string().min(1, "Ce champ est requis"),        // Nombre d'années d'expérience
+  "select-1": z.string().min(1, "Ce champ est requis"),      // Expérience (Aucune / Personnelle / Professionnelle)
+  "text-3": z.string().optional(),                           // Nombre d'années — facultatif, affiché seulement si une expérience est déclarée
+  "text-4": z.string().optional(),                           // Diplôme / qualification (si applicable)
   "upload-1": z.any().refine((files) => files && files.length > 0, "Un CV est requis"), // CV *
   "textarea-1": z.string().max(180, "180 caractères max").optional(),
   "consent_vivier": z.boolean().optional(),
@@ -33,8 +33,8 @@ const FIELD_MAPPING = {
   "text-1": "text-1",
   "text-2": "text-2",
   "select-1": "select-1",
-  "select-2": "checkbox-2",
   "text-3": "number-1",
+  "text-4": "text-4",
   "upload-1": "upload-1",
   "textarea-1": "textarea-1",
 } as const;
@@ -96,8 +96,8 @@ export function RejoindreFormulaire({
       "text-1": "",
       "text-2": "",
       "select-1": "",
-      "select-2": "",
       "text-3": "",
+      "text-4": "",
       "upload-1": null,
       "textarea-1": "",
       "consent_vivier": false,
@@ -110,6 +110,15 @@ export function RejoindreFormulaire({
 
   const motivationLength = watch("textarea-1")?.length || 0;
 
+  // §5.9 — Le nombre d'années n'est affiché que si une expérience est déclarée
+  const experienceValue = watch("select-1");
+  const showYearsField = experienceValue === "Personnelle" || experienceValue === "Professionnelle";
+
+  // Réinitialise le nombre d'années si le candidat déclare « Aucune » expérience
+  useEffect(() => {
+    if (!showYearsField) setValue("text-3", "");
+  }, [showYearsField, setValue]);
+
   const onSubmit = async (formData: CandidatureFormData) => {
     setSubmitError(null);
     try {
@@ -121,12 +130,7 @@ export function RejoindreFormulaire({
         .filter(([key]) => Object.prototype.hasOwnProperty.call(FIELD_MAPPING, key) && key !== "upload-1")
         .map(([key, value]) => {
           const fieldName = FIELD_MAPPING[key as keyof typeof FIELD_MAPPING];
-          let mappedValue: string | string[] = (value as string) || "";
-          
-          // Les cases à cocher Forminator nécessitent un tableau, même pour une seule valeur
-          if (fieldName === "checkbox-2" && mappedValue !== "") {
-            mappedValue = [mappedValue as string];
-          }
+          const mappedValue: string | string[] = (value as string) || "";
 
           return {
             name: fieldName,
@@ -288,54 +292,44 @@ export function RejoindreFormulaire({
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Expérience auprès d'enfants ou de personnes en situation de handicap</label>
-                <select
-                  {...register("select-1")}
-                  className="w-full bg-[#ecf4f6] border border-[#f3f4f6] rounded-lg px-5 py-4 text-[15px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400 appearance-none cursor-pointer"
-                >
-                  <option value="">Sélectionnez...</option>
-                  <option value="Aucune">Aucune</option>
-                  <option value="Personnelle">Personnelle</option>
-                  <option value="Professionnelle">Professionnelle</option>
-                </select>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className={`flex flex-col gap-2 ${showYearsField ? "" : "md:col-span-2"}`}>
+                  <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Expérience auprès d'enfants ou de personnes en situation de handicap *</label>
+                  <select
+                    {...register("select-1")}
+                    className={`w-full bg-[#ecf4f6] border ${errors["select-1"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-lg px-5 py-4 text-[15px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400 appearance-none cursor-pointer`}
+                  >
+                    <option value="">Sélectionnez...</option>
+                    <option value="Aucune">Aucune</option>
+                    <option value="Personnelle">Personnelle</option>
+                    <option value="Professionnelle">Professionnelle</option>
+                  </select>
+                  {errors["select-1"] && <p className="text-red-500 text-xs">{errors["select-1"].message}</p>}
+                </div>
+
+                {/* §5.9 — N'apparaît que si une expérience est déclarée (Personnelle / Professionnelle) */}
+                {showYearsField && (
+                  <div className="flex flex-col gap-2">
+                    <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Nombre d'années d'expérience</label>
+                    <input
+                      type="text"
+                      placeholder="Ex: 2 ans"
+                      {...register("text-3")}
+                      className="w-full bg-[#ecf4f6] border border-[#f3f4f6] rounded-lg px-5 py-4 text-[15px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    />
+                  </div>
+                )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2 justify-between">
-                  <span className="text-xs font-bold text-navy-800 uppercase tracking-wide">Avez-vous déjà accompagné des enfants en situation de handicap ? *</span>
-                  <div className="flex items-center gap-6 py-2">
-                    <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 font-semibold select-none">
-                      <input
-                        type="radio"
-                        value="Oui"
-                        {...register("select-2")}
-                        className={`h-5 w-5 text-teal-500 bg-[#ecf4f6] border ${errors["select-2"] ? "border-red-400" : "border-gray-300"} focus:ring-teal-400 cursor-pointer`}
-                      />
-                      Oui
-                    </label>
-                    <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 font-semibold select-none">
-                      <input
-                        type="radio"
-                        value="Non"
-                        {...register("select-2")}
-                        className={`h-5 w-5 text-teal-500 bg-[#ecf4f6] border ${errors["select-2"] ? "border-red-400" : "border-gray-300"} focus:ring-teal-400 cursor-pointer`}
-                      />
-                      Non
-                    </label>
-                  </div>
-                  {errors["select-2"] && <p className="text-red-500 text-xs mt-1">{errors["select-2"].message}</p>}
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Nombre d'années d'expérience *</label>
-                  <input
-                    type="text"
-                    placeholder="Ex: 2 ans"
-                    {...register("text-3")}
-                    className={`w-full bg-[#ecf4f6] border ${errors["text-3"] ? "border-red-400" : "border-[#f3f4f6]"} rounded-lg px-5 py-4 text-[15px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400`}
-                  />
-                  {errors["text-3"] && <p className="text-red-500 text-xs">{errors["text-3"].message}</p>}
-                </div>
+              {/* §5.9 — Nouveau champ facultatif : le CV donnera le détail du parcours */}
+              <div className="flex flex-col gap-2">
+                <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Diplôme / qualification en lien avec l'accompagnement (si applicable)</label>
+                <input
+                  type="text"
+                  placeholder="Ex: AESH, CAP Petite enfance, DEAES..."
+                  {...register("text-4")}
+                  className="w-full bg-[#ecf4f6] border border-[#f3f4f6] rounded-lg px-5 py-4 text-[15px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                />
               </div>
 
               <div className="flex flex-col gap-2">

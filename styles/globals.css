@@ -67,5 +67,8 @@ body {
   .typo-small {
     @apply text-xs md:text-sm leading-relaxed text-gray-500;
   }
+  .typo-btn {
+    @apply font-poppins font-bold text-sm md:text-base;
+  }
 }
 

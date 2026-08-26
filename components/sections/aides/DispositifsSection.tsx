@@ -83,8 +83,8 @@ export function DispositifsSection({
   };
 
   return (
-    <section className="py-8 lg:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+    <section className="py-8 lg:py-12 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 lg:px-8 max-w-8xl">
         <FadeInView className="text-center mb-8 lg:mb-16">
           <span className="typo-tag text-teal-400">
             {aides?.section_tag || fb.section_tag}

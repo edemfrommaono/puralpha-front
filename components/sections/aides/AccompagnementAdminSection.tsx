@@ -35,21 +35,21 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
   const accompagnements = accAdmin?.accompagnements?.length ? accAdmin.accompagnements : fb.accompagnements;
 
   return (
-    <section className="py-8 lg:py-24 bg-white">
-      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div className="text-center mb-8 lg:mb-16">
+    <section className="py-8 lg:py-12 bg-white">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
+        <div className="text-center mb-6 lg:mb-8">
           <span className="typo-tag text-teal-400">
             {accAdmin?.tag || fb.tag}
           </span>
           <h2 className="typo-h2 text-navy-800 mt-4">
             {accAdmin?.titre_1 || fb.titre_1}{" "}
-            <span className="text-[#F2C94C]">{accAdmin?.title_highlight || fb.title_highlight}</span>
+            <span className="text-teal-400">{accAdmin?.title_highlight || fb.title_highlight}</span>
             <br />
             {accAdmin?.titre_2 || fb.titre_2}
           </h2>
           {(accAdmin?.description || fb.description) && (
             <div
-              className="prose max-w-2xl mx-auto mt-4 text-center typo-body"
+              className="prose max-w-6xl mx-auto mt-4 text-center typo-body"
               dangerouslySetInnerHTML={{ __html: toHtml(accAdmin?.description || fb.description) }}
             />
           )}
@@ -69,7 +69,7 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
                   className="absolute inset-0 bg-[#ecf4f6] border border-[#F3F4F6] rounded-[18px] p-5 md:p-6 lg:p-8 shadow-sm flex flex-col gap-2 md:gap-3 overflow-hidden"
                   style={{ backfaceVisibility: "hidden" }}
                 >
-                  <span className="text-[48px] md:text-[60px] font-black text-[#F2C94C]/50 leading-none">
+                  <span className="text-[48px] md:text-[60px] font-black text-gold-500/50 leading-none">
                     {String(item.ordre).padStart(2, "0")}
                   </span>
                   <h3 className="typo-h3 text-navy-800">{item.titre}</h3>
@@ -80,7 +80,7 @@ export function AccompagnementAdminSection({ accAdmin, fallback: fb }: Accompagn
                   className="absolute inset-0 bg-[#ecf4f6] border border-[#F3F4F6] rounded-[18px] p-5 md:p-6 lg:p-8 shadow-sm flex flex-col justify-center gap-2 md:gap-3"
                   style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
-                  <span className="text-[32px] md:text-[40px] font-black text-[#F2C94C]/40 leading-none">
+                  <span className="text-[32px] md:text-[40px] font-black text-gold-500/40 leading-none">
                     {String(item.ordre).padStart(2, "0")}
                   </span>
                   <p className="typo-small">{item.description}</p>

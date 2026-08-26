@@ -33,7 +33,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
     <section className="relative w-full min-h-[auto] lg:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-teal-50 via-[#f7f5f0] to-white pt-24 pb-8 lg:pt-24 lg:pb-24">
       <div className="container mx-auto px-4 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-8 lg:gap-8 items-center">
-          <div className="flex flex-col gap-6 max-w-3xl">
+          <div className="flex flex-col gap-6 max-w-3xl items-center lg:items-start text-center lg:text-left">
             {(hero?.title || fb.title || hero?.title_highlight || fb.title_highlight) && (
               <FadeInView direction="left" delay={0}>
                 <h1 className="typo-h1 text-navy-800">
@@ -62,11 +62,11 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
             )}
             {(hero?.cta_primary_text || fb.cta_primary_text || hero?.cta_secondary_text || fb.cta_secondary_text) && (
               <FadeInView direction="up" delay={0.35}>
-                <div className="flex flex-col gap-4 mt-4">
+                <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto items-center sm:items-start">
                   {(hero?.cta_primary_text || fb.cta_primary_text) && (
                     <Button
                       variant="navy"
-                      className="w-fit rounded-lg"
+                      className="w-full sm:w-fit rounded-lg"
                       style={{ background: "#1C3553" }}
                       href="/contact"
                       iconRight={<ArrowRight className="w-4 h-4" />}
@@ -77,7 +77,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
                   {(hero?.cta_url || fb.cta_url) && (hero?.cta_secondary_text || fb.cta_secondary_text) && (
                     <Button
                       variant="outline-navy"
-                      className="w-fit"
+                      className="w-full sm:w-fit"
                       href={hero?.cta_url || fb.cta_url}
                     >
                       <span className="mr-2">▶</span>
@@ -90,7 +90,7 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
           </div>
 
           {/* Hero images — URLs résolues côté serveur */}
-          <FadeInView direction="right" delay={0.2} className="relative min-h-[180px] md:min-h-[380px] lg:min-h-0 lg:h-[600px] w-full flex items-stretch gap-3 lg:gap-6 justify-end">
+          <FadeInView direction="right" delay={0.2} className="relative min-h-[300px] sm:min-h-[360px] md:min-h-[380px] lg:min-h-0 lg:h-[600px] w-full flex items-stretch gap-3 lg:gap-6 justify-end">
             {/* Colonne gauche — image unique, pleine hauteur */}
             <div className="relative w-[55%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg">
               {heroImageLeftUrl ? (
@@ -105,8 +105,8 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
               )}
             </div>
             {/* Colonne droite — image fluide + texte adaptatif */}
-            <div className="relative w-[41%] flex flex-col gap-4 min-h-0">
-              <div className="w-full flex-1 min-h-[50%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg relative">
+            <div className="relative w-[41%] flex flex-col gap-3 lg:gap-4 min-h-0">
+              <div className="w-full flex-1 min-h-[40%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg relative">
                 {heroImageRightUrl ? (
                   <Image
                     src={heroImageRightUrl}
@@ -119,8 +119,8 @@ export function HeroSection({ hero, heroImageLeftUrl, heroImageRightUrl, fallbac
                 )}
               </div>
               {(hero?.hero_overlay_text || fb.hero_overlay_text) && (
-                <div className="bg-navy-700 text-white p-3 md:p-4 lg:p-6 rounded-2xl lg:rounded-3xl shadow-lg shrink-0 flex items-center">
-                  <p className="font-bold text-[10px] sm:text-xs lg:text-sm leading-tight sm:leading-relaxed">
+                <div className="bg-navy-700 text-white p-2.5 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-lg shrink-0 flex items-center">
+                  <p className="text-[11px] sm:text-xs md:text-sm font-bold text-white leading-tight sm:leading-normal">
                     {hero?.hero_overlay_text || fb.hero_overlay_text}
                   </p>
                 </div>

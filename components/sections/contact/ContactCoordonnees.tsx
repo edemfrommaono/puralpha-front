@@ -57,7 +57,7 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
   };
 
   return (
-    <section className="bg-[#ecf4f6] py-8 lg:py-24 overflow-hidden">
+    <section className="bg-[#ecf4f6] py-8 lg:py-16 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center justify-center max-w-5xl mx-auto">
           {/* Infos Coordinates */}
@@ -66,7 +66,7 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
             <div className="flex flex-col gap-4 lg:gap-6">
               {items.map((item, i) => (
                 <div key={i} className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-teal-400/10 flex items-center justify-center text-teal-500 shrink-0 group-hover:bg-teal-400/20 transition-colors">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500 shrink-0 group-hover:bg-gold-500/20 transition-colors">
                     {item.imageUrl ? (
                       <img src={item.imageUrl} alt="" className="w-5 h-5 md:w-6 md:h-6 object-contain" />
                     ) : (
@@ -80,7 +80,7 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
                         href="https://maps.app.goo.gl/HSnq6Ni2935JW3B67" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="font-semibold text-navy-900 text-sm md:text-base hover:text-teal-500 transition-colors underline decoration-teal-500/30 underline-offset-4"
+                        className="font-semibold text-navy-900 text-sm md:text-base hover:text-gold-600 transition-colors underline decoration-gold-500/40 underline-offset-4"
                       >
                         {item.value}
                       </a>
@@ -110,8 +110,8 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
                 />
               ) : (
                 <div className="w-full h-full bg-gray-100 flex flex-col items-center justify-center gap-4 p-6 text-center">
-                  <div className="w-14 h-14 rounded-full bg-teal-50 flex items-center justify-center">
-                    <MapPin className="w-7 h-7 text-teal-500" />
+                  <div className="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center">
+                    <MapPin className="w-7 h-7 text-gold-500" />
                   </div>
                   <div>
                     <p className="font-bold text-navy-800 text-sm mb-1">Carte Google Maps</p>
@@ -121,7 +121,7 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
                   </div>
                   <button
                     onClick={handleAcceptMap}
-                    className="px-5 py-2.5 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition-colors cursor-pointer"
+                    className="px-5 py-2.5 bg-navy-800 hover:bg-navy-900 text-white font-bold text-xs rounded-xl transition-colors cursor-pointer"
                   >
                     Afficher la carte
                   </button>

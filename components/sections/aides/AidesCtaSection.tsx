@@ -25,7 +25,7 @@ interface AidesCtaSectionProps {
 
 export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: AidesCtaSectionProps) {
   return (
-    <section className="relative py-12 lg:py-24 overflow-hidden bg-navy-800 text-center">
+    <section className="relative py-12 lg:py-12 overflow-hidden bg-navy-800 text-center">
       {/* Background image */}
       {ctaFondUrl && (
         <Image
@@ -49,7 +49,7 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-6 lg:mb-12 text-sm text-white/80">
           {ctaBadges.map((badge, i) => (
             <div key={i} className="flex items-center gap-2">
-              <Check className="w-4 h-4" style={{ color: '#F2C94C' }} /> {badge.titre}
+              <Check className="w-4 h-4 text-gold-500" /> {badge.titre}
               {i < ctaBadges.length - 1 && (
                 <span className="hidden sm:block text-white/25 text-lg ml-6">·</span>
               )}
@@ -61,8 +61,7 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
           <Button
             variant="gold"
             href={(cta?.cta_url === '/contact' || !cta?.cta_url) ? '#simulateur' : cta.cta_url}
-            className="px-6 md:px-10"
-            style={{ borderRadius: '50px', background: '#F2C94C', boxShadow: '0 4px 15px 0 rgba(242, 201, 76, 0.30)' }}
+            className="px-6 md:px-10 rounded-full bg-gold-500 text-navy-800 shadow-[0_4px_15px_0_rgba(242,201,76,0.30)] hover:bg-gold-400"
             iconRight={<ArrowRight className="w-4 h-4" />}
           >
             {cta?.cta_text || fb.cta_text}

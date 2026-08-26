@@ -8,7 +8,7 @@ interface ContactFormulaireProps {
 
 export function ContactFormulaire({ formTitle, imageUrl, notes }: ContactFormulaireProps) {
   return (
-    <section className="py-8 lg:py-16">
+    <section className="py-8 lg:py-12">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch justify-center max-w-6xl mx-auto">
           {/* Image */}

@@ -1,73 +1,84 @@
 import { FadeInView } from "@/components/ui/FadeInView";
-import { toHtml } from "@/lib/wysiwyg";
+import { PhotoPlaceholder } from "@/components/ui/PhotoPlaceholder";
 
 interface HistoireHeroProps {
-  titleLine1: string;
+  sectionTag: string;
+  title: string;
   titleHighlight: string;
-  subtitle?: string;
   description: string;
-  quote?: string;
+  quote: string;
   founderName: string;
-  founderSubtitle: string;
+  founderRole: string;
+  photoUrl?: string;
+  photoLegende: string;
+  photoNote?: string;
 }
 
 export function HistoireHero({
-  titleLine1,
+  sectionTag,
+  title,
   titleHighlight,
-  subtitle,
   description,
   quote,
   founderName,
-  founderSubtitle,
+  founderRole,
+  photoUrl,
+  photoLegende,
+  photoNote,
 }: HistoireHeroProps) {
   return (
-    <section className="bg-[#ecf4f6] pt-28 pb-8 lg:pt-32 lg:pb-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none" />
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 flex flex-col items-center text-center">
-        <div className="max-w-4xl mx-auto flex flex-col gap-4 lg:gap-6 items-center">
-          <FadeInView delay={0}>
-            <h1 className="typo-h1 text-navy-800 text-center">
-              {titleLine1}<br />
+    <section className="bg-white pt-18 pb-12 lg:pt-26 lg:pb-10 overflow-hidden">
+      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Texte */}
+          <FadeInView direction="left" className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* <span className="typo-tag text-teal-400">{sectionTag}</span> */}
+            <h1 className="typo-h1 text-navy-800 mt-4">
+              {title}
+              <br />
               <span className="text-teal-400">{titleHighlight}</span>
             </h1>
-          </FadeInView>
-          {subtitle && (
-            <FadeInView delay={0.1}>
-              <p className="typo-h3 text-navy-800 max-w-2xl text-center">
-                {subtitle}
-              </p>
-            </FadeInView>
-          )}
-          {description && (
-            <FadeInView delay={0.2}>
-              <div
-                className="prose max-w-2xl text-center typo-body"
-                dangerouslySetInnerHTML={{ __html: toHtml(description) }}
-              />
-            </FadeInView>
-          )}
-          {quote && (
-            <FadeInView delay={0.3}>
-              <p className="typo-body italic max-w-2xl text-center">
+            {description && (
+              <p className="typo-body mt-6 max-w-xl">{description}</p>
+            )}
+            {quote && (
+              <p className="typo-h3 italic text-navy-800 mt-6 max-w-xl">
                 {quote}
               </p>
-            </FadeInView>
-          )}
-          <FadeInView delay={0.4}>
-            <div className="flex items-center gap-4 mt-4">
+            )}
+            <div className="flex items-center justify-center lg:justify-start gap-4 mt-8">
               <div className="w-10 h-0.5 bg-teal-400" />
               <p className="text-navy-800 font-bold text-sm tracking-wide">
-                {founderName} <span className="text-gray-500 font-semibold">— {founderSubtitle}</span>
+                {founderName}{" "}
+                <span className="text-gray-500 font-semibold">
+                  — {founderRole}
+                </span>
               </p>
             </div>
           </FadeInView>
+
+          {/* Photo (placeholder tant qu'aucune image n'est chargée dans WordPress) */}
+          <FadeInView direction="right" delay={0.15}>
+            {photoUrl ? (
+              <div className="relative rounded-xl overflow-hidden aspect-[4/4] shadow-xl">
+                <img
+                  src={photoUrl}
+                  alt={photoLegende}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            ) : (
+              <PhotoPlaceholder
+                tag="Emplacement réservé"
+                label={photoLegende}
+                note={photoNote}
+                icon="camera"
+                className="aspect-[4/5] w-full rounded-3xl"
+              />
+            )}
+          </FadeInView>
         </div>
       </div>
-
-      {/* <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 text-[80px] md:text-[100px] sm:text-[150px] lg:text-[200px] font-black text-navy-800/[0.04] leading-none select-none pointer-events-none whitespace-nowrap">
->>>>>>> Stashed changes
-        Histoire
-      </div> */}
     </section>
   );
 }
