@@ -16,7 +16,7 @@ const sections = [
   {
     id: "donnees-personnelles",
     title: "Données personnelles",
-    content: `Sur le site web pur-alpha.fr, deux types de données peuvent être collectées : les données fournies directement.
+    content: `Sur le site web puralpha.fr, deux types de données peuvent être collectées : les données fournies directement.
 
 Les données sont celles que vous nous transmettez directement via le formulaire de contact ou par email. Les champs collectés dans le formulaire incluent : prénom, nom, e-mail et téléphone.
 Les données collectées automatiquement
@@ -28,7 +28,7 @@ Lors de vos visites, avec votre consentement, nous pouvons recueillir des inform
     title: "Utilisation des données",
     content: `Les données que vous nous transmettez directement sont utilisées pour vous recontacter et/ou pour traiter votre demande.
 
-Les données « web analytics » sont collectées de manière anonyme (en enregistrant des adresses IP anonymisées) par Axe Analytics, ce qui nous permet de mesurer l'audience de notre site, les consultations et les éventuelles erreurs afin d'améliorer continuellement l'expérience utilisateur. Ces données sont utilisées par PUR Alpha, responsable du traitement, et ne seront jamais partagées avec des tiers ni utilisées à d'autres fins que celles mentionnées.`,
+Les données « web analytics » sont collectées de manière anonyme (avec consentement préalable et adresses IP anonymisées) via Google Analytics (GA4), ce qui nous permet de mesurer l'audience de notre site, les consultations et les éventuelles erreurs afin d'améliorer continuellement l'expérience utilisateur. Ces données sont utilisées par PUR Alpha, responsable du traitement, et ne seront jamais partagées avec des tiers à des fins commerciales.`,
   },
   {
     id: "base-legale",

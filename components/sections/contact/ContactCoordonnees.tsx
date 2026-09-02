@@ -17,17 +17,26 @@ interface ContactCoordonneesProps {
 
 const CONSENT_KEY = "puralpha-cookie-consent";
 
+const MAP_STORAGE_KEY = "puralpha-map-consent";
+
 export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
   const [mapConsent, setMapConsent] = useState(false);
 
   useEffect(() => {
+    // Vérifier si la carte a été expressément acceptée via le bouton dédié ou le consentement marketing
+    try {
+      if (sessionStorage.getItem(MAP_STORAGE_KEY) === "true") {
+        setMapConsent(true);
+        return;
+      }
+    } catch { /* ignore */ }
+
     const stored = localStorage.getItem(CONSENT_KEY);
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        // La carte est un service tiers → nécessite le consentement fonctionnel (toujours actif)
-        // ou statistiques. On l'autorise si l'utilisateur a fait un choix quelconque.
-        if (parsed.fonctionnel) setMapConsent(true);
+        // Google Maps est un service tiers : autorisé si l'utilisateur a accepté la catégorie marketing
+        if (parsed.marketing) setMapConsent(true);
       } catch { /* ignore */ }
     }
 
@@ -36,7 +45,7 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
       if (e.key === CONSENT_KEY && e.newValue) {
         try {
           const parsed = JSON.parse(e.newValue);
-          if (parsed.fonctionnel) setMapConsent(true);
+          setMapConsent(!!parsed.marketing);
         } catch { /* ignore */ }
       }
     };
@@ -45,14 +54,9 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
   }, []);
 
   const handleAcceptMap = () => {
-    // Enregistrer le consentement s'il n'existe pas encore
-    const stored = localStorage.getItem(CONSENT_KEY);
-    if (!stored) {
-      localStorage.setItem(
-        CONSENT_KEY,
-        JSON.stringify({ fonctionnel: true, statistiques: false, marketing: false })
-      );
-    }
+    try {
+      sessionStorage.setItem(MAP_STORAGE_KEY, "true");
+    } catch { /* ignore */ }
     setMapConsent(true);
   };
 

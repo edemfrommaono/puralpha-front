@@ -17,6 +17,7 @@ const contactSchema = z.object({
   "select-2": z.string().min(1, "Ce champ est requis"),        // Objet de votre demande
   "textarea-1": z.string().optional(),                         // Votre message
   "consent_email": z.boolean().optional(),                     // Newsletter e-mail (facultatif)
+  "hp_website": z.string().optional(),                         // Honeypot anti-spam
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -81,17 +82,27 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
       "select-2": "",
       "textarea-1": "",
       "consent_email": false,
+      "hp_website": "",
     },
   });
 
   const onSubmit = async (formData: ContactFormData) => {
     setSubmitError(null);
+
+    // Protection anti-spam Honeypot : si le champ invisible est rempli, on rejette silencieusement
+    if (formData.hp_website) {
+      console.warn("Spam détecté via le honeypot");
+      setIsSubmitted(true);
+      reset();
+      return;
+    }
+
     try {
       const wpApiUrl = process.env.NEXT_PUBLIC_WP_API_URL;
       const baseUrl = wpApiUrl ? wpApiUrl.replace("/wp-json/wp/v2", "") : "https://bk.puralpha.fr";
       const submissionUrl = `${baseUrl}/wp-json/v1/submit-form`;
 
-      const entries = Object.entries(formData)
+      const entries: { name: string; value: string }[] = Object.entries(formData)
         .filter(([key]) => Object.prototype.hasOwnProperty.call(FIELD_MAPPING, key))
         .map(([key, value]) => {
           let mappedValue = (value as string) || "";
@@ -106,6 +117,14 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
             value: mappedValue,
           };
         });
+
+      // Transmission du consentement marketing au serveur
+      if (formData.consent_email) {
+        entries.push({
+          name: "consent_email",
+          value: "oui",
+        });
+      }
 
       const formDataToSend = new FormData();
       formDataToSend.append("form_id", "573");
@@ -135,7 +154,7 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
           accepted: c.value,
           date: timestamp.split("T")[0],
           time: timestamp.split("T")[1].substring(0, 8),
-          source: "Formulaire de contact - pur-alpha.fr",
+          source: "Formulaire de contact - puralpha.fr",
           canal: "Web",
           text_version: "v1.1 - August 2026"
         });
@@ -173,6 +192,18 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
 
       {!isSubmitted && (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 md:gap-5">
+          {/* Champ Honeypot anti-spam (invisible, piège à robots) */}
+          <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+            <label htmlFor="hp_website">Ne pas remplir ce champ</label>
+            <input
+              type="text"
+              id="hp_website"
+              tabIndex={-1}
+              autoComplete="off"
+              {...register("hp_website")}
+            />
+          </div>
+
           {/* Vous êtes... */}
           <div className="flex flex-col gap-2">
               <label htmlFor="role" className="typo-small font-bold text-navy-900">Vous êtes... *</label>

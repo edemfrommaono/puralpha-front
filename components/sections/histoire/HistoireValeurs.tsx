@@ -29,7 +29,7 @@ export function HistoireValeurs({
 }: HistoireValeursProps) {
   return (
     <section className="bg-gray-100 py-12 lg:py-24">
-      <div className="container mx-auto px-8 lg:px-12 max-w-8xl">
+      <div className="container mx-auto px-8 lg:px-12 max-w-4xl">
         <FadeInView className="text-center mb-10 lg:mb-16">
           <span className="typo-tag text-teal-400">{sectionTag}</span>
           <h2 className="typo-h2 text-navy-800 mt-4">

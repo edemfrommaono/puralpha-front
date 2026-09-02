@@ -18,9 +18,16 @@ const candidatureSchema = z.object({
   "select-1": z.string().min(1, "Ce champ est requis"),      // Expérience (Aucune / Personnelle / Professionnelle)
   "text-3": z.string().optional(),                           // Nombre d'années — facultatif, affiché seulement si une expérience est déclarée
   "text-4": z.string().optional(),                           // Diplôme / qualification (si applicable)
-  "upload-1": z.any().refine((files) => files && files.length > 0, "Un CV est requis"), // CV *
+  "upload-1": z
+    .any()
+    .refine((files) => files && files.length > 0, "Un CV est requis")
+    .refine(
+      (files) => !files || !files[0] || files[0].size <= 10 * 1024 * 1024,
+      "Le fichier du CV ne doit pas dépasser 10 Mo"
+    ), // CV * (max 10 Mo)
   "textarea-1": z.string().max(180, "180 caractères max").optional(),
   "consent_vivier": z.boolean().optional(),
+  "hp_website": z.string().optional(),                       // Honeypot anti-spam
 });
 
 type CandidatureFormData = z.infer<typeof candidatureSchema>;
@@ -101,6 +108,7 @@ export function RejoindreFormulaire({
       "upload-1": null,
       "textarea-1": "",
       "consent_vivier": false,
+      "hp_website": "",
     },
   });
 
@@ -121,6 +129,15 @@ export function RejoindreFormulaire({
 
   const onSubmit = async (formData: CandidatureFormData) => {
     setSubmitError(null);
+
+    // Protection anti-spam Honeypot : si le champ invisible est rempli, on rejette silencieusement
+    if (formData.hp_website) {
+      console.warn("Spam détecté via le honeypot");
+      setIsSubmitted(true);
+      reset();
+      return;
+    }
+
     try {
       const wpApiUrl = process.env.NEXT_PUBLIC_WP_API_URL;
       const baseUrl = wpApiUrl ? wpApiUrl.replace("/wp-json/wp/v2", "") : "https://bk.puralpha.fr";
@@ -173,7 +190,7 @@ export function RejoindreFormulaire({
         accepted: !!formData.consent_vivier,
         date: timestamp.split("T")[0],
         time: timestamp.split("T")[1].substring(0, 8),
-        source: "Formulaire de candidature - pur-alpha.fr",
+        source: "Formulaire de candidature - puralpha.fr",
         canal: "Web",
         text_version: "v1.0 - July 2026"
       });
@@ -223,6 +240,18 @@ export function RejoindreFormulaire({
 
           {!isSubmitted && (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              {/* Champ Honeypot anti-spam (invisible, piège à robots) */}
+              <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+                <label htmlFor="hp_candidature_website">Ne pas remplir ce champ</label>
+                <input
+                  type="text"
+                  id="hp_candidature_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  {...register("hp_website")}
+                />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold text-navy-800 uppercase tracking-wide">Prénom *</label>
