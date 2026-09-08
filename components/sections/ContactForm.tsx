@@ -295,7 +295,6 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
               <option value="">Sélectionnez...</option>
               <option value="one">Renseignements généraux</option>
               <option value="two">Demande d'accompagnement</option>
-              <option value="Devenir-intervenant(e)">Devenir intervenant(e)</option>
               <option value="Partenariat">Partenariat</option>
               <option value="Autre-demande">Autre demande</option>
             </select>

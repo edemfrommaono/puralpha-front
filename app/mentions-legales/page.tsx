@@ -19,7 +19,7 @@ const sections = [
         </p>
         <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100/80 space-y-2">
           <p><strong>Propriétaire du site :</strong> PUR ALPHA</p>
-          <p><strong>Identification de l'entreprise :</strong> PUR ALPHA, SIRET 989 156 989 00018, Agrément SAP N° SAP989156989, sis 26 rue des Sablons, 95360 Montmagny</p>
+          <p><strong>Identification de l'entreprise :</strong> PUR ALPHA, SIRET 989 156 989 00026, Agrément SAP N° SAP989156989, sis 26 rue des Sablons, 95360 Montmagny</p>
           <p><strong>Directeur de la publication :</strong> Marc LEBLANC</p>
           <p><strong>Réalisation :</strong> PUR ALPHA</p>
           <p><strong>Hébergeur :</strong> OVH, Société par Actions Simplifiée au capital de 10 069 020 €, ayant son siège social au 2 rue Kellermann, 59100 ROUBAIX France, Siren 424 761 419 RCS Lille</p>

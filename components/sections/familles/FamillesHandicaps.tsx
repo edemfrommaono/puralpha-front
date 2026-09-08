@@ -38,9 +38,9 @@ export function FamillesHandicaps({
     <section className="py-8 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         {(title || titleHighlight || description) && (
-          <div className="text-center mb-8 lg:mb-16 max-w-6xl mx-auto">
+          <div className="text-center mb-8 lg:mb-16 max-w-5xl mx-auto">
             {(title || titleHighlight) && (
-              <h2 className="typo-h2 text-navy-800 mb-6">
+              <h2 className="typo-h2 text-navy-800 mb-6 leading-[1]">
                 {title}
                 {titleHighlight && (
                   <>
@@ -91,13 +91,13 @@ export function FamillesHandicaps({
         )}
 
         {(highlightQuote || highlightDescription) && (
-          <div className="bg-[#ecf4f6] border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
-            <p className="text-navy-800 text-center leading-relaxed">
+          <div className="bg-navy-900 border border-teal-400/20 rounded-2xl py-6 px-6 lg:py-8 lg:px-16 text-center max-w-6xl mx-auto">
+            <p className="text-center leading-relaxed">
               {highlightQuote && (
                 <span className="typo-h3 text-[#F2C94C]">{highlightQuote}</span>
               )} <br />
               {highlightDescription && (
-                <span className="typo-body font-normal" dangerouslySetInnerHTML={{ __html: highlightDescription }} ></span>
+                <span className="typo-body font-normal text-white" dangerouslySetInnerHTML={{ __html: highlightDescription }} ></span>
               )}
             </p>
           </div>
