@@ -15,11 +15,11 @@ const sections = [
     content: (
       <div className="space-y-4">
         <p>
-          Conformément à l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, nous informons les utilisateurs du site internet <code>pur-alpha.fr</code> de l'identité des différents acteurs impliqués dans sa création et son suivi :
+          Conformément à l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, nous informons les utilisateurs du site internet <code>puralpha.fr</code> de l'identité des différents acteurs impliqués dans sa création et son suivi :
         </p>
         <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100/80 space-y-2">
           <p><strong>Propriétaire du site :</strong> PUR ALPHA</p>
-          <p><strong>Identification de l'entreprise :</strong> PUR ALPHA, SIRET 989 156 989 00018, Agrément SAP N° SAP989156989, sis 26 rue des Sablons, 95360 Montmagny</p>
+          <p><strong>Identification de l'entreprise :</strong> PUR ALPHA, SIRET 989 156 989 00026, Agrément SAP N° SAP989156989, sis 26 rue des Sablons, 95360 Montmagny</p>
           <p><strong>Directeur de la publication :</strong> Marc LEBLANC</p>
           <p><strong>Réalisation :</strong> PUR ALPHA</p>
           <p><strong>Hébergeur :</strong> OVH, Société par Actions Simplifiée au capital de 10 069 020 €, ayant son siège social au 2 rue Kellermann, 59100 ROUBAIX France, Siren 424 761 419 RCS Lille</p>
@@ -43,7 +43,7 @@ const sections = [
     content: (
       <div className="space-y-4">
         <p>
-          PUR ALPHA ne pourra être tenu responsable des dommages directs ou indirects causés au matériel de l'utilisateur lors de l'accès au site <code>pur-alpha.fr</code>. Nous déclinons toute responsabilité concernant l'utilisation des informations et contenus présents sur <code>pur-alpha.fr</code>. Bien que nous nous engagions à sécuriser le site, nous ne pouvons être tenus responsables des données personnelles qui pourraient être introuvées à notre insu.
+          PUR ALPHA ne pourra être tenu responsable des dommages directs ou indirects causés au matériel de l'utilisateur lors de l'accès au site <code>puralpha.fr</code>. Nous déclinons toute responsabilité concernant l'utilisation des informations et contenus présents sur <code>puralpha.fr</code>. Bien que nous nous engagions à sécuriser le site, nous ne pouvons être tenus responsables des données personnelles qui pourraient être introuvées à notre insu.
         </p>
         <p>
           Des espaces interactifs (contact ou commentaires) sont disponibles pour les utilisateurs. PUR ALPHA se réserve le droit de supprimer tout contenu qui contreviendrait à la législation en vigueur, notamment en matière de protection des données. Le cas échéant, inapproprié, PUR ALPHA se réserve également le droit de poursuivre l'utilisateur le cas échéant sur le plan pénal.
@@ -89,7 +89,7 @@ const sections = [
     title: "5 – CNIL et gestion des données personnelles",
     content: (
       <p>
-        Conformément à la loi 78-17 du 6 janvier liée modifiée, l'utilisateur du site <code>pur-alpha.fr</code> dispose d'un droit d'accès, de modification et de suppression des informations collectées. Pour exercer ce droit, contactez notre Délégué à la Protection des Données : <code>pur-alpha.fr</code> – M. LEBLANC. Pour plus d'informations sur le traitement de vos données, consultez notre{" "}
+        Conformément à la loi 78-17 du 6 janvier liée modifiée, l'utilisateur du site <code>puralpha.fr</code> dispose d'un droit d'accès, de modification et de suppression des informations collectées. Pour exercer ce droit, contactez notre Délégué à la Protection des Données : <code>contact@puralpha.fr</code> – M. LEBLANC. Pour plus d'informations sur le traitement de vos données, consultez notre{" "}
         <Link href="/politique-confidentialite" className="text-teal-600 hover:underline font-semibold">
           Politique de confidentialité
         </Link>.
@@ -101,7 +101,7 @@ const sections = [
     title: "6 – Liens hypertextes et cookies",
     content: (
       <p>
-        <code>pur-alpha.fr</code> contient des liens vers d'autres sites et décline toute responsabilité concernant ces liens externes. Toute navigation sur <code>pur-alpha.fr</code> peut entraîner l'installation de cookies sur l'ordinateur de l'utilisateur. Un cookie est un fichier qui enregistre des informations relatives à la navigation. Vous pouvez accepter ou refuser les cookies en modifiant les paramètres de votre navigateur. Aucun cookie ne sera installé sans votre consentement. Pour plus d'informations sur notre utilisation des cookies, consultez notre{" "}
+        <code>puralpha.fr</code> contient des liens vers d'autres sites et décline toute responsabilité concernant ces liens externes. Toute navigation sur <code>puralpha.fr</code> peut entraîner l'installation de cookies sur l'ordinateur de l'utilisateur. Un cookie est un fichier qui enregistre des informations relatives à la navigation. Vous pouvez accepter ou refuser les cookies en modifiant les paramètres de votre navigateur. Aucun cookie ne sera installé sans votre consentement. Pour plus d'informations sur notre utilisation des cookies, consultez notre{" "}
         <Link href="/politique-cookies" className="text-teal-600 hover:underline font-semibold">
           Politique des Cookies
         </Link>.
@@ -122,7 +122,7 @@ const sections = [
     title: "8 – Droit applicable et attribution de juridiction",
     content: (
       <p>
-        Tout litige relatif à l'utilisation du site <code>pur-alpha.fr</code> est soumis au droit français. En cas de contradiction, les tribunaux compétents de Paris ont seuls compétence.
+        Tout litige relatif à l'utilisation du site <code>puralpha.fr</code> est soumis au droit français. En cas de contradiction, les tribunaux compétents de Paris ont seuls compétence.
       </p>
     ),
   },

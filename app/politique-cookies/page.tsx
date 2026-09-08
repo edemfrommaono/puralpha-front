@@ -11,7 +11,7 @@ const sections = [
   {
     id: "introduction",
     title: "1. Introduction",
-    content: `Notre site web, pur-alpha.fr, utilise des cookies et d'autres technologies similaires (ci-après, le terme « cookies » est utilisé pour tous les cookies et technologies similaires). Lisez la politique ci-dessous pour vous informer sur l'utilisation des cookies sur notre site.`,
+    content: `Notre site web, puralpha.fr, utilise des cookies et d'autres technologies similaires (ci-après, le terme « cookies » est utilisé pour tous les cookies et technologies similaires). Lisez la politique ci-dessous pour vous informer sur l'utilisation des cookies sur notre site.`,
   },
   {
     id: "que-sont-les-cookies",
@@ -86,7 +86,7 @@ Pour exercer ces droits, veuillez nous contacter. Référez-vous aux coordonnée
     content: `PUR Alpha
 26 rue des Sablons, 95360 Montmagny
 France
-Site web : https://pur-alpha.fr
+Site web : https://puralpha.fr
 Email : contact@puralpha.fr
 Numéro de téléphone : 06 14 79 60 47
 

@@ -89,7 +89,7 @@ export function Footer() {
           <div className="flex flex-col gap-5">
             <h4 className="typo-h3 text-gold-500">Informations administratives</h4>
             <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-xs text-white/60 leading-relaxed space-y-1">
-              <p>SIRET : 989 156 989 00018</p>
+              <p>SIRET : 989 156 989 00026</p>
               <p>APE : 88.10B</p>
               <p>Agrément SAP N° : SAP989156989</p>
               <p>Siège social : {SITE_CONFIG.address}</p>
@@ -114,7 +114,7 @@ export function Footer() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50">
           <p>© 2026 PUR Alpha — Tous droits réservés</p>
           <div className="flex items-center flex-wrap gap-x-4 gap-y-2">
-            <span>SIRET : 989 156 989 00018</span>
+            <span>SIRET : 989 156 989 00026</span>
             <span className="text-white/20">·</span>
             <span>Agrément SAP N° SAP989156989</span>
             <span className="text-white/20">·</span>
