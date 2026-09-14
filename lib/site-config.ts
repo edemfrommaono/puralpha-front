@@ -28,6 +28,14 @@ export const MEDIATOR = {
 } as const;
 
 /**
+ * Fiche d'information Avance Immédiate du Crédit d'Impôt (AICI)
+ */
+export const AICI_CONFIG = {
+  pdfPath: "/documents/AICI_PUR_ALPHA_Infographie.pdf",
+  title: "Consulter la fiche d'information sur l'Avance Immédiate du Crédit d'Impôt (PDF)",
+} as const;
+
+/**
  * Réseaux sociaux PUR Alpha — liens définitifs validés par le client (§8.4).
  * Source unique utilisée par le Footer ET la page Actualités.
  */

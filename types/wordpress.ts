@@ -421,7 +421,13 @@ export interface AidesFinancieresACF {
     description: string;
     cta_text: string;
     cta_url: string;
-    badges: Array<{ titre: string }>;
+    badges: Array<{
+      titre: string;
+      document?: ACFImageArray | number | string | false;
+      document_url?: string;
+      url?: string;
+      lien?: string;
+    }>;
   };
 }
 

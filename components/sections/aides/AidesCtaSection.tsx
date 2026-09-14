@@ -1,7 +1,14 @@
 import Image from "next/image";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Info } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { AICI_CONFIG } from "@/lib/site-config";
+
+interface CtaBadgeItem {
+  titre: string;
+  documentUrl?: string;
+  url?: string;
+}
 
 interface AidesCtaSectionProps {
   cta?: {
@@ -10,10 +17,10 @@ interface AidesCtaSectionProps {
     description: string;
     cta_text: string;
     cta_url: string;
-    badges?: { titre: string }[];
+    badges?: Array<{ titre: string; documentUrl?: string }>;
   };
   ctaFondUrl: string;
-  ctaBadges: readonly { titre: string }[];
+  ctaBadges: readonly CtaBadgeItem[];
   fallback: {
     title: string;
     title_highlight: string;
@@ -47,14 +54,32 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-6 lg:mb-12 text-sm text-white/80">
-          {ctaBadges.map((badge, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-gold-500" /> {badge.titre}
-              {i < ctaBadges.length - 1 && (
-                <span className="hidden sm:block text-white/25 text-lg ml-6">·</span>
-              )}
-            </div>
-          ))}
+          {ctaBadges.map((badge, i) => {
+            const isAici = badge.titre?.toLowerCase().includes("avance immédiate") || badge.titre?.toLowerCase().includes("crédit d'impôt");
+            const docUrl = badge.documentUrl || badge.url || (isAici ? AICI_CONFIG.pdfPath : undefined);
+
+            return (
+              <div key={i} className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-gold-500 shrink-0" />
+                <span>{badge.titre}</span>
+                {docUrl && (
+                  <a
+                    href={docUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-white/10 hover:bg-gold-500 text-white hover:text-navy-900 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-gold-500/50 cursor-pointer"
+                    title={isAici ? AICI_CONFIG.title : `Consulter le document : ${badge.titre}`}
+                    aria-label={isAici ? AICI_CONFIG.title : `Consulter le document : ${badge.titre}`}
+                  >
+                    <Info className="w-3 h-3" />
+                  </a>
+                )}
+                {i < ctaBadges.length - 1 && (
+                  <span className="hidden sm:block text-white/25 text-lg ml-6">·</span>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -66,14 +91,6 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
           >
             {cta?.cta_text || fb.cta_text}
           </Button>
-          {/* <Button
-            variant="outline-navy"
-            href="/contact"
-            className="px-6 md:px-10"
-            style={{ borderRadius: '50px', borderColor: '#F2C94C', color: '#F2C94C' }}
-          >
-            {(cta as Record<string, unknown>)?.cta_texte_2 as string || "Nous contacter"}
-          </Button> */}
         </div>
       </FadeInView>
     </section>

@@ -46,7 +46,25 @@ export default async function AidesFinancieresPage() {
 
   // CTA Final
   const cta = acf?.cta_final;
-  const ctaBadges = cta?.badges?.length ? cta.badges : fb.cta_final.badges;
+  const rawCtaBadges = cta?.badges?.length ? cta.badges : fb.cta_final.badges;
+  const resolvedCtaBadges = await Promise.all(
+    rawCtaBadges.map(async (badge) => {
+      const b = badge as Record<string, unknown>;
+      const doc = b.document || b.document_url || b.lien || b.url || b.fichier;
+      let documentUrl: string | undefined;
+      if (typeof doc === "number") {
+        documentUrl = (await resolveImageUrl(doc)) || undefined;
+      } else if (typeof doc === "object" && doc !== null) {
+        documentUrl = (doc as { url?: string; source_url?: string }).url || (doc as { url?: string; source_url?: string }).source_url || undefined;
+      } else if (typeof doc === "string" && doc.trim().length > 0) {
+        documentUrl = doc.trim();
+      }
+      return {
+        titre: badge.titre,
+        documentUrl,
+      };
+    })
+  );
   const ctaFondUrl = await resolveImageUrl(cta?.image_de_fond);
 
   // Reste à charge
@@ -125,7 +143,7 @@ export default async function AidesFinancieresPage() {
       <AidesCtaSection
         cta={cta}
         ctaFondUrl={ctaFondUrl}
-        ctaBadges={ctaBadges}
+        ctaBadges={resolvedCtaBadges}
         fallback={fb.cta_final}
       />
     </div>

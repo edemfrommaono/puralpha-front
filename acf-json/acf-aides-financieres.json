@@ -128,10 +128,20 @@
       {
         "key": "field_af_cta", "label": "CTA Final", "name": "cta_final", "type": "group", "show_in_rest": true,
         "sub_fields": [
+          { "key": "field_af_cta_bg", "label": "Image de fond", "name": "image_de_fond", "type": "image", "return_format": "id" },
           { "key": "field_af_cta_title", "label": "Titre", "name": "title", "type": "text" },
           { "key": "field_af_cta_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
           { "key": "field_af_cta_desc", "label": "Description", "name": "description", "type": "textarea" },
-          { "key": "field_af_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Prendre contact" },
+          {
+            "key": "field_af_cta_badges", "label": "Badges", "name": "badges", "type": "repeater", "layout": "table",
+            "sub_fields": [
+              { "key": "field_af_cta_badge_titre", "label": "Titre", "name": "titre", "type": "text" },
+              { "key": "field_af_cta_badge_doc", "label": "Document PDF (ex: Infographie AICI)", "name": "document", "type": "file", "return_format": "array", "mime_types": "pdf" },
+              { "key": "field_af_cta_badge_url", "label": "URL du document", "name": "document_url", "type": "url" }
+            ]
+          },
+          { "key": "field_af_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Demander une simulation personnalisée" },
+          { "key": "field_af_cta_text_2", "label": "CTA texte secondaire", "name": "cta_texte_2", "type": "text", "default_value": "Nous contacter" },
           { "key": "field_af_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url", "default_value": "/contact" }
         ]
       }
