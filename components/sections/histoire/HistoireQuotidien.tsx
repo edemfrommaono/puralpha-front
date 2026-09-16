@@ -64,13 +64,9 @@ export function HistoireQuotidien({
                 <div className="relative rounded-2xl overflow-hidden aspect-[3/4]">
                   <img
                     src={photo.imageUrl}
-                    alt={photo.libelle}
+                    alt={photo.libelle || "Photo"}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-800/60 via-navy-800/10 to-transparent" />
-                  <span className="absolute bottom-4 inset-x-0 text-center text-white font-bold text-xs uppercase tracking-[2px]">
-                    {photo.libelle}
-                  </span>
                 </div>
               ) : (
                 <PhotoPlaceholder

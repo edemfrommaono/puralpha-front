@@ -61,18 +61,24 @@ export function AidesCtaSection({ cta, ctaFondUrl, ctaBadges, fallback: fb }: Ai
             return (
               <div key={i} className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-gold-500 shrink-0" />
-                <span>{badge.titre}</span>
-                {docUrl && (
+                {docUrl ? (
                   <a
                     href={docUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-white/10 hover:bg-gold-500 text-white hover:text-navy-900 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-gold-500/50 cursor-pointer"
+                    className="group inline-flex items-center hover:text-white transition-colors duration-200 cursor-pointer"
                     title={isAici ? AICI_CONFIG.title : `Consulter le document : ${badge.titre}`}
                     aria-label={isAici ? AICI_CONFIG.title : `Consulter le document : ${badge.titre}`}
                   >
-                    <Info className="w-3 h-3" />
+                    <span className="underline-offset-4 group-hover:underline decoration-gold-500">{badge.titre}</span>
+                    <sup className="ml-1 relative -top-1.5 inline-block">
+                      <span className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full bg-white/10 group-hover:bg-gold-500 text-white group-hover:text-navy-900 transition-all duration-200 group-hover:scale-110">
+                        <Info className="w-3 h-3" />
+                      </span>
+                    </sup>
                   </a>
+                ) : (
+                  <span>{badge.titre}</span>
                 )}
                 {i < ctaBadges.length - 1 && (
                   <span className="hidden sm:block text-white/25 text-lg ml-6">·</span>
