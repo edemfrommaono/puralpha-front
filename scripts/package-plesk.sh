@@ -73,14 +73,29 @@ echo "   → Création de tmp/restart.txt pour redémarrer automatiquement l'app
 mkdir -p "$DIST_DIR/tmp"
 touch "$DIST_DIR/tmp/restart.txt"
 
+# Copie de package-lock.json si présent
+if [ -f "package-lock.json" ]; then
+    cp package-lock.json "$DIST_DIR/"
+fi
+
 # Suppression de node_modules pour alléger le ZIP (npm install devra être fait sur le serveur)
 echo "🧹 Étape 5 — Suppression de node_modules pour le zip..."
 rm -rf "$DIST_DIR/node_modules"
 
 # 5. Création du ZIP
 echo "🤐 Étape 6 — Création de l'archive ZIP..."
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$DIST_DIR"
-zip -qr "../$ZIP_NAME" .
+if command -v zip &> /dev/null; then
+    zip -qr "../$ZIP_NAME" .
+elif command -v python &> /dev/null; then
+    python "$SCRIPT_DIR/zip_folder.py" "." "../$ZIP_NAME"
+elif command -v python3 &> /dev/null; then
+    python3 "$SCRIPT_DIR/zip_folder.py" "." "../$ZIP_NAME"
+else
+    echo "❌ Erreur : ni zip ni python n'ont été trouvés pour créer le zip."
+    exit 1
+fi
 cd ..
 
 # Nettoyage
