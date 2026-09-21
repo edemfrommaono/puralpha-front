@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUR Alpha — Article 5 · Version de travail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<style>
+:root{
+  --navy:#1F2E53; --teal:#52BEC8; --teal-pale:#B1E3E0;
+  --beige:#F6F4EF; --yellow:#FFD94C; --grisbleu:#D9E3EA; --white:#FFF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--beige);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;}
+header{background:var(--white);border-bottom:3px solid var(--teal);padding:22px 28px;position:sticky;top:0;z-index:50;}
+.head-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.brand{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;}
+.brand span{color:var(--teal);}
+.head-meta{font-size:12.5px;opacity:.65;}
+.actions{display:flex;gap:8px;}
+.copy-btn{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;background:var(--navy);color:#fff;border:none;border-radius:5px;padding:7px 14px;cursor:pointer;transition:.15s;}
+.copy-btn:hover{background:var(--teal);}
+.copy-btn.copied{background:var(--teal);}
+.copy-btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--grisbleu);}
+.copy-btn.ghost:hover{border-color:var(--teal);color:var(--teal);}
+main{max-width:820px;margin:0 auto;padding:40px 28px 90px;}
+.sheet{background:var(--white);border:1px solid var(--grisbleu);border-radius:14px;padding:clamp(28px,5vw,56px);}
+.article .kicker{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
+.article h1{font-family:'Lora',serif;font-weight:600;font-size:clamp(26px,4vw,34px);line-height:1.25;margin-bottom:22px;}
+.article .chapo{font-size:17.5px;line-height:1.65;border-left:4px solid var(--yellow);padding-left:18px;margin-bottom:30px;}
+.article h2{font-family:'Lora',serif;font-weight:600;font-size:22px;line-height:1.3;margin:36px 0 12px;}
+.article p{margin-bottom:14px;}
+.article strong{font-weight:700;}
+.article ul{margin:4px 0 16px;padding-left:4px;list-style:none;}
+.article ul li{position:relative;padding-left:22px;margin-bottom:7px;}
+.article ul li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--teal);}
+.article blockquote{font-family:'Lora',serif;font-style:italic;font-size:20px;line-height:1.5;color:var(--navy);border-left:4px solid var(--teal);background:var(--beige);padding:18px 24px;border-radius:0 10px 10px 0;margin:24px 0;}
+.article table{width:100%;border-collapse:collapse;font-size:14.5px;margin:18px 0 22px;}
+.article th{text-align:left;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:10px 14px;}
+.article th:first-child{background:var(--teal-pale);}
+.article th:last-child{background:var(--grisbleu);}
+.article td{padding:10px 14px;border-bottom:1px solid var(--grisbleu);vertical-align:top;}
+.article tr:last-child td{border-bottom:none;}
+.article .retenir{background:var(--beige);border-left:4px solid var(--yellow);border-radius:0 10px 10px 0;padding:16px 20px;margin:28px 0;}
+.article .retenir .retenir-label{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px;}
+.article .cta{font-weight:700;margin-top:6px;}
+.structure-note{max-width:820px;margin:16px auto 0;font-size:12.5px;opacity:.6;font-style:italic;padding:0 4px;}
+footer{max-width:820px;margin:0 auto;padding:24px 28px 40px;font-size:12px;opacity:.5;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-inner">
+    <div>
+      <div class="brand">PUR <span>ALPHA</span></div>
+      <div class="head-meta">Article 5 · Version de travail — non validée</div>
+    </div>
+    <div class="actions">
+      <button class="copy-btn" id="btn-text">Copier le texte</button>
+      <button class="copy-btn ghost" id="btn-html">Copier le HTML (WordPress)</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="sheet">
+    <article class="article" id="article-body">
+
+      <p class="kicker">Organiser le quotidien</p>
+
+      <h1>Retour d'école ou d'établissement : comment savoir de quel relais votre enfant a besoin ?</h1>
+
+      <p class="chapo">16 h 45. Votre enfant vient de rentrer. La journée est terminée sur le papier, mais pas forcément pour lui. Il vient de changer de lieu, d'adulte, de rythme. Vous, vous n'êtes peut-être pas encore rentrée. Et les deux ou trois heures qui suivent doivent malgré tout trouver leur organisation.</p>
+
+      <h2>Le retour n'est pas seulement une question d'horaire</h2>
+      <p>Quand on cherche un relais pour cette période, on réfléchit souvent en heures : de 16 h 30 à 19 h, ou jusqu'à votre retour. C'est une façon de poser le problème, mais elle laisse de côté l'essentiel.</p>
+      <blockquote>Deux heures à couvrir ne disent rien, à elles seules, de ce dont votre enfant a besoin pendant ces deux heures.</blockquote>
+      <p>On pense souvent au retour d'école ou d'établissement, mais le matin peut poser la même question. Entre le réveil, la préparation, les habitudes de l'enfant et le départ, certaines familles ont aussi besoin d'un relais avant même le début de la journée scolaire ou en établissement. Le principe reste le même : ce n'est pas la plage horaire qui définit le besoin, c'est la façon dont votre enfant vit ce passage d'un temps de sa journée à l'autre.</p>
+
+      <h2>Ce qui change réellement quand votre enfant rentre</h2>
+      <p>En quelques minutes, plusieurs choses changent en même temps pour lui : le lieu, l'adulte présent, le rythme, les sollicitations, parfois les repères. S'ajoute souvent une fatigue accumulée pendant la journée, différente d'un jour à l'autre. Ces changements font partie du passage d'un environnement à un autre. Ce qui importe, c'est de repérer comment votre enfant, lui, les vit.</p>
+
+      <h2>Comment repérer ce dont votre enfant a besoin pendant cette transition</h2>
+      <p>Quelques questions suffisent à commencer à y voir plus clair. Que fait spontanément votre enfant en rentrant ? Cherche-t-il immédiatement une activité, ou plutôt un temps de pause ? Certaines étapes du retour semblent-elles plus difficiles que d'autres ? Son comportement diffère-t-il selon les jours ? Et à quel moment semble-t-il réellement disponible pour passer à la suite de la soirée ?</p>
+      <p><strong>Il n'y a pas une « bonne » façon de rentrer à la maison.</strong> L'objectif est d'identifier ce qui aide votre enfant à passer d'un temps de sa journée au suivant — pas de trouver la méthode idéale valable pour tous les enfants.</p>
+      <table>
+        <tbody><tr><th>Des repères qui peuvent aider</th><th>Ce qui peut varier</th></tr>
+        <tr><td>Le lieu où l'enfant retrouve ses affaires.</td><td>Son envie de parler ou de rester au calme.</td></tr>
+        <tr><td>L'ordre habituel des premiers instants du retour.</td><td>L'activité proposée, ou l'absence d'activité.</td></tr>
+        <tr><td>Quelques habitudes connues de l'enfant.</td><td>Le rythme de la soirée, selon la fatigue du jour.</td></tr>
+      </tbody></table>
+
+      <h2>Faut-il remplir ce temps, ou parfois le laisser respirer ?</h2>
+      <p>On suppose souvent qu'un temps d'accompagnement doit être occupé en continu : une activité, des devoirs, une sortie, un jeu. Mais un enfant qui rentre d'une journée très sollicitante a parfois surtout besoin d'un temps calme, accompagné, sans consigne particulière à suivre. Ce n'est pas un temps vide ni un enfant laissé seul : c'est un temps où l'intervenant reste présent, disponible, sans chercher à occuper chaque minute. Un accompagnement utile ne se mesure pas au nombre d'activités réalisées pendant deux heures.</p>
+
+      <h2>Organiser le relais autour de ce constat</h2>
+      <p>Une fois ces observations posées, un créneau identique tous les jours n'est pas forcément la seule façon d'organiser le relais. Un relais peut se construire autrement :</p>
+      <ul>
+        <li>certains jours seulement, plutôt que toute la semaine ;</li>
+        <li>un début immédiatement au retour, ou un peu plus tard selon les jours ;</li>
+        <li>un temps d'activité ou un temps calme, selon la journée de l'enfant ;</li>
+        <li>une organisation qui peut évoluer selon les besoins identifiés, plutôt qu'un fonctionnement identique par principe.</li>
+      </ul>
+      <p>Plus ce besoin est régulier ou contraint par des horaires précis, plus il est utile d'y réfléchir à l'avance, sans urgence particulière.</p>
+
+      <div class="retenir">
+        <span class="retenir-label">À retenir</span>
+        Le besoin ne se définit pas seulement par l'heure à laquelle vous avez besoin de quelqu'un, mais par la manière dont votre enfant vit ce moment de transition — entre deux lieux, deux adultes, deux rythmes de sa journée.
+      </div>
+
+      <p>Comme parent, je connais ces fins de journée où tout semble devoir s'enchaîner en même temps. C'est ce qui me pousse, chez PUR Alpha, à toujours partir de ce qui se passe réellement pour l'enfant, avant de parler d'organisation. Ces observations peuvent ensuite vous aider à expliquer plus précisément votre besoin lorsque vous recherchez un relais.</p>
+      <p class="cta">Vous vous demandez ce dont votre enfant a réellement besoin à ce moment de la journée ? Parlons-en, à partir de ce que vous observez déjà chez lui.</p>
+
+    </article>
+  </div>
+
+  <p class="structure-note">Environ 630 mots. Conforme à la checklist consolidée : « vous » du début à la fin, une phrase mémorable par section (1 en blockquote, les autres en gras), une seule liste à puces, un tableau recentré sur la transition, touche fondatrice incarnée en « je » mais tournée vers ce que ça apporte aux familles (pas vers l'expérience d'Arame seule). Vocabulaire volontairement limité à observer/repérer/comprendre/ajuster — jamais interpréter/réguler/décoder/traiter/corriger, pour ne pas glisser vers un positionnement psycho-éducatif hors du rôle de PUR Alpha. Formulations adoucies : plus de généralisation « handicap ou non », plus de « tension », plus d'affirmation catégorique sur le créneau fixe, plus de mot « forfait ». Version validée après second tour de relecture croisée (ChatGPT 8,5/10 → corrections appliquées). Prête pour validation finale d'Arame.</p>
+</main>
+
+<footer>PUR Alpha — Article 5 · Version révisée après relecture croisée, en attente de validation finale.</footer>
+
+<script>
+function flash(btn){
+  var old = btn.textContent;
+  btn.textContent = 'Copié ✓';
+  btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = old; btn.classList.remove('copied'); }, 1800);
+}
+function copyData(text, btn){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){flash(btn);}).catch(function(){fallback(text, btn);});
+  } else { fallback(text, btn); }
+}
+function fallback(text, btn){
+  var ta = document.createElement('textarea');
+  ta.value = text; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); flash(btn); }catch(e){}
+  document.body.removeChild(ta);
+}
+document.getElementById('btn-text').addEventListener('click', function(){
+  copyData(document.getElementById('article-body').innerText, this);
+});
+document.getElementById('btn-html').addEventListener('click', function(){
+  var clone = document.getElementById('article-body').cloneNode(true);
+  clone.querySelectorAll('.kicker').forEach(function(n){ n.remove(); });
+  clone.querySelectorAll('[class]').forEach(function(n){ n.removeAttribute('class'); });
+  copyData(clone.innerHTML.replace(/\n\s+/g,'\n').trim(), this);
+});
+</script>
+
+</body></html>

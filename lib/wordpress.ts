@@ -174,19 +174,98 @@ export async function getMediaById(id: number) {
 // ────────────────────────────────────────────────
 
 /**
- * Décode les entités HTML (utile si WordPress a double-échappé le contenu)
+ * Table de correspondance pour le décodage des entités HTML courantes (WordPress / typographie française)
  */
-function decodeHTMLEntities(text: string): string {
+const NAMED_HTML_ENTITIES: Record<string, string> = {
+  '&rsquo;': "’",
+  '&lsquo;': "‘",
+  '&rdquo;': "”",
+  '&ldquo;': "“",
+  '&laquo;': "«",
+  '&raquo;': "»",
+  '&hellip;': "…",
+  '&ndash;': "–",
+  '&mdash;': "—",
+  '&quot;': '"',
+  '&apos;': "'",
+  '&#039;': "'",
+  '&#39;': "'",
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&nbsp;': ' ',
+  '&thinsp;': ' ',
+  '&eacute;': 'é',
+  '&Eacute;': 'É',
+  '&egrave;': 'è',
+  '&Egrave;': 'È',
+  '&ecirc;': 'ê',
+  '&Ecirc;': 'Ê',
+  '&euml;': 'ë',
+  '&Euml;': 'Ë',
+  '&agrave;': 'à',
+  '&Agrave;': 'À',
+  '&acirc;': 'â',
+  '&Acirc;': 'Â',
+  '&ccedil;': 'ç',
+  '&Ccedil;': 'Ç',
+  '&icirc;': 'î',
+  '&Icirc;': 'Î',
+  '&iuml;': 'ï',
+  '&Iuml;': 'Ï',
+  '&ocirc;': 'ô',
+  '&Ocirc;': 'Ô',
+  '&ucirc;': 'û',
+  '&Ucirc;': 'Û',
+  '&ugrave;': 'ù',
+  '&Ugrave;': 'Ù',
+  '&uuml;': 'ü',
+  '&Uuml;': 'Ü',
+  '&oelig;': 'œ',
+  '&OElig;': 'Œ',
+  '&copy;': '©',
+  '&reg;': '®',
+};
+
+/**
+ * Décode les entités HTML (numériques et nommées) et nettoie les artefacts WordPress
+ */
+export function decodeHTMLEntities(text: string): string {
   if (!text) return '';
-  return text
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&#39;/g, "'")
-    .replace(/<p[^>]*>(\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, '') // Supprime les paragraphes vides de Gutenberg
-    .replace(/&nbsp;/g, ' '); // Remplace les espaces insécables parasites
+  let decoded = text;
+
+  // 1. Résout d'éventuels doubles échappements WordPress (&amp;rsquo; -> &rsquo;)
+  decoded = decoded.replace(/&amp;(#[0-9]+|#x[0-9a-fA-F]+|[a-zA-Z]+);/g, '&$1;');
+
+  // 2. Décodage des entités numériques décimales (ex: &#8217; pour l'apostrophe)
+  decoded = decoded.replace(/&#(\d+);/g, (_, dec) => {
+    try {
+      const code = Number(dec);
+      return code === 8217 || code === 8216 ? "’" : String.fromCodePoint(code);
+    } catch {
+      return _;
+    }
+  });
+
+  // 3. Décodage des entités numériques hexadécimales (ex: &#x2019;)
+  decoded = decoded.replace(/&#x([0-9a-fA-F]+);/gi, (_, hex) => {
+    try {
+      const code = parseInt(hex, 16);
+      return code === 0x2019 || code === 0x2018 ? "’" : String.fromCodePoint(code);
+    } catch {
+      return _;
+    }
+  });
+
+  // 4. Décodage des entités nommées
+  for (const [entity, char] of Object.entries(NAMED_HTML_ENTITIES)) {
+    decoded = decoded.replaceAll(entity, char);
+  }
+
+  // 5. Nettoyage des paragraphes vides de Gutenberg
+  decoded = decoded.replace(/<p[^>]*>(\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, '');
+
+  return decoded;
 }
 
 /**
@@ -231,15 +310,18 @@ async function formatWPPost(wp: WPPost<BlogPostACF>): Promise<Post> {
 
   // Extrait : ACF > WP excerpt (strip HTML) > WP content (strip HTML)
   let rawExcerpt = wp.acf?.extrait || wp.excerpt.rendered || contentDecoded;
-  let excerpt = rawExcerpt.replace(/<[^>]*>/g, '').trim();
+  let excerpt = decodeHTMLEntities(rawExcerpt.replace(/<[^>]*>/g, '').trim());
   if (excerpt.length > 200) {
     excerpt = excerpt.substring(0, 200) + '...';
   }
 
+  // Titre : toujours décodé des entités typographiques (&rsquo;, etc.)
+  const titleDecoded = decodeHTMLEntities(wp.title.rendered);
+
   return {
     id: String(wp.id),
     slug: wp.slug,
-    title: wp.title.rendered,
+    title: titleDecoded,
     excerpt,
     content: contentDecoded,
     date,

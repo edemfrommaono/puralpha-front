@@ -12,13 +12,28 @@ interface BlogPostPageProps {
 }
 
 /**
- * Supprime du HTML le premier titre H1/H2 s'il répète le titre principal de l'article
+ * Nettoie et améliore le HTML de l'article :
+ * - Supprime le premier titre H1/H2 s'il répète le titre principal
+ * - Transforme automatiquement les paragraphes "À retenir" en encarts stylisés
  */
 function cleanArticleContent(html: string, title: string): string {
   if (!html) return "";
-  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").trim();
+  let cleaned = html;
+
+  // 1. Supprime le premier titre H1/H2 s'il répète le titre principal de l'article
+  const escapedTitle = title
+    .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    .replace(/['’]/g, "['’’]");
   const regex = new RegExp(`^\\s*<h[12][^>]*>\\s*${escapedTitle}\\s*<\\/h[12]>`, "i");
-  return html.replace(regex, "");
+  cleaned = cleaned.replace(regex, "");
+
+  // 2. Détecte les paragraphes "À retenir" issus d'un copier/coller Gutenberg et les transforme en encart PUR Alpha
+  cleaned = cleaned.replace(
+    /<p[^>]*>(?:<strong[^>]*>)?\s*À retenir\s*(?::\s*|(?:\s*-\s*)|\s+)?(?:<\/strong>)?([\s\S]*?)<\/p>/gi,
+    '<div class="retenir"><span class="retenir-label">À retenir</span><p>$1</p></div>'
+  );
+
+  return cleaned;
 }
 
 export async function generateStaticParams() {
@@ -142,7 +157,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* 4. Contenu */}
           <FadeInView direction="up" delay={0.1} once={true} amount={0}>
             <div
-              className="prose prose-slate max-w-none text-navy-800/95 leading-relaxed text-sm md:text-base
+              className="article-content prose prose-slate max-w-none text-navy-800/95 leading-relaxed text-sm md:text-base
                 prose-headings:text-navy-800 prose-headings:font-extrabold
                 prose-h2:text-xl md:prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
                 prose-h3:text-lg md:prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3

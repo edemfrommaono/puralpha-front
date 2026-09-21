@@ -147,7 +147,14 @@ export function RejoindreFormulaire({
         .filter(([key]) => Object.prototype.hasOwnProperty.call(FIELD_MAPPING, key) && key !== "upload-1")
         .map(([key, value]) => {
           const fieldName = FIELD_MAPPING[key as keyof typeof FIELD_MAPPING];
-          const mappedValue: string | string[] = (value as string) || "";
+          let mappedValue: string | string[] = (value as string) || "";
+
+          // Forminator associe 'one' à Personnelle et 'two' à Professionnelle
+          if (fieldName === "select-1") {
+            if (mappedValue === "Personnelle") mappedValue = "one";
+            else if (mappedValue === "Professionnelle") mappedValue = "two";
+            else mappedValue = "Aucune";
+          }
 
           return {
             name: fieldName,
@@ -155,9 +162,15 @@ export function RejoindreFormulaire({
           };
         });
 
+      // Diplôme / qualification : envoyé sur textarea-2 (champ créé dans Forminator)
+      if (formData["text-4"]) {
+        entries.push({ name: "textarea-2", value: formData["text-4"] });
+      }
+
       // Gestion de la case à cocher Vivier (checkbox-1)
+      // Forminator stocke l'option 'oui' sous la valeur technique 'one'
       if (formData.consent_vivier) {
-        entries.push({ name: "checkbox-1", value: ["oui"] });
+        entries.push({ name: "checkbox-1", value: ["one", "oui"] });
       }
 
       const formDataToSend = new FormData();
