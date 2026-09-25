@@ -127,7 +127,7 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
       }
 
       const formDataToSend = new FormData();
-      formDataToSend.append("form_id", "573");
+      formDataToSend.append("form_id", "1206");
       formDataToSend.append("data", JSON.stringify(entries));
 
       const response = await fetch(submissionUrl, {

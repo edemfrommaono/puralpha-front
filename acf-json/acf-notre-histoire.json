@@ -5,137 +5,581 @@
     "active": true,
     "show_in_rest": true,
     "fields": [
-      { "key": "field_nh_tab_hero", "label": "Hero", "type": "tab" },
       {
-        "key": "field_nh_hero", "label": "Hero", "name": "hero", "type": "group", "show_in_rest": true,
-        "sub_fields": [
-          { "key": "field_nh_hero_tag", "label": "Tag de section", "name": "section_tag", "type": "text", "default_value": "Notre histoire" },
-          { "key": "field_nh_hero_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Pourquoi PUR Alpha" },
-          { "key": "field_nh_hero_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "existe" },
-          { "key": "field_nh_hero_desc", "label": "Description", "name": "description", "type": "textarea", "rows": 3, "default_value": "PUR Alpha est né de mon histoire avec Matthew, mon fils, porteur du syndrome PURA, et de plusieurs années passées à chercher pour lui un accompagnement à domicile fiable et stable." },
-          { "key": "field_nh_hero_quote", "label": "Citation", "name": "quote", "type": "textarea", "rows": 2, "default_value": "Ce que je n'ai pas trouvé pour mon fils, j'ai décidé de le construire pour d'autres familles." },
-          { "key": "field_nh_hero_fname", "label": "Nom de la fondatrice", "name": "founder_name", "type": "text", "default_value": "Arame Bougha" },
-          { "key": "field_nh_hero_frole", "label": "Rôle de la fondatrice", "name": "founder_role", "type": "text", "default_value": "Fondatrice de PUR Alpha" },
-          { "key": "field_nh_hero_photo", "label": "Photo", "name": "photo", "type": "image", "return_format": "id", "preview_size": "medium", "instructions": "Photo personnelle d'Arame & Matthew. Tant qu'aucune photo n'est chargée, un emplacement réservé est affiché sur le site." },
-          { "key": "field_nh_hero_plegende", "label": "Légende de la photo", "name": "photo_legende", "type": "text", "default_value": "Photographie d'Arame & Matthew" },
-          { "key": "field_nh_hero_pnote", "label": "Note (emplacement réservé)", "name": "photo_note", "type": "text", "default_value": "Photo personnelle à intégrer — aucune image de substitution n'est publiée avant validation." }
-        ]
+        "key": "field_nh_tab_hero",
+        "label": "Hero",
+        "type": "tab"
       },
-      { "key": "field_nh_tab_relais", "label": "Trouver un relais", "type": "tab" },
       {
-        "key": "field_nh_relais", "label": "Quand trouver un relais devient un parcours", "name": "relais", "type": "group", "show_in_rest": true,
+        "key": "field_nh_hero",
+        "label": "Hero",
+        "name": "hero",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_nh_rel_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Quand trouver un relais" },
-          { "key": "field_nh_rel_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "devient un parcours" },
-          { "key": "field_nh_rel_p1", "label": "Paragraphe 1", "name": "paragraph_1", "type": "textarea", "rows": 3, "default_value": "J'ai connu les changements d'intervenants, les absences, les difficultés de remplacement et ces moments où il faut encore réorganiser le quotidien et tout réexpliquer." },
-          { "key": "field_nh_rel_p2", "label": "Paragraphe 2", "name": "paragraph_2", "type": "textarea", "rows": 2, "default_value": "Comme beaucoup de parents, je ne cherchais pas simplement quelqu'un de disponible quelques heures." },
-          { "key": "field_nh_rel_ph", "label": "Paragraphe en gras", "name": "paragraph_highlight", "type": "textarea", "rows": 2, "default_value": "Je cherchais une personne préparée, un accompagnement stable et une organisation sur laquelle je puisse compter." },
-          { "key": "field_nh_rel_img", "label": "Image", "name": "image", "type": "image", "return_format": "id", "preview_size": "medium" },
-          { "key": "field_nh_rel_alt", "label": "Texte alternatif de l'image", "name": "image_alt", "type": "text", "default_value": "Accompagnement d'un enfant à domicile" }
-        ]
-      },
-      { "key": "field_nh_tab_galerie", "label": "Galerie quotidien", "type": "tab" },
-      {
-        "key": "field_nh_galerie", "label": "Matthew et moi, au quotidien", "name": "galerie", "type": "group", "show_in_rest": true,
-        "sub_fields": [
-          { "key": "field_nh_gal_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Matthew et moi," },
-          { "key": "field_nh_gal_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "au quotidien" },
           {
-            "key": "field_nh_gal_photos", "label": "Photos", "name": "photos", "type": "repeater", "layout": "block", "button_label": "Ajouter une photo",
-            "instructions": "Tant qu'aucune photo n'est chargée, des emplacements réservés sont affichés dans le carrousel.",
+            "key": "field_nh_hero_tag",
+            "label": "Tag de section",
+            "name": "section_tag",
+            "type": "text",
+            "default_value": "Notre histoire"
+          },
+          {
+            "key": "field_nh_hero_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Pourquoi PUR Alpha"
+          },
+          {
+            "key": "field_nh_hero_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "existe"
+          },
+          {
+            "key": "field_nh_hero_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "PUR Alpha est né de mon histoire avec Matthew, mon fils, porteur du syndrome PURA, et de plusieurs années passées à chercher pour lui un accompagnement à domicile fiable et stable."
+          },
+          {
+            "key": "field_nh_hero_quote",
+            "label": "Citation",
+            "name": "quote",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Ce que je n'ai pas trouvé pour mon fils, j'ai décidé de le construire pour d'autres familles."
+          },
+          {
+            "key": "field_nh_hero_fname",
+            "label": "Nom de la fondatrice",
+            "name": "founder_name",
+            "type": "text",
+            "default_value": "Arame Bougha"
+          },
+          {
+            "key": "field_nh_hero_frole",
+            "label": "Rôle de la fondatrice",
+            "name": "founder_role",
+            "type": "text",
+            "default_value": "Fondatrice de PUR Alpha"
+          },
+          {
+            "key": "field_nh_hero_photo",
+            "label": "Photo",
+            "name": "photo",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "medium"
+          },
+          {
+            "key": "field_nh_hero_plegende",
+            "label": "Légende de la photo",
+            "name": "photo_legende",
+            "type": "text",
+            "default_value": "Photographie d'Arame & Matthew"
+          },
+          {
+            "key": "field_nh_hero_pnote",
+            "label": "Note (emplacement réservé)",
+            "name": "photo_note",
+            "type": "text",
+            "default_value": "Photo personnelle à intégrer — aucune image de substitution n'est publiée avant validation."
+          }
+        ]
+      },
+      {
+        "key": "field_nh_tab_relais",
+        "label": "Trouver un relais",
+        "type": "tab"
+      },
+      {
+        "key": "field_nh_relais",
+        "label": "Quand trouver un relais devient un parcours",
+        "name": "relais",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_nh_rel_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Quand trouver un relais"
+          },
+          {
+            "key": "field_nh_rel_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "devient un parcours"
+          },
+          {
+            "key": "field_nh_rel_p1",
+            "label": "Paragraphe 1",
+            "name": "paragraph_1",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "J'ai connu les changements d'intervenants, les absences, les difficultés de remplacement et ces moments où il faut encore réorganiser le quotidien et tout réexpliquer."
+          },
+          {
+            "key": "field_nh_rel_p2",
+            "label": "Paragraphe 2",
+            "name": "paragraph_2",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Comme beaucoup de parents, je ne cherchais pas simplement quelqu'un de disponible quelques heures."
+          },
+          {
+            "key": "field_nh_rel_ph",
+            "label": "Paragraphe en gras",
+            "name": "paragraph_highlight",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Je cherchais une personne préparée, un accompagnement stable et une organisation sur laquelle je puisse compter."
+          },
+          {
+            "key": "field_nh_rel_img",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "medium"
+          },
+          {
+            "key": "field_nh_rel_alt",
+            "label": "Texte alternatif de l'image",
+            "name": "image_alt",
+            "type": "text",
+            "default_value": "Accompagnement d'un enfant à domicile"
+          }
+        ]
+      },
+      {
+        "key": "field_nh_tab_galerie",
+        "label": "Galerie quotidien",
+        "type": "tab"
+      },
+      {
+        "key": "field_nh_galerie",
+        "label": "Matthew et moi, au quotidien",
+        "name": "galerie",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_nh_gal_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Matthew et moi,"
+          },
+          {
+            "key": "field_nh_gal_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "au quotidien"
+          },
+          {
+            "key": "field_nh_gal_photos",
+            "label": "Photos",
+            "name": "photos",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter une photo",
             "sub_fields": [
-              { "key": "field_nh_gal_p_img", "label": "Photo", "name": "photo", "type": "image", "return_format": "id", "preview_size": "medium" },
-              { "key": "field_nh_gal_p_lib", "label": "Libellé", "name": "libelle", "type": "text", "default_value": "Arame & Matthew" },
-              { "key": "field_nh_gal_p_note", "label": "Note (si photo absente)", "name": "note", "type": "text", "default_value": "Emplacement réservé" }
+              {
+                "key": "field_nh_gal_p_img",
+                "label": "Photo",
+                "name": "photo",
+                "type": "image",
+                "return_format": "id",
+                "preview_size": "medium"
+              },
+              {
+                "key": "field_nh_gal_p_lib",
+                "label": "Libellé",
+                "name": "libelle",
+                "type": "text",
+                "default_value": "Arame & Matthew"
+              },
+              {
+                "key": "field_nh_gal_p_note",
+                "label": "Note (si photo absente)",
+                "name": "note",
+                "type": "text",
+                "default_value": "Emplacement réservé"
+              }
             ]
           }
         ]
       },
-      { "key": "field_nh_tab_video", "label": "Vidéo", "type": "tab" },
       {
-        "key": "field_nh_video", "label": "Notre histoire, racontée de vive voix", "name": "video", "type": "group", "show_in_rest": true,
-        "sub_fields": [
-          { "key": "field_nh_vid_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Notre histoire, racontée" },
-          { "key": "field_nh_vid_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "de vive voix" },
-          { "key": "field_nh_vid_desc", "label": "Description", "name": "description", "type": "textarea", "rows": 4, "default_value": "Certaines choses se comprennent mieux quand on les entend. Je reviens sur ces années passées à chercher un accompagnement fiable pour Matthew, sur ce qui manquait vraiment aux familles, et sur la conviction qui a donné naissance à PUR Alpha." },
-          { "key": "field_nh_vid_url", "label": "URL de la vidéo", "name": "video_url", "type": "url", "instructions": "Lien YouTube, Vimeo ou fichier vidéo (mp4). Laisser vide pour afficher l'emplacement réservé." },
-          { "key": "field_nh_vid_plabel", "label": "Libellé (emplacement réservé)", "name": "placeholder_label", "type": "text", "default_value": "Vidéo à venir" },
-          { "key": "field_nh_vid_pnote", "label": "Note (emplacement réservé)", "name": "placeholder_note", "type": "text", "default_value": "Emplacement réservé" }
-        ]
+        "key": "field_nh_tab_video",
+        "label": "Vidéo",
+        "type": "tab"
       },
-      { "key": "field_nh_tab_construction", "label": "Construction", "type": "tab" },
       {
-        "key": "field_nh_construction", "label": "Ce qui manquait, j'ai décidé de le construire", "name": "construction", "type": "group", "show_in_rest": true,
+        "key": "field_nh_video",
+        "label": "Notre histoire, racontée de vive voix",
+        "name": "video",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_nh_con_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Ce qui manquait, j'ai décidé de" },
-          { "key": "field_nh_con_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "le construire" },
-          { "key": "field_nh_con_p1", "label": "Paragraphe 1", "name": "paragraph_1", "type": "textarea", "rows": 2, "default_value": "Avec le temps, une conviction s'est imposée : la qualité d'un accompagnement ne repose pas seulement sur la personne qui intervient." },
-          { "key": "field_nh_con_p2", "label": "Paragraphe 2", "name": "paragraph_2", "type": "textarea", "rows": 2, "default_value": "Elle repose aussi sur la manière dont elle est recrutée, préparée, encadrée et suivie." },
-          { "key": "field_nh_con_ph", "label": "Paragraphe en gras", "name": "paragraph_highlight", "type": "textarea", "rows": 2, "default_value": "C'est de cette conviction qu'est né PUR Alpha." },
-          { "key": "field_nh_con_img", "label": "Image", "name": "image", "type": "image", "return_format": "id", "preview_size": "medium" },
-          { "key": "field_nh_con_alt", "label": "Texte alternatif de l'image", "name": "image_alt", "type": "text", "default_value": "Une famille accompagnée par PUR Alpha" }
-        ]
-      },
-      { "key": "field_nh_tab_experience", "label": "Expérience", "type": "tab" },
-      {
-        "key": "field_nh_experience", "label": "Une expérience personnelle, mais aussi professionnelle", "name": "experience", "type": "group", "show_in_rest": true,
-        "sub_fields": [
-          { "key": "field_nh_exp_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Une expérience personnelle, mais aussi" },
-          { "key": "field_nh_exp_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "professionnelle" },
           {
-            "key": "field_nh_exp_stats", "label": "Chiffres clés", "name": "stats", "type": "repeater", "layout": "block", "button_label": "Ajouter un chiffre",
-            "instructions": "2 cartes affichées : « 20 ans + » et « 10 ans ».",
+            "key": "field_nh_vid_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Notre histoire, racontée"
+          },
+          {
+            "key": "field_nh_vid_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "de vive voix"
+          },
+          {
+            "key": "field_nh_vid_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "rows": 4,
+            "default_value": "Certaines choses se comprennent mieux quand on les entend. Je reviens sur ces années passées à chercher un accompagnement fiable pour Matthew, sur ce qui manquait vraiment aux familles, et sur la conviction qui a donné naissance à PUR Alpha."
+          },
+          {
+            "key": "field_nh_vid_url",
+            "label": "URL de la vidéo",
+            "name": "video_url",
+            "type": "url"
+          },
+          {
+            "key": "field_nh_vid_plabel",
+            "label": "Libellé (emplacement réservé)",
+            "name": "placeholder_label",
+            "type": "text",
+            "default_value": "Vidéo à venir"
+          },
+          {
+            "key": "field_nh_vid_pnote",
+            "label": "Note (emplacement réservé)",
+            "name": "placeholder_note",
+            "type": "text",
+            "default_value": "Emplacement réservé"
+          }
+        ]
+      },
+      {
+        "key": "field_nh_tab_construction",
+        "label": "Construction",
+        "type": "tab"
+      },
+      {
+        "key": "field_nh_construction",
+        "label": "Ce qui manquait, j'ai décidé de le construire",
+        "name": "construction",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_nh_con_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Ce qui manquait, j'ai décidé de"
+          },
+          {
+            "key": "field_nh_con_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "le construire"
+          },
+          {
+            "key": "field_nh_con_p1",
+            "label": "Paragraphe 1",
+            "name": "paragraph_1",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Avec le temps, une conviction s'est imposée : la qualité d'un accompagnement ne repose pas seulement sur la personne qui intervient."
+          },
+          {
+            "key": "field_nh_con_p2",
+            "label": "Paragraphe 2",
+            "name": "paragraph_2",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Elle repose aussi sur la manière dont elle est recrutée, préparée, encadrée et suivie."
+          },
+          {
+            "key": "field_nh_con_ph",
+            "label": "Paragraphe en gras",
+            "name": "paragraph_highlight",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "C'est de cette conviction qu'est né PUR Alpha."
+          },
+          {
+            "key": "field_nh_con_img",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "medium"
+          },
+          {
+            "key": "field_nh_con_alt",
+            "label": "Texte alternatif de l'image",
+            "name": "image_alt",
+            "type": "text",
+            "default_value": "Une famille accompagnée par PUR Alpha"
+          }
+        ]
+      },
+      {
+        "key": "field_nh_tab_experience",
+        "label": "Expérience",
+        "type": "tab"
+      },
+      {
+        "key": "field_nh_experience",
+        "label": "Une expérience personnelle, mais aussi professionnelle",
+        "name": "experience",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_nh_exp_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Une expérience personnelle, mais aussi"
+          },
+          {
+            "key": "field_nh_exp_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "professionnelle"
+          },
+          {
+            "key": "field_nh_exp_stats",
+            "label": "Chiffres clés",
+            "name": "stats",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter un chiffre",
             "sub_fields": [
-              { "key": "field_nh_exp_s_chiffre", "label": "Chiffre", "name": "chiffre", "type": "text", "default_value": "20 ans +" },
-              { "key": "field_nh_exp_s_desc", "label": "Description", "name": "description", "type": "textarea", "rows": 2, "default_value": "d'expérience professionnelle, dont la gestion administrative de PME et TPE" }
+              {
+                "key": "field_nh_exp_s_chiffre",
+                "label": "Chiffre",
+                "name": "chiffre",
+                "type": "text",
+                "default_value": "20 ans +"
+              },
+              {
+                "key": "field_nh_exp_s_desc",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea",
+                "rows": 2,
+                "default_value": "d'expérience professionnelle, dont la gestion administrative de PME et TPE"
+              }
             ]
           },
-          { "key": "field_nh_exp_p1", "label": "Paragraphe", "name": "paragraph_1", "type": "textarea", "rows": 4, "default_value": "Mon histoire de mère m'a appris ce dont les familles ont besoin. Plus de vingt ans d'expérience professionnelle, dont dix années dans les ressources humaines après un parcours en gestion administrative de PME/TPE, m'ont donné les outils pour structurer une réponse." },
-          { "key": "field_nh_exp_ph", "label": "Paragraphe en gras", "name": "paragraph_highlight", "type": "textarea", "rows": 3, "default_value": "Recruter avec exigence, préparer les interventions, encadrer les professionnels et construire de la continuité : PUR Alpha est né de la rencontre entre ces deux expériences." }
+          {
+            "key": "field_nh_exp_p1",
+            "label": "Paragraphe",
+            "name": "paragraph_1",
+            "type": "textarea",
+            "rows": 4
+          },
+          {
+            "key": "field_nh_exp_ph",
+            "label": "Paragraphe en gras",
+            "name": "paragraph_highlight",
+            "type": "textarea",
+            "rows": 3
+          }
         ]
       },
-      { "key": "field_nh_tab_methode", "label": "Méthode", "type": "tab" },
       {
-        "key": "field_nh_methode", "label": "Du vécu à une méthode", "name": "methode", "type": "group", "show_in_rest": true,
+        "key": "field_nh_tab_methode",
+        "label": "Méthode",
+        "type": "tab"
+      },
+      {
+        "key": "field_nh_methode",
+        "label": "Du vécu à une méthode",
+        "name": "methode",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_nh_met_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Du vécu à une" },
-          { "key": "field_nh_met_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "méthode" },
-          { "key": "field_nh_met_desc", "label": "Description", "name": "description", "type": "textarea", "rows": 3, "default_value": "Mon expérience personnelle m'a montré ce qui manquait aux familles. Mon parcours professionnel m'a donné les outils pour construire une réponse structurée : recruter avec exigence, former, encadrer et suivre les accompagnements dans la durée." },
           {
-            "key": "field_nh_met_etapes", "label": "Étapes", "name": "etapes", "type": "repeater", "layout": "block", "button_label": "Ajouter une étape",
-            "instructions": "3 cartes numérotées automatiquement : « Recruter avec exigence », « Structurer les interventions », « Encadrer dans la durée ».",
+            "key": "field_nh_met_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Du vécu à une"
+          },
+          {
+            "key": "field_nh_met_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "méthode"
+          },
+          {
+            "key": "field_nh_met_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "rows": 3
+          },
+          {
+            "key": "field_nh_met_etapes",
+            "label": "Étapes",
+            "name": "etapes",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter une étape",
             "sub_fields": [
-              { "key": "field_nh_met_e_titre", "label": "Titre", "name": "titre", "type": "text", "default_value": "Recruter avec exigence" }
+              {
+                "key": "field_nh_met_e_titre",
+                "label": "Titre",
+                "name": "titre",
+                "type": "text"
+              }
             ]
           }
         ]
       },
-      { "key": "field_nh_tab_valeurs", "label": "Valeurs", "type": "tab" },
       {
-        "key": "field_nh_valeurs", "label": "Ce qui guide PUR Alpha", "name": "valeurs", "type": "group", "show_in_rest": true,
+        "key": "field_nh_tab_valeurs",
+        "label": "Valeurs",
+        "type": "tab"
+      },
+      {
+        "key": "field_nh_valeurs",
+        "label": "Ce qui guide PUR Alpha",
+        "name": "valeurs",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_nh_val_tag", "label": "Tag de section", "name": "section_tag", "type": "text", "default_value": "Nos valeurs" },
-          { "key": "field_nh_val_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Ce qui guide" },
-          { "key": "field_nh_val_hl", "label": "Titre (coloré)", "name": "title_highlight", "type": "text", "default_value": "PUR Alpha" },
           {
-            "key": "field_nh_val_items", "label": "Valeurs", "name": "items", "type": "repeater", "layout": "block", "button_label": "Ajouter une valeur",
-            "instructions": "3 cartes : EXIGENCE, FRANCHISE, CONSTANCE. Tant qu'aucune image n'est chargée, un fond bleu nuit est affiché.",
+            "key": "field_nh_val_tag",
+            "label": "Tag de section",
+            "name": "section_tag",
+            "type": "text",
+            "default_value": "Nos valeurs"
+          },
+          {
+            "key": "field_nh_val_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Ce qui guide"
+          },
+          {
+            "key": "field_nh_val_hl",
+            "label": "Titre (coloré)",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "PUR Alpha"
+          },
+          {
+            "key": "field_nh_val_items",
+            "label": "Valeurs",
+            "name": "items",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter une valeur",
             "sub_fields": [
-              { "key": "field_nh_val_i_img", "label": "Image", "name": "image", "type": "image", "return_format": "id", "preview_size": "medium" },
-              { "key": "field_nh_val_i_titre", "label": "Titre", "name": "titre", "type": "text", "default_value": "Exigence" }
+              {
+                "key": "field_nh_val_i_img",
+                "label": "Image",
+                "name": "image",
+                "type": "image",
+                "return_format": "id",
+                "preview_size": "medium"
+              },
+              {
+                "key": "field_nh_val_i_titre",
+                "label": "Titre",
+                "name": "titre",
+                "type": "text",
+                "default_value": "Exigence"
+              },
+              {
+                "key": "field_nh_val_i_desc",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea"
+              }
             ]
           }
         ]
       },
-      { "key": "field_nh_tab_citation", "label": "Citation finale", "type": "tab" },
       {
-        "key": "field_nh_citation", "label": "Citation finale + CTA", "name": "citation_finale", "type": "group", "show_in_rest": true,
+        "key": "field_nh_tab_citation",
+        "label": "Citation finale",
+        "type": "tab"
+      },
+      {
+        "key": "field_nh_citation",
+        "label": "Citation finale + CTA",
+        "name": "citation_finale",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_nh_cit_text", "label": "Citation", "name": "citation", "type": "textarea", "rows": 3, "default_value": "Je ne connais pas votre histoire, mais je sais ce que représente le fait de chercher un relais sur lequel on puisse réellement compter. C'est ce que je veux construire avec PUR Alpha." },
-          { "key": "field_nh_cit_auteur", "label": "Auteur", "name": "auteur", "type": "text", "default_value": "Arame Bougha" },
-          { "key": "field_nh_cit_role", "label": "Rôle", "name": "role", "type": "text", "default_value": "Fondatrice et présidente de PUR Alpha" },
-          { "key": "field_nh_cit_cta_texte", "label": "Texte du bouton", "name": "cta_texte", "type": "text", "default_value": "Découvrir nos services" },
-          { "key": "field_nh_cit_cta_url", "label": "URL du bouton", "name": "cta_url", "type": "url", "default_value": "/nos-services" }
+          {
+            "key": "field_nh_cit_bg",
+            "label": "Image de fond",
+            "name": "background_image",
+            "type": "image",
+            "return_format": "id"
+          },
+          {
+            "key": "field_nh_cit_text",
+            "label": "Citation",
+            "name": "citation",
+            "type": "textarea",
+            "rows": 3
+          },
+          {
+            "key": "field_nh_cit_auteur",
+            "label": "Auteur",
+            "name": "auteur",
+            "type": "text",
+            "default_value": "Arame Bougha"
+          },
+          {
+            "key": "field_nh_cit_role",
+            "label": "Rôle",
+            "name": "role",
+            "type": "text",
+            "default_value": "Fondatrice et présidente de PUR Alpha"
+          },
+          {
+            "key": "field_nh_cit_cta_texte",
+            "label": "Texte du bouton",
+            "name": "cta_texte",
+            "type": "text",
+            "default_value": "Découvrir nos services"
+          },
+          {
+            "key": "field_nh_cit_cta_url",
+            "label": "URL du bouton",
+            "name": "cta_url",
+            "type": "text",
+            "default_value": "/nos-services"
+          }
         ]
       }
     ],

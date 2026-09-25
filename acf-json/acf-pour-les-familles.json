@@ -5,111 +5,575 @@
     "active": true,
     "show_in_rest": true,
     "fields": [
-      { "key": "field_plf_tab_hero", "label": "Hero", "type": "tab" },
       {
-        "key": "field_plf_hero", "label": "Hero", "name": "hero", "type": "group", "show_in_rest": true,
-        "sub_fields": [
-          { "key": "field_plf_hero_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Votre enfant mérite une" },
-          { "key": "field_plf_hero_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "présence stable et bienveillante" },
-          { "key": "field_plf_hero_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
-          { "key": "field_plf_hero_cta1_text", "label": "CTA 1 texte", "name": "cta_primary_text", "type": "text", "default_value": "Parlons de votre situation →" },
-          { "key": "field_plf_hero_cta1_url", "label": "CTA 1 URL", "name": "cta_primary_url", "type": "url", "default_value": "/contact" },
-          { "key": "field_plf_hero_cta2_text", "label": "CTA 2 texte", "name": "cta_secondary_text", "type": "text", "default_value": "Voir les aides financières" },
-          { "key": "field_plf_hero_cta2_url", "label": "CTA 2 URL", "name": "cta_secondary_url", "type": "url", "default_value": "/aides-financieres" },
-          {
-            "key": "field_plf_hero_stats", "label": "Stats", "name": "stats", "type": "repeater", "layout": "table",
-            "sub_fields": [
-              { "key": "field_plf_stat_val", "label": "Valeur", "name": "value", "type": "text" },
-              { "key": "field_plf_stat_lbl", "label": "Label", "name": "label", "type": "text" }
-            ]
-          }
-        ]
+        "key": "field_plf_tab_hero",
+        "label": "Hero",
+        "type": "tab"
       },
-      { "key": "field_plf_tab_handicaps", "label": "Handicaps", "type": "tab" },
       {
-        "key": "field_plf_handicaps", "label": "Handicaps", "name": "handicaps", "type": "group", "show_in_rest": true,
+        "key": "field_plf_hero",
+        "label": "Hero",
+        "name": "hero",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_plf_h_title", "label": "Titre", "name": "title", "type": "text" },
-          { "key": "field_plf_h_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_plf_h_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
-            "key": "field_plf_h_types", "label": "Types", "name": "types", "type": "repeater", "layout": "table",
-            "sub_fields": [
-              { "key": "field_plf_h_t_icon", "label": "Icône", "name": "icon", "type": "text" },
-              { "key": "field_plf_h_t_label", "label": "Label", "name": "label", "type": "text" }
-            ]
+            "key": "field_plf_hero_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Votre enfant mérite une"
           },
-          { "key": "field_plf_h_quote", "label": "Citation", "name": "highlight_quote", "type": "text" },
-          { "key": "field_plf_h_qdesc", "label": "Détail citation", "name": "highlight_description", "type": "textarea" }
-        ]
-      },
-      { "key": "field_plf_tab_services", "label": "Services", "type": "tab" },
-      {
-        "key": "field_plf_services", "label": "Services", "name": "services", "type": "group", "show_in_rest": true,
-        "sub_fields": [
-          { "key": "field_plf_s_title", "label": "Titre", "name": "title", "type": "text" },
-          { "key": "field_plf_s_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_plf_s_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
-            "key": "field_plf_s_cards", "label": "Cartes", "name": "cards", "type": "repeater", "layout": "block",
+            "key": "field_plf_hero_hl",
+            "label": "Titre coloré",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "présence stable et bienveillante"
+          },
+          {
+            "key": "field_plf_hero_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "media_upload": 0
+          },
+          {
+            "key": "field_plf_hero_cta1_text",
+            "label": "CTA 1 texte",
+            "name": "cta_primary_text",
+            "type": "text",
+            "default_value": "Parlons de votre situation →"
+          },
+          {
+            "key": "field_plf_hero_cta1_url",
+            "label": "CTA 1 URL",
+            "name": "cta_primary_url",
+            "type": "text",
+            "default_value": "/contact"
+          },
+          {
+            "key": "field_plf_hero_cta2_text",
+            "label": "CTA 2 texte",
+            "name": "cta_secondary_text",
+            "type": "text",
+            "default_value": "Voir les aides financières"
+          },
+          {
+            "key": "field_plf_hero_cta2_url",
+            "label": "CTA 2 URL",
+            "name": "cta_secondary_url",
+            "type": "text",
+            "default_value": "/nos-tarifs"
+          },
+          {
+            "key": "field_plf_hero_stats",
+            "label": "Stats",
+            "name": "stats",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter une stat",
             "sub_fields": [
-              { "key": "field_plf_s_c_tag", "label": "Tag", "name": "tag", "type": "text" },
-              { "key": "field_plf_s_c_img", "label": "Image", "name": "image", "type": "image", "return_format": "id" },
-              { "key": "field_plf_s_c_title", "label": "Titre", "name": "title", "type": "text" },
-              { "key": "field_plf_s_c_desc", "label": "Description", "name": "description", "type": "textarea" },
               {
-                "key": "field_plf_s_c_tags", "label": "Tags", "name": "tags", "type": "repeater", "layout": "table",
-                "sub_fields": [{ "key": "field_plf_s_c_t_text", "label": "Texte", "name": "text", "type": "text" }]
+                "key": "field_plf_stat_val",
+                "label": "Valeur",
+                "name": "value",
+                "type": "text"
+              },
+              {
+                "key": "field_plf_stat_lbl",
+                "label": "Label",
+                "name": "label",
+                "type": "text"
               }
             ]
           }
         ]
       },
-      { "key": "field_plf_tab_garanties", "label": "Garanties", "type": "tab" },
       {
-        "key": "field_plf_garanties", "label": "Garanties", "name": "garanties", "type": "group", "show_in_rest": true,
+        "key": "field_plf_tab_handicaps",
+        "label": "Handicaps",
+        "type": "tab"
+      },
+      {
+        "key": "field_plf_handicaps",
+        "label": "Handicaps",
+        "name": "handicaps",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_plf_g_title", "label": "Titre", "name": "title", "type": "text" },
-          { "key": "field_plf_g_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_plf_g_desc", "label": "Description", "name": "description", "type": "wysiwyg", "tabs": "all", "media_upload": 0 },
           {
-            "key": "field_plf_g_items", "label": "Garanties", "name": "items", "type": "repeater", "layout": "block",
+            "key": "field_plf_h_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_h_hl",
+            "label": "Titre coloré",
+            "name": "title_highlight",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_h_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "media_upload": 0
+          },
+          {
+            "key": "field_plf_h_types",
+            "label": "Types",
+            "name": "types",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un type",
             "sub_fields": [
-              { "key": "field_plf_g_i_icon", "label": "Icône", "name": "icon", "type": "text" },
-              { "key": "field_plf_g_i_title", "label": "Titre", "name": "title", "type": "text" },
-              { "key": "field_plf_g_i_desc", "label": "Description", "name": "description", "type": "textarea" }
+              {
+                "key": "field_plf_h_t_img",
+                "label": "Image / Icône",
+                "name": "image",
+                "type": "image",
+                "return_format": "array"
+              },
+              {
+                "key": "field_plf_h_t_label",
+                "label": "Label",
+                "name": "label",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "key": "field_plf_h_quote",
+            "label": "Citation",
+            "name": "highlight_quote",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_h_qdesc",
+            "label": "Détail citation",
+            "name": "highlight_description",
+            "type": "textarea"
+          }
+        ]
+      },
+      {
+        "key": "field_plf_tab_services",
+        "label": "Services",
+        "type": "tab"
+      },
+      {
+        "key": "field_plf_services",
+        "label": "Services",
+        "name": "services",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_plf_s_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_s_hl",
+            "label": "Titre coloré",
+            "name": "title_highlight",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_s_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "media_upload": 0
+          },
+          {
+            "key": "field_plf_s_cards",
+            "label": "Cartes",
+            "name": "cards",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter une carte",
+            "sub_fields": [
+              {
+                "key": "field_plf_s_c_tag",
+                "label": "Tag",
+                "name": "tag",
+                "type": "text"
+              },
+              {
+                "key": "field_plf_s_c_img",
+                "label": "Image",
+                "name": "image",
+                "type": "image",
+                "return_format": "id"
+              },
+              {
+                "key": "field_plf_s_c_title",
+                "label": "Titre",
+                "name": "title",
+                "type": "text"
+              },
+              {
+                "key": "field_plf_s_c_desc",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea"
+              },
+              {
+                "key": "field_plf_s_c_tags",
+                "label": "Tags",
+                "name": "tags",
+                "type": "repeater",
+                "layout": "table",
+                "button_label": "Ajouter un tag",
+                "sub_fields": [
+                  {
+                    "key": "field_plf_s_c_t_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "type": "text"
+                  }
+                ]
+              }
             ]
           }
         ]
       },
-      { "key": "field_plf_tab_faq", "label": "FAQ", "type": "tab" },
       {
-        "key": "field_plf_faq", "label": "FAQ", "name": "faq", "type": "group", "show_in_rest": true,
+        "key": "field_plf_tab_etapes",
+        "label": "Étapes",
+        "type": "tab"
+      },
+      {
+        "key": "field_plf_etapes",
+        "label": "Section Étapes",
+        "name": "etapes",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_plf_faq_tag", "label": "Tag", "name": "section_tag", "type": "text", "default_value": "Questions fréquentes" },
-          { "key": "field_plf_faq_title", "label": "Titre", "name": "title", "type": "text", "default_value": "Vos questions," },
-          { "key": "field_plf_faq_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text", "default_value": "nos réponses" },
           {
-            "key": "field_plf_faq_items", "label": "Questions", "name": "items", "type": "repeater", "layout": "block",
+            "key": "field_plf_et_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Comment ça marche ?"
+          },
+          {
+            "key": "field_plf_et_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "default_value": "De la première prise de contact à l'intervention, nous vous accompagnons à chaque étape."
+          },
+          {
+            "key": "field_plf_et_steps",
+            "label": "Étapes",
+            "name": "steps",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter une étape",
             "sub_fields": [
-              { "key": "field_plf_faq_q", "label": "Question", "name": "question", "type": "text" },
-              { "key": "field_plf_faq_a", "label": "Réponse", "name": "answer", "type": "textarea" }
+              {
+                "key": "field_plf_et_st_title",
+                "label": "Titre de l'étape",
+                "name": "title",
+                "type": "text"
+              },
+              {
+                "key": "field_plf_et_st_items",
+                "label": "Points clés",
+                "name": "items",
+                "type": "repeater",
+                "layout": "table",
+                "button_label": "Ajouter un point",
+                "sub_fields": [
+                  {
+                    "key": "field_plf_et_st_i_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "type": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "field_plf_et_cta_text",
+            "label": "CTA Texte",
+            "name": "cta_text",
+            "type": "text",
+            "default_value": "Prendre contact"
+          },
+          {
+            "key": "field_plf_et_cta_url",
+            "label": "CTA URL",
+            "name": "cta_url",
+            "type": "text",
+            "default_value": "/contact"
+          }
+        ]
+      },
+      {
+        "key": "field_plf_tab_garanties",
+        "label": "Garanties",
+        "type": "tab"
+      },
+      {
+        "key": "field_plf_garanties",
+        "label": "Garanties",
+        "name": "garanties",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_plf_g_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_g_hl",
+            "label": "Titre coloré",
+            "name": "title_highlight",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_g_desc",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "media_upload": 0
+          },
+          {
+            "key": "field_plf_g_items",
+            "label": "Garanties Ligne 1",
+            "name": "items",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter une garantie",
+            "sub_fields": [
+              {
+                "key": "field_plf_g_i_img",
+                "label": "Image / Icône",
+                "name": "image",
+                "type": "image",
+                "return_format": "array"
+              },
+              {
+                "key": "field_plf_g_i_title",
+                "label": "Titre",
+                "name": "title",
+                "type": "text"
+              },
+              {
+                "key": "field_plf_g_i_desc",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea"
+              }
+            ]
+          },
+          {
+            "key": "field_plf_g_l2",
+            "label": "Garanties Ligne 2",
+            "name": "garanties_ligne_2",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter un élément ligne 2",
+            "sub_fields": [
+              {
+                "key": "field_plf_g_l2_img",
+                "label": "Image",
+                "name": "image",
+                "type": "image",
+                "return_format": "array"
+              },
+              {
+                "key": "field_plf_g_l2_titre",
+                "label": "Titre",
+                "name": "titre",
+                "type": "text"
+              },
+              {
+                "key": "field_plf_g_l2_desc",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea"
+              }
+            ]
+          },
+          {
+            "key": "field_plf_g_l3",
+            "label": "Garanties Ligne 3",
+            "name": "garantie_ligne_3",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter un élément ligne 3",
+            "sub_fields": [
+              {
+                "key": "field_plf_g_l3_titre",
+                "label": "Titre",
+                "name": "titre",
+                "type": "text"
+              },
+              {
+                "key": "field_plf_g_l3_desc",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea"
+              }
+            ]
+          },
+          {
+            "key": "field_plf_g_l4",
+            "label": "Garantie Ligne 4 (Texte récapitulatif)",
+            "name": "garantie_ligne_4",
+            "type": "textarea"
+          }
+        ]
+      },
+      {
+        "key": "field_plf_tab_faq",
+        "label": "FAQ",
+        "type": "tab"
+      },
+      {
+        "key": "field_plf_faq",
+        "label": "FAQ",
+        "name": "faq",
+        "type": "group",
+        "show_in_rest": true,
+        "sub_fields": [
+          {
+            "key": "field_plf_faq_tag",
+            "label": "Tag",
+            "name": "section_tag",
+            "type": "text",
+            "default_value": "Questions fréquentes"
+          },
+          {
+            "key": "field_plf_faq_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text",
+            "default_value": "Vos questions,"
+          },
+          {
+            "key": "field_plf_faq_hl",
+            "label": "Titre coloré",
+            "name": "title_highlight",
+            "type": "text",
+            "default_value": "nos réponses"
+          },
+          {
+            "key": "field_plf_faq_items",
+            "label": "Questions",
+            "name": "items",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Ajouter une question",
+            "sub_fields": [
+              {
+                "key": "field_plf_faq_q",
+                "label": "Question",
+                "name": "question",
+                "type": "text"
+              },
+              {
+                "key": "field_plf_faq_a",
+                "label": "Réponse",
+                "name": "answer",
+                "type": "textarea"
+              }
             ]
           }
         ]
       },
-      { "key": "field_plf_tab_cta", "label": "CTA Final", "type": "tab" },
       {
-        "key": "field_plf_cta", "label": "CTA Final", "name": "cta_final", "type": "group", "show_in_rest": true,
+        "key": "field_plf_tab_cta",
+        "label": "CTA Final",
+        "type": "tab"
+      },
+      {
+        "key": "field_plf_cta",
+        "label": "CTA Final",
+        "name": "cta_final",
+        "type": "group",
+        "show_in_rest": true,
         "sub_fields": [
-          { "key": "field_plf_cta_title", "label": "Titre", "name": "title", "type": "text" },
-          { "key": "field_plf_cta_hl", "label": "Titre coloré", "name": "title_highlight", "type": "text" },
-          { "key": "field_plf_cta_sub", "label": "Sous-titre", "name": "subtitle", "type": "text" },
-          { "key": "field_plf_cta_text", "label": "CTA texte", "name": "cta_text", "type": "text", "default_value": "Prendre contact" },
-          { "key": "field_plf_cta_url", "label": "CTA URL", "name": "cta_url", "type": "url", "default_value": "/contact" }
+          {
+            "key": "field_plf_cta_bg",
+            "label": "Image de fond",
+            "name": "image_de_fond",
+            "type": "image",
+            "return_format": "id"
+          },
+          {
+            "key": "field_plf_cta_title",
+            "label": "Titre",
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_cta_hl",
+            "label": "Titre coloré",
+            "name": "title_highlight",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_cta_sub",
+            "label": "Sous-titre",
+            "name": "subtitle",
+            "type": "text"
+          },
+          {
+            "key": "field_plf_cta_badges",
+            "label": "Badges",
+            "name": "badges",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un badge",
+            "sub_fields": [
+              {
+                "key": "field_plf_cta_b_text",
+                "label": "Texte",
+                "name": "text",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "key": "field_plf_cta_text",
+            "label": "CTA texte",
+            "name": "cta_text",
+            "type": "text",
+            "default_value": "Prendre contact"
+          },
+          {
+            "key": "field_plf_cta_url",
+            "label": "CTA URL",
+            "name": "cta_url",
+            "type": "text",
+            "default_value": "/contact"
+          }
         ]
       }
     ],
-    "location": [[{ "param": "page_slug", "operator": "==", "value": "pour-les-familles" }]]
+    "location": [
+      [
+        {
+          "param": "page_slug",
+          "operator": "==",
+          "value": "pour-les-familles"
+        }
+      ]
+    ]
   }
 ]

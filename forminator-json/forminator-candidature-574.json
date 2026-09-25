@@ -1,0 +1,176 @@
+{
+  "type": "form",
+  "data": {
+    "fields": [
+      {
+        "id": "name-1",
+        "element_id": "name-1",
+        "form_id": "wrapper-names",
+        "type": "text",
+        "cols": 6,
+        "required": true,
+        "field_label": "Prénom",
+        "placeholder": "Votre prénom",
+        "wrapper_id": "wrapper-names"
+      },
+      {
+        "id": "name-2",
+        "element_id": "name-2",
+        "form_id": "wrapper-names",
+        "type": "text",
+        "cols": 6,
+        "required": true,
+        "field_label": "Nom",
+        "placeholder": "Votre nom",
+        "wrapper_id": "wrapper-names"
+      },
+      {
+        "id": "email-1",
+        "element_id": "email-1",
+        "form_id": "wrapper-email",
+        "type": "email",
+        "cols": 12,
+        "required": true,
+        "field_label": "Email",
+        "placeholder": "votre@email.fr",
+        "validation": true,
+        "wrapper_id": "wrapper-email"
+      },
+      {
+        "id": "phone-1",
+        "element_id": "phone-1",
+        "form_id": "wrapper-phone",
+        "type": "phone",
+        "cols": 12,
+        "required": true,
+        "field_label": "Téléphone",
+        "placeholder": "06 XX XX XX XX",
+        "wrapper_id": "wrapper-phone"
+      },
+      {
+        "id": "text-1",
+        "element_id": "text-1",
+        "form_id": "wrapper-location",
+        "type": "text",
+        "cols": 6,
+        "required": true,
+        "field_label": "Commune de résidence",
+        "placeholder": "Votre commune",
+        "wrapper_id": "wrapper-location"
+      },
+      {
+        "id": "text-2",
+        "element_id": "text-2",
+        "form_id": "wrapper-location",
+        "type": "text",
+        "cols": 6,
+        "required": true,
+        "field_label": "Disponibilités principales",
+        "placeholder": "Ex : Mercredi et week-ends",
+        "wrapper_id": "wrapper-location"
+      },
+      {
+        "id": "select-1",
+        "element_id": "select-1",
+        "form_id": "wrapper-exp",
+        "type": "select",
+        "options": [
+          {
+            "label": "Aucune",
+            "value": "Aucune"
+          },
+          {
+            "label": "Expérience personnelle",
+            "value": "one"
+          },
+          {
+            "label": "Expérience professionnelle",
+            "value": "two"
+          }
+        ],
+        "cols": 6,
+        "required": true,
+        "field_label": "Expérience dans le handicap",
+        "placeholder": "Sélectionnez...",
+        "wrapper_id": "wrapper-exp"
+      },
+      {
+        "id": "number-1",
+        "element_id": "number-1",
+        "form_id": "wrapper-exp",
+        "type": "number",
+        "cols": 6,
+        "required": false,
+        "field_label": "Nombre d'années",
+        "placeholder": "Ex: 2",
+        "wrapper_id": "wrapper-exp"
+      },
+      {
+        "id": "textarea-2",
+        "element_id": "textarea-2",
+        "form_id": "wrapper-diplome",
+        "type": "textarea",
+        "cols": 12,
+        "required": false,
+        "field_label": "Diplôme / qualification (si applicable)",
+        "placeholder": "Ex : DEAES, BAFA, CAP Petite Enfance, etc.",
+        "wrapper_id": "wrapper-diplome"
+      },
+      {
+        "id": "upload-1",
+        "element_id": "upload-1",
+        "form_id": "wrapper-cv",
+        "type": "upload",
+        "cols": 12,
+        "required": true,
+        "field_label": "CV (format PDF, DOC, DOCX - max 10 Mo)",
+        "file_type": "custom",
+        "file_limit": 10,
+        "custom_file_types": "pdf,doc,docx",
+        "wrapper_id": "wrapper-cv"
+      },
+      {
+        "id": "textarea-1",
+        "element_id": "textarea-1",
+        "form_id": "wrapper-motivation",
+        "type": "textarea",
+        "cols": 12,
+        "required": false,
+        "field_label": "Votre motivation en quelques mots (180 caractères max)",
+        "placeholder": "Présentez-vous brièvement...",
+        "wrapper_id": "wrapper-motivation"
+      },
+      {
+        "id": "checkbox-1",
+        "element_id": "checkbox-1",
+        "form_id": "wrapper-vivier",
+        "type": "checkbox",
+        "options": [
+          {
+            "label": "J'accepte que ma candidature soit conservée dans le vivier PUR Alpha.",
+            "value": "one"
+          }
+        ],
+        "cols": 12,
+        "required": false,
+        "field_label": "Conservation vivier",
+        "wrapper_id": "wrapper-vivier"
+      }
+    ],
+    "settings": {
+      "pagination-header": "nav",
+      "paginationInit": "open",
+      "formName": "Formulaire de candidature PUR Alpha",
+      "version": "1.38.0",
+      "form_method": "ajax",
+      "form_id": "574",
+      "submission-behaviour": "behaviour-thankyou",
+      "thankyou-message": "Votre candidature a bien été transmise. Nous vous contacterons rapidement.",
+      "submitData": {
+        "custom-submit-text": "Envoyer ma candidature"
+      }
+    }
+  },
+  "status": "publish",
+  "version": "1.38.0"
+}

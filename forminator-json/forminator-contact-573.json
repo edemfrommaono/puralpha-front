@@ -1,0 +1,159 @@
+{
+  "type": "form",
+  "data": {
+    "fields": [
+      {
+        "id": "select-1",
+        "element_id": "select-1",
+        "form_id": "wrapper-select-1",
+        "type": "select",
+        "options": [
+          {
+            "label": "Une famille / un représentant légal",
+            "value": "one"
+          },
+          {
+            "label": "Un professionnel / une structure partenaire",
+            "value": "two"
+          },
+          {
+            "label": "Autre",
+            "value": "Autre"
+          }
+        ],
+        "cols": 12,
+        "required": true,
+        "field_label": "Vous êtes...",
+        "placeholder": "Sélectionnez...",
+        "wrapper_id": "wrapper-select-1"
+      },
+      {
+        "id": "name-1",
+        "element_id": "name-1",
+        "form_id": "wrapper-names",
+        "type": "name",
+        "cols": 6,
+        "required": true,
+        "field_label": "Nom",
+        "placeholder": "Votre nom",
+        "wrapper_id": "wrapper-names"
+      },
+      {
+        "id": "name-2",
+        "element_id": "name-2",
+        "form_id": "wrapper-names",
+        "type": "text",
+        "cols": 6,
+        "required": true,
+        "field_label": "Prénom",
+        "placeholder": "Votre prénom",
+        "wrapper_id": "wrapper-names"
+      },
+      {
+        "id": "email-1",
+        "element_id": "email-1",
+        "form_id": "wrapper-email",
+        "type": "email",
+        "cols": 12,
+        "required": true,
+        "field_label": "Email",
+        "placeholder": "votre@email.fr",
+        "validation": true,
+        "wrapper_id": "wrapper-email"
+      },
+      {
+        "id": "phone-1",
+        "element_id": "phone-1",
+        "form_id": "wrapper-phone",
+        "type": "phone",
+        "cols": 6,
+        "required": true,
+        "field_label": "Téléphone",
+        "placeholder": "06 XX XX XX XX",
+        "wrapper_id": "wrapper-phone"
+      },
+      {
+        "id": "text-1",
+        "element_id": "text-1",
+        "form_id": "wrapper-phone",
+        "type": "text",
+        "cols": 6,
+        "required": false,
+        "field_label": "Commune concernée",
+        "placeholder": "Votre commune",
+        "wrapper_id": "wrapper-phone"
+      },
+      {
+        "id": "select-2",
+        "element_id": "select-2",
+        "form_id": "wrapper-select-2",
+        "type": "select",
+        "options": [
+          {
+            "label": "Renseignements généraux",
+            "value": "one"
+          },
+          {
+            "label": "Demande d'accompagnement",
+            "value": "two"
+          },
+          {
+            "label": "Partenariat",
+            "value": "Partenariat"
+          },
+          {
+            "label": "Autre demande",
+            "value": "Autre-demande"
+          }
+        ],
+        "cols": 12,
+        "required": true,
+        "field_label": "Objet de votre demande",
+        "placeholder": "Sélectionnez...",
+        "wrapper_id": "wrapper-select-2"
+      },
+      {
+        "id": "textarea-1",
+        "element_id": "textarea-1",
+        "form_id": "wrapper-message",
+        "type": "textarea",
+        "cols": 12,
+        "required": false,
+        "field_label": "Votre message",
+        "placeholder": "Expliquez-nous votre besoin...",
+        "wrapper_id": "wrapper-message"
+      },
+      {
+        "id": "checkbox-1",
+        "element_id": "checkbox-1",
+        "form_id": "wrapper-consent",
+        "type": "checkbox",
+        "options": [
+          {
+            "label": "J'accepte de recevoir par e-mail les informations et actualités de PUR Alpha.",
+            "value": "oui"
+          }
+        ],
+        "cols": 12,
+        "required": false,
+        "field_label": "Consentement",
+        "wrapper_id": "wrapper-consent"
+      }
+    ],
+    "settings": {
+      "pagination-header": "nav",
+      "paginationInit": "open",
+      "formName": "Formulaire de contact PUR Alpha",
+      "version": "1.38.0",
+      "form_method": "ajax",
+      "form_id": "573",
+      "submission-behaviour": "behaviour-thankyou",
+      "thankyou-message": "Votre demande a bien été envoyée. Nous reviendrons vers vous au plus vite.",
+      "submitData": {
+        "custom-submit-text": "Envoyer ma demande"
+      }
+    }
+  },
+  "status": "publish",
+  "version": "1.38.0"
+}

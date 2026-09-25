@@ -8,11 +8,7 @@
       {
         "key": "field_contact_tab_hero",
         "label": "Hero",
-        "name": "",
-        "type": "tab",
-        "placement": "top",
-        "endpoint": 0,
-        "selected": 0
+        "type": "tab"
       },
       {
         "key": "field_contact_hero",
@@ -42,17 +38,12 @@
             "type": "textarea",
             "default_value": "Tout commence par une écoute. Parlez-nous de votre situation."
           }
-        ],
-        "layout": "block"
+        ]
       },
       {
         "key": "field_contact_tab_form",
         "label": "Formulaire",
-        "name": "",
-        "type": "tab",
-        "placement": "top",
-        "endpoint": 0,
-        "selected": 0
+        "type": "tab"
       },
       {
         "key": "field_contact_formulaire",
@@ -73,27 +64,20 @@
             "label": "Image",
             "name": "image",
             "type": "image",
-            "return_format": "id",
-            "preview_size": "medium"
+            "return_format": "id"
           },
           {
-            "key": "field_6a0b9cbb9f915",
+            "key": "field_contact_form_notes",
             "label": "Notes",
             "name": "notes",
-            "type": "textarea",
-            "default_value": ""
+            "type": "textarea"
           }
-        ],
-        "layout": "block"
+        ]
       },
       {
         "key": "field_contact_tab_coords",
         "label": "Coordonnées",
-        "name": "",
-        "type": "tab",
-        "placement": "top",
-        "endpoint": 0,
-        "selected": 0
+        "type": "tab"
       },
       {
         "key": "field_contact_coordonnees",
@@ -115,14 +99,14 @@
             "name": "items",
             "type": "repeater",
             "layout": "block",
+            "button_label": "Ajouter une coordonnée",
             "sub_fields": [
               {
                 "key": "field_contact_coord_icon",
                 "label": "Icône",
                 "name": "image",
                 "type": "image",
-                "return_format": "array",
-                "preview_size": "medium"
+                "return_format": "array"
               },
               {
                 "key": "field_contact_coord_label",
@@ -138,11 +122,17 @@
               }
             ]
           }
-        ],
-        "layout": "block"
+        ]
       }
     ],
     "location": [
+      [
+        {
+          "param": "page_slug",
+          "operator": "==",
+          "value": "contact"
+        }
+      ],
       [
         {
           "param": "page",
@@ -150,12 +140,6 @@
           "value": "14"
         }
       ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "active": true
+    ]
   }
 ]
