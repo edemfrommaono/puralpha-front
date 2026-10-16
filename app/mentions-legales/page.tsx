@@ -22,7 +22,7 @@ const sections = [
           <p><strong>Identification de l'entreprise :</strong> PUR ALPHA, SIRET 989 156 989 00026, Agrément SAP N° SAP989156989, sis 26 rue des Sablons, 95360 Montmagny</p>
           <p><strong>Directeur de la publication :</strong> Marc LEBLANC</p>
           <p><strong>Réalisation :</strong> PUR ALPHA</p>
-          <p><strong>Hébergeur :</strong> OVH, Société par Actions Simplifiée au capital de 10 069 020 €, ayant son siège social au 2 rue Kellermann, 59100 ROUBAIX France, Siren 424 761 419 RCS Lille</p>
+          <p><strong>Hébergeur :</strong> IONOS SARL — 7 place de la Gare, BP 70109, 57200 Sarreguemines Cedex, France (RCS Sarreguemines B 431 303 775 — Téléphone : 09 70 80 89 11 — Site : www.ionos.fr). Infrastructure infogérée par l&apos;agence MAONO.</p>
           <p><strong>Délégué à la protection des données :</strong> Marc LEBLANC</p>
         </div>
       </div>

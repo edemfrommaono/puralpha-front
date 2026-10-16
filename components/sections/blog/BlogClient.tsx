@@ -340,7 +340,7 @@ export function BlogClient({ posts }: BlogClientProps) {
                 if (youtubeId) {
                   return (
                     <iframe
-                      src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
+                      src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1`}
                       className="w-full h-full"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen

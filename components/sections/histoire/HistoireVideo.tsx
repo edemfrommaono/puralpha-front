@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
 import { FadeInView } from "@/components/ui/FadeInView";
@@ -11,12 +14,12 @@ interface HistoireVideoProps {
   placeholderNote: string;
 }
 
-/** Transforme une URL YouTube / Vimeo en URL d'embed. Retourne null si non reconnue. */
+/** Transforme une URL YouTube / Vimeo en URL d'embed (mode youtube-nocookie pour YouTube). */
 function getEmbedUrl(url: string): string | null {
   const youtube = url.match(
     /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/
   );
-  if (youtube) return `https://www.youtube.com/embed/${youtube[1]}`;
+  if (youtube) return `https://www.youtube-nocookie.com/embed/${youtube[1]}`;
 
   const vimeo = url.match(/vimeo\.com\/(\d+)/);
   if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
@@ -31,8 +34,8 @@ function isDirectVideoFile(url: string): boolean {
 
 /**
  * Section « Notre histoire, racontée de vive voix » — fond bleu nuit.
- * Si une URL vidéo est renseignée (YouTube, Vimeo ou fichier mp4/webm), le
- * lecteur est intégré ; sinon un emplacement réservé avec icône play or.
+ * Respect RGPD (Solution 2-clics) : L'iframe YouTube n'est chargée qu'au clic volontaire
+ * de l'utilisateur et utilise exclusivement le domaine youtube-nocookie.com.
  */
 export function HistoireVideo({
   title,
@@ -42,6 +45,7 @@ export function HistoireVideo({
   placeholderLabel,
   placeholderNote,
 }: HistoireVideoProps) {
+  const [isPlaying, setIsPlaying] = useState(false);
   const embedUrl = videoUrl ? getEmbedUrl(videoUrl) : null;
   const directVideo =
     videoUrl && !embedUrl && isDirectVideoFile(videoUrl) ? videoUrl : null;
@@ -74,15 +78,39 @@ export function HistoireVideo({
           {/* Vidéo ou emplacement réservé */}
           <FadeInView direction="right" delay={0.15}>
             {embedUrl ? (
-              <div className="relative rounded-2xl overflow-hidden aspect-video shadow-2xl">
-                <iframe
-                  src={embedUrl}
-                  title={title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                />
-              </div>
+              isPlaying ? (
+                <div className="relative rounded-2xl overflow-hidden aspect-video shadow-2xl">
+                  <iframe
+                    src={`${embedUrl}?autoplay=1`}
+                    title={title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+              ) : (
+                <div
+                  onClick={() => setIsPlaying(true)}
+                  className="group relative flex flex-col items-center justify-center text-center gap-4 rounded-2xl border border-white/20 bg-navy-700/60 hover:bg-navy-700/80 aspect-video p-8 shadow-2xl cursor-pointer transition-all duration-300"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Lancer la vidéo : ${title}`}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") setIsPlaying(true);
+                  }}
+                >
+                  <span className="w-16 h-16 rounded-full bg-gold-500 flex items-center justify-center shadow-[0_4px_20px_rgba(242,201,76,0.4)] group-hover:scale-110 group-hover:bg-gold-400 transition-all duration-300">
+                    <Play className="w-7 h-7 text-navy-900 fill-navy-900 ml-1" />
+                  </span>
+                  <p className="text-white font-bold text-base md:text-lg">
+                    {placeholderLabel || "Lancer la vidéo"}
+                  </p>
+                  <p className="text-white/60 text-xs max-w-sm leading-relaxed">
+                    En cliquant, vous acceptez la lecture via YouTube (mode de confidentialité avancée{" "}
+                    <span className="text-teal-300 font-mono text-[11px]">youtube-nocookie.com</span>).
+                  </p>
+                </div>
+              )
             ) : directVideo ? (
               <video
                 src={directVideo}

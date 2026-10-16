@@ -4,10 +4,19 @@ import shutil
 import subprocess
 import zipfile
 
+def get_next_version():
+    existing = []
+    for f in os.listdir("."):
+        if f.startswith("puralpha-front-plesk") and f.endswith(".zip"):
+            num = f.replace("puralpha-front-plesk", "").replace(".zip", "")
+            if num.isdigit():
+                existing.append(int(num))
+    return str(max(existing) + 1) if existing else "31"
+
 def run():
     app_name = "puralpha-front"
     dist_dir = os.path.abspath("plesk-dist")
-    version = sys.argv[1] if len(sys.argv) > 1 else "29"
+    version = sys.argv[1] if len(sys.argv) > 1 else get_next_version()
     zip_name = f"puralpha-front-plesk{version}.zip"
     next_dist_dir = os.path.abspath(".next")
     standalone_dir = os.path.join(next_dist_dir, "standalone")
