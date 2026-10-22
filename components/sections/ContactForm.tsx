@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import Link from "next/link";
 import { InfoNotice } from "@/components/ui/InfoNotice";
 
 // ── Schéma Zod — Forminator form 573 ──
@@ -32,29 +33,6 @@ const FIELD_MAPPING = {
   "textarea-1": "textarea-1",
 } as const;
 
-interface ConsentProof {
-  email: string;
-  choice: string;
-  label: string;
-  accepted: boolean;
-  date: string;
-  time: string;
-  source: string;
-  canal: string;
-  text_version: string;
-}
-
-const saveConsentProof = (proof: ConsentProof) => {
-  try {
-    const existing = localStorage.getItem("puralpha_consent_proofs");
-    const list = existing ? JSON.parse(existing) : [];
-    list.push(proof);
-    localStorage.setItem("puralpha_consent_proofs", JSON.stringify(list));
-    console.log("Consent proof recorded:", proof);
-  } catch (err) {
-    console.error("Failed to save consent proof:", err);
-  }
-};
 
 interface ContactFormProps {
   formTitle?: string;
@@ -138,28 +116,6 @@ export function ContactForm({ formTitle, notes }: ContactFormProps) {
       if (!response.ok) {
         throw new Error("Une erreur est survenue lors de l'envoi.");
       }
-
-      // Enregistrement des preuves de consentement
-      const email = formData["email-1"];
-      const timestamp = new Date().toISOString();
-      const consents = [
-        { key: "consent_email", label: "J'accepte de recevoir par e-mail les informations et actualités de PUR Alpha.", value: !!formData.consent_email },
-      ];
-
-      consents.forEach(c => {
-        saveConsentProof({
-          email,
-          choice: c.key,
-          label: c.label,
-          accepted: c.value,
-          date: timestamp.split("T")[0],
-          time: timestamp.split("T")[1].substring(0, 8),
-          source: "Formulaire de contact - puralpha.fr",
-          canal: "Web",
-          text_version: "v1.1 - August 2026"
-        });
-      });
-
       setIsSubmitted(true);
       reset();
       setTimeout(() => setIsSubmitted(false), 5000);
@@ -345,6 +301,12 @@ détaillées ni de documents de santé concernant la personne à accompagner.
                 </svg>
               )}
             </button>
+            <p className="text-[11px] text-gray-500 text-center mt-2.5">
+              En envoyant votre demande, vous acceptez le traitement de vos informations conformément à notre{" "}
+              <Link href="/politique-confidentialite" className="text-teal-600 underline font-semibold hover:text-teal-700">
+                Politique de confidentialité
+              </Link>.
+            </p>
           </div>
         </form>
       )}

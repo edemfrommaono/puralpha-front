@@ -24,33 +24,61 @@ export function ContactCoordonnees({ title, items }: ContactCoordonneesProps) {
 
   useEffect(() => {
     // Vérifier si la carte a été expressément acceptée via le bouton dédié ou le consentement marketing
-    try {
-      if (sessionStorage.getItem(MAP_STORAGE_KEY) === "true") {
-        setMapConsent(true);
-        return;
-      }
-    } catch { /* ignore */ }
-
     const stored = localStorage.getItem(CONSENT_KEY);
+    let marketingAllowed = false;
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        // Google Maps est un service tiers : autorisé si l'utilisateur a accepté la catégorie marketing
-        if (parsed.marketing) setMapConsent(true);
+        marketingAllowed = !!(parsed?.consent?.marketing ?? parsed?.marketing);
       } catch { /* ignore */ }
     }
 
-    // Écouter les changements de consentement
+    try {
+      if (sessionStorage.getItem(MAP_STORAGE_KEY) === "true" || marketingAllowed) {
+        setMapConsent(true);
+      }
+    } catch { /* ignore */ }
+
+    // Écouter les changements de consentement émis par le bandeau en temps réel
+    const handleConsentChanged = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      const state = customEvent.detail;
+      if (state) {
+        if (!state.marketing) {
+          try {
+            sessionStorage.removeItem(MAP_STORAGE_KEY);
+          } catch { /* ignore */ }
+          setMapConsent(false);
+        } else {
+          setMapConsent(true);
+        }
+      }
+    };
+    window.addEventListener("puralpha-consent-changed", handleConsentChanged);
+
+    // Écouter les changements venant d'autres onglets
     const handleStorage = (e: StorageEvent) => {
       if (e.key === CONSENT_KEY && e.newValue) {
         try {
           const parsed = JSON.parse(e.newValue);
-          setMapConsent(!!parsed.marketing);
+          const isMarketing = !!(parsed?.consent?.marketing ?? parsed?.marketing);
+          if (!isMarketing) {
+            try {
+              sessionStorage.removeItem(MAP_STORAGE_KEY);
+            } catch { /* ignore */ }
+            setMapConsent(false);
+          } else {
+            setMapConsent(true);
+          }
         } catch { /* ignore */ }
       }
     };
     window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
+
+    return () => {
+      window.removeEventListener("puralpha-consent-changed", handleConsentChanged);
+      window.removeEventListener("storage", handleStorage);
+    };
   }, []);
 
   const handleAcceptMap = () => {

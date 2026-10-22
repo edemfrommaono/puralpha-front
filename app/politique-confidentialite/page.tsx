@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageBanner } from "@/components/ui/PageBanner";
-import { getPolitiqueConfidentialitePage } from "@/lib/wordpress";
+import { getPolitiqueConfidentialitePage, cleanLegalHtml } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — PUR Alpha",
@@ -66,7 +66,8 @@ Consultez ce lien pour plus d'informations sur vos droits.`,
 
 export default async function PolitiqueConfidentialitePage() {
   const wpPage = await getPolitiqueConfidentialitePage();
-  const wpContent = wpPage?.content?.rendered?.trim();
+  const rawContent = wpPage?.content?.rendered?.trim();
+  const wpContent = rawContent ? cleanLegalHtml(rawContent) : null;
 
   return (
     <div className="min-h-screen">

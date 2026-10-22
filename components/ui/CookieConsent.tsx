@@ -11,6 +11,62 @@ type ConsentState = {
 };
 
 const STORAGE_KEY = "puralpha-cookie-consent";
+const CONSENT_VALIDITY_DAYS = 180; // 6 mois conformément aux recommandations de la CNIL
+const CONSENT_VALIDITY_MS = CONSENT_VALIDITY_DAYS * 24 * 60 * 60 * 1000;
+
+interface StoredConsentData {
+  consent: ConsentState;
+  timestamp: number;
+}
+
+const clearAnalyticsCookies = () => {
+  if (typeof document === "undefined") return;
+  const cookieNames = ["_ga", "_ga_S60574HD6J", "_gid", "_gat"];
+  const hostnames = [
+    window.location.hostname,
+    `.${window.location.hostname}`,
+    window.location.hostname.replace(/^www\./, "."),
+    "",
+  ];
+  const paths = ["/", ""];
+
+  document.cookie.split(";").forEach((cookie) => {
+    const name = cookie.split("=")[0].trim();
+    if (name.startsWith("_ga") || name.startsWith("_gid") || name.startsWith("_gat")) {
+      if (!cookieNames.includes(name)) cookieNames.push(name);
+    }
+  });
+
+  cookieNames.forEach((name) => {
+    hostnames.forEach((host) => {
+      paths.forEach((path) => {
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path};${host ? ` domain=${host};` : ""}`;
+      });
+    });
+  });
+};
+
+const parseStoredConsent = (stored: string | null): ConsentState | null => {
+  if (!stored) return null;
+  try {
+    const parsed = JSON.parse(stored);
+    if (parsed && typeof parsed.timestamp === "number" && parsed.consent) {
+      const isExpired = Date.now() - parsed.timestamp > CONSENT_VALIDITY_MS;
+      if (isExpired) {
+        localStorage.removeItem(STORAGE_KEY);
+        return null;
+      }
+      return parsed.consent as ConsentState;
+    }
+    // Ancien format : objet sans timestamp
+    if (parsed && typeof parsed.fonctionnel === "boolean") {
+      return parsed as ConsentState;
+    }
+  } catch {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+  return null;
+};
 
 const categories = [
   {
@@ -25,14 +81,14 @@ const categories = [
     label: "Statistiques",
     alwaysActive: false,
     description:
-      "Le stockage ou l'accès technique qui est utilisé exclusivement à des fins statistiques.",
+      "Le stockage ou l'accès technique qui est utilisé exclusivement à des fins statistiques anonymisées pour mesurer l'audience du site.",
   },
   {
     id: "marketing" as const,
-    label: "Marketing",
+    label: "Marketing et contenus externes",
     alwaysActive: false,
     description:
-      "L'accès ou le stockage technique est nécessaire pour créer des profils d'internautes afin d'envoyer des publicités, ou pour suivre l'utilisateur sur un site web ou sur plusieurs sites web ayant des finalités marketing similaires.",
+      "L'accès ou le stockage technique nécessaire pour charger des fonctionnalités ou contenus externes (ex : carte interactive Google Maps).",
   },
 ];
 
@@ -62,27 +118,25 @@ export function CookieConsent() {
   });
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) {
+    // Purge de l'ancienne copie locale des preuves de consentement (RGPD minimisation)
+    try {
+      localStorage.removeItem("puralpha_consent_proofs");
+    } catch { /* ignore */ }
+
+    const validConsent = parseStoredConsent(localStorage.getItem(STORAGE_KEY));
+    if (!validConsent) {
       setVisible(true);
     } else {
-      // Charger les préférences existantes pour les afficher si l'utilisateur rouvre le panneau
-      try {
-        const parsed = JSON.parse(stored) as ConsentState;
-        setConsent(parsed);
-        updateGtagConsent(parsed);
-      } catch { /* ignore */ }
+      setConsent(validConsent);
+      updateGtagConsent(validConsent);
     }
 
-    // Écouter les demandes de réouverture des paramètres cookies
+    // Écouter les demandes de réouverture des paramètres cookies (ex : lien footer)
     const handleOpen = () => {
-      const existing = localStorage.getItem(STORAGE_KEY);
+      const existing = parseStoredConsent(localStorage.getItem(STORAGE_KEY));
       if (existing) {
-        try {
-          const parsed = JSON.parse(existing) as ConsentState;
-          setConsent(parsed);
-          updateGtagConsent(parsed);
-        } catch { /* ignore */ }
+        setConsent(existing);
+        updateGtagConsent(existing);
       }
       setShowPreferences(true);
       setVisible(true);
@@ -92,8 +146,30 @@ export function CookieConsent() {
   }, []);
 
   const save = (state: ConsentState) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    const payload: StoredConsentData = {
+      consent: state,
+      timestamp: Date.now(),
+    };
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    } catch { /* ignore */ }
+
     updateGtagConsent(state);
+
+    // Retrait du consentement : nettoyage proactif des cookies et des autorisations temporaires
+    if (!state.statistiques) {
+      clearAnalyticsCookies();
+    }
+    if (!state.marketing) {
+      try {
+        sessionStorage.removeItem("puralpha-map-consent");
+      } catch { /* ignore */ }
+    }
+
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("puralpha-consent-changed", { detail: state }));
+    }
+
     setVisible(false);
   };
 

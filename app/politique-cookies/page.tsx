@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageBanner } from "@/components/ui/PageBanner";
-import { getPolitiqueCookiesPage } from "@/lib/wordpress";
+import { getPolitiqueCookiesPage, cleanLegalHtml } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "Politique de cookies — PUR Alpha",
@@ -96,7 +96,8 @@ Cette politique de cookies a été synchronisée avec cookiedatabase.org le 19 a
 
 export default async function PolitiqueCookiesPage() {
   const wpPage = await getPolitiqueCookiesPage();
-  const wpContent = wpPage?.content?.rendered?.trim();
+  const rawContent = wpPage?.content?.rendered?.trim();
+  const wpContent = rawContent ? cleanLegalHtml(rawContent) : null;
 
   return (
     <div className="min-h-screen">

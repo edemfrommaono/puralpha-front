@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toHtml } from "@/lib/wysiwyg";
+import Link from "next/link";
 import { InfoNotice } from "@/components/ui/InfoNotice";
 
 // ── Schéma Zod — Forminator form 574 ──
@@ -46,29 +47,6 @@ const FIELD_MAPPING = {
   "textarea-1": "textarea-1",
 } as const;
 
-interface ConsentProof {
-  email: string;
-  choice: string;
-  label: string;
-  accepted: boolean;
-  date: string;
-  time: string;
-  source: string;
-  canal: string;
-  text_version: string;
-}
-
-const saveConsentProof = (proof: ConsentProof) => {
-  try {
-    const existing = localStorage.getItem("puralpha_consent_proofs");
-    const list = existing ? JSON.parse(existing) : [];
-    list.push(proof);
-    localStorage.setItem("puralpha_consent_proofs", JSON.stringify(list));
-    console.log("Consent proof recorded:", proof);
-  } catch (err) {
-    console.error("Failed to save consent proof:", err);
-  }
-};
 
 interface RejoindreFormulaireProps {
   sectionTag: string;
@@ -192,22 +170,6 @@ export function RejoindreFormulaire({
         console.error("Erreur renvoyée par le backend:", errorData);
         throw new Error(errorData?.message || "Une erreur est survenue lors de l'envoi.");
       }
-
-      // Enregistrement de la preuve de consentement pour le vivier
-      const email = formData["email-1"];
-      const timestamp = new Date().toISOString();
-      saveConsentProof({
-        email,
-        choice: "consent_vivier",
-        label: "J'accepte que PUR Alpha conserve ma candidature pendant 2 ans à compter du dernier contact afin de pouvoir me recontacter pour de futures opportunités.",
-        accepted: !!formData.consent_vivier,
-        date: timestamp.split("T")[0],
-        time: timestamp.split("T")[1].substring(0, 8),
-        source: "Formulaire de candidature - puralpha.fr",
-        canal: "Web",
-        text_version: "v1.0 - July 2026"
-      });
-
       setIsSubmitted(true);
       setSelectedFileName(null);
       reset();
@@ -440,7 +402,14 @@ export function RejoindreFormulaire({
                 )}
               </button>
 
-              <p className="text-center text-xs text-gray-500 mt-4">
+              <p className="text-center text-xs text-gray-500 mt-3">
+                En soumettant votre candidature, vous acceptez le traitement de vos données conformément à notre{" "}
+                <Link href="/politique-confidentialite" className="text-teal-600 underline font-semibold hover:text-teal-700">
+                  Politique de confidentialité
+                </Link>.
+              </p>
+
+              <p className="text-center text-xs text-gray-500 mt-2">
                 Ou envoyez directement votre CV à <a href={`mailto:${emailFallback}`} className="font-bold text-navy-800">{emailFallback}</a>
               </p>
             </form>

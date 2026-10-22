@@ -43,6 +43,11 @@ export default function RootLayout({
               'ad_user_data': 'denied',
               'ad_personalization': 'denied'
             });
+            // Recommandation CNIL : durée de vie maximale des cookies de mesure d'audience à 13 mois sans renouvellement tacite
+            gtag('set', {
+              'cookie_expires': 34164000,
+              'cookie_update': false
+            });
           `}
         </Script>
       </head>

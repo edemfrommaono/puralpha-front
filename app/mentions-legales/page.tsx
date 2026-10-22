@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageBanner } from "@/components/ui/PageBanner";
-import { getMentionsLegalesPage } from "@/lib/wordpress";
+import { getMentionsLegalesPage, cleanLegalHtml } from "@/lib/wordpress";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -130,7 +130,8 @@ const sections = [
 
 export default async function MentionsLegalesPage() {
   const wpPage = await getMentionsLegalesPage();
-  const wpContent = wpPage?.content?.rendered?.trim();
+  const rawContent = wpPage?.content?.rendered?.trim();
+  const wpContent = rawContent ? cleanLegalHtml(rawContent) : null;
 
   return (
     <div className="min-h-screen">

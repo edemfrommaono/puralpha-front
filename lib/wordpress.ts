@@ -382,3 +382,21 @@ export async function getBlogPostBySlug(slug: string): Promise<Post | null> {
     return null;
   }
 }
+
+/**
+ * Nettoie et normalise le contenu HTML des pages légales WordPress :
+ * - Corrige les liens relatifs vers les fichiers .html locaux vers les routes Next.js internes
+ * - Assure la cohérence des liens internes entre mentions légales, politique de confidentialité et politique cookies
+ */
+export function cleanLegalHtml(html: string): string {
+  if (!html) return html;
+  return html
+    // Remplacement des liens vers la politique de confidentialité
+    .replace(/href=["'][^"']*politique[_-]?confidentialite[^"']*\.html["']/gi, 'href="/politique-confidentialite"')
+    // Remplacement des liens vers la politique de cookies
+    .replace(/href=["'][^"']*politique[_-]?cookies[^"']*\.html["']/gi, 'href="/politique-cookies"')
+    // Remplacement des liens vers les mentions légales
+    .replace(/href=["'][^"']*mentions[_-]?legales[^"']*\.html["']/gi, 'href="/mentions-legales"')
+    // Remplacement du lien courriel s'il manque le mailto
+    .replace(/href=["']cmco-mediation@outlook\.com["']/gi, 'href="mailto:cmco-mediation@outlook.com"');
+}
